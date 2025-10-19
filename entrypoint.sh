@@ -4,6 +4,8 @@
 git config --global user.name "diagrammer-bot"
 git config --global user.email "diagrammer-bot@users.noreply.github.com"
 
-# Change to action directory and run the main script
-cd /action
-node src/index.js
+# Change to workspace directory (where GitHub Actions expects files)
+cd /github/workspace
+
+# Run the main script from the action directory
+node /action/src/index.js
