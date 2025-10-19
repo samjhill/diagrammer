@@ -6,7 +6,7 @@ RUN apk add --no-cache git
 # Set working directory
 WORKDIR /action
 
-# Copy package files
+# Copy package files first for better caching
 COPY package*.json ./
 
 # Install dependencies
