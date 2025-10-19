@@ -9,12 +9,21 @@ class GitManager {
 
   async commitChanges(outputPath, commitMessage) {
     try {
+      // Check if we're in a git repository
+      if (!await this.isGitRepository()) {
+        console.log('Not in a git repository, skipping commit');
+        return;
+      }
+
       // Check if there are any changes
       const hasChanges = await this.hasChanges(outputPath);
       if (!hasChanges) {
         console.log('No changes to commit');
         return;
       }
+
+      // Configure git user if not already set
+      await this.configureGitUser();
 
       // Stage the changes
       execSync(`git add ${outputPath}`, { stdio: 'inherit' });
@@ -56,6 +65,27 @@ class GitManager {
       sha: this.context.sha,
       ref: this.context.ref
     };
+  }
+
+  async isGitRepository() {
+    try {
+      execSync('git rev-parse --git-dir', { stdio: 'pipe' });
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  async configureGitUser() {
+    try {
+      // Check if git user is already configured
+      execSync('git config user.name', { stdio: 'pipe' });
+      execSync('git config user.email', { stdio: 'pipe' });
+    } catch (error) {
+      // Configure git user if not set
+      execSync('git config user.name "diagrammer-bot"', { stdio: 'inherit' });
+      execSync('git config user.email "diagrammer-bot@users.noreply.github.com"', { stdio: 'inherit' });
+    }
   }
 }
 

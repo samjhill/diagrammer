@@ -41,20 +41,28 @@ async function main() {
     core.info('Generating diagrams...');
     const diagrams = await diagramGenerator.generateDiagrams(analysis);
 
-    // Ensure output directory exists
+    // Ensure output directory exists (create parent directories if needed)
     await fs.ensureDir(outputPath);
+    core.info(`Created output directory: ${outputPath}`);
 
     // Write diagrams to files
+    const generatedFiles = [];
     for (const [name, content] of Object.entries(diagrams)) {
       const filePath = path.join(outputPath, `${name}.md`);
       await fs.writeFile(filePath, content);
+      generatedFiles.push(filePath);
       core.info(`Generated diagram: ${filePath}`);
     }
 
-    // Commit changes
-    if (Object.keys(diagrams).length > 0) {
-      await gitManager.commitChanges(outputPath, 'docs: Update architecture diagrams');
-      core.info('Committed diagram updates to repository');
+    // Commit changes if any files were generated
+    if (generatedFiles.length > 0) {
+      try {
+        await gitManager.commitChanges(outputPath, 'docs: Update architecture diagrams');
+        core.info('Committed diagram updates to repository');
+      } catch (error) {
+        core.warning(`Failed to commit changes: ${error.message}`);
+        core.info('Diagrams were generated but not committed to repository');
+      }
     }
 
     core.info('Architecture diagram generation completed successfully!');
