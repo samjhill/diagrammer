@@ -1,11 +1,7 @@
-name: Test Diagrammer on Self
+name: Test Diagrammer on Self (Fallback)
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-  workflow_dispatch: # Allow manual triggering
+  workflow_dispatch: # Manual trigger only
 
 jobs:
   generate-diagrams:
@@ -17,14 +13,14 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         
-    - name: Generate Architecture Diagrams
-      uses: samjhill/diagrammer@v1.0.0
+    - name: Generate Architecture Diagrams (Fallback)
+      uses: samjhill/diagrammer@main
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        output_path: 'docs/architecture'
+        output_path: 'docs/architecture-fallback'
         languages: 'javascript,typescript'
         
     - name: Display generated files
       run: |
         echo "Generated files:"
-        find docs/architecture -name "*.md" -type f | head -10
+        find docs/architecture-fallback -name "*.md" -type f | head -10
