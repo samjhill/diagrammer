@@ -1,0 +1,27 @@
+# Basic Usage Example
+# Copy this to your repository as .github/workflows/diagrammer.yml
+
+name: Generate Architecture Diagrams
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  generate-diagrams:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Generate Architecture Diagrams
+      uses: samjhill/diagrammer@v1
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        output_path: 'docs/architecture'
+        languages: 'javascript,typescript'

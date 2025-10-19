@@ -1,0 +1,54 @@
+# Diagrammer Configuration
+# Copy this file to .diagrammer.yml in your repository root
+
+# Diagram generation settings
+diagram:
+  theme: "default"  # default, dark, forest, neutral
+  direction: "TB"   # TB (top-bottom), LR (left-right), RL (right-left), BT (bottom-top)
+  nodeSpacing: 50   # Space between nodes
+  rankSpacing: 100  # Space between ranks
+
+# Code analysis settings
+analysis:
+  includeTests: false        # Include test files in analysis
+  includeNodeModules: false  # Include node_modules dependencies
+  maxDepth: 5               # Maximum dependency depth to analyze
+  languages:                # Languages to analyze
+    - "javascript"
+    - "typescript"
+
+# Output settings
+output:
+  path: "docs/architecture"  # Where to store generated diagrams
+  formats:
+    - "mermaid"             # Generate Mermaid diagrams
+    - "svg"                 # Generate SVG exports
+  autoCommit: true          # Automatically commit generated diagrams
+
+# Filtering options
+filters:
+  excludePatterns:          # Patterns to exclude from analysis
+    - "**/test/**"
+    - "**/tests/**"
+    - "**/*.test.*"
+    - "**/*.spec.*"
+    - "**/node_modules/**"
+    - "**/dist/**"
+    - "**/build/**"
+  
+  includePatterns:          # Patterns to include (if specified, only these will be analyzed)
+    - "**/*.js"
+    - "**/*.ts"
+    - "**/*.jsx"
+    - "**/*.tsx"
+
+# Custom styling
+styling:
+  componentColors:
+    class: "#e1f5fe"        # Color for classes
+    function: "#f3e5f5"     # Color for functions
+    interface: "#e8f5e8"    # Color for interfaces
+    module: "#fff3e0"       # Color for modules
+  
+  externalDependencies: "#ffebee"  # Color for external dependencies
+  internalComponents: "#e8f5e8"    # Color for internal components

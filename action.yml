@@ -1,0 +1,31 @@
+name: 'Architecture Diagram Generator'
+description: 'Automatically generate and update architecture diagrams from your codebase'
+author: 'Sam Hill'
+branding:
+  icon: 'git-branch'
+  color: 'blue'
+
+inputs:
+  github_token:
+    description: 'GitHub token for committing generated diagrams'
+    required: true
+    default: ${{ github.token }}
+  
+  output_path:
+    description: 'Path where architecture diagrams will be stored'
+    required: false
+    default: 'docs/architecture'
+  
+  config_file:
+    description: 'Path to configuration file'
+    required: false
+    default: '.diagrammer.yml'
+  
+  languages:
+    description: 'Comma-separated list of languages to analyze'
+    required: false
+    default: 'javascript,typescript'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
