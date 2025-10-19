@@ -27,6 +27,11 @@ async function main() {
     const gitManager = new GitManager(octokit, context);
 
     core.info('Starting architecture diagram generation...');
+    
+    // Debug: Show current working directory
+    const cwd = process.cwd();
+    core.info(`Current working directory: ${cwd}`);
+    core.info(`Output path: ${outputPath}`);
 
     // Analyze the codebase
     core.info('Analyzing codebase...');
@@ -49,9 +54,11 @@ async function main() {
     const generatedFiles = [];
     for (const [name, content] of Object.entries(diagrams)) {
       const filePath = path.join(outputPath, `${name}.md`);
+      const absolutePath = path.resolve(filePath);
       await fs.writeFile(filePath, content);
       generatedFiles.push(filePath);
       core.info(`Generated diagram: ${filePath}`);
+      core.info(`Absolute path: ${absolutePath}`);
     }
 
     // Commit changes if any files were generated

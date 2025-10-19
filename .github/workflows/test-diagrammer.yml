@@ -26,5 +26,14 @@ jobs:
         
     - name: Display generated files
       run: |
-        echo "Generated files:"
-        find docs/architecture -name "*.md" -type f | head -10
+        echo "Current directory contents:"
+        ls -la
+        echo ""
+        echo "Looking for docs directory:"
+        ls -la docs/ 2>/dev/null || echo "docs/ directory not found"
+        echo ""
+        echo "Looking for architecture directory:"
+        ls -la docs/architecture/ 2>/dev/null || echo "docs/architecture/ directory not found"
+        echo ""
+        echo "All .md files in repository:"
+        find . -name "*.md" -type f | head -10
