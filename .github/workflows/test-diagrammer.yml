@@ -1,0 +1,30 @@
+name: Test Diagrammer on Self
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  generate-diagrams:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Generate Architecture Diagrams
+      uses: samjhill/diagrammer@v1
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        output_path: 'docs/architecture'
+        languages: 'javascript,typescript'
+        
+    - name: Display generated files
+      run: |
+        echo "Generated files:"
+        find docs/architecture -name "*.md" -type f | head -10
