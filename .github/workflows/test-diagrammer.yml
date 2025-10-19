@@ -18,7 +18,7 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         
     - name: Generate Architecture Diagrams
-      uses: samjhill/diagrammer@v1.0.0
+      uses: samjhill/diagrammer@v1.0.1
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         output_path: 'docs/architecture'
