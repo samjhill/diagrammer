@@ -3,6 +3,8 @@ const path = require('path');
 class DiagramGenerator {
   constructor(config) {
     this.config = config;
+    this.maxNodesPerDiagram = config?.maxNodesPerDiagram || 50;
+    this.maxDependenciesPerDiagram = config?.maxDependenciesPerDiagram || 100;
   }
 
   async generateDiagrams(analysis) {
@@ -47,6 +49,10 @@ class DiagramGenerator {
     const { components, dependencies } = analysis;
     const uniqueComponents = this.uniqueByName(components);
     
+    // Filter components to reduce complexity
+    const filteredComponents = this.filterComponentsForDiagram(uniqueComponents);
+    const filteredDependencies = this.filterDependenciesForDiagram(dependencies, filteredComponents);
+    
     let mermaid = 'graph TD\n';
     
     // Add styling with distinct colors
@@ -56,18 +62,26 @@ class DiagramGenerator {
     mermaid += '  classDef dependency fill:#fce4ec,stroke:#c2185b,stroke-width:2px\n';
     mermaid += '  classDef group fill:#f3e5f5,stroke:#7b1fa2,stroke-width:3px\n\n';
 
-    // Group components by directory
-    const componentGroups = this.groupComponentsByDirectory(uniqueComponents);
+    // Group components by directory, but only show top-level directories
+    const componentGroups = this.groupComponentsByDirectory(filteredComponents);
     
-    // Create subgraphs for different directories
-    Object.entries(componentGroups).forEach(([dir, dirComponents]) => {
+    // Create subgraphs for different directories (limit to most important ones)
+    const sortedGroups = Object.entries(componentGroups)
+      .sort(([,a], [,b]) => b.length - a.length) // Sort by component count
+      .slice(0, 8); // Limit to top 8 directories
+    
+    sortedGroups.forEach(([dir, dirComponents]) => {
       if (dirComponents.length > 0) {
         const subgraphName = this.sanitizeName(dir);
-        mermaid += `  subgraph ${subgraphName}["${dir}"]\n`;
+        const displayName = this.getDisplayName(dir);
+        mermaid += `  subgraph ${subgraphName}["${displayName}"]\n`;
         
-        dirComponents.forEach(component => {
+        // Limit components per directory to keep diagrams clean
+        const limitedComponents = dirComponents.slice(0, 10);
+        limitedComponents.forEach(component => {
           const nodeId = this.sanitizeName(component.name);
-          mermaid += `    ${nodeId}["${component.name}"]\n`;
+          const displayComponentName = this.getDisplayComponentName(component.name);
+          mermaid += `    ${nodeId}["${displayComponentName}"]\n`;
         });
         
         mermaid += '  end\n\n';
@@ -76,8 +90,8 @@ class DiagramGenerator {
 
     // Add dependencies (deduped and no self loops). Ensure endpoints exist as nodes.
     const edgeSet = new Set();
-    const nodeNames = new Set(uniqueComponents.map(c => c.name));
-    dependencies.forEach(dep => {
+    const nodeNames = new Set(filteredComponents.map(c => c.name));
+    filteredDependencies.forEach(dep => {
       if (!dep.from || !dep.name) return;
       if (dep.from === dep.name) return;
       // Create placeholder nodes if they don't exist (helps visualize relationships)
@@ -102,7 +116,7 @@ class DiagramGenerator {
     });
 
     // Apply styling to existing components
-    uniqueComponents.forEach(component => {
+    filteredComponents.forEach(component => {
       const nodeId = this.sanitizeName(component.name);
       mermaid += `  ${nodeId}:::component\n`;
     });
@@ -573,6 +587,155 @@ ${mermaidContent}
       case 'array': return 'data';
       default: return 'data';
     }
+  }
+
+  filterComponentsForDiagram(components) {
+    // Filter out components that make diagrams too complex
+    return components
+      .filter(component => {
+        // Exclude test files unless specifically included
+        if (this.isTestFile(component.path) && !this.config?.includeTests) {
+          return false;
+        }
+        
+        // Exclude dependency layer files (like layer/python)
+        if (this.isDependencyLayer(component.path)) {
+          return false;
+        }
+        
+        // Exclude very specific internal functions that clutter diagrams
+        if (this.isInternalImplementation(component.name)) {
+          return false;
+        }
+        
+        // Prioritize main application files over utility files
+        if (this.isUtilityFile(component.path)) {
+          return false;
+        }
+        
+        return true;
+      })
+      .sort((a, b) => {
+        // Sort by importance: main files first, then by path depth
+        const aImportance = this.getComponentImportance(a);
+        const bImportance = this.getComponentImportance(b);
+        if (aImportance !== bImportance) {
+          return bImportance - aImportance;
+        }
+        return a.path.split('/').length - b.path.split('/').length;
+      })
+      .slice(0, this.maxNodesPerDiagram); // Limit total nodes
+  }
+
+  filterDependenciesForDiagram(dependencies, filteredComponents) {
+    const componentNames = new Set(filteredComponents.map(c => c.name));
+    
+    return dependencies
+      .filter(dep => {
+        // Only include dependencies that involve our filtered components
+        return componentNames.has(dep.from) || componentNames.has(dep.name);
+      })
+      .slice(0, this.maxDependenciesPerDiagram); // Limit total dependencies
+  }
+
+  isTestFile(filePath) {
+    return filePath.includes('/test') || 
+           filePath.includes('/tests') || 
+           filePath.includes('.test.') || 
+           filePath.includes('.spec.') ||
+           filePath.includes('__tests__');
+  }
+
+  isDependencyLayer(filePath) {
+    return filePath.includes('layer/python') || 
+           filePath.includes('node_modules') ||
+           filePath.includes('venv') ||
+           filePath.includes('.venv');
+  }
+
+  isInternalImplementation(name) {
+    // Filter out very specific internal implementation details
+    const internalPatterns = [
+      /^__.*__$/,  // Python dunder methods
+      /^_.*$/,     // Private methods/functions
+      /^[a-z]+$/,  // Single word lowercase (often internal)
+      /^[A-Z][a-z]*$/, // Single word PascalCase (often internal classes)
+    ];
+    
+    return internalPatterns.some(pattern => pattern.test(name));
+  }
+
+  isUtilityFile(filePath) {
+    // Filter out utility files that are less important for architecture diagrams
+    const utilityPatterns = [
+      /\/utils\//,
+      /\/helpers\//,
+      /\/constants\//,
+      /\/config\//,
+      /\/types\//,
+      /\/interfaces\//,
+      /\/enums\//,
+      /\/validators\//,
+      /\/formatters\//,
+    ];
+    
+    return utilityPatterns.some(pattern => pattern.test(filePath));
+  }
+
+  getComponentImportance(component) {
+    // Higher number = more important
+    let importance = 0;
+    
+    // Main entry points are most important
+    if (component.name === 'index' || component.name === 'main' || component.name === 'app') {
+      importance += 100;
+    }
+    
+    // Service/API files are important
+    if (component.path.includes('/service') || component.path.includes('/api')) {
+      importance += 50;
+    }
+    
+    // Controller/handler files are important
+    if (component.path.includes('/controller') || component.path.includes('/handler')) {
+      importance += 40;
+    }
+    
+    // Model/entity files are important
+    if (component.path.includes('/model') || component.path.includes('/entity')) {
+      importance += 30;
+    }
+    
+    // Core business logic files
+    if (component.path.includes('/core') || component.path.includes('/business')) {
+      importance += 20;
+    }
+    
+    // Reduce importance for deeply nested files
+    const depth = component.path.split('/').length;
+    importance -= depth * 2;
+    
+    return importance;
+  }
+
+  getDisplayName(dir) {
+    // Create cleaner display names for directories
+    const parts = dir.split('/');
+    if (parts.length === 1) {
+      return parts[0] || 'Root';
+    }
+    
+    // Show last 2 parts of the path for context
+    const lastTwo = parts.slice(-2);
+    return lastTwo.join('/');
+  }
+
+  getDisplayComponentName(name) {
+    // Truncate very long component names
+    if (name.length > 20) {
+      return name.substring(0, 17) + '...';
+    }
+    return name;
   }
 }
 

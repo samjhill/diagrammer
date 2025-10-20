@@ -7,12 +7,15 @@ diagram:
   direction: "TB"   # TB (top-bottom), LR (left-right), RL (right-left), BT (bottom-top)
   nodeSpacing: 50   # Space between nodes
   rankSpacing: 100  # Space between ranks
+  maxNodesPerDiagram: 30     # Maximum nodes per diagram
+  maxDependenciesPerDiagram: 50  # Maximum dependencies per diagram
+  excludeInternalMethods: true   # Exclude internal implementation methods
 
 # Code analysis settings
 analysis:
-  includeTests: true         # Include test files in analysis for demonstration
+  includeTests: false        # Include test files in analysis (disabled for cleaner diagrams)
   includeNodeModules: false  # Include node_modules dependencies
-  maxDepth: 5               # Maximum dependency depth to analyze
+  maxDepth: 3               # Maximum dependency depth to analyze (reduced for clarity)
   languages:                # Languages to analyze
     - "javascript"
     - "typescript"
