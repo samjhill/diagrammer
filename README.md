@@ -85,14 +85,16 @@ Displays the module organization and export relationships.
 
 You can specify different versions of the action:
 
-| Version | Description | Stability |
-|---------|-------------|-----------|
-| `@v1` | Latest v1.x.x version (recommended) | Stable |
-| `@v1.0` | Latest v1.0.x version | Very stable |
-| `@v1.0.4` | Specific version | Most stable |
-| `@main` | Latest from main branch | Unstable |
+| Version | Description | Stability | Build Time |
+|---------|-------------|-----------|------------|
+| `@v1` | Latest v1.x.x version (recommended) | Stable | ~4-5 min |
+| `@v1.0` | Latest v1.0.x version | Very stable | ~30 sec |
+| `@v1.0.4` | Specific version | Most stable | ~30 sec |
+| `@main` | Latest from main branch | Unstable | ~4-5 min |
 
-**Recommended**: Use `@v1` for automatic updates with stability.
+**Recommended**: 
+- Use `@v1` for production (automatic updates)
+- Use `@v1.0.4` for testing (faster builds)
 
 ## Configuration Options
 

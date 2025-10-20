@@ -9,8 +9,8 @@ WORKDIR /action
 # Copy package files first for better caching
 COPY package*.json ./
 
-# Install dependencies
-RUN npm ci --only=production
+# Install dependencies with optimizations
+RUN npm ci --only=production --no-audit --no-fund
 
 # Copy action code
 COPY . .
