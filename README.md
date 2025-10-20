@@ -6,10 +6,13 @@ A GitHub Actions integration that automatically generates, maintains, and update
 
 - 🚀 **Zero Configuration**: Works out of the box with sensible defaults
 - 🔄 **Automatic Updates**: Diagrams update automatically on code changes
-- 📊 **Multiple Views**: Architecture, dependency, and module diagrams
-- 🎨 **Mermaid Integration**: Native GitHub rendering support
+- 📊 **10 Diagram Types**: Architecture, layered, API flow, data flow, event flow, and more
+- 🎨 **Rich Visualizations**: Color-coded components with labeled relationships
+- 🧠 **Architectural Intelligence**: Framework detection, layer classification, pattern recognition
+- 🔗 **Enhanced Relationships**: API calls, event flows, data flows, service communication
 - ⚙️ **Configurable**: Customize analysis and output via `.diagrammer.yml`
-- 🌐 **Multi-language**: Supports JavaScript, TypeScript (Python, Java, Go coming soon)
+- 🌐 **Multi-language**: Supports JavaScript, TypeScript, and Python
+- 🎯 **Sophisticated Analysis**: Matches enterprise-grade architecture documentation quality
 
 ## Quick Start
 
@@ -72,14 +75,37 @@ The action will:
 
 ## Generated Diagrams
 
-### Architecture Overview
-Shows the high-level structure of your application with components grouped by directory.
+Diagrammer generates **10 sophisticated diagram types** with architectural intelligence:
 
-### Dependency Graph
-Visualizes how components depend on each other and external libraries.
+### 🏗️ Architecture Overview
+High-level structure with components grouped by directory and architectural roles.
 
-### Module Structure
-Displays the module organization and export relationships.
+### 📚 Layered Architecture  
+Components organized by architectural layers (frontend, backend, data, infrastructure).
+
+### 🔗 API Flow
+API relationship analysis showing endpoints, HTTP methods, and service communication.
+
+### 📊 Data Flow
+Data flow between components including state, props, and database operations.
+
+### ⚡ Event Flow
+Event emission and subscription relationships with event-driven architecture patterns.
+
+### 🤝 Service Communication
+Service-to-service method calls and inter-service dependencies.
+
+### 📦 Dependency Graph
+Enhanced dependency visualization with labeled arrows and external/internal classification.
+
+### 🗂️ Module Structure
+Module organization with language tags and export relationships.
+
+### 🎯 MVC Pattern
+Model-View-Controller pattern recognition and component classification.
+
+### 🏢 Microservices Pattern
+Microservices architecture detection and service boundary visualization.
 
 ## Version Options
 
@@ -106,25 +132,67 @@ You can specify different versions of the action:
 
 ## Example Output
 
-Generated diagrams are stored as Markdown files with embedded Mermaid diagrams that render natively in GitHub:
+Generated diagrams are stored as Markdown files with embedded Mermaid diagrams that render natively in GitHub. Here's an example of what you'll get:
 
-```markdown
-# Architecture Overview
+### Architecture Overview
 
 ```mermaid
 graph TD
+  classDef component fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+  classDef external fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+  classDef internal fill:#e8f5e8,stroke:#388e3c,stroke-width:2px
+  classDef group fill:#f3e5f5,stroke:#7b1fa2,stroke-width:3px
+
   subgraph src["src"]
-    App["App"]
-    Components["Components"]
+    App["App"]:::component
+    Components["Components"]:::component
+    Services["Services"]:::component
   end
   
   subgraph lib["lib"]
-    Utils["Utils"]
-    Services["Services"]
+    Utils["Utils"]:::component
+    Helpers["Helpers"]:::component
   end
   
-  App --> Components
-  Components --> Utils
+  subgraph external["External Dependencies"]
+    React["React"]:::external
+    Express["Express"]:::external
+  end
+  
+  App -->|imports| Components
+  Components -->|uses| Services
+  Services -->|depends| Utils
+  App -->|imports| React
+  Services -->|imports| Express
+```
+
+### Layered Architecture
+
+```mermaid
+graph TB
+  classDef frontend fill:#e3f2fd,stroke:#1976d2,stroke-width:3px
+  classDef backend fill:#e8f5e8,stroke:#388e3c,stroke-width:3px
+  classDef data fill:#fff3e0,stroke:#f57c00,stroke-width:3px
+  
+  subgraph frontend["Frontend Layer"]
+    UI["UI Components"]:::frontend
+    Hooks["React Hooks"]:::frontend
+  end
+  
+  subgraph backend["Backend Layer"]
+    API["API Controllers"]:::backend
+    Services["Business Services"]:::backend
+  end
+  
+  subgraph data["Data Layer"]
+    Models["Data Models"]:::data
+    Database["Database"]:::data
+  end
+  
+  UI -->|calls| API
+  API -->|uses| Services
+  Services -->|persists| Models
+  Models -->|queries| Database
 ```
 
 ## Development
