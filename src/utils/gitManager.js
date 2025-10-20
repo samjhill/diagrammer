@@ -16,12 +16,34 @@ class GitManager {
         return;
       }
 
+      // Fix git ownership issues in Docker containers
+      try {
+        const currentDir = process.cwd();
+        console.log(`Adding safe directory: ${currentDir}`);
+        execSync(`git config --global --add safe.directory ${currentDir}`, { stdio: 'inherit' });
+        
+        // Also try the GitHub workspace if different
+        if (process.env.GITHUB_WORKSPACE && process.env.GITHUB_WORKSPACE !== currentDir) {
+          console.log(`Adding safe directory: ${process.env.GITHUB_WORKSPACE}`);
+          execSync(`git config --global --add safe.directory ${process.env.GITHUB_WORKSPACE}`, { stdio: 'inherit' });
+        }
+      } catch (error) {
+        console.log('Could not configure safe directory:', error.message);
+      }
+
       // Ensure we're in the git root directory
       try {
         const gitRoot = execSync('git rev-parse --show-toplevel', { encoding: 'utf8' }).trim();
         if (gitRoot && gitRoot !== process.cwd()) {
           console.log(`Changing to git root directory: ${gitRoot}`);
           process.chdir(gitRoot);
+          
+          // Add the git root as safe directory too
+          try {
+            execSync(`git config --global --add safe.directory ${gitRoot}`, { stdio: 'inherit' });
+          } catch (e) {
+            console.log('Could not add git root as safe directory:', e.message);
+          }
         }
       } catch (error) {
         console.log('Could not determine git root, staying in current directory');
