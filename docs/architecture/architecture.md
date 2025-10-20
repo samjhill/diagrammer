@@ -8,7 +8,7 @@ graph TD
   classDef external fill:#fff3e0,stroke:#f57c00,stroke-width:2px
   classDef internal fill:#e8f5e8,stroke:#388e3c,stroke-width:2px
   classDef dependency fill:#fce4ec,stroke:#c2185b,stroke-width:2px
-  classDef subgraph fill:#f3e5f5,stroke:#7b1fa2,stroke-width:3px
+  classDef group fill:#f3e5f5,stroke:#7b1fa2,stroke-width:3px
 
   subgraph src["src"]
     main["main"]
