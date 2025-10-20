@@ -40,14 +40,36 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         
     - name: Generate Architecture Diagrams
-      uses: samjhill/diagrammer@v1  # Always uses latest v1.x.x version
+      uses: samjhill/diagrammer@v1.2.2  # Latest version with auto-commit fixes
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         output_path: 'docs/architecture'
-        languages: 'javascript,typescript'
+        languages: 'javascript,typescript,python'
+        auto_commit: 'true'  # Automatically commit generated diagrams
 ```
 
-### 2. Optional Configuration
+### 2. Auto-Commit Configuration
+
+The action automatically commits generated diagrams by default. You can control this behavior:
+
+```yaml
+- name: Generate Architecture Diagrams
+  uses: samjhill/diagrammer@v1.2.2
+  with:
+    github_token: ${{ secrets.GITHUB_TOKEN }}
+    output_path: 'docs/architecture'
+    languages: 'javascript,typescript,python'
+    auto_commit: 'true'  # Enable auto-commit (default)
+    # auto_commit: 'false'  # Disable auto-commit
+```
+
+**Required Permissions**: Ensure your workflow has `contents: write` permission:
+```yaml
+permissions:
+  contents: write
+```
+
+### 3. Optional Configuration
 
 Create `.diagrammer.yml` in your repository root:
 
@@ -220,6 +242,41 @@ docker build -t diagrammer .
 docker run --rm --entrypoint="" \
   -v "$(pwd):/workspace" -w /workspace \
   diagrammer node tests/test.js
+```
+
+## Troubleshooting
+
+### Auto-Commit Issues
+
+If you see `"Not in a git repository, skipping commit"`:
+
+1. **Use the latest version**: Ensure you're using `samjhill/diagrammer@v1.2.2` or later
+2. **Check permissions**: Add `permissions: contents: write` to your workflow
+3. **Verify checkout**: Use `actions/checkout@v4` with `fetch-depth: 0`
+4. **Disable auto-commit**: Set `auto_commit: 'false'` and handle commits manually
+
+### Manual Commit Alternative
+
+If auto-commit continues to fail, you can handle commits manually:
+
+```yaml
+- name: Generate Architecture Diagrams
+  uses: samjhill/diagrammer@v1.2.2
+  with:
+    auto_commit: 'false'
+    # ... other inputs
+
+- name: Commit and push diagrams
+  run: |
+    git config --local user.email "github-actions[bot]@users.noreply.github.com"
+    git config --local user.name "github-actions[bot]"
+    git add docs/architecture/
+    if git diff --staged --quiet; then
+      echo "No changes to commit"
+    else
+      git commit -m "Update architecture diagrams [skip ci]"
+      git push
+    fi
 ```
 
 ## Contributing
