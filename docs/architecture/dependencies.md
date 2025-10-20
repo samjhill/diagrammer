@@ -21,6 +21,14 @@ graph LR
   fs:::external
   typescript["typescript"]
   typescript:::external
+  List["List"]
+  List:::internal
+  Optional["Optional"]
+  Optional:::internal
+  json["json"]
+  json:::internal
+  datetime["datetime"]
+  datetime:::internal
   _actions_core -->|imports| core
   _actions_github -->|imports| github
   fs_extra -->|imports| fs

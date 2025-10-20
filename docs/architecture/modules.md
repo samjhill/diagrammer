@@ -42,6 +42,10 @@ graph TB
     ArchitecturalAnalyzer["ArchitecturalAnalyzer"]
   end
 
+  subgraph tests_sample_project_src_services["tests/sample-project/src/services"]
+    UserService["UserService"]
+  end
+
 
 ```
 

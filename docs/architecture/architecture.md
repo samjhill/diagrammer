@@ -10,31 +10,81 @@ graph TD
   classDef dependency fill:#fce4ec,stroke:#c2185b,stroke-width:2px
   classDef group fill:#f3e5f5,stroke:#7b1fa2,stroke-width:3px
 
-  subgraph src_analyzers["src/analyzers"]
-    TypeScriptAnalyzer["TypeScriptAnalyzer"]
-    RelationshipAnalyzer["RelationshipAnalyzer"]
-    PythonAnalyzer["PythonAnalyzer"]
-    JavaScriptAnalyzer["JavaScriptAnalyzer"]
-    CodeAnalyzer["CodeAnalyzer"]
-    ArchitecturalAnalyzer["ArchitecturalAnal..."]
+  subgraph src["src"]
+    main["main"]
+    loadConfig["loadConfig"]
+    languages["languages"]
   end
 
-  subgraph src["src"]
-    loadConfig["loadConfig"]
+  subgraph src_utils["src/utils"]
+    GitManager["GitManager"]
   end
 
   subgraph src_generators["src/generators"]
     DiagramGenerator["DiagramGenerator"]
   end
 
+  subgraph src_analyzers["src/analyzers"]
+    TypeScriptAnalyzer["TypeScriptAnalyzer"]
+    visit["visit"]
+    RelationshipAnalyzer["RelationshipAnalyzer"]
+    PythonAnalyzer["PythonAnalyzer"]
+    JavaScriptAnalyzer["JavaScriptAnalyzer"]
+    declarations["declarations"]
+    CodeAnalyzer["CodeAnalyzer"]
+    ArchitecturalAnalyzer["ArchitecturalAnalyzer"]
+  end
+
+  subgraph tests_sample_project_src_services["tests/sample-project/src/services"]
+    UserService["UserService"]
+    __init__["__init__"]
+    create_user["create_user"]
+    get_user["get_user"]
+    list_users["list_users"]
+    export_users["export_users"]
+    validate_email["validate_email"]
+  end
+
+  _actions_core["@actions/core"]
+  _actions_core:::external
+  core["core"]
+  core:::dependency
+  _actions_core -->|depends| core
+  _actions_github["@actions/github"]
+  _actions_github:::external
+  github["github"]
+  github:::dependency
+  _actions_github -->|depends| github
+  fs_extra["fs-extra"]
+  fs_extra:::external
+  fs["fs"]
+  fs:::dependency
+  fs_extra -->|depends| fs
+  typescript["typescript"]
+  typescript:::external
+  ts["ts"]
+  ts:::dependency
+  typescript -->|depends| ts
+  main:::component
   loadConfig:::component
+  languages:::component
+  GitManager:::component
   DiagramGenerator:::component
   TypeScriptAnalyzer:::component
+  visit:::component
   RelationshipAnalyzer:::component
   PythonAnalyzer:::component
   JavaScriptAnalyzer:::component
+  declarations:::component
   CodeAnalyzer:::component
   ArchitecturalAnalyzer:::component
+  UserService:::component
+  __init__:::component
+  create_user:::component
+  get_user:::component
+  list_users:::component
+  export_users:::component
+  validate_email:::component
 
 ```
 
