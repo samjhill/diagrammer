@@ -12,6 +12,7 @@ async function main() {
     const githubToken = core.getInput('github_token') || process.env.GITHUB_TOKEN || '';
     const outputPath = core.getInput('output_path') || 'docs/architecture';
     const configFile = core.getInput('config_file') || '.diagrammer.yml';
+    const autoCommit = core.getInput('auto_commit') !== 'false';
     const languagesInput = core.getInput('languages');
     const languages = (languagesInput && languagesInput.length > 0
       ? languagesInput
@@ -79,16 +80,22 @@ async function main() {
       core.info(`Absolute path: ${absolutePath}`);
     }
 
-    // Commit changes if any files were generated
+    // Commit changes if any files were generated and auto-commit is enabled
     if (generatedFiles.length > 0) {
-      core.info(`Generated ${generatedFiles.length} files, attempting to commit...`);
-      try {
-        await gitManager.commitChanges(outputPath, 'docs: Update architecture diagrams');
-        core.info('Committed diagram updates to repository');
-      } catch (error) {
-        core.warning(`Failed to commit changes: ${error.message}`);
-        core.info('Diagrams were generated but not committed to repository');
-        core.info('This is not a critical error - the diagrams are still available');
+      if (autoCommit) {
+        core.info(`Generated ${generatedFiles.length} files, attempting to commit...`);
+        try {
+          await gitManager.commitChanges(outputPath, 'docs: Update architecture diagrams [skip ci]');
+          core.info('Committed diagram updates to repository');
+        } catch (error) {
+          core.warning(`Failed to commit changes: ${error.message}`);
+          core.info('Diagrams were generated but not committed to repository');
+          core.info('This is not a critical error - the diagrams are still available');
+          core.info('To disable auto-commit, set auto_commit: false in your workflow');
+        }
+      } else {
+        core.info(`Generated ${generatedFiles.length} files, auto-commit is disabled`);
+        core.info('To enable auto-commit, set auto_commit: true in your workflow');
       }
     } else {
       core.info('No files were generated, skipping commit');

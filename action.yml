@@ -25,6 +25,11 @@ inputs:
     description: 'Comma-separated list of languages to analyze'
     required: false
     default: 'javascript,typescript'
+  
+  auto_commit:
+    description: 'Automatically commit generated diagrams to the repository'
+    required: false
+    default: 'true'
 
 runs:
   using: 'docker'

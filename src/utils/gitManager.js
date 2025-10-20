@@ -16,7 +16,37 @@ class GitManager {
         return;
       }
 
-      // Show current git status
+      // Ensure we're in the git root directory
+      try {
+        const gitRoot = execSync('git rev-parse --show-toplevel', { encoding: 'utf8' }).trim();
+        if (gitRoot && gitRoot !== process.cwd()) {
+          console.log(`Changing to git root directory: ${gitRoot}`);
+          process.chdir(gitRoot);
+        }
+      } catch (error) {
+        console.log('Could not determine git root, staying in current directory');
+      }
+
+      // Show current git status and environment
+      console.log('=== Git Environment Debug ===');
+      console.log('Current working directory:', process.cwd());
+      try {
+        console.log('Git root directory:', execSync('git rev-parse --show-toplevel', { encoding: 'utf8' }).trim());
+      } catch (e) {
+        console.log('Could not get git root:', e.message);
+      }
+      try {
+        console.log('Git remote origin:', execSync('git remote get-url origin', { encoding: 'utf8' }).trim());
+      } catch (e) {
+        console.log('Could not get git remote:', e.message);
+      }
+      try {
+        console.log('Current branch:', execSync('git rev-parse --abbrev-ref HEAD', { encoding: 'utf8' }).trim());
+      } catch (e) {
+        console.log('Could not get current branch:', e.message);
+      }
+      console.log('=============================');
+      
       console.log('Current git status:');
       try {
         execSync('git status --short', { stdio: 'inherit' });
@@ -99,10 +129,60 @@ class GitManager {
 
   async isGitRepository() {
     try {
+      // First check if .git directory exists
+      const fs = require('fs');
+      if (fs.existsSync('.git')) {
+        console.log('Found .git directory');
+        return true;
+      }
+      
+      // Also try the git command approach
       execSync('git rev-parse --git-dir', { stdio: 'pipe' });
+      console.log('Git repository detected via git command');
       return true;
     } catch (error) {
-      return false;
+      console.log('Git repository detection failed:', error.message);
+      
+      // Additional debugging
+      console.log('Current working directory:', process.cwd());
+      console.log('Contents of current directory:');
+      try {
+        const fs = require('fs');
+        const files = fs.readdirSync('.');
+        console.log(files);
+      } catch (e) {
+        console.log('Could not list directory contents:', e.message);
+      }
+      
+      // Check if we're in a subdirectory of a git repo
+      try {
+        execSync('git rev-parse --show-toplevel', { stdio: 'pipe' });
+        console.log('Found git repository in parent directory');
+        return true;
+      } catch (parentError) {
+        console.log('No git repository found in parent directories');
+        
+        // Final fallback: check if we're in a GitHub Actions environment
+        // and try to initialize git if needed
+        if (process.env.GITHUB_ACTIONS === 'true' && process.env.GITHUB_WORKSPACE) {
+          console.log('Running in GitHub Actions, attempting to initialize git...');
+          try {
+            // Change to the GitHub workspace directory
+            process.chdir(process.env.GITHUB_WORKSPACE);
+            console.log('Changed to GitHub workspace:', process.env.GITHUB_WORKSPACE);
+            
+            // Check if git is available now
+            execSync('git rev-parse --git-dir', { stdio: 'pipe' });
+            console.log('Git repository now available in GitHub workspace');
+            return true;
+          } catch (workspaceError) {
+            console.log('Git still not available in GitHub workspace:', workspaceError.message);
+            return false;
+          }
+        }
+        
+        return false;
+      }
     }
   }
 
