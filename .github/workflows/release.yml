@@ -75,6 +75,13 @@ jobs:
           echo "Version already matches target version, skipping update"
         fi
         
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        
     - name: Build Docker image
       uses: docker/build-push-action@v5
       with:
