@@ -64,9 +64,13 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-diagrams-
         
+    - name: Set diagrammer version
+      id: version
+      run: echo "version=${{ inputs.diagrammer_version }}" >> $GITHUB_OUTPUT
+      
     - name: Generate Architecture Diagrams
       id: generate
-      uses: samjhill/diagrammer@${{ inputs.diagrammer_version }}
+      uses: samjhill/diagrammer@${{ steps.version.outputs.version }}
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         output_path: ${{ inputs.output_path }}
