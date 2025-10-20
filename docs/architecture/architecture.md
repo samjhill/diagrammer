@@ -27,6 +27,7 @@ graph TD
   subgraph src_analyzers["src/analyzers"]
     TypeScriptAnalyzer["TypeScriptAnalyzer"]
     visit["visit"]
+    PythonAnalyzer["PythonAnalyzer"]
     JavaScriptAnalyzer["JavaScriptAnalyzer"]
     declarations["declarations"]
     CodeAnalyzer["CodeAnalyzer"]
@@ -59,6 +60,7 @@ graph TD
   DiagramGenerator:::component
   TypeScriptAnalyzer:::component
   visit:::component
+  PythonAnalyzer:::component
   JavaScriptAnalyzer:::component
   declarations:::component
   CodeAnalyzer:::component
