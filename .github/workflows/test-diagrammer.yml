@@ -64,14 +64,12 @@ jobs:
         
     - name: Generate Architecture Diagrams (GitHub Actions)
       if: ${{ env.ACT != 'true' }}
-      run: |
-        echo "🔧 Running enhanced local diagram generation..."
-        node src/index.js
-      env:
-        INPUT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        INPUT_OUTPUT_PATH: 'docs/architecture'
-        INPUT_LANGUAGES: 'javascript,typescript,python'
-        INPUT_CONFIG_FILE: '.diagrammer.yml'
+      uses: samjhill/diagrammer@v1.2.1
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        output_path: 'docs/architecture'
+        languages: 'javascript,typescript,python'
+        auto_commit: 'true'
       continue-on-error: false
         
     - name: Verify diagram generation
