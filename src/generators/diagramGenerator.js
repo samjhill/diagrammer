@@ -392,7 +392,6 @@ ${mermaidContent}
       mermaid += `  ${sourceId}["${source}"]:::client\n`;
       
       relationships.forEach(rel => {
-        const targetId = this.sanitizeName(rel.to);
         const endpointId = this.sanitizeName(rel.endpoint || 'endpoint');
         
         mermaid += `  ${endpointId}["${rel.endpoint || rel.to}"]:::endpoint\n`;

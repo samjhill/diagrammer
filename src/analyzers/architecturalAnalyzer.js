@@ -1,4 +1,3 @@
-const path = require('path');
 
 class ArchitecturalAnalyzer {
   constructor() {
@@ -211,7 +210,7 @@ class ArchitecturalAnalyzer {
     return detectedPatterns;
   }
 
-  inferResponsibilities(component, content, filePath) {
+  inferResponsibilities(component, content) {
     const responsibilities = [];
     
     // UI responsibilities
@@ -247,7 +246,7 @@ class ArchitecturalAnalyzer {
     return responsibilities;
   }
 
-  analyzeRelationships(content, filePath) {
+  analyzeRelationships(content) {
     const relationships = [];
     
     // API calls
@@ -325,7 +324,7 @@ class ArchitecturalAnalyzer {
       if (pattern.test(content)) {
         dbOps.push({
           type: 'database-operation',
-          operation: pattern.source.replace(/[\\\.\(\)]/g, ''),
+          operation: pattern.source.replace(/[\\().]/g, ''),
           relationship: 'persists'
         });
       }
