@@ -6,36 +6,23 @@ This diagram was automatically generated from your codebase.
 graph LR
   classDef internal fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px
   classDef external fill:#ffebee,stroke:#c62828,stroke-width:2px
+  classDef npm fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+  classDef local fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
 
-  path["path"]
-  fs_extra["fs-extra"]
   _actions_core["@actions/core"]
+  _actions_core:::external
   _actions_github["@actions/github"]
+  _actions_github:::external
+  fs_extra["fs-extra"]
+  fs_extra:::external
+  path["path"]
+  path:::external
   typescript["typescript"]
-  react["react"]
-  Header["Header"]
-  Footer["Footer"]
-  UserService["UserService"]
-  ApiClient["ApiClient"]
-  path --> path
-  fs_extra --> fs
-  _actions_core --> core
-  _actions_github --> github
-  fs_extra --> fs
-  path --> path
-  path --> path
-  fs_extra --> fs
-  typescript --> ts
-  fs_extra --> fs
-  react --> React
-  __components_Header --> Header
-  __components_Footer --> Footer
-  __services_UserService --> UserService
-  __utils_ApiClient --> ApiClient
-  ___utils_ApiClient --> ApiClient
-  react --> React
-  ___services_UserService --> UserService
-  react --> React
+  typescript:::external
+  _actions_core -->|imports| core
+  _actions_github -->|imports| github
+  fs_extra -->|imports| fs
+  typescript -->|imports| ts
 
 ```
 

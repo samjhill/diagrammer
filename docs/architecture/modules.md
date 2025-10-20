@@ -6,19 +6,7 @@ This diagram was automatically generated from your codebase.
 graph TB
   classDef module fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
   classDef export fill:#e8f5e8,stroke:#388e3c,stroke-width:2px
-
-  subgraph tests_sample_project_src["tests/sample-project/src"]
-    App["App"]
-  end
-
-  subgraph tests_sample_project_src_utils["tests/sample-project/src/utils"]
-    ApiClient["ApiClient"]
-  end
-
-  subgraph tests_sample_project_src_services["tests/sample-project/src/services"]
-    User["User"]
-    UserService["UserService"]
-  end
+  classDef subgraph fill:#f3e5f5,stroke:#7b1fa2,stroke-width:3px
 
 
 ```

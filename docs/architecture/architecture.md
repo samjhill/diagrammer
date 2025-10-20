@@ -4,77 +4,78 @@ This diagram was automatically generated from your codebase.
 
 ```mermaid
 graph TD
-  classDef component fill:#e1f5fe,stroke:#01579b,stroke-width:2px
-  classDef external fill:#fff3e0,stroke:#e65100,stroke-width:2px
-  classDef internal fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
-
-  subgraph tests["tests"]
-    test["test"]
-  end
+  classDef component fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+  classDef external fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+  classDef internal fill:#e8f5e8,stroke:#388e3c,stroke-width:2px
+  classDef dependency fill:#fce4ec,stroke:#c2185b,stroke-width:2px
+  classDef subgraph fill:#f3e5f5,stroke:#7b1fa2,stroke-width:3px
 
   subgraph src["src"]
+    classDef srcClass fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
     main["main"]
+    main:::component
     loadConfig["loadConfig"]
+    loadConfig:::component
     languages["languages"]
+    languages:::component
   end
 
   subgraph src_utils["src/utils"]
+    classDef src_utilsClass fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
     GitManager["GitManager"]
+    GitManager:::component
   end
 
   subgraph src_generators["src/generators"]
+    classDef src_generatorsClass fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
     DiagramGenerator["DiagramGenerator"]
+    DiagramGenerator:::component
   end
 
   subgraph src_analyzers["src/analyzers"]
+    classDef src_analyzersClass fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
     TypeScriptAnalyzer["TypeScriptAnalyzer"]
+    TypeScriptAnalyzer:::component
     visit["visit"]
+    visit:::component
     JavaScriptAnalyzer["JavaScriptAnalyzer"]
+    JavaScriptAnalyzer:::component
     declarations["declarations"]
+    declarations:::component
     CodeAnalyzer["CodeAnalyzer"]
+    CodeAnalyzer:::component
   end
 
-  subgraph tests_sample_project_src["tests/sample-project/src"]
-    App["App"]
-  end
-
-  subgraph tests_sample_project_src_utils["tests/sample-project/src/utils"]
-    ApiClient["ApiClient"]
-    response["response"]
-  end
-
-  subgraph tests_sample_project_src_services["tests/sample-project/src/services"]
-    User["User"]
-    UserService["UserService"]
-  end
-
-  subgraph tests_sample_project_src_components["tests/sample-project/src/components"]
-    HeaderProps["HeaderProps"]
-    Header["Header"]
-    _user__setUser_["[user, setUser]"]
-    Footer["Footer"]
-  end
-
-  test
-  main
-  loadConfig
-  languages
-  GitManager
-  DiagramGenerator
-  TypeScriptAnalyzer
-  visit
-  JavaScriptAnalyzer
-  declarations
-  CodeAnalyzer
-  App
-  ApiClient
-  response
-  User
-  UserService
-  HeaderProps
-  Header
-  _user__setUser_
-  Footer
+  _actions_core["@actions/core"]
+  _actions_core:::external
+  core["core"]
+  core:::dependency
+  _actions_core -->|depends| core
+  _actions_github["@actions/github"]
+  _actions_github:::external
+  github["github"]
+  github:::dependency
+  _actions_github -->|depends| github
+  fs_extra["fs-extra"]
+  fs_extra:::external
+  fs["fs"]
+  fs:::dependency
+  fs_extra -->|depends| fs
+  typescript["typescript"]
+  typescript:::external
+  ts["ts"]
+  ts:::dependency
+  typescript -->|depends| ts
+  main:::component
+  loadConfig:::component
+  languages:::component
+  GitManager:::component
+  DiagramGenerator:::component
+  TypeScriptAnalyzer:::component
+  visit:::component
+  JavaScriptAnalyzer:::component
+  declarations:::component
+  CodeAnalyzer:::component
 
 ```
 
