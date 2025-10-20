@@ -815,8 +815,8 @@ graph TB
   languages -->|parse| parse_service
   GitManager -->|log| log_service
   GitManager -->|isGitRepository| isGitRepository_service
-  GitManager -->|trim| trim_service
   GitManager -->|cwd| cwd_service
+  GitManager -->|trim| trim_service
   GitManager -->|chdir| chdir_service
   GitManager -->|hasChanges| hasChanges_service
   GitManager -->|configureGitUser| configureGitUser_service
