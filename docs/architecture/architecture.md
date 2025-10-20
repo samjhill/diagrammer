@@ -31,6 +31,7 @@ graph TD
     JavaScriptAnalyzer["JavaScriptAnalyzer"]
     declarations["declarations"]
     CodeAnalyzer["CodeAnalyzer"]
+    ArchitecturalAnalyzer["ArchitecturalAnalyzer"]
   end
 
   _actions_core["@actions/core"]
@@ -64,6 +65,7 @@ graph TD
   JavaScriptAnalyzer:::component
   declarations:::component
   CodeAnalyzer:::component
+  ArchitecturalAnalyzer:::component
 
 ```
 
