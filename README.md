@@ -37,7 +37,7 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         
     - name: Generate Architecture Diagrams
-      uses: samjhill/diagrammer@v1
+      uses: samjhill/diagrammer@v1  # Always uses latest v1.x.x version
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         output_path: 'docs/architecture'
@@ -80,6 +80,19 @@ Visualizes how components depend on each other and external libraries.
 
 ### Module Structure
 Displays the module organization and export relationships.
+
+## Version Options
+
+You can specify different versions of the action:
+
+| Version | Description | Stability |
+|---------|-------------|-----------|
+| `@v1` | Latest v1.x.x version (recommended) | Stable |
+| `@v1.0` | Latest v1.0.x version | Very stable |
+| `@v1.0.4` | Specific version | Most stable |
+| `@main` | Latest from main branch | Unstable |
+
+**Recommended**: Use `@v1` for automatic updates with stability.
 
 ## Configuration Options
 
