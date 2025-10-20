@@ -15,6 +15,7 @@ graph TD
   subgraph src["src"]
     main["main"]
     loadConfig["loadConfig"]
+    languages["languages"]
   end
 
   subgraph src_utils["src/utils"]
@@ -57,6 +58,7 @@ graph TD
   test
   main
   loadConfig
+  languages
   GitManager
   DiagramGenerator
   TypeScriptAnalyzer
