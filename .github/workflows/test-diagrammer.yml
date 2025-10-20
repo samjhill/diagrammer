@@ -56,6 +56,12 @@ jobs:
         echo "This is a mock diagram for local testing with act"
         echo "📊 Generated mock diagram in docs/architecture/"
         
+    - name: Install dependencies
+      if: ${{ env.ACT != 'true' }}
+      run: |
+        echo "📦 Installing dependencies for enhanced diagram generation..."
+        npm ci --no-audit --no-fund
+        
     - name: Generate Architecture Diagrams (GitHub Actions)
       if: ${{ env.ACT != 'true' }}
       run: |
