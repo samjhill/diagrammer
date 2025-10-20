@@ -16,6 +16,7 @@ analysis:
   languages:                # Languages to analyze
     - "javascript"
     - "typescript"
+    - "python"
 
 # Output settings
 output:
@@ -41,6 +42,7 @@ filters:
     - "**/*.ts"
     - "**/*.jsx"
     - "**/*.tsx"
+    - "**/*.py"
 
 # Custom styling
 styling:

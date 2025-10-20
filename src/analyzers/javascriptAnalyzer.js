@@ -115,19 +115,25 @@ class JavaScriptAnalyzer {
       /export\s+default\s+(\w+)/g,
       /export\s+(?:const|let|var|function|class)\s+(\w+)/g,
       /export\s*{\s*([^}]+)\s*}/g,
-      /module\.exports\s*=\s*(\w+)/g
+      /module\.exports\s*=\s*(\w+)/g,
+      /module\.exports\s*=\s*{\s*([^}]+)\s*}/g
     ];
 
     exportPatterns.forEach(pattern => {
       let match;
       while ((match = pattern.exec(content)) !== null) {
         if (match[1]) {
-          const names = match[1].split(',').map(name => name.trim());
+          const names = match[1].split(',').map(name => {
+            // Extract just the property name from "name: value" format
+            const colonIndex = name.indexOf(':');
+            return colonIndex > 0 ? name.substring(0, colonIndex).trim() : name.trim();
+          });
           names.forEach(name => {
             exports.push({
               type: 'export',
               name: name,
-              path: filePath
+              path: filePath,
+              language: 'javascript'
             });
           });
         }
@@ -148,7 +154,8 @@ class JavaScriptAnalyzer {
         type: 'component',
         name: match[1],
         path: filePath,
-        kind: 'ClassDeclaration'
+        kind: 'ClassDeclaration',
+        language: 'javascript'
       });
     }
 
@@ -159,7 +166,8 @@ class JavaScriptAnalyzer {
         type: 'component',
         name: match[1],
         path: filePath,
-        kind: 'FunctionDeclaration'
+        kind: 'FunctionDeclaration',
+        language: 'javascript'
       });
     }
 
@@ -170,7 +178,8 @@ class JavaScriptAnalyzer {
         type: 'component',
         name: match[1],
         path: filePath,
-        kind: 'ArrowFunction'
+        kind: 'ArrowFunction',
+        language: 'javascript'
       });
     }
 

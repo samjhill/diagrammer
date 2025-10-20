@@ -1,12 +1,14 @@
 const { TypeScriptAnalyzer } = require('./typescriptAnalyzer');
 const { JavaScriptAnalyzer } = require('./javascriptAnalyzer');
+const { PythonAnalyzer } = require('./pythonAnalyzer');
 
 class CodeAnalyzer {
   constructor(config) {
     this.config = config;
     this.analyzers = {
       typescript: new TypeScriptAnalyzer(config),
-      javascript: new JavaScriptAnalyzer(config)
+      javascript: new JavaScriptAnalyzer(config),
+      python: new PythonAnalyzer(config)
     };
   }
 

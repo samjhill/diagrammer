@@ -32,7 +32,7 @@ async function test() {
     process.chdir(path.join(__dirname, 'sample-project'));
 
     console.log('📊 Analyzing sample project...');
-    const analysis = await codeAnalyzer.analyzeCodebase(['typescript']);
+    const analysis = await codeAnalyzer.analyzeCodebase(['typescript', 'python']);
 
     console.log('📈 Analysis results:');
     console.log(`  - Components: ${analysis.components.length}`);

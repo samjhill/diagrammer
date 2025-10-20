@@ -137,7 +137,8 @@ class TypeScriptAnalyzer {
                 type: 'export',
                 name: element.name.getText(),
                 from: moduleSpecifier,
-                path: sourceFile.fileName
+                path: sourceFile.fileName,
+                language: 'typescript'
               });
             });
           }
@@ -151,7 +152,8 @@ class TypeScriptAnalyzer {
               type: 'export',
               name: name,
               path: sourceFile.fileName,
-              kind: ts.SyntaxKind[node.kind]
+              kind: ts.SyntaxKind[node.kind],
+              language: 'typescript'
             });
           }
         }
@@ -178,7 +180,8 @@ class TypeScriptAnalyzer {
             name: name,
             path: filePath,
             kind: ts.SyntaxKind[node.kind],
-            isExported: node.modifiers && node.modifiers.some(mod => mod.kind === ts.SyntaxKind.ExportKeyword)
+            isExported: node.modifiers && node.modifiers.some(mod => mod.kind === ts.SyntaxKind.ExportKeyword),
+            language: 'typescript'
           });
         }
       }
