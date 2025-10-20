@@ -58,22 +58,33 @@ jobs:
         
     - name: Generate Architecture Diagrams (GitHub Actions)
       if: ${{ env.ACT != 'true' }}
-      uses: samjhill/diagrammer@v1.1.2
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        output_path: 'docs/architecture'
-        languages: 'javascript,typescript,python'
+      run: |
+        echo "🔧 Running enhanced local diagram generation..."
+        node src/index.js
+      env:
+        INPUT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        INPUT_OUTPUT_PATH: 'docs/architecture'
+        INPUT_LANGUAGES: 'javascript,typescript,python'
+        INPUT_CONFIG_FILE: '.diagrammer.yml'
       continue-on-error: false
         
     - name: Verify diagram generation
       run: |
-        echo "🔍 Verifying generated diagrams..."
+        echo "🔍 Verifying enhanced diagram generation..."
         if [ -d "docs/architecture" ]; then
           echo "✅ Architecture directory found"
           echo "📊 Generated files:"
           find docs/architecture -name "*.md" -type f | head -10
           echo ""
           echo "📈 File count: $(find docs/architecture -name "*.md" -type f | wc -l) markdown files"
+          echo ""
+          echo "🎨 Enhanced diagram types:"
+          echo "  - Architecture Diagram: $(test -f docs/architecture/architecture.md && echo "✅" || echo "❌")"
+          echo "  - Layered Architecture: $(test -f docs/architecture/layeredArchitecture.md && echo "✅" || echo "❌")"
+          echo "  - API Flow: $(test -f docs/architecture/apiFlow.md && echo "✅" || echo "❌")"
+          echo "  - Data Flow: $(test -f docs/architecture/dataFlow.md && echo "✅" || echo "❌")"
+          echo "  - Event Flow: $(test -f docs/architecture/eventFlow.md && echo "✅" || echo "❌")"
+          echo "  - Service Communication: $(test -f docs/architecture/serviceCommunication.md && echo "✅" || echo "❌")"
         else
           echo "❌ Architecture directory not found"
           exit 1
