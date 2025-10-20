@@ -75,6 +75,7 @@ graph TB
     main_cwd["cwd"]:::method
     loadConfig_cwd["cwd"]:::method
     languages_cwd["cwd"]:::method
+    GitManager_cwd["cwd"]:::method
     PythonAnalyzer_cwd["cwd"]:::method
   end
 
@@ -202,12 +203,24 @@ graph TB
     GitManager_isGitRepository["isGitRepository"]:::method
   end
 
+  subgraph chdir_service["chdir-service Service"]
+    GitManager_chdir["chdir"]:::method
+  end
+
   subgraph hasChanges_service["hasChanges-service Service"]
     GitManager_hasChanges["hasChanges"]:::method
   end
 
   subgraph configureGitUser_service["configureGitUser-service Service"]
     GitManager_configureGitUser["configureGitUser"]:::method
+  end
+
+  subgraph existsSync_service["existsSync-service Service"]
+    GitManager_existsSync["existsSync"]:::method
+  end
+
+  subgraph readdirSync_service["readdirSync-service Service"]
+    GitManager_readdirSync["readdirSync"]:::method
   end
 
   subgraph generateArchitectureDiagram_service["generateArchitectureDiagram-service Service"]
@@ -802,10 +815,14 @@ graph TB
   languages -->|parse| parse_service
   GitManager -->|log| log_service
   GitManager -->|isGitRepository| isGitRepository_service
+  GitManager -->|trim| trim_service
+  GitManager -->|cwd| cwd_service
+  GitManager -->|chdir| chdir_service
   GitManager -->|hasChanges| hasChanges_service
   GitManager -->|configureGitUser| configureGitUser_service
   GitManager -->|error| error_service
-  GitManager -->|trim| trim_service
+  GitManager -->|existsSync| existsSync_service
+  GitManager -->|readdirSync| readdirSync_service
   DiagramGenerator -->|generateArchitectureDiagram| generateArchitectureDiagram_service
   DiagramGenerator -->|generateDependencyDiagram| generateDependencyDiagram_service
   DiagramGenerator -->|generateModuleDiagram| generateModuleDiagram_service

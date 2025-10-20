@@ -17,6 +17,8 @@ graph LR
   fs_extra:::external
   path["path"]
   path:::external
+  fs["fs"]
+  fs:::external
   typescript["typescript"]
   typescript:::external
   List["List"]
