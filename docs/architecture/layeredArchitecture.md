@@ -44,24 +44,6 @@ graph TB
     GitManager:::component
   end
 
-  subgraph backend["BACKEND LAYER"]
-    classDef backendClass fill:#f5f5f5,stroke:#666,stroke-width:1px
-    UserService["UserService"]
-    UserService:::component
-    __init__["__init__"]
-    __init__:::component
-    create_user["create_user"]
-    create_user:::component
-    get_user["get_user"]
-    get_user:::component
-    list_users["list_users"]
-    list_users:::component
-    export_users["export_users"]
-    export_users:::component
-    validate_email["validate_email"]
-    validate_email:::component
-  end
-
   %% Layer relationships
   frontend -->|API calls| backend
   backend -->|Data access| data

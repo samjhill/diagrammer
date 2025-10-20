@@ -35,16 +35,6 @@ graph TD
     ArchitecturalAnalyzer["ArchitecturalAnalyzer"]
   end
 
-  subgraph tests_sample_project_src_services["tests/sample-project/src/services"]
-    UserService["UserService"]
-    __init__["__init__"]
-    create_user["create_user"]
-    get_user["get_user"]
-    list_users["list_users"]
-    export_users["export_users"]
-    validate_email["validate_email"]
-  end
-
   _actions_core["@actions/core"]
   _actions_core:::external
   core["core"]
@@ -78,13 +68,6 @@ graph TD
   declarations:::component
   CodeAnalyzer:::component
   ArchitecturalAnalyzer:::component
-  UserService:::component
-  __init__:::component
-  create_user:::component
-  get_user:::component
-  list_users:::component
-  export_users:::component
-  validate_email:::component
 
 ```
 
