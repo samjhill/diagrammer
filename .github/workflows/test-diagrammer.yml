@@ -62,7 +62,7 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         output_path: 'docs/architecture'
-        languages: 'javascript,typescript'
+        languages: 'javascript,typescript,python'
       continue-on-error: false
         
     - name: Verify diagram generation
