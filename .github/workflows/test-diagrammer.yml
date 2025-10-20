@@ -64,7 +64,7 @@ jobs:
         
     - name: Generate Architecture Diagrams (GitHub Actions)
       if: ${{ env.ACT != 'true' }}
-      uses: samjhill/diagrammer@v1.2.1
+      uses: samjhill/diagrammer@v1.2.2
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         output_path: 'docs/architecture'
