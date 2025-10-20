@@ -26,47 +26,64 @@ class DiagramGenerator {
     
     let mermaid = 'graph TD\n';
     
-    // Add styling
-    mermaid += '  classDef component fill:#e1f5fe,stroke:#01579b,stroke-width:2px\n';
-    mermaid += '  classDef external fill:#fff3e0,stroke:#e65100,stroke-width:2px\n';
-    mermaid += '  classDef internal fill:#f3e5f5,stroke:#4a148c,stroke-width:2px\n\n';
+    // Add styling with distinct colors
+    mermaid += '  classDef component fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n';
+    mermaid += '  classDef external fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n';
+    mermaid += '  classDef internal fill:#e8f5e8,stroke:#388e3c,stroke-width:2px\n';
+    mermaid += '  classDef dependency fill:#fce4ec,stroke:#c2185b,stroke-width:2px\n';
+    mermaid += '  classDef subgraph fill:#f3e5f5,stroke:#7b1fa2,stroke-width:3px\n\n';
 
     // Group components by directory
     const componentGroups = this.groupComponentsByDirectory(uniqueComponents);
     
-    // Create subgraphs for different directories
+    // Create subgraphs for different directories with distinct colors
     Object.entries(componentGroups).forEach(([dir, dirComponents]) => {
       if (dirComponents.length > 0) {
         const subgraphName = this.sanitizeName(dir);
         mermaid += `  subgraph ${subgraphName}["${dir}"]\n`;
+        mermaid += `    classDef ${subgraphName}Class fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n`;
         
         dirComponents.forEach(component => {
           const nodeId = this.sanitizeName(component.name);
           mermaid += `    ${nodeId}["${component.name}"]\n`;
+          mermaid += `    ${nodeId}:::component\n`;
         });
         
         mermaid += '  end\n\n';
       }
     });
 
-    // Add dependencies (deduped and no self loops)
+    // Add dependencies (deduped and no self loops). Ensure endpoints exist as nodes.
     const edgeSet = new Set();
+    const nodeNames = new Set(uniqueComponents.map(c => c.name));
     dependencies.forEach(dep => {
       if (!dep.from || !dep.name) return;
       if (dep.from === dep.name) return;
-      if (!this.nodeExists(uniqueComponents, dep.from) || !this.nodeExists(uniqueComponents, dep.name)) return;
+      // Create placeholder nodes if they don't exist (helps visualize relationships)
+      if (!nodeNames.has(dep.from)) {
+        const fromIdDecl = this.sanitizeName(dep.from);
+        mermaid += `  ${fromIdDecl}["${dep.from}"]\n`;
+        mermaid += `  ${fromIdDecl}:::external\n`;
+        nodeNames.add(dep.from);
+      }
+      if (!nodeNames.has(dep.name)) {
+        const toIdDecl = this.sanitizeName(dep.name);
+        mermaid += `  ${toIdDecl}["${dep.name}"]\n`;
+        mermaid += `  ${toIdDecl}:::dependency\n`;
+        nodeNames.add(dep.name);
+      }
       const edgeKey = `${dep.from}-->${dep.name}`;
       if (edgeSet.has(edgeKey)) return;
       edgeSet.add(edgeKey);
       const fromId = this.sanitizeName(dep.from);
       const toId = this.sanitizeName(dep.name);
-      mermaid += `  ${fromId} --> ${toId}\n`;
+      mermaid += `  ${fromId} -->|depends| ${toId}\n`;
     });
 
-    // Apply styling
+    // Apply styling to existing components
     uniqueComponents.forEach(component => {
       const nodeId = this.sanitizeName(component.name);
-      mermaid += `  ${nodeId}\n`;
+      mermaid += `  ${nodeId}:::component\n`;
     });
 
     return this.wrapInMarkdown('Architecture Overview', mermaid);
@@ -77,26 +94,30 @@ class DiagramGenerator {
     
     let mermaid = 'graph LR\n';
     
-    // Add styling
+    // Add styling with distinct colors
     mermaid += '  classDef internal fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px\n';
-    mermaid += '  classDef external fill:#ffebee,stroke:#c62828,stroke-width:2px\n\n';
+    mermaid += '  classDef external fill:#ffebee,stroke:#c62828,stroke-width:2px\n';
+    mermaid += '  classDef npm fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n';
+    mermaid += '  classDef local fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n\n';
 
     // Group dependencies by type (internal vs external)
     const internalDeps = dependencies.filter(dep => !this.isExternalDependency(dep.from));
     const externalDeps = dependencies.filter(dep => this.isExternalDependency(dep.from));
 
-    // Add external dependencies
+    // Add external dependencies with color coding
     const externalModules = [...new Set(externalDeps.map(dep => dep.from))];
     externalModules.forEach(module => {
       const nodeId = this.sanitizeName(module);
       mermaid += `  ${nodeId}["${module}"]\n`;
+      mermaid += `  ${nodeId}:::external\n`;
     });
 
-    // Add internal components
+    // Add internal components with color coding
     const internalComponents = [...new Set(internalDeps.map(dep => dep.name))];
     internalComponents.forEach(component => {
       const nodeId = this.sanitizeName(component);
       mermaid += `  ${nodeId}["${component}"]\n`;
+      mermaid += `  ${nodeId}:::internal\n`;
     });
 
     // Add dependency relationships (deduped and no self loops)
@@ -109,7 +130,7 @@ class DiagramGenerator {
       seen.add(key);
       const fromId = this.sanitizeName(dep.from);
       const toId = this.sanitizeName(dep.name);
-      mermaid += `  ${fromId} --> ${toId}\n`;
+      mermaid += `  ${fromId} -->|imports| ${toId}\n`;
     });
 
     return this.wrapInMarkdown('Dependency Graph', mermaid);
@@ -120,9 +141,10 @@ class DiagramGenerator {
     
     let mermaid = 'graph TB\n';
     
-    // Add styling
+    // Add styling with distinct colors
     mermaid += '  classDef module fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n';
-    mermaid += '  classDef export fill:#e8f5e8,stroke:#388e3c,stroke-width:2px\n\n';
+    mermaid += '  classDef export fill:#e8f5e8,stroke:#388e3c,stroke-width:2px\n';
+    mermaid += '  classDef subgraph fill:#f3e5f5,stroke:#7b1fa2,stroke-width:3px\n\n';
 
     // Group modules by directory
     const moduleGroups = this.groupComponentsByDirectory(modules);
@@ -131,10 +153,12 @@ class DiagramGenerator {
       if (dirModules.length > 0) {
         const subgraphName = this.sanitizeName(dir);
         mermaid += `  subgraph ${subgraphName}["${dir}"]\n`;
+        mermaid += `    classDef ${subgraphName}Class fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n`;
         
         dirModules.forEach(module => {
           const nodeId = this.sanitizeName(module.name);
           mermaid += `    ${nodeId}["${module.name}"]\n`;
+          mermaid += `    ${nodeId}:::module\n`;
         });
         
         mermaid += '  end\n\n';
