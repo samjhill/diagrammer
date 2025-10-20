@@ -56,6 +56,14 @@ async function main() {
       const filePath = path.join(outputPath, `${name}.md`);
       const absolutePath = path.resolve(filePath);
       await fs.writeFile(filePath, content);
+      
+      // Fix file permissions (in case files were created by root)
+      try {
+        await fs.chmod(filePath, 0o644);
+      } catch (error) {
+        core.warning(`Could not fix permissions for ${filePath}: ${error.message}`);
+      }
+      
       generatedFiles.push(filePath);
       core.info(`Generated diagram: ${filePath}`);
       core.info(`Absolute path: ${absolutePath}`);
@@ -63,13 +71,17 @@ async function main() {
 
     // Commit changes if any files were generated
     if (generatedFiles.length > 0) {
+      core.info(`Generated ${generatedFiles.length} files, attempting to commit...`);
       try {
         await gitManager.commitChanges(outputPath, 'docs: Update architecture diagrams');
         core.info('Committed diagram updates to repository');
       } catch (error) {
         core.warning(`Failed to commit changes: ${error.message}`);
         core.info('Diagrams were generated but not committed to repository');
+        core.info('This is not a critical error - the diagrams are still available');
       }
+    } else {
+      core.info('No files were generated, skipping commit');
     }
 
     core.info('Architecture diagram generation completed successfully!');

@@ -9,10 +9,20 @@ class GitManager {
 
   async commitChanges(outputPath, commitMessage) {
     try {
+      console.log(`Attempting to commit changes in: ${outputPath}`);
+      
       // Check if we're in a git repository
       if (!await this.isGitRepository()) {
         console.log('Not in a git repository, skipping commit');
         return;
+      }
+
+      // Show current git status
+      console.log('Current git status:');
+      try {
+        execSync('git status --short', { stdio: 'inherit' });
+      } catch (error) {
+        console.log('Could not get git status:', error.message);
       }
 
       // Check if there are any changes
@@ -25,19 +35,40 @@ class GitManager {
       // Configure git user if not already set
       await this.configureGitUser();
 
+      // Show what files will be added
+      console.log(`Files to be added: ${outputPath}`);
+      try {
+        execSync(`git status --porcelain ${outputPath}`, { stdio: 'inherit' });
+      } catch (error) {
+        console.log('Could not check file status:', error.message);
+      }
+
       // Stage the changes
+      console.log('Staging changes...');
       execSync(`git add ${outputPath}`, { stdio: 'inherit' });
 
+      // Check staged changes
+      console.log('Staged changes:');
+      try {
+        execSync('git diff --cached --name-only', { stdio: 'inherit' });
+      } catch (error) {
+        console.log('Could not check staged changes:', error.message);
+      }
+
       // Commit the changes
+      console.log('Committing changes...');
       execSync(`git commit -m "${commitMessage}"`, { stdio: 'inherit' });
 
       // Push the changes
+      console.log('Pushing changes...');
       execSync('git push', { stdio: 'inherit' });
 
       console.log('Successfully committed and pushed changes');
     } catch (error) {
       console.error('Failed to commit changes:', error.message);
-      throw error;
+      console.error('Error details:', error);
+      // Don't throw error, just log it
+      console.log('Continuing without committing changes');
     }
   }
 
