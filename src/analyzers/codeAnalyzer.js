@@ -2,6 +2,7 @@ const { TypeScriptAnalyzer } = require('./typescriptAnalyzer');
 const { JavaScriptAnalyzer } = require('./javascriptAnalyzer');
 const { PythonAnalyzer } = require('./pythonAnalyzer');
 const { ArchitecturalAnalyzer } = require('./architecturalAnalyzer');
+const { RelationshipAnalyzer } = require('./relationshipAnalyzer');
 
 class CodeAnalyzer {
   constructor(config) {
@@ -12,6 +13,7 @@ class CodeAnalyzer {
       python: new PythonAnalyzer(config)
     };
     this.architecturalAnalyzer = new ArchitecturalAnalyzer();
+    this.relationshipAnalyzer = new RelationshipAnalyzer();
   }
 
   async analyzeCodebase(languages = ['javascript', 'typescript']) {
@@ -39,6 +41,12 @@ class CodeAnalyzer {
     analysis.components = this.enhanceWithArchitecturalAnalysis(analysis.components);
     analysis.architecturalLayers = this.analyzeArchitecturalLayers(analysis.components);
     analysis.patterns = this.analyzeArchitecturalPatterns(analysis.components);
+
+    // Apply relationship analysis
+    const filePaths = analysis.components.map(c => c.path);
+    const fileContents = await this.relationshipAnalyzer.loadFileContents(filePaths);
+    analysis.relationships = await this.relationshipAnalyzer.analyzeRelationships(analysis.components, fileContents);
+    analysis.relationshipCategories = this.relationshipAnalyzer.categorizeRelationships(analysis.relationships);
 
     return analysis;
   }

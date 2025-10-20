@@ -32,6 +32,14 @@ class DiagramGenerator {
       }
     }
 
+    // Generate relationship-focused diagrams
+    if (analysis.relationships && analysis.relationships.length > 0) {
+      diagrams.apiFlow = this.generateApiFlowDiagram(analysis);
+      diagrams.dataFlow = this.generateDataFlowDiagram(analysis);
+      diagrams.eventFlow = this.generateEventFlowDiagram(analysis);
+      diagrams.serviceCommunication = this.generateServiceCommunicationDiagram(analysis);
+    }
+
     return diagrams;
   }
 
@@ -358,6 +366,214 @@ ${mermaidContent}
     mermaid += '  service -->|Communicates with| service\n';
     
     return this.wrapInMarkdown('Microservices Pattern', mermaid);
+  }
+
+  generateApiFlowDiagram(analysis) {
+    const { relationshipCategories } = analysis;
+    const apiRelationships = relationshipCategories.api || [];
+    
+    if (apiRelationships.length === 0) {
+      return this.wrapInMarkdown('API Flow', 'No API relationships detected.');
+    }
+    
+    let mermaid = 'graph LR\n';
+    
+    // Add API styling
+    mermaid += '  classDef client fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n';
+    mermaid += '  classDef api fill:#e8f5e8,stroke:#388e3c,stroke-width:2px\n';
+    mermaid += '  classDef endpoint fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n';
+    mermaid += '  classDef external fill:#fce4ec,stroke:#c2185b,stroke-width:2px\n\n';
+    
+    // Group relationships by source and target
+    const groupedRelationships = this.groupRelationshipsBySource(apiRelationships);
+    
+    Object.entries(groupedRelationships).forEach(([source, relationships]) => {
+      const sourceId = this.sanitizeName(source);
+      mermaid += `  ${sourceId}["${source}"]:::client\n`;
+      
+      relationships.forEach(rel => {
+        const targetId = this.sanitizeName(rel.to);
+        const endpointId = this.sanitizeName(rel.endpoint || 'endpoint');
+        
+        mermaid += `  ${endpointId}["${rel.endpoint || rel.to}"]:::endpoint\n`;
+        mermaid += `  ${sourceId} -->|${rel.method || 'GET'}| ${endpointId}\n`;
+      });
+    });
+    
+    return this.wrapInMarkdown('API Flow', mermaid);
+  }
+
+  generateDataFlowDiagram(analysis) {
+    const { relationshipCategories } = analysis;
+    const dataRelationships = relationshipCategories.data || [];
+    
+    if (dataRelationships.length === 0) {
+      return this.wrapInMarkdown('Data Flow', 'No data flow relationships detected.');
+    }
+    
+    let mermaid = 'graph TD\n';
+    
+    // Add data flow styling
+    mermaid += '  classDef component fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n';
+    mermaid += '  classDef data fill:#e8f5e8,stroke:#388e3c,stroke-width:2px\n';
+    mermaid += '  classDef state fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n';
+    mermaid += '  classDef props fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n\n';
+    
+    // Group relationships by data type
+    const groupedByType = this.groupRelationshipsByType(dataRelationships);
+    
+    Object.entries(groupedByType).forEach(([dataType, relationships]) => {
+      relationships.forEach(rel => {
+        const fromId = this.sanitizeName(rel.from);
+        const toId = this.sanitizeName(rel.to);
+        
+        mermaid += `  ${fromId}["${rel.from}"]:::component\n`;
+        mermaid += `  ${toId}["${rel.to}"]:::${this.getDataFlowClass(dataType)}\n`;
+        mermaid += `  ${fromId} -->|${rel.dataType}| ${toId}\n`;
+      });
+    });
+    
+    return this.wrapInMarkdown('Data Flow', mermaid);
+  }
+
+  generateEventFlowDiagram(analysis) {
+    const { relationshipCategories } = analysis;
+    const eventRelationships = relationshipCategories.events || [];
+    
+    if (eventRelationships.length === 0) {
+      return this.wrapInMarkdown('Event Flow', 'No event relationships detected.');
+    }
+    
+    let mermaid = 'graph LR\n';
+    
+    // Add event styling
+    mermaid += '  classDef emitter fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n';
+    mermaid += '  classDef listener fill:#e8f5e8,stroke:#388e3c,stroke-width:2px\n';
+    mermaid += '  classDef event fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n';
+    mermaid += '  classDef system fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n\n';
+    
+    // Group by event type
+    const groupedByEvent = this.groupRelationshipsByEvent(eventRelationships);
+    
+    Object.entries(groupedByEvent).forEach(([eventName, relationships]) => {
+      const emitters = relationships.filter(r => r.type === 'event-emission');
+      const listeners = relationships.filter(r => r.type === 'event-subscription');
+      
+      emitters.forEach(emitter => {
+        const emitterId = this.sanitizeName(emitter.from);
+        const eventId = this.sanitizeName(eventName);
+        
+        mermaid += `  ${emitterId}["${emitter.from}"]:::emitter\n`;
+        mermaid += `  ${eventId}["${eventName}"]:::event\n`;
+        mermaid += `  ${emitterId} -->|emits| ${eventId}\n`;
+      });
+      
+      listeners.forEach(listener => {
+        const listenerId = this.sanitizeName(listener.from);
+        const eventId = this.sanitizeName(eventName);
+        
+        mermaid += `  ${listenerId}["${listener.from}"]:::listener\n`;
+        mermaid += `  ${eventId} -->|triggers| ${listenerId}\n`;
+      });
+    });
+    
+    return this.wrapInMarkdown('Event Flow', mermaid);
+  }
+
+  generateServiceCommunicationDiagram(analysis) {
+    const { relationshipCategories } = analysis;
+    const serviceRelationships = relationshipCategories.services || [];
+    
+    if (serviceRelationships.length === 0) {
+      return this.wrapInMarkdown('Service Communication', 'No service communication relationships detected.');
+    }
+    
+    let mermaid = 'graph TB\n';
+    
+    // Add service styling
+    mermaid += '  classDef service fill:#e8f5e8,stroke:#388e3c,stroke-width:2px\n';
+    mermaid += '  classDef method fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n';
+    mermaid += '  classDef interface fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n\n';
+    
+    // Group by service
+    const groupedByService = this.groupRelationshipsByService(serviceRelationships);
+    
+    Object.entries(groupedByService).forEach(([serviceName, relationships]) => {
+      const serviceId = this.sanitizeName(serviceName);
+      mermaid += `  subgraph ${serviceId}["${serviceName} Service"]\n`;
+      
+      relationships.forEach(rel => {
+        const methodId = this.sanitizeName(`${rel.from}-${rel.serviceMethod}`);
+        mermaid += `    ${methodId}["${rel.serviceMethod}"]:::method\n`;
+      });
+      
+      mermaid += '  end\n\n';
+    });
+    
+    // Add service-to-service relationships
+    serviceRelationships.forEach(rel => {
+      const fromId = this.sanitizeName(rel.from);
+      const toId = this.sanitizeName(rel.to);
+      mermaid += `  ${fromId} -->|${rel.serviceMethod}| ${toId}\n`;
+    });
+    
+    return this.wrapInMarkdown('Service Communication', mermaid);
+  }
+
+  groupRelationshipsBySource(relationships) {
+    const grouped = {};
+    relationships.forEach(rel => {
+      if (!grouped[rel.from]) {
+        grouped[rel.from] = [];
+      }
+      grouped[rel.from].push(rel);
+    });
+    return grouped;
+  }
+
+  groupRelationshipsByType(relationships) {
+    const grouped = {};
+    relationships.forEach(rel => {
+      const type = rel.dataType || 'data';
+      if (!grouped[type]) {
+        grouped[type] = [];
+      }
+      grouped[type].push(rel);
+    });
+    return grouped;
+  }
+
+  groupRelationshipsByEvent(relationships) {
+    const grouped = {};
+    relationships.forEach(rel => {
+      const eventName = rel.eventName || 'event';
+      if (!grouped[eventName]) {
+        grouped[eventName] = [];
+      }
+      grouped[eventName].push(rel);
+    });
+    return grouped;
+  }
+
+  groupRelationshipsByService(relationships) {
+    const grouped = {};
+    relationships.forEach(rel => {
+      const serviceName = rel.to || 'service';
+      if (!grouped[serviceName]) {
+        grouped[serviceName] = [];
+      }
+      grouped[serviceName].push(rel);
+    });
+    return grouped;
+  }
+
+  getDataFlowClass(dataType) {
+    switch (dataType) {
+      case 'props': return 'props';
+      case 'state': return 'state';
+      case 'array': return 'data';
+      default: return 'data';
+    }
   }
 }
 
