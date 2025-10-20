@@ -44,12 +44,22 @@ jobs:
           ${{ runner.os }}-diagrams-
         
     - name: Mock diagram generation (for local testing)
+      if: ${{ env.ACT == 'true' }}
       run: |
         echo "🔧 Mock diagram generation for local testing"
         mkdir -p docs/architecture
         echo "# Mock Architecture Diagram" > docs/architecture/mock-diagram.md
         echo "This is a mock diagram for local testing with act"
         echo "📊 Generated mock diagram in docs/architecture/"
+        
+    - name: Generate Architecture Diagrams (GitHub Actions)
+      if: ${{ env.ACT != 'true' }}
+      uses: samjhill/diagrammer@${{ env.DIAGRAMMER_VERSION }}
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        output_path: 'docs/architecture'
+        languages: 'javascript,typescript'
+      continue-on-error: false
         
     - name: Verify diagram generation
       run: |
