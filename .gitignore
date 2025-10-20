@@ -1,3 +1,34 @@
+# Node
+node_modules/
+npm-debug.log*
+package-lock.json
+
+# Logs
+*.log
+logs/
+
+# OS/Editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Build/Artifacts
+dist/
+build/
+coverage/
+.nyc_output/
+
+# Env
+.env
+.env.*
+
+# Docker
+.docker/
+
+# Act cache
+.act/
 # Dependencies
 node_modules/
 npm-debug.log*
