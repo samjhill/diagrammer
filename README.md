@@ -10,6 +10,8 @@ A GitHub Actions integration that automatically generates, maintains, and update
 - 🎨 **Rich Visualizations**: Color-coded components with labeled relationships
 - 🧠 **Architectural Intelligence**: Framework detection, layer classification, pattern recognition
 - 🔗 **Enhanced Relationships**: API calls, event flows, data flows, service communication
+- 🎯 **Smart Filtering**: Automatically filters out test files, dependency layers, and internal details
+- 📏 **Size Limits**: Configurable limits to prevent overly complex diagrams (max 30 nodes, 50 dependencies)
 - ⚙️ **Configurable**: Customize analysis and output via `.diagrammer.yml`
 - 🌐 **Multi-language**: Supports JavaScript, TypeScript, and Python
 - 🎯 **Sophisticated Analysis**: Matches enterprise-grade architecture documentation quality
@@ -40,7 +42,7 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         
     - name: Generate Architecture Diagrams
-      uses: samjhill/diagrammer@v1.2.2  # Latest version with auto-commit fixes
+      uses: samjhill/diagrammer@v1.2.4  # Latest version with auto-commit fixes
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         output_path: 'docs/architecture'
@@ -54,7 +56,7 @@ The action automatically commits generated diagrams by default. You can control 
 
 ```yaml
 - name: Generate Architecture Diagrams
-  uses: samjhill/diagrammer@v1.2.2
+  uses: samjhill/diagrammer@v1.2.4
   with:
     github_token: ${{ secrets.GITHUB_TOKEN }}
     output_path: 'docs/architecture'
@@ -261,7 +263,7 @@ If auto-commit continues to fail, you can handle commits manually:
 
 ```yaml
 - name: Generate Architecture Diagrams
-  uses: samjhill/diagrammer@v1.2.2
+  uses: samjhill/diagrammer@v1.2.4
   with:
     auto_commit: 'false'
     # ... other inputs
