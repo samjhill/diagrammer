@@ -18,18 +18,12 @@ graph TB
     main_split["split"]:::method
     loadConfig_split["split"]:::method
     languages_split["split"]:::method
+    DiagramGenerator_split["split"]:::method
     RelationshipAnalyzer_split["split"]:::method
     PythonAnalyzer_split["split"]:::method
     JavaScriptAnalyzer_split["split"]:::method
     declarations_split["split"]:::method
     ArchitecturalAnalyzer_split["split"]:::method
-    UserService_split["split"]:::method
-    __init___split["split"]:::method
-    create_user_split["split"]:::method
-    get_user_split["split"]:::method
-    list_users_split["split"]:::method
-    export_users_split["split"]:::method
-    validate_email_split["split"]:::method
   end
 
   subgraph map_service["map-service Service"]
@@ -117,6 +111,7 @@ graph TB
     main_join["join"]:::method
     loadConfig_join["join"]:::method
     languages_join["join"]:::method
+    DiagramGenerator_join["join"]:::method
   end
 
   subgraph resolve_service["resolve-service Service"]
@@ -267,8 +262,26 @@ graph TB
     DiagramGenerator_uniqueByName["uniqueByName"]:::method
   end
 
+  subgraph filterComponentsForDiagram_service["filterComponentsForDiagram-service Service"]
+    DiagramGenerator_filterComponentsForDiagram["filterComponentsForDiagram"]:::method
+  end
+
+  subgraph filterDependenciesForDiagram_service["filterDependenciesForDiagram-service Service"]
+    DiagramGenerator_filterDependenciesForDiagram["filterDependenciesForDiagram"]:::method
+  end
+
   subgraph groupComponentsByDirectory_service["groupComponentsByDirectory-service Service"]
     DiagramGenerator_groupComponentsByDirectory["groupComponentsByDirectory"]:::method
+  end
+
+  subgraph sort_service["sort-service Service"]
+    DiagramGenerator_sort["sort"]:::method
+  end
+
+  subgraph slice_service["slice-service Service"]
+    DiagramGenerator_slice["slice"]:::method
+    TypeScriptAnalyzer_slice["slice"]:::method
+    visit_slice["slice"]:::method
   end
 
   subgraph forEach_service["forEach-service Service"]
@@ -285,6 +298,14 @@ graph TB
 
   subgraph sanitizeName_service["sanitizeName-service Service"]
     DiagramGenerator_sanitizeName["sanitizeName"]:::method
+  end
+
+  subgraph getDisplayName_service["getDisplayName-service Service"]
+    DiagramGenerator_getDisplayName["getDisplayName"]:::method
+  end
+
+  subgraph getDisplayComponentName_service["getDisplayComponentName-service Service"]
+    DiagramGenerator_getDisplayComponentName["getDisplayComponentName"]:::method
   end
 
   subgraph has_service["has-service Service"]
@@ -369,6 +390,37 @@ graph TB
     DiagramGenerator_groupRelationshipsByService["groupRelationshipsByService"]:::method
   end
 
+  subgraph isTestFile_service["isTestFile-service Service"]
+    DiagramGenerator_isTestFile["isTestFile"]:::method
+  end
+
+  subgraph isDependencyLayer_service["isDependencyLayer-service Service"]
+    DiagramGenerator_isDependencyLayer["isDependencyLayer"]:::method
+  end
+
+  subgraph isInternalImplementation_service["isInternalImplementation-service Service"]
+    DiagramGenerator_isInternalImplementation["isInternalImplementation"]:::method
+  end
+
+  subgraph isUtilityFile_service["isUtilityFile-service Service"]
+    DiagramGenerator_isUtilityFile["isUtilityFile"]:::method
+  end
+
+  subgraph getComponentImportance_service["getComponentImportance-service Service"]
+    DiagramGenerator_getComponentImportance["getComponentImportance"]:::method
+  end
+
+  subgraph test_service["test-service Service"]
+    DiagramGenerator_test["test"]:::method
+    ArchitecturalAnalyzer_test["test"]:::method
+  end
+
+  subgraph substring_service["substring-service Service"]
+    DiagramGenerator_substring["substring"]:::method
+    JavaScriptAnalyzer_substring["substring"]:::method
+    declarations_substring["substring"]:::method
+  end
+
   subgraph findTypeScriptFiles_service["findTypeScriptFiles-service Service"]
     TypeScriptAnalyzer_findTypeScriptFiles["findTypeScriptFiles"]:::method
     visit_findTypeScriptFiles["findTypeScriptFiles"]:::method
@@ -426,11 +478,6 @@ graph TB
   subgraph getText_service["getText-service Service"]
     TypeScriptAnalyzer_getText["getText"]:::method
     visit_getText["getText"]:::method
-  end
-
-  subgraph slice_service["slice-service Service"]
-    TypeScriptAnalyzer_slice["slice"]:::method
-    visit_slice["slice"]:::method
   end
 
   subgraph isNamedImports_service["isNamedImports-service Service"]
@@ -592,11 +639,6 @@ graph TB
     declarations_indexOf["indexOf"]:::method
   end
 
-  subgraph substring_service["substring-service Service"]
-    JavaScriptAnalyzer_substring["substring"]:::method
-    declarations_substring["substring"]:::method
-  end
-
   subgraph analyze_service["analyze-service Service"]
     CodeAnalyzer_analyze["analyze"]:::method
   end
@@ -667,10 +709,6 @@ graph TB
     ArchitecturalAnalyzer_inferResponsibilities["inferResponsibilities"]:::method
   end
 
-  subgraph test_service["test-service Service"]
-    ArchitecturalAnalyzer_test["test"]:::method
-  end
-
   subgraph calculatePatternConfidence_service["calculatePatternConfidence-service Service"]
     ArchitecturalAnalyzer_calculatePatternConfidence["calculatePatternConfidence"]:::method
   end
@@ -689,56 +727,6 @@ graph TB
 
   subgraph round_service["round-service Service"]
     ArchitecturalAnalyzer_round["round"]:::method
-  end
-
-  subgraph now_service["now-service Service"]
-    UserService_now["now"]:::method
-    __init___now["now"]:::method
-    create_user_now["now"]:::method
-    get_user_now["now"]:::method
-    list_users_now["now"]:::method
-    export_users_now["now"]:::method
-    validate_email_now["now"]:::method
-  end
-
-  subgraph isoformat_service["isoformat-service Service"]
-    UserService_isoformat["isoformat"]:::method
-    __init___isoformat["isoformat"]:::method
-    create_user_isoformat["isoformat"]:::method
-    get_user_isoformat["isoformat"]:::method
-    list_users_isoformat["isoformat"]:::method
-    export_users_isoformat["isoformat"]:::method
-    validate_email_isoformat["isoformat"]:::method
-  end
-
-  subgraph append_service["append-service Service"]
-    UserService_append["append"]:::method
-    __init___append["append"]:::method
-    create_user_append["append"]:::method
-    get_user_append["append"]:::method
-    list_users_append["append"]:::method
-    export_users_append["append"]:::method
-    validate_email_append["append"]:::method
-  end
-
-  subgraph copy_service["copy-service Service"]
-    UserService_copy["copy"]:::method
-    __init___copy["copy"]:::method
-    create_user_copy["copy"]:::method
-    get_user_copy["copy"]:::method
-    list_users_copy["copy"]:::method
-    export_users_copy["copy"]:::method
-    validate_email_copy["copy"]:::method
-  end
-
-  subgraph dumps_service["dumps-service Service"]
-    UserService_dumps["dumps"]:::method
-    __init___dumps["dumps"]:::method
-    create_user_dumps["dumps"]:::method
-    get_user_dumps["dumps"]:::method
-    list_users_dumps["dumps"]:::method
-    export_users_dumps["dumps"]:::method
-    validate_email_dumps["dumps"]:::method
   end
 
   main -->|getInput| getInput_service
@@ -835,10 +823,16 @@ graph TB
   DiagramGenerator -->|generateEventFlowDiagram| generateEventFlowDiagram_service
   DiagramGenerator -->|generateServiceCommunicationDiagram| generateServiceCommunicationDiagram_service
   DiagramGenerator -->|uniqueByName| uniqueByName_service
+  DiagramGenerator -->|filterComponentsForDiagram| filterComponentsForDiagram_service
+  DiagramGenerator -->|filterDependenciesForDiagram| filterDependenciesForDiagram_service
   DiagramGenerator -->|groupComponentsByDirectory| groupComponentsByDirectory_service
   DiagramGenerator -->|entries| entries_service
+  DiagramGenerator -->|sort| sort_service
+  DiagramGenerator -->|slice| slice_service
   DiagramGenerator -->|forEach| forEach_service
   DiagramGenerator -->|sanitizeName| sanitizeName_service
+  DiagramGenerator -->|getDisplayName| getDisplayName_service
+  DiagramGenerator -->|getDisplayComponentName| getDisplayComponentName_service
   DiagramGenerator -->|map| map_service
   DiagramGenerator -->|has| has_service
   DiagramGenerator -->|add| add_service
@@ -857,6 +851,15 @@ graph TB
   DiagramGenerator -->|getDataFlowClass| getDataFlowClass_service
   DiagramGenerator -->|groupRelationshipsByEvent| groupRelationshipsByEvent_service
   DiagramGenerator -->|groupRelationshipsByService| groupRelationshipsByService_service
+  DiagramGenerator -->|isTestFile| isTestFile_service
+  DiagramGenerator -->|isDependencyLayer| isDependencyLayer_service
+  DiagramGenerator -->|isInternalImplementation| isInternalImplementation_service
+  DiagramGenerator -->|isUtilityFile| isUtilityFile_service
+  DiagramGenerator -->|getComponentImportance| getComponentImportance_service
+  DiagramGenerator -->|split| split_service
+  DiagramGenerator -->|test| test_service
+  DiagramGenerator -->|join| join_service
+  DiagramGenerator -->|substring| substring_service
   TypeScriptAnalyzer -->|findTypeScriptFiles| findTypeScriptFiles_service
   TypeScriptAnalyzer -->|readFile| readFile_service
   TypeScriptAnalyzer -->|analyzeFile| analyzeFile_service
@@ -1027,48 +1030,6 @@ graph TB
   ArchitecturalAnalyzer -->|exec| exec_service
   ArchitecturalAnalyzer -->|replace| replace_service
   ArchitecturalAnalyzer -->|round| round_service
-  UserService -->|now| now_service
-  UserService -->|isoformat| isoformat_service
-  UserService -->|append| append_service
-  UserService -->|copy| copy_service
-  UserService -->|dumps| dumps_service
-  UserService -->|split| split_service
-  __init__ -->|now| now_service
-  __init__ -->|isoformat| isoformat_service
-  __init__ -->|append| append_service
-  __init__ -->|copy| copy_service
-  __init__ -->|dumps| dumps_service
-  __init__ -->|split| split_service
-  create_user -->|now| now_service
-  create_user -->|isoformat| isoformat_service
-  create_user -->|append| append_service
-  create_user -->|copy| copy_service
-  create_user -->|dumps| dumps_service
-  create_user -->|split| split_service
-  get_user -->|now| now_service
-  get_user -->|isoformat| isoformat_service
-  get_user -->|append| append_service
-  get_user -->|copy| copy_service
-  get_user -->|dumps| dumps_service
-  get_user -->|split| split_service
-  list_users -->|now| now_service
-  list_users -->|isoformat| isoformat_service
-  list_users -->|append| append_service
-  list_users -->|copy| copy_service
-  list_users -->|dumps| dumps_service
-  list_users -->|split| split_service
-  export_users -->|now| now_service
-  export_users -->|isoformat| isoformat_service
-  export_users -->|append| append_service
-  export_users -->|copy| copy_service
-  export_users -->|dumps| dumps_service
-  export_users -->|split| split_service
-  validate_email -->|now| now_service
-  validate_email -->|isoformat| isoformat_service
-  validate_email -->|append| append_service
-  validate_email -->|copy| copy_service
-  validate_email -->|dumps| dumps_service
-  validate_email -->|split| split_service
 
 ```
 
