@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:25-alpine
 
 # Install git for repository operations
 RUN apk add --no-cache git
