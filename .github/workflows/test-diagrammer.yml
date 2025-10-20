@@ -7,9 +7,19 @@ on:
     branches: [ main ]
   workflow_dispatch: # Allow manual triggering
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: '20'
+  DIAGRAMMER_VERSION: 'v1.0.4'
+
 jobs:
   generate-diagrams:
+    name: Generate Architecture Diagrams
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     
     steps:
     - name: Checkout code
@@ -17,23 +27,82 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         
+    - name: Cache Node.js dependencies
+      uses: actions/cache@v4
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+          
+    - name: Cache generated diagrams
+      uses: actions/cache@v4
+      with:
+        path: docs/architecture
+        key: ${{ runner.os }}-diagrams-${{ hashFiles('src/**/*.js', 'src/**/*.ts', 'tests/**/*.js', 'tests/**/*.ts') }}
+        restore-keys: |
+          ${{ runner.os }}-diagrams-
+        
     - name: Generate Architecture Diagrams
-      uses: samjhill/diagrammer@v1.0.4  # Use specific version for faster builds
+      uses: samjhill/diagrammer@${{ env.DIAGRAMMER_VERSION }}
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         output_path: 'docs/architecture'
         languages: 'javascript,typescript'
-        
-    - name: Display generated files
+      continue-on-error: false
+      
+    - name: Verify diagram generation
       run: |
-        echo "Current directory contents:"
-        ls -la
-        echo ""
-        echo "Looking for docs directory:"
-        ls -la docs/ 2>/dev/null || echo "docs/ directory not found"
-        echo ""
-        echo "Looking for architecture directory:"
-        ls -la docs/architecture/ 2>/dev/null || echo "docs/architecture/ directory not found"
-        echo ""
-        echo "All .md files in repository:"
-        find . -name "*.md" -type f | head -10
+        echo "🔍 Verifying generated diagrams..."
+        if [ -d "docs/architecture" ]; then
+          echo "✅ Architecture directory found"
+          echo "📊 Generated files:"
+          find docs/architecture -name "*.md" -type f | head -10
+          echo ""
+          echo "📈 File count: $(find docs/architecture -name "*.md" -type f | wc -l) markdown files"
+        else
+          echo "❌ Architecture directory not found"
+          exit 1
+        fi
+        
+    - name: Upload generated diagrams
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: generated-diagrams
+        path: docs/architecture/
+        retention-days: 30
+        
+    - name: Comment on PR
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const fs = require('fs');
+          const path = require('path');
+          
+          try {
+            const diagramsPath = 'docs/architecture';
+            if (fs.existsSync(diagramsPath)) {
+              const files = fs.readdirSync(diagramsPath, { recursive: true });
+              const mdFiles = files.filter(file => file.endsWith('.md'));
+              
+              if (mdFiles.length > 0) {
+                const comment = `## 📊 Generated Architecture Diagrams
+                
+                Successfully generated ${mdFiles.length} diagram files:
+                ${mdFiles.map(file => `- \`${file}\``).join('\n')}
+                
+                Diagrams are available in the \`docs/architecture/\` directory.`;
+                
+                github.rest.issues.createComment({
+                  issue_number: context.issue.number,
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  body: comment
+                });
+              }
+            }
+          } catch (error) {
+            console.log('Could not create PR comment:', error.message);
+          }

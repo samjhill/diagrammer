@@ -1,0 +1,94 @@
+name: Generate Diagrams
+
+on:
+  workflow_call:
+    inputs:
+      output_path:
+        description: 'Path where architecture diagrams will be stored'
+        required: false
+        type: string
+        default: 'docs/architecture'
+      languages:
+        description: 'Comma-separated list of languages to analyze'
+        required: false
+        type: string
+        default: 'javascript,typescript'
+      diagrammer_version:
+        description: 'Version of diagrammer to use'
+        required: false
+        type: string
+        default: 'v1.0.4'
+      cache_diagrams:
+        description: 'Whether to cache generated diagrams'
+        required: false
+        type: boolean
+        default: true
+    outputs:
+      diagrams_generated:
+        description: 'Number of diagrams generated'
+        value: ${{ jobs.generate.outputs.diagrams_count }}
+      success:
+        description: 'Whether diagram generation was successful'
+        value: ${{ jobs.generate.outputs.success }}
+
+jobs:
+  generate:
+    name: Generate Architecture Diagrams
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    
+    outputs:
+      diagrams_count: ${{ steps.count.outputs.count }}
+      success: ${{ steps.generate.outcome == 'success' }}
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Cache Node.js dependencies
+      uses: actions/cache@v4
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+          
+    - name: Cache generated diagrams
+      if: inputs.cache_diagrams == true
+      uses: actions/cache@v4
+      with:
+        path: ${{ inputs.output_path }}
+        key: ${{ runner.os }}-diagrams-${{ hashFiles('src/**/*.js', 'src/**/*.ts', 'tests/**/*.js', 'tests/**/*.ts') }}
+        restore-keys: |
+          ${{ runner.os }}-diagrams-
+        
+    - name: Generate Architecture Diagrams
+      id: generate
+      uses: samjhill/diagrammer@${{ inputs.diagrammer_version }}
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        output_path: ${{ inputs.output_path }}
+        languages: ${{ inputs.languages }}
+      continue-on-error: false
+      
+    - name: Count generated diagrams
+      id: count
+      run: |
+        if [ -d "${{ inputs.output_path }}" ]; then
+          COUNT=$(find "${{ inputs.output_path }}" -name "*.md" -type f | wc -l)
+          echo "count=$COUNT" >> $GITHUB_OUTPUT
+          echo "Generated $COUNT diagrams in ${{ inputs.output_path }}"
+        else
+          echo "count=0" >> $GITHUB_OUTPUT
+          echo "No diagrams generated"
+        fi
+        
+    - name: Upload generated diagrams
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: generated-diagrams-${{ github.run_number }}
+        path: ${{ inputs.output_path }}/
+        retention-days: 30
