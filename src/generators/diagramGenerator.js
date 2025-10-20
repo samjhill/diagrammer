@@ -31,7 +31,7 @@ class DiagramGenerator {
     mermaid += '  classDef external fill:#fff3e0,stroke:#f57c00,stroke-width:2px\n';
     mermaid += '  classDef internal fill:#e8f5e8,stroke:#388e3c,stroke-width:2px\n';
     mermaid += '  classDef dependency fill:#fce4ec,stroke:#c2185b,stroke-width:2px\n';
-    mermaid += '  classDef subgraph fill:#f3e5f5,stroke:#7b1fa2,stroke-width:3px\n\n';
+    mermaid += '  classDef group fill:#f3e5f5,stroke:#7b1fa2,stroke-width:3px\n\n';
 
     // Group components by directory
     const componentGroups = this.groupComponentsByDirectory(uniqueComponents);
@@ -142,7 +142,7 @@ class DiagramGenerator {
     // Add styling with distinct colors
     mermaid += '  classDef module fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n';
     mermaid += '  classDef export fill:#e8f5e8,stroke:#388e3c,stroke-width:2px\n';
-    mermaid += '  classDef subgraph fill:#f3e5f5,stroke:#7b1fa2,stroke-width:3px\n\n';
+    mermaid += '  classDef group fill:#f3e5f5,stroke:#7b1fa2,stroke-width:3px\n\n';
 
     // Group modules by directory
     const moduleGroups = this.groupComponentsByDirectory(modules);
