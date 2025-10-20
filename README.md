@@ -18,7 +18,21 @@ A GitHub Actions integration that automatically generates, maintains, and update
 
 ## Quick Start
 
-### 1. Add the Action to Your Repository
+### 1. Required Permissions Setup
+
+**⚠️ Important**: Before using the diagrammer action, you must configure permissions in your workflow to allow it to commit generated diagrams back to your repository.
+
+Add these permissions to your workflow file:
+
+```yaml
+permissions:
+  contents: write      # Required to push generated diagrams
+  pull-requests: write # Required for PR-based workflows
+```
+
+**Without these permissions, you'll get 403 errors when the action tries to commit diagrams.**
+
+### 2. Add the Action to Your Repository
 
 Create `.github/workflows/diagrammer.yml`:
 
@@ -50,28 +64,50 @@ jobs:
         auto_commit: 'true'  # Automatically commit generated diagrams
 ```
 
-### 2. Auto-Commit Configuration
+### 3. Required Permissions Configuration
 
-The action automatically commits generated diagrams by default. You can control this behavior:
+**⚠️ Important**: The diagrammer action requires specific permissions to commit generated diagrams back to your repository. Add these permissions to your workflow:
 
 ```yaml
-- name: Generate Architecture Diagrams
-  uses: samjhill/diagrammer@v1.2.4
-  with:
-    github_token: ${{ secrets.GITHUB_TOKEN }}
-    output_path: 'docs/architecture'
-    languages: 'javascript,typescript,python'
-    auto_commit: 'true'  # Enable auto-commit (default)
-    # auto_commit: 'false'  # Disable auto-commit
+name: Generate Architecture Diagrams
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  generate-diagrams:
+    runs-on: ubuntu-latest
+    
+    # Required permissions for auto-commit functionality
+    permissions:
+      contents: write      # Required to push generated diagrams
+      pull-requests: write # Required for PR-based workflows
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Generate Architecture Diagrams
+      uses: samjhill/diagrammer@v1.2.4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        output_path: 'docs/architecture'
+        languages: 'javascript,typescript,python'
+        auto_commit: 'true'
 ```
 
-**Required Permissions**: Ensure your workflow has `contents: write` permission:
-```yaml
-permissions:
-  contents: write
+**Without these permissions, you'll see errors like:**
+```
+remote: Write access to repository not granted.
+fatal: unable to access 'https://github.com/username/repository/': The requested URL returned error: 403
 ```
 
-### 3. Optional Configuration
+### 4. Optional Configuration
 
 Create `.diagrammer.yml` in your repository root:
 
@@ -248,14 +284,52 @@ docker run --rm --entrypoint="" \
 
 ## Troubleshooting
 
+### Permission Issues
+
+**Problem**: Getting 403 errors when trying to commit diagrams
+```
+remote: Write access to repository not granted.
+fatal: unable to access 'https://github.com/username/repository/': The requested URL returned error: 403
+```
+
+**Solution**: Add the required permissions to your workflow:
+```yaml
+permissions:
+  contents: write      # Required to push generated diagrams
+  pull-requests: write # Required for PR-based workflows
+```
+
+**Common Permission Errors:**
+
+1. **"Write access to repository not granted"**
+   - **Cause**: Missing `contents: write` permission
+   - **Fix**: Add `permissions: contents: write` to your workflow
+
+2. **"The requested URL returned error: 403"**
+   - **Cause**: Insufficient permissions for the GITHUB_TOKEN
+   - **Fix**: Ensure both `contents: write` and `pull-requests: write` are set
+
+3. **"Not in a git repository, skipping commit"**
+   - **Cause**: Git repository not properly initialized in the action
+   - **Fix**: Use `actions/checkout@v4` with `fetch-depth: 0`
+
 ### Auto-Commit Issues
 
 If you see `"Not in a git repository, skipping commit"`:
 
-1. **Use the latest version**: Ensure you're using `samjhill/diagrammer@v1.2.2` or later
+1. **Use the latest version**: Ensure you're using `samjhill/diagrammer@v1.2.4` or later
 2. **Check permissions**: Add `permissions: contents: write` to your workflow
 3. **Verify checkout**: Use `actions/checkout@v4` with `fetch-depth: 0`
 4. **Disable auto-commit**: Set `auto_commit: 'false'` and handle commits manually
+
+### Diagram Display Issues
+
+**Problem**: Diagrams are too complex and GitHub refuses to display them
+
+**Solution**: The action now includes smart filtering by default:
+- Automatically excludes test files, dependency layers, and internal methods
+- Limits diagrams to 30 nodes and 50 dependencies maximum
+- Prioritizes main architecture components
 
 ### Manual Commit Alternative
 
