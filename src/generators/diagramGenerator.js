@@ -36,17 +36,15 @@ class DiagramGenerator {
     // Group components by directory
     const componentGroups = this.groupComponentsByDirectory(uniqueComponents);
     
-    // Create subgraphs for different directories with distinct colors
+    // Create subgraphs for different directories
     Object.entries(componentGroups).forEach(([dir, dirComponents]) => {
       if (dirComponents.length > 0) {
         const subgraphName = this.sanitizeName(dir);
         mermaid += `  subgraph ${subgraphName}["${dir}"]\n`;
-        mermaid += `    classDef ${subgraphName}Class fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n`;
         
         dirComponents.forEach(component => {
           const nodeId = this.sanitizeName(component.name);
           mermaid += `    ${nodeId}["${component.name}"]\n`;
-          mermaid += `    ${nodeId}:::component\n`;
         });
         
         mermaid += '  end\n\n';
@@ -153,12 +151,10 @@ class DiagramGenerator {
       if (dirModules.length > 0) {
         const subgraphName = this.sanitizeName(dir);
         mermaid += `  subgraph ${subgraphName}["${dir}"]\n`;
-        mermaid += `    classDef ${subgraphName}Class fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n`;
         
         dirModules.forEach(module => {
           const nodeId = this.sanitizeName(module.name);
           mermaid += `    ${nodeId}["${module.name}"]\n`;
-          mermaid += `    ${nodeId}:::module\n`;
         });
         
         mermaid += '  end\n\n';
