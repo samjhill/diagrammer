@@ -37,7 +37,9 @@ class JavaScriptAnalyzer {
         '**/dist/**',
         '**/build/**',
         '**/.git/**',
-        '**/coverage/**'
+        '**/coverage/**',
+        '**/tests/**',
+        'tests/**'
       ]
     });
     return files;

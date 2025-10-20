@@ -22,6 +22,7 @@ class DiagramGenerator {
 
   generateArchitectureDiagram(analysis) {
     const { components, dependencies } = analysis;
+    const uniqueComponents = this.uniqueByName(components);
     
     let mermaid = 'graph TD\n';
     
@@ -31,7 +32,7 @@ class DiagramGenerator {
     mermaid += '  classDef internal fill:#f3e5f5,stroke:#4a148c,stroke-width:2px\n\n';
 
     // Group components by directory
-    const componentGroups = this.groupComponentsByDirectory(components);
+    const componentGroups = this.groupComponentsByDirectory(uniqueComponents);
     
     // Create subgraphs for different directories
     Object.entries(componentGroups).forEach(([dir, dirComponents]) => {
@@ -48,21 +49,22 @@ class DiagramGenerator {
       }
     });
 
-    // Add dependencies
+    // Add dependencies (deduped and no self loops)
+    const edgeSet = new Set();
     dependencies.forEach(dep => {
-      if (dep.from && dep.name) {
-        const fromId = this.sanitizeName(dep.from);
-        const toId = this.sanitizeName(dep.name);
-        
-        // Only add if both nodes exist
-        if (this.nodeExists(components, dep.from) && this.nodeExists(components, dep.name)) {
-          mermaid += `  ${fromId} --> ${toId}\n`;
-        }
-      }
+      if (!dep.from || !dep.name) return;
+      if (dep.from === dep.name) return;
+      if (!this.nodeExists(uniqueComponents, dep.from) || !this.nodeExists(uniqueComponents, dep.name)) return;
+      const edgeKey = `${dep.from}-->${dep.name}`;
+      if (edgeSet.has(edgeKey)) return;
+      edgeSet.add(edgeKey);
+      const fromId = this.sanitizeName(dep.from);
+      const toId = this.sanitizeName(dep.name);
+      mermaid += `  ${fromId} --> ${toId}\n`;
     });
 
     // Apply styling
-    components.forEach(component => {
+    uniqueComponents.forEach(component => {
       const nodeId = this.sanitizeName(component.name);
       mermaid += `  ${nodeId}\n`;
     });
@@ -97,13 +99,17 @@ class DiagramGenerator {
       mermaid += `  ${nodeId}["${component}"]\n`;
     });
 
-    // Add dependency relationships
+    // Add dependency relationships (deduped and no self loops)
+    const seen = new Set();
     dependencies.forEach(dep => {
-      if (dep.from && dep.name) {
-        const fromId = this.sanitizeName(dep.from);
-        const toId = this.sanitizeName(dep.name);
-        mermaid += `  ${fromId} --> ${toId}\n`;
-      }
+      if (!dep.from || !dep.name) return;
+      if (dep.from === dep.name) return;
+      const key = `${dep.from}-->${dep.name}`;
+      if (seen.has(key)) return;
+      seen.add(key);
+      const fromId = this.sanitizeName(dep.from);
+      const toId = this.sanitizeName(dep.name);
+      mermaid += `  ${fromId} --> ${toId}\n`;
     });
 
     return this.wrapInMarkdown('Dependency Graph', mermaid);
@@ -153,7 +159,19 @@ class DiagramGenerator {
   }
 
   sanitizeName(name) {
-    return name.replace(/[^a-zA-Z0-9]/g, '_');
+    return String(name).replace(/[^a-zA-Z0-9]/g, '_');
+  }
+
+  uniqueByName(items) {
+    const seen = new Set();
+    const result = [];
+    for (const item of items) {
+      const key = item.name;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      result.push(item);
+    }
+    return result;
   }
 
   nodeExists(components, name) {

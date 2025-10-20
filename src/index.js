@@ -9,13 +9,23 @@ const { GitManager } = require('./utils/gitManager');
 async function main() {
   try {
     // Get inputs
-    const githubToken = core.getInput('github_token');
-    const outputPath = core.getInput('output_path');
-    const configFile = core.getInput('config_file');
-    const languages = core.getInput('languages').split(',').map(lang => lang.trim());
+    const githubToken = core.getInput('github_token') || process.env.GITHUB_TOKEN || '';
+    const outputPath = core.getInput('output_path') || 'docs/architecture';
+    const configFile = core.getInput('config_file') || '.diagrammer.yml';
+    const languagesInput = core.getInput('languages');
+    const languages = (languagesInput && languagesInput.length > 0
+      ? languagesInput
+      : 'javascript,typescript').split(',').map(lang => lang.trim());
 
     // Initialize GitHub client
-    const octokit = github.getOctokit(githubToken);
+    let octokit = null;
+    try {
+      if (githubToken) {
+        octokit = github.getOctokit(githubToken);
+      }
+    } catch (e) {
+      core.warning(`Octokit not initialized (missing/invalid token): ${e.message}`);
+    }
     const context = github.context;
 
     // Load configuration

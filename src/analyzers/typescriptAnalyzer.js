@@ -39,7 +39,9 @@ class TypeScriptAnalyzer {
         '**/build/**',
         '**/.git/**',
         '**/coverage/**',
-        '**/*.d.ts'
+        '**/*.d.ts',
+        '**/tests/**',
+        'tests/**'
       ]
     });
     return files;
