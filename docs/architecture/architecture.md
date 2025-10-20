@@ -11,39 +11,25 @@ graph TD
   classDef subgraph fill:#f3e5f5,stroke:#7b1fa2,stroke-width:3px
 
   subgraph src["src"]
-    classDef srcClass fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
     main["main"]
-    main:::component
     loadConfig["loadConfig"]
-    loadConfig:::component
     languages["languages"]
-    languages:::component
   end
 
   subgraph src_utils["src/utils"]
-    classDef src_utilsClass fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
     GitManager["GitManager"]
-    GitManager:::component
   end
 
   subgraph src_generators["src/generators"]
-    classDef src_generatorsClass fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
     DiagramGenerator["DiagramGenerator"]
-    DiagramGenerator:::component
   end
 
   subgraph src_analyzers["src/analyzers"]
-    classDef src_analyzersClass fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
     TypeScriptAnalyzer["TypeScriptAnalyzer"]
-    TypeScriptAnalyzer:::component
     visit["visit"]
-    visit:::component
     JavaScriptAnalyzer["JavaScriptAnalyzer"]
-    JavaScriptAnalyzer:::component
     declarations["declarations"]
-    declarations:::component
     CodeAnalyzer["CodeAnalyzer"]
-    CodeAnalyzer:::component
   end
 
   _actions_core["@actions/core"]
