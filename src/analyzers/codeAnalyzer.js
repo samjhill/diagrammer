@@ -1,6 +1,3 @@
-const fs = require('fs-extra');
-const path = require('path');
-const glob = require('glob');
 const { TypeScriptAnalyzer } = require('./typescriptAnalyzer');
 const { JavaScriptAnalyzer } = require('./javascriptAnalyzer');
 
