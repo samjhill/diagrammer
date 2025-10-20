@@ -175,3 +175,4 @@ MIT License - see [LICENSE](LICENSE) for details.
 - 📖 [Documentation](https://github.com/samjhill/diagrammer/wiki)
 - 🐛 [Report Issues](https://github.com/samjhill/diagrammer/issues)
 - 💬 [Discussions](https://github.com/samjhill/diagrammer/discussions)
+# Trigger enhanced diagram generation
