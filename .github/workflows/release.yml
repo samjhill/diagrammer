@@ -57,11 +57,23 @@ jobs:
         
     - name: Update package.json version
       run: |
-        npm version ${{ steps.version.outputs.version }} --no-git-tag-version
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add package.json
-        git commit -m "Bump version to ${{ steps.version.outputs.version }}" || echo "No changes to commit"
+        CURRENT_VERSION=$(node -p "require('./package.json').version")
+        TARGET_VERSION="${{ steps.version.outputs.version }}"
+        TARGET_VERSION=${TARGET_VERSION#v}  # Remove 'v' prefix if present
+        
+        echo "Current version: $CURRENT_VERSION"
+        echo "Target version: $TARGET_VERSION"
+        
+        if [ "$CURRENT_VERSION" != "$TARGET_VERSION" ]; then
+          echo "Updating version from $CURRENT_VERSION to $TARGET_VERSION"
+          npm version $TARGET_VERSION --no-git-tag-version
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add package.json
+          git commit -m "Bump version to $TARGET_VERSION" || echo "No changes to commit"
+        else
+          echo "Version already matches target version, skipping update"
+        fi
         
     - name: Build Docker image
       uses: docker/build-push-action@v5
@@ -74,14 +86,36 @@ jobs:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         
-    - name: Generate changelog
+    - name: Prepare release notes
       id: changelog
       run: |
-        echo "## What's Changed" > CHANGELOG.md
-        echo "" >> CHANGELOG.md
-        git log --pretty=format:"- %s (%h)" --since="$(git describe --tags --abbrev=0 HEAD^)" >> CHANGELOG.md || echo "- Initial release" >> CHANGELOG.md
-        echo "" >> CHANGELOG.md
-        echo "**Full Changelog**: https://github.com/${{ github.repository }}/compare/${{ steps.version.outputs.version }}...HEAD" >> CHANGELOG.md
+        if [ -f "CHANGELOG.md" ]; then
+          echo "Using existing CHANGELOG.md"
+          # Extract the section for this version
+          VERSION="${{ steps.version.outputs.version }}"
+          VERSION=${VERSION#v}  # Remove 'v' prefix if present
+          
+          # Find the section for this version in CHANGELOG.md
+          if grep -q "\[$VERSION\]" CHANGELOG.md; then
+            echo "Found changelog entry for version $VERSION"
+            # Extract from [version] to next [version] or end of file
+            sed -n "/\[$VERSION\]/,/^## \[/p" CHANGELOG.md | sed '$d' > release_notes.md
+          else
+            echo "No changelog entry found for version $VERSION, using git log"
+            echo "## What's Changed" > release_notes.md
+            echo "" >> release_notes.md
+            git log --pretty=format:"- %s (%h)" --since="$(git describe --tags --abbrev=0 HEAD^)" >> release_notes.md || echo "- Initial release" >> release_notes.md
+            echo "" >> release_notes.md
+            echo "**Full Changelog**: https://github.com/${{ github.repository }}/compare/${{ steps.version.outputs.version }}...HEAD" >> release_notes.md
+          fi
+        else
+          echo "No CHANGELOG.md found, generating from git log"
+          echo "## What's Changed" > release_notes.md
+          echo "" >> release_notes.md
+          git log --pretty=format:"- %s (%h)" --since="$(git describe --tags --abbrev=0 HEAD^)" >> release_notes.md || echo "- Initial release" >> release_notes.md
+          echo "" >> release_notes.md
+          echo "**Full Changelog**: https://github.com/${{ github.repository }}/compare/${{ steps.version.outputs.version }}...HEAD" >> release_notes.md
+        fi
         
     - name: Create Release
       uses: actions/create-release@v1
@@ -90,7 +124,7 @@ jobs:
       with:
         tag_name: ${{ steps.version.outputs.version }}
         release_name: Release ${{ steps.version.outputs.version }}
-        body_path: CHANGELOG.md
+        body_path: release_notes.md
         draft: false
         prerelease: ${{ contains(steps.version.outputs.version, 'beta') || contains(steps.version.outputs.version, 'alpha') || contains(steps.version.outputs.version, 'rc') }}
         
