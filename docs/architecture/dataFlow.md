@@ -62,17 +62,6 @@ graph TD
 | 🏗️ **Framework** | Light Green | Framework dependencies |
 | 🌐 **External** | Red | External libraries |
 
-## 📊 Visual Indicators
-
-| Symbol | Meaning | Description |
-|---|---|---|
-| 📦 | Large Component | Component with >100 lines of code |
-| 📄 | Medium Component | Component with 50-100 lines of code |
-| 📝 | Small Component | Component with <50 lines of code |
-| ⚡ | High Complexity | Complex component (complexity ≥4) |
-| 🔥 | Medium Complexity | Moderate complexity (complexity ≥3) |
-| 🔗 | High Dependencies | Component with >5 dependencies |
-
 ## 🔗 Relationship Types
 
 - **imports**: Module imports and dependencies
