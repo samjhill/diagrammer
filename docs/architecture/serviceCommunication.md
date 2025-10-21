@@ -224,12 +224,6 @@ graph TB
 
   subgraph log_service["log-service Service"]
     GitManager_log["log"]:::method
-    DiagramGenerator_log["log"]:::method
-    based_log["log"]:::method
-    const_log["log"]:::method
-    let_log["log"]:::method
-    for_log["log"]:::method
-    calls_log["log"]:::method
   end
 
   subgraph isGitRepository_service["isGitRepository-service Service"]
@@ -856,6 +850,15 @@ graph TB
     declarations_substring["substring"]:::method
   end
 
+  subgraph find_service["find-service Service"]
+    DiagramGenerator_find["find"]:::method
+    based_find["find"]:::method
+    const_find["find"]:::method
+    let_find["find"]:::method
+    for_find["find"]:::method
+    calls_find["find"]:::method
+  end
+
   subgraph getRelationshipLabel_service["getRelationshipLabel-service Service"]
     DiagramGenerator_getRelationshipLabel["getRelationshipLabel"]:::method
     based_getRelationshipLabel["getRelationshipLabel"]:::method
@@ -908,15 +911,6 @@ graph TB
     let_getDependencyTypeLabel["getDependencyTypeLabel"]:::method
     for_getDependencyTypeLabel["getDependencyTypeLabel"]:::method
     calls_getDependencyTypeLabel["getDependencyTypeLabel"]:::method
-  end
-
-  subgraph find_service["find-service Service"]
-    DiagramGenerator_find["find"]:::method
-    based_find["find"]:::method
-    const_find["find"]:::method
-    let_find["find"]:::method
-    for_find["find"]:::method
-    calls_find["find"]:::method
   end
 
   subgraph isFrameworkDependency_service["isFrameworkDependency-service Service"]
@@ -1406,14 +1400,13 @@ graph TB
   DiagramGenerator -->|split| split_service
   DiagramGenerator -->|test| test_service
   DiagramGenerator -->|substring| substring_service
-  DiagramGenerator -->|log| log_service
+  DiagramGenerator -->|find| find_service
   DiagramGenerator -->|getRelationshipLabel| getRelationshipLabel_service
   DiagramGenerator -->|getRelationshipStyle| getRelationshipStyle_service
   DiagramGenerator -->|addArchitecturalRelationships| addArchitecturalRelationships_service
   DiagramGenerator -->|groupDependenciesByType| groupDependenciesByType_service
   DiagramGenerator -->|getDependencyClass| getDependencyClass_service
   DiagramGenerator -->|getDependencyTypeLabel| getDependencyTypeLabel_service
-  DiagramGenerator -->|find| find_service
   DiagramGenerator -->|isFrameworkDependency| isFrameworkDependency_service
   DiagramGenerator -->|calculateComponentSize| calculateComponentSize_service
   DiagramGenerator -->|countDependencies| countDependencies_service
@@ -1487,14 +1480,13 @@ graph TB
   based -->|split| split_service
   based -->|test| test_service
   based -->|substring| substring_service
-  based -->|log| log_service
+  based -->|find| find_service
   based -->|getRelationshipLabel| getRelationshipLabel_service
   based -->|getRelationshipStyle| getRelationshipStyle_service
   based -->|addArchitecturalRelationships| addArchitecturalRelationships_service
   based -->|groupDependenciesByType| groupDependenciesByType_service
   based -->|getDependencyClass| getDependencyClass_service
   based -->|getDependencyTypeLabel| getDependencyTypeLabel_service
-  based -->|find| find_service
   based -->|isFrameworkDependency| isFrameworkDependency_service
   based -->|calculateComponentSize| calculateComponentSize_service
   based -->|countDependencies| countDependencies_service
@@ -1568,14 +1560,13 @@ graph TB
   const -->|split| split_service
   const -->|test| test_service
   const -->|substring| substring_service
-  const -->|log| log_service
+  const -->|find| find_service
   const -->|getRelationshipLabel| getRelationshipLabel_service
   const -->|getRelationshipStyle| getRelationshipStyle_service
   const -->|addArchitecturalRelationships| addArchitecturalRelationships_service
   const -->|groupDependenciesByType| groupDependenciesByType_service
   const -->|getDependencyClass| getDependencyClass_service
   const -->|getDependencyTypeLabel| getDependencyTypeLabel_service
-  const -->|find| find_service
   const -->|isFrameworkDependency| isFrameworkDependency_service
   const -->|calculateComponentSize| calculateComponentSize_service
   const -->|countDependencies| countDependencies_service
@@ -1649,14 +1640,13 @@ graph TB
   let -->|split| split_service
   let -->|test| test_service
   let -->|substring| substring_service
-  let -->|log| log_service
+  let -->|find| find_service
   let -->|getRelationshipLabel| getRelationshipLabel_service
   let -->|getRelationshipStyle| getRelationshipStyle_service
   let -->|addArchitecturalRelationships| addArchitecturalRelationships_service
   let -->|groupDependenciesByType| groupDependenciesByType_service
   let -->|getDependencyClass| getDependencyClass_service
   let -->|getDependencyTypeLabel| getDependencyTypeLabel_service
-  let -->|find| find_service
   let -->|isFrameworkDependency| isFrameworkDependency_service
   let -->|calculateComponentSize| calculateComponentSize_service
   let -->|countDependencies| countDependencies_service
@@ -1730,14 +1720,13 @@ graph TB
   for -->|split| split_service
   for -->|test| test_service
   for -->|substring| substring_service
-  for -->|log| log_service
+  for -->|find| find_service
   for -->|getRelationshipLabel| getRelationshipLabel_service
   for -->|getRelationshipStyle| getRelationshipStyle_service
   for -->|addArchitecturalRelationships| addArchitecturalRelationships_service
   for -->|groupDependenciesByType| groupDependenciesByType_service
   for -->|getDependencyClass| getDependencyClass_service
   for -->|getDependencyTypeLabel| getDependencyTypeLabel_service
-  for -->|find| find_service
   for -->|isFrameworkDependency| isFrameworkDependency_service
   for -->|calculateComponentSize| calculateComponentSize_service
   for -->|countDependencies| countDependencies_service
@@ -1811,14 +1800,13 @@ graph TB
   calls -->|split| split_service
   calls -->|test| test_service
   calls -->|substring| substring_service
-  calls -->|log| log_service
+  calls -->|find| find_service
   calls -->|getRelationshipLabel| getRelationshipLabel_service
   calls -->|getRelationshipStyle| getRelationshipStyle_service
   calls -->|addArchitecturalRelationships| addArchitecturalRelationships_service
   calls -->|groupDependenciesByType| groupDependenciesByType_service
   calls -->|getDependencyClass| getDependencyClass_service
   calls -->|getDependencyTypeLabel| getDependencyTypeLabel_service
-  calls -->|find| find_service
   calls -->|isFrameworkDependency| isFrameworkDependency_service
   calls -->|calculateComponentSize| calculateComponentSize_service
   calls -->|countDependencies| countDependencies_service
