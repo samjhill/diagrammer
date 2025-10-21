@@ -16,7 +16,7 @@ concurrency:
 
 env:
   NODE_VERSION: '20'
-  DIAGRAMMER_VERSION: 'v1.0.4'
+  DIAGRAMMER_VERSION: 'v1.3.0'
 
 jobs:
   generate-diagrams:
@@ -64,12 +64,12 @@ jobs:
         
     - name: Generate Architecture Diagrams (GitHub Actions)
       if: ${{ env.ACT != 'true' }}
-      uses: samjhill/diagrammer@v1.2.3
+      uses: samjhill/diagrammer@v1.3.0
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         output_path: 'docs/architecture'
         languages: 'javascript,typescript,python'
-        auto_commit: 'true'
+        auto_commit: 'false'
       continue-on-error: false
         
     - name: Verify diagram generation
@@ -100,12 +100,21 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         set -e
-        git config user.name "${{ github.actor }}"
-        git config user.email "${{ github.actor }}@users.noreply.github.com"
-        git add docs/architecture
+        echo "🔧 Configuring Git for commit..."
+        git config --global user.name "${{ github.actor }}"
+        git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+        git config --global --add safe.directory /github/workspace
+        
+        echo "📝 Checking for changes..."
+        git add docs/architecture/
+        
         if ! git diff --cached --quiet; then
-          git commit -m "docs(architecture): update generated diagrams [skip ci]"
+          echo "✅ Changes detected, committing..."
+          git commit -m "docs(architecture): update generated diagrams with enhanced metrics and insights [skip ci]"
+          
+          echo "🚀 Pushing changes..."
           git push origin HEAD:${{ github.ref_name }}
+          echo "✅ Successfully pushed diagram updates"
         else
-          echo "No changes to commit."
+          echo "ℹ️ No changes to commit."
         fi
