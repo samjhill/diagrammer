@@ -859,6 +859,15 @@ graph TB
     calls_getRelationshipLabel["getRelationshipLabel"]:::method
   end
 
+  subgraph getRelationshipStyle_service["getRelationshipStyle-service Service"]
+    DiagramGenerator_getRelationshipStyle["getRelationshipStyle"]:::method
+    based_getRelationshipStyle["getRelationshipStyle"]:::method
+    const_getRelationshipStyle["getRelationshipStyle"]:::method
+    let_getRelationshipStyle["getRelationshipStyle"]:::method
+    for_getRelationshipStyle["getRelationshipStyle"]:::method
+    calls_getRelationshipStyle["getRelationshipStyle"]:::method
+  end
+
   subgraph addArchitecturalRelationships_service["addArchitecturalRelationships-service Service"]
     DiagramGenerator_addArchitecturalRelationships["addArchitecturalRelationships"]:::method
     based_addArchitecturalRelationships["addArchitecturalRelationships"]:::method
@@ -1392,6 +1401,7 @@ graph TB
   DiagramGenerator -->|test| test_service
   DiagramGenerator -->|substring| substring_service
   DiagramGenerator -->|getRelationshipLabel| getRelationshipLabel_service
+  DiagramGenerator -->|getRelationshipStyle| getRelationshipStyle_service
   DiagramGenerator -->|addArchitecturalRelationships| addArchitecturalRelationships_service
   DiagramGenerator -->|groupDependenciesByType| groupDependenciesByType_service
   DiagramGenerator -->|getDependencyClass| getDependencyClass_service
@@ -1471,6 +1481,7 @@ graph TB
   based -->|test| test_service
   based -->|substring| substring_service
   based -->|getRelationshipLabel| getRelationshipLabel_service
+  based -->|getRelationshipStyle| getRelationshipStyle_service
   based -->|addArchitecturalRelationships| addArchitecturalRelationships_service
   based -->|groupDependenciesByType| groupDependenciesByType_service
   based -->|getDependencyClass| getDependencyClass_service
@@ -1550,6 +1561,7 @@ graph TB
   const -->|test| test_service
   const -->|substring| substring_service
   const -->|getRelationshipLabel| getRelationshipLabel_service
+  const -->|getRelationshipStyle| getRelationshipStyle_service
   const -->|addArchitecturalRelationships| addArchitecturalRelationships_service
   const -->|groupDependenciesByType| groupDependenciesByType_service
   const -->|getDependencyClass| getDependencyClass_service
@@ -1629,6 +1641,7 @@ graph TB
   let -->|test| test_service
   let -->|substring| substring_service
   let -->|getRelationshipLabel| getRelationshipLabel_service
+  let -->|getRelationshipStyle| getRelationshipStyle_service
   let -->|addArchitecturalRelationships| addArchitecturalRelationships_service
   let -->|groupDependenciesByType| groupDependenciesByType_service
   let -->|getDependencyClass| getDependencyClass_service
@@ -1708,6 +1721,7 @@ graph TB
   for -->|test| test_service
   for -->|substring| substring_service
   for -->|getRelationshipLabel| getRelationshipLabel_service
+  for -->|getRelationshipStyle| getRelationshipStyle_service
   for -->|addArchitecturalRelationships| addArchitecturalRelationships_service
   for -->|groupDependenciesByType| groupDependenciesByType_service
   for -->|getDependencyClass| getDependencyClass_service
@@ -1787,6 +1801,7 @@ graph TB
   calls -->|test| test_service
   calls -->|substring| substring_service
   calls -->|getRelationshipLabel| getRelationshipLabel_service
+  calls -->|getRelationshipStyle| getRelationshipStyle_service
   calls -->|addArchitecturalRelationships| addArchitecturalRelationships_service
   calls -->|groupDependenciesByType| groupDependenciesByType_service
   calls -->|getDependencyClass| getDependencyClass_service

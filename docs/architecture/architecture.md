@@ -35,6 +35,10 @@ graph TD
   classDef framework fill:#f1f8e9,stroke:#558b2f,stroke-width:2px
   classDef npm fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px
   classDef group fill:#fafafa,stroke:#424242,stroke-width:3px
+  classDef relationship fill:#ffeb3b,stroke:#f57f17,stroke-width:2px
+  classDef dependency fill:#ff9800,stroke:#e65100,stroke-width:2px
+  classDef data fill:#4caf50,stroke:#1b5e20,stroke-width:2px
+  classDef api fill:#2196f3,stroke:#0d47a1,stroke-width:2px
 
   subgraph src_analyzers["src/analyzers"]
     TypeScriptAnalyzer["📦 TypeScriptAnalyzer 🔥"]
