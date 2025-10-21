@@ -53,10 +53,10 @@ graph TB
     main_trim["trim"]:::method
     loadConfig_trim["trim"]:::method
     languages_trim["trim"]:::method
-    GitManager_trim["trim"]:::method
     PythonAnalyzer_trim["trim"]:::method
     JavaScriptAnalyzer_trim["trim"]:::method
     declarations_trim["trim"]:::method
+    GitManager_trim["trim"]:::method
   end
 
   subgraph getOctokit_service["getOctokit-service Service"]
@@ -81,8 +81,8 @@ graph TB
     main_cwd["cwd"]:::method
     loadConfig_cwd["cwd"]:::method
     languages_cwd["cwd"]:::method
-    GitManager_cwd["cwd"]:::method
     PythonAnalyzer_cwd["cwd"]:::method
+    GitManager_cwd["cwd"]:::method
   end
 
   subgraph analyzeCodebase_service["analyzeCodebase-service Service"]
@@ -220,40 +220,6 @@ graph TB
     main_parse["parse"]:::method
     loadConfig_parse["parse"]:::method
     languages_parse["parse"]:::method
-  end
-
-  subgraph log_service["log-service Service"]
-    GitManager_log["log"]:::method
-    DiagramGenerator_log["log"]:::method
-    based_log["log"]:::method
-    const_log["log"]:::method
-    let_log["log"]:::method
-    for_log["log"]:::method
-    calls_log["log"]:::method
-  end
-
-  subgraph isGitRepository_service["isGitRepository-service Service"]
-    GitManager_isGitRepository["isGitRepository"]:::method
-  end
-
-  subgraph chdir_service["chdir-service Service"]
-    GitManager_chdir["chdir"]:::method
-  end
-
-  subgraph hasChanges_service["hasChanges-service Service"]
-    GitManager_hasChanges["hasChanges"]:::method
-  end
-
-  subgraph configureGitUser_service["configureGitUser-service Service"]
-    GitManager_configureGitUser["configureGitUser"]:::method
-  end
-
-  subgraph existsSync_service["existsSync-service Service"]
-    GitManager_existsSync["existsSync"]:::method
-  end
-
-  subgraph readdirSync_service["readdirSync-service Service"]
-    GitManager_readdirSync["readdirSync"]:::method
   end
 
   subgraph generateArchitectureDiagram_service["generateArchitectureDiagram-service Service"]
@@ -473,6 +439,15 @@ graph TB
     calls_generateComponentTooltip["generateComponentTooltip"]:::method
   end
 
+  subgraph getComponentClass_service["getComponentClass-service Service"]
+    DiagramGenerator_getComponentClass["getComponentClass"]:::method
+    based_getComponentClass["getComponentClass"]:::method
+    const_getComponentClass["getComponentClass"]:::method
+    let_getComponentClass["getComponentClass"]:::method
+    for_getComponentClass["getComponentClass"]:::method
+    calls_getComponentClass["getComponentClass"]:::method
+  end
+
   subgraph addInternalRelationships_service["addInternalRelationships-service Service"]
     DiagramGenerator_addInternalRelationships["addInternalRelationships"]:::method
     based_addInternalRelationships["addInternalRelationships"]:::method
@@ -489,15 +464,6 @@ graph TB
     let_addExternalDependencies["addExternalDependencies"]:::method
     for_addExternalDependencies["addExternalDependencies"]:::method
     calls_addExternalDependencies["addExternalDependencies"]:::method
-  end
-
-  subgraph getComponentClass_service["getComponentClass-service Service"]
-    DiagramGenerator_getComponentClass["getComponentClass"]:::method
-    based_getComponentClass["getComponentClass"]:::method
-    const_getComponentClass["getComponentClass"]:::method
-    let_getComponentClass["getComponentClass"]:::method
-    for_getComponentClass["getComponentClass"]:::method
-    calls_getComponentClass["getComponentClass"]:::method
   end
 
   subgraph wrapInMarkdown_service["wrapInMarkdown-service Service"]
@@ -919,6 +885,16 @@ graph TB
     calls_getDependencyTypeLabel["getDependencyTypeLabel"]:::method
   end
 
+  subgraph log_service["log-service Service"]
+    DiagramGenerator_log["log"]:::method
+    based_log["log"]:::method
+    const_log["log"]:::method
+    let_log["log"]:::method
+    for_log["log"]:::method
+    calls_log["log"]:::method
+    GitManager_log["log"]:::method
+  end
+
   subgraph isFrameworkDependency_service["isFrameworkDependency-service Service"]
     DiagramGenerator_isFrameworkDependency["isFrameworkDependency"]:::method
     based_isFrameworkDependency["isFrameworkDependency"]:::method
@@ -1255,6 +1231,30 @@ graph TB
     ArchitecturalAnalyzer_round["round"]:::method
   end
 
+  subgraph isGitRepository_service["isGitRepository-service Service"]
+    GitManager_isGitRepository["isGitRepository"]:::method
+  end
+
+  subgraph chdir_service["chdir-service Service"]
+    GitManager_chdir["chdir"]:::method
+  end
+
+  subgraph hasChanges_service["hasChanges-service Service"]
+    GitManager_hasChanges["hasChanges"]:::method
+  end
+
+  subgraph configureGitUser_service["configureGitUser-service Service"]
+    GitManager_configureGitUser["configureGitUser"]:::method
+  end
+
+  subgraph existsSync_service["existsSync-service Service"]
+    GitManager_existsSync["existsSync"]:::method
+  end
+
+  subgraph readdirSync_service["readdirSync-service Service"]
+    GitManager_readdirSync["readdirSync"]:::method
+  end
+
   main -->|getInput| getInput_service
   main -->|split| split_service
   main -->|map| map_service
@@ -1327,16 +1327,6 @@ graph TB
   languages -->|pathExists| pathExists_service
   languages -->|readFile| readFile_service
   languages -->|parse| parse_service
-  GitManager -->|log| log_service
-  GitManager -->|isGitRepository| isGitRepository_service
-  GitManager -->|cwd| cwd_service
-  GitManager -->|trim| trim_service
-  GitManager -->|chdir| chdir_service
-  GitManager -->|hasChanges| hasChanges_service
-  GitManager -->|configureGitUser| configureGitUser_service
-  GitManager -->|error| error_service
-  GitManager -->|existsSync| existsSync_service
-  GitManager -->|readdirSync| readdirSync_service
   DiagramGenerator -->|generateArchitectureDiagram| generateArchitectureDiagram_service
   DiagramGenerator -->|generateDependencyDiagram| generateDependencyDiagram_service
   DiagramGenerator -->|generateModuleDiagram| generateModuleDiagram_service
@@ -1363,9 +1353,9 @@ graph TB
   DiagramGenerator -->|enhanceComponentName| enhanceComponentName_service
   DiagramGenerator -->|generateComponentTooltip| generateComponentTooltip_service
   DiagramGenerator -->|map| map_service
+  DiagramGenerator -->|getComponentClass| getComponentClass_service
   DiagramGenerator -->|addInternalRelationships| addInternalRelationships_service
   DiagramGenerator -->|addExternalDependencies| addExternalDependencies_service
-  DiagramGenerator -->|getComponentClass| getComponentClass_service
   DiagramGenerator -->|wrapInMarkdown| wrapInMarkdown_service
   DiagramGenerator -->|filter| filter_service
   DiagramGenerator -->|isExternalDependency| isExternalDependency_service
@@ -1444,9 +1434,9 @@ graph TB
   based -->|enhanceComponentName| enhanceComponentName_service
   based -->|generateComponentTooltip| generateComponentTooltip_service
   based -->|map| map_service
+  based -->|getComponentClass| getComponentClass_service
   based -->|addInternalRelationships| addInternalRelationships_service
   based -->|addExternalDependencies| addExternalDependencies_service
-  based -->|getComponentClass| getComponentClass_service
   based -->|wrapInMarkdown| wrapInMarkdown_service
   based -->|filter| filter_service
   based -->|isExternalDependency| isExternalDependency_service
@@ -1525,9 +1515,9 @@ graph TB
   const -->|enhanceComponentName| enhanceComponentName_service
   const -->|generateComponentTooltip| generateComponentTooltip_service
   const -->|map| map_service
+  const -->|getComponentClass| getComponentClass_service
   const -->|addInternalRelationships| addInternalRelationships_service
   const -->|addExternalDependencies| addExternalDependencies_service
-  const -->|getComponentClass| getComponentClass_service
   const -->|wrapInMarkdown| wrapInMarkdown_service
   const -->|filter| filter_service
   const -->|isExternalDependency| isExternalDependency_service
@@ -1606,9 +1596,9 @@ graph TB
   let -->|enhanceComponentName| enhanceComponentName_service
   let -->|generateComponentTooltip| generateComponentTooltip_service
   let -->|map| map_service
+  let -->|getComponentClass| getComponentClass_service
   let -->|addInternalRelationships| addInternalRelationships_service
   let -->|addExternalDependencies| addExternalDependencies_service
-  let -->|getComponentClass| getComponentClass_service
   let -->|wrapInMarkdown| wrapInMarkdown_service
   let -->|filter| filter_service
   let -->|isExternalDependency| isExternalDependency_service
@@ -1687,9 +1677,9 @@ graph TB
   for -->|enhanceComponentName| enhanceComponentName_service
   for -->|generateComponentTooltip| generateComponentTooltip_service
   for -->|map| map_service
+  for -->|getComponentClass| getComponentClass_service
   for -->|addInternalRelationships| addInternalRelationships_service
   for -->|addExternalDependencies| addExternalDependencies_service
-  for -->|getComponentClass| getComponentClass_service
   for -->|wrapInMarkdown| wrapInMarkdown_service
   for -->|filter| filter_service
   for -->|isExternalDependency| isExternalDependency_service
@@ -1768,9 +1758,9 @@ graph TB
   calls -->|enhanceComponentName| enhanceComponentName_service
   calls -->|generateComponentTooltip| generateComponentTooltip_service
   calls -->|map| map_service
+  calls -->|getComponentClass| getComponentClass_service
   calls -->|addInternalRelationships| addInternalRelationships_service
   calls -->|addExternalDependencies| addExternalDependencies_service
-  calls -->|getComponentClass| getComponentClass_service
   calls -->|wrapInMarkdown| wrapInMarkdown_service
   calls -->|filter| filter_service
   calls -->|isExternalDependency| isExternalDependency_service
@@ -1993,6 +1983,16 @@ graph TB
   ArchitecturalAnalyzer -->|exec| exec_service
   ArchitecturalAnalyzer -->|replace| replace_service
   ArchitecturalAnalyzer -->|round| round_service
+  GitManager -->|log| log_service
+  GitManager -->|isGitRepository| isGitRepository_service
+  GitManager -->|cwd| cwd_service
+  GitManager -->|trim| trim_service
+  GitManager -->|chdir| chdir_service
+  GitManager -->|hasChanges| hasChanges_service
+  GitManager -->|configureGitUser| configureGitUser_service
+  GitManager -->|error| error_service
+  GitManager -->|existsSync| existsSync_service
+  GitManager -->|readdirSync| readdirSync_service
 
 ```
 
