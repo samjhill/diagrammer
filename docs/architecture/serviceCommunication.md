@@ -409,13 +409,6 @@ graph TB
     calls_enhanceComponentName["enhanceComponentName"]:::method
   end
 
-  subgraph generateComponentTooltip_service["generateComponentTooltip-service Service"]
-    DiagramGenerator_generateComponentTooltip["generateComponentTooltip"]:::method
-    based_generateComponentTooltip["generateComponentTooltip"]:::method
-    for_generateComponentTooltip["generateComponentTooltip"]:::method
-    calls_generateComponentTooltip["generateComponentTooltip"]:::method
-  end
-
   subgraph getComponentClass_service["getComponentClass-service Service"]
     DiagramGenerator_getComponentClass["getComponentClass"]:::method
     based_getComponentClass["getComponentClass"]:::method
@@ -1252,7 +1245,6 @@ graph TB
   DiagramGenerator -->|getDisplayComponentName| getDisplayComponentName_service
   DiagramGenerator -->|getComponentMetrics| getComponentMetrics_service
   DiagramGenerator -->|enhanceComponentName| enhanceComponentName_service
-  DiagramGenerator -->|generateComponentTooltip| generateComponentTooltip_service
   DiagramGenerator -->|map| map_service
   DiagramGenerator -->|getComponentClass| getComponentClass_service
   DiagramGenerator -->|addInternalRelationships| addInternalRelationships_service
@@ -1332,7 +1324,6 @@ graph TB
   based -->|getDisplayComponentName| getDisplayComponentName_service
   based -->|getComponentMetrics| getComponentMetrics_service
   based -->|enhanceComponentName| enhanceComponentName_service
-  based -->|generateComponentTooltip| generateComponentTooltip_service
   based -->|map| map_service
   based -->|getComponentClass| getComponentClass_service
   based -->|addInternalRelationships| addInternalRelationships_service
@@ -1412,7 +1403,6 @@ graph TB
   for -->|getDisplayComponentName| getDisplayComponentName_service
   for -->|getComponentMetrics| getComponentMetrics_service
   for -->|enhanceComponentName| enhanceComponentName_service
-  for -->|generateComponentTooltip| generateComponentTooltip_service
   for -->|map| map_service
   for -->|getComponentClass| getComponentClass_service
   for -->|addInternalRelationships| addInternalRelationships_service
@@ -1492,7 +1482,6 @@ graph TB
   calls -->|getDisplayComponentName| getDisplayComponentName_service
   calls -->|getComponentMetrics| getComponentMetrics_service
   calls -->|enhanceComponentName| enhanceComponentName_service
-  calls -->|generateComponentTooltip| generateComponentTooltip_service
   calls -->|map| map_service
   calls -->|getComponentClass| getComponentClass_service
   calls -->|addInternalRelationships| addInternalRelationships_service
