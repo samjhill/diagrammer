@@ -62,9 +62,16 @@ class DiagramGenerator {
     mermaid += '  classDef manager fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px\n';
     mermaid += '  classDef service fill:#e0f2f1,stroke:#00695c,stroke-width:2px\n';
     mermaid += '  classDef external fill:#ffebee,stroke:#c62828,stroke-width:2px\n';
+    mermaid += '  classDef large fill:#e3f2fd,stroke:#1976d2,stroke-width:3px,font-size:14px\n';
+    mermaid += '  classDef medium fill:#e3f2fd,stroke:#1976d2,stroke-width:2px,font-size:12px\n';
+    mermaid += '  classDef small fill:#e3f2fd,stroke:#1976d2,stroke-width:1px,font-size:10px\n';
     mermaid += '  classDef framework fill:#f1f8e9,stroke:#558b2f,stroke-width:2px\n';
     mermaid += '  classDef npm fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px\n';
-    mermaid += '  classDef group fill:#fafafa,stroke:#424242,stroke-width:3px\n\n';
+    mermaid += '  classDef group fill:#fafafa,stroke:#424242,stroke-width:3px\n';
+    mermaid += '  classDef relationship fill:#ffeb3b,stroke:#f57f17,stroke-width:2px\n';
+    mermaid += '  classDef dependency fill:#ff9800,stroke:#e65100,stroke-width:2px\n';
+    mermaid += '  classDef data fill:#4caf50,stroke:#1b5e20,stroke-width:2px\n';
+    mermaid += '  classDef api fill:#2196f3,stroke:#0d47a1,stroke-width:2px\n\n';
 
     // Group components by directory, but only show top-level directories
     const componentGroups = this.groupComponentsByDirectory(filteredComponents);
@@ -87,6 +94,7 @@ class DiagramGenerator {
           const displayComponentName = this.getDisplayComponentName(component.name);
           const componentMetrics = this.getComponentMetrics(component, analysis);
           const enhancedName = this.enhanceComponentName(displayComponentName, componentMetrics);
+          const tooltip = this.generateComponentTooltip(component, componentMetrics);
           mermaid += `    ${nodeId}["${enhancedName}"]\n`;
         });
         
@@ -99,17 +107,17 @@ class DiagramGenerator {
     const nodeNames = new Set(filteredComponents.map(c => c.name));
     
     // Add internal component relationships first
-    this.addInternalRelationships(mermaid, filteredComponents, analysis, edgeSet);
-    
-    // Add external dependencies with better categorization
-    this.addExternalDependencies(mermaid, filteredDependencies, edgeSet, nodeNames);
-
     // Apply semantic styling to components based on their type
     filteredComponents.forEach(component => {
       const nodeId = this.sanitizeName(component.name);
       const componentClass = this.getComponentClass(component);
       mermaid += `  ${nodeId}:::${componentClass}\n`;
     });
+
+    mermaid = this.addInternalRelationships(mermaid, filteredComponents, analysis, edgeSet);
+    
+    // Add external dependencies with better categorization
+    mermaid = this.addExternalDependencies(mermaid, filteredDependencies, edgeSet, nodeNames);
 
     return this.wrapInMarkdown('Architecture Overview', mermaid, analysis);
   }
@@ -313,6 +321,24 @@ ${insights}
 ${insights.map(insight => `- ${insight}`).join('\n')}
 
 `;
+  }
+
+  generateComponentTooltip(component, metrics) {
+    const tooltip = [];
+    tooltip.push(`Size: ${metrics.size} lines`);
+    tooltip.push(`Complexity: ${metrics.complexity}/10`);
+    tooltip.push(`Dependencies: ${metrics.dependencies}`);
+    tooltip.push(`Importance: ${metrics.importance}/10`);
+    
+    if (component.path) {
+      tooltip.push(`Path: ${component.path}`);
+    }
+    
+    if (component.language) {
+      tooltip.push(`Language: ${component.language}`);
+    }
+    
+    return tooltip.join(' | ');
   }
 
   analyzeComponentTypes(components) {
@@ -943,22 +969,28 @@ ${insights.map(insight => `- ${insight}`).join('\n')}
       const componentNames = new Set(components.map(c => c.name));
       
       analysis.relationships.forEach(rel => {
-        if (componentNames.has(rel.from) && componentNames.has(rel.to)) {
-          const edgeKey = `${rel.from}-->${rel.to}`;
+        // Try to match relationships by component name or path
+        const fromComponent = components.find(c => c.name === rel.from || c.path === rel.fromPath);
+        const toComponent = components.find(c => c.name === rel.to || c.path === rel.toPath);
+        
+        if (fromComponent && toComponent) {
+          const edgeKey = `${fromComponent.name}-->${toComponent.name}`;
           if (edgeSet.has(edgeKey)) return;
           edgeSet.add(edgeKey);
           
-          const fromId = this.sanitizeName(rel.from);
-          const toId = this.sanitizeName(rel.to);
+          const fromId = this.sanitizeName(fromComponent.name);
+          const toId = this.sanitizeName(toComponent.name);
           const relationshipType = this.getRelationshipLabel(rel);
+          const relationshipStyle = this.getRelationshipStyle(rel.type);
           
-          mermaid += `  ${fromId} -->|${relationshipType}| ${toId}\n`;
+          mermaid += `  ${fromId} ${relationshipStyle}|${relationshipType}| ${toId}\n`;
         }
       });
     }
     
     // Add logical architectural relationships
-    this.addArchitecturalRelationships(mermaid, components, edgeSet);
+    mermaid = this.addArchitecturalRelationships(mermaid, components, edgeSet);
+    return mermaid;
   }
 
   addExternalDependencies(mermaid, dependencies, edgeSet, nodeNames) {
@@ -991,6 +1023,7 @@ ${insights.map(insight => `- ${insight}`).join('\n')}
         mermaid += `  ${fromId} -->|${depType}| ${toId}\n`;
       });
     });
+    return mermaid;
   }
 
   addArchitecturalRelationships(mermaid, components, edgeSet) {
@@ -1025,6 +1058,7 @@ ${insights.map(insight => `- ${insight}`).join('\n')}
         }
       }
     });
+    return mermaid;
   }
 
   getRelationshipLabel(relationship) {
@@ -1041,6 +1075,34 @@ ${insights.map(insight => `- ${insight}`).join('\n')}
     };
     
     return typeMap[relationship.type] || relationship.type || 'uses';
+  }
+
+  getRelationshipStyle(relationshipType) {
+    const styles = {
+      'import': '-->',
+      'call': '==>',
+      'extends': '-->',
+      'implements': '-->',
+      'api-call': '==>',
+      'data-flow': '-->',
+      'event': '-->',
+      'service': '==>'
+    };
+    return styles[relationshipType] || '-->';
+  }
+
+  getRelationshipColor(relationshipType) {
+    const colors = {
+      'import': '#666',
+      'call': '#ff9800',
+      'extends': '#2196f3',
+      'implements': '#4caf50',
+      'api-call': '#ff5722',
+      'data-flow': '#4caf50',
+      'event': '#9c27b0',
+      'service': '#ff9800'
+    };
+    return colors[relationshipType] || '#666';
   }
 
   getDependencyTypeLabel(type) {
@@ -1086,21 +1148,35 @@ ${insights.map(insight => `- ${insight}`).join('\n')}
     // Determine semantic class based on component name and type
     const name = component.name.toLowerCase();
     
-    if (name.includes('analyzer')) {
-      return 'analyzer';
-    } else if (name.includes('generator')) {
-      return 'generator';
-    } else if (name.includes('manager')) {
-      return 'manager';
-    } else if (name.includes('service')) {
-      return 'service';
-    } else if (name.includes('controller') || name.includes('handler')) {
-      return 'service';
-    } else if (name.includes('model') || name.includes('entity')) {
-      return 'service';
+    // Get size-based class
+    const metrics = this.getComponentMetrics(component, { components: [] });
+    let sizeClass = '';
+    if (metrics.size > 100) {
+      sizeClass = 'large';
+    } else if (metrics.size > 50) {
+      sizeClass = 'medium';
     } else {
-      return 'component';
+      sizeClass = 'small';
     }
+    
+    // Get semantic class
+    let semanticClass = 'component';
+    if (name.includes('analyzer')) {
+      semanticClass = 'analyzer';
+    } else if (name.includes('generator')) {
+      semanticClass = 'generator';
+    } else if (name.includes('manager')) {
+      semanticClass = 'manager';
+    } else if (name.includes('service')) {
+      semanticClass = 'service';
+    } else if (name.includes('controller') || name.includes('handler')) {
+      semanticClass = 'service';
+    } else if (name.includes('model') || name.includes('entity')) {
+      semanticClass = 'service';
+    }
+    
+    // Combine semantic and size classes
+    return `${semanticClass} ${sizeClass}`;
   }
 
   getDependencyClass(dependency) {
