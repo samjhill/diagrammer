@@ -224,12 +224,6 @@ graph TB
 
   subgraph log_service["log-service Service"]
     GitManager_log["log"]:::method
-    DiagramGenerator_log["log"]:::method
-    based_log["log"]:::method
-    const_log["log"]:::method
-    let_log["log"]:::method
-    for_log["log"]:::method
-    calls_log["log"]:::method
   end
 
   subgraph isGitRepository_service["isGitRepository-service Service"]
@@ -1413,7 +1407,6 @@ graph TB
   DiagramGenerator -->|groupDependenciesByType| groupDependenciesByType_service
   DiagramGenerator -->|getDependencyClass| getDependencyClass_service
   DiagramGenerator -->|getDependencyTypeLabel| getDependencyTypeLabel_service
-  DiagramGenerator -->|log| log_service
   DiagramGenerator -->|isFrameworkDependency| isFrameworkDependency_service
   DiagramGenerator -->|calculateComponentSize| calculateComponentSize_service
   DiagramGenerator -->|countDependencies| countDependencies_service
@@ -1494,7 +1487,6 @@ graph TB
   based -->|groupDependenciesByType| groupDependenciesByType_service
   based -->|getDependencyClass| getDependencyClass_service
   based -->|getDependencyTypeLabel| getDependencyTypeLabel_service
-  based -->|log| log_service
   based -->|isFrameworkDependency| isFrameworkDependency_service
   based -->|calculateComponentSize| calculateComponentSize_service
   based -->|countDependencies| countDependencies_service
@@ -1575,7 +1567,6 @@ graph TB
   const -->|groupDependenciesByType| groupDependenciesByType_service
   const -->|getDependencyClass| getDependencyClass_service
   const -->|getDependencyTypeLabel| getDependencyTypeLabel_service
-  const -->|log| log_service
   const -->|isFrameworkDependency| isFrameworkDependency_service
   const -->|calculateComponentSize| calculateComponentSize_service
   const -->|countDependencies| countDependencies_service
@@ -1656,7 +1647,6 @@ graph TB
   let -->|groupDependenciesByType| groupDependenciesByType_service
   let -->|getDependencyClass| getDependencyClass_service
   let -->|getDependencyTypeLabel| getDependencyTypeLabel_service
-  let -->|log| log_service
   let -->|isFrameworkDependency| isFrameworkDependency_service
   let -->|calculateComponentSize| calculateComponentSize_service
   let -->|countDependencies| countDependencies_service
@@ -1737,7 +1727,6 @@ graph TB
   for -->|groupDependenciesByType| groupDependenciesByType_service
   for -->|getDependencyClass| getDependencyClass_service
   for -->|getDependencyTypeLabel| getDependencyTypeLabel_service
-  for -->|log| log_service
   for -->|isFrameworkDependency| isFrameworkDependency_service
   for -->|calculateComponentSize| calculateComponentSize_service
   for -->|countDependencies| countDependencies_service
@@ -1818,7 +1807,6 @@ graph TB
   calls -->|groupDependenciesByType| groupDependenciesByType_service
   calls -->|getDependencyClass| getDependencyClass_service
   calls -->|getDependencyTypeLabel| getDependencyTypeLabel_service
-  calls -->|log| log_service
   calls -->|isFrameworkDependency| isFrameworkDependency_service
   calls -->|calculateComponentSize| calculateComponentSize_service
   calls -->|countDependencies| countDependencies_service
