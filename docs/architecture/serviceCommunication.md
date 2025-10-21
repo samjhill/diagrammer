@@ -2,6 +2,8 @@
 
 This diagram was automatically generated from your codebase.
 
+
+
 ```mermaid
 graph TB
   classDef service fill:#e8f5e8,stroke:#388e3c,stroke-width:2px
@@ -27,13 +29,6 @@ graph TB
     JavaScriptAnalyzer_split["split"]:::method
     declarations_split["split"]:::method
     ArchitecturalAnalyzer_split["split"]:::method
-    UserService_split["split"]:::method
-    __init___split["split"]:::method
-    create_user_split["split"]:::method
-    get_user_split["split"]:::method
-    list_users_split["split"]:::method
-    export_users_split["split"]:::method
-    validate_email_split["split"]:::method
   end
 
   subgraph map_service["map-service Service"]
@@ -393,6 +388,20 @@ graph TB
     calls_getDisplayComponentName["getDisplayComponentName"]:::method
   end
 
+  subgraph getComponentMetrics_service["getComponentMetrics-service Service"]
+    DiagramGenerator_getComponentMetrics["getComponentMetrics"]:::method
+    based_getComponentMetrics["getComponentMetrics"]:::method
+    for_getComponentMetrics["getComponentMetrics"]:::method
+    calls_getComponentMetrics["getComponentMetrics"]:::method
+  end
+
+  subgraph enhanceComponentName_service["enhanceComponentName-service Service"]
+    DiagramGenerator_enhanceComponentName["enhanceComponentName"]:::method
+    based_enhanceComponentName["enhanceComponentName"]:::method
+    for_enhanceComponentName["enhanceComponentName"]:::method
+    calls_enhanceComponentName["enhanceComponentName"]:::method
+  end
+
   subgraph addInternalRelationships_service["addInternalRelationships-service Service"]
     DiagramGenerator_addInternalRelationships["addInternalRelationships"]:::method
     based_addInternalRelationships["addInternalRelationships"]:::method
@@ -509,11 +518,89 @@ graph TB
     calls_calculateDiagramStats["calculateDiagramStats"]:::method
   end
 
+  subgraph generateArchitecturalInsights_service["generateArchitecturalInsights-service Service"]
+    DiagramGenerator_generateArchitecturalInsights["generateArchitecturalInsights"]:::method
+    based_generateArchitecturalInsights["generateArchitecturalInsights"]:::method
+    for_generateArchitecturalInsights["generateArchitecturalInsights"]:::method
+    calls_generateArchitecturalInsights["generateArchitecturalInsights"]:::method
+  end
+
   subgraph toLocaleDateString_service["toLocaleDateString-service Service"]
     DiagramGenerator_toLocaleDateString["toLocaleDateString"]:::method
     based_toLocaleDateString["toLocaleDateString"]:::method
     for_toLocaleDateString["toLocaleDateString"]:::method
     calls_toLocaleDateString["toLocaleDateString"]:::method
+  end
+
+  subgraph analyzeComponentTypes_service["analyzeComponentTypes-service Service"]
+    DiagramGenerator_analyzeComponentTypes["analyzeComponentTypes"]:::method
+    based_analyzeComponentTypes["analyzeComponentTypes"]:::method
+    for_analyzeComponentTypes["analyzeComponentTypes"]:::method
+    calls_analyzeComponentTypes["analyzeComponentTypes"]:::method
+  end
+
+  subgraph analyzeDependencies_service["analyzeDependencies-service Service"]
+    DiagramGenerator_analyzeDependencies["analyzeDependencies"]:::method
+    based_analyzeDependencies["analyzeDependencies"]:::method
+    for_analyzeDependencies["analyzeDependencies"]:::method
+    calls_analyzeDependencies["analyzeDependencies"]:::method
+  end
+
+  subgraph analyzeComplexity_service["analyzeComplexity-service Service"]
+    DiagramGenerator_analyzeComplexity["analyzeComplexity"]:::method
+    based_analyzeComplexity["analyzeComplexity"]:::method
+    for_analyzeComplexity["analyzeComplexity"]:::method
+    calls_analyzeComplexity["analyzeComplexity"]:::method
+  end
+
+  subgraph toLowerCase_service["toLowerCase-service Service"]
+    DiagramGenerator_toLowerCase["toLowerCase"]:::method
+    based_toLowerCase["toLowerCase"]:::method
+    for_toLowerCase["toLowerCase"]:::method
+    calls_toLowerCase["toLowerCase"]:::method
+    RelationshipAnalyzer_toLowerCase["toLowerCase"]:::method
+    ArchitecturalAnalyzer_toLowerCase["toLowerCase"]:::method
+  end
+
+  subgraph includes_service["includes-service Service"]
+    DiagramGenerator_includes["includes"]:::method
+    based_includes["includes"]:::method
+    for_includes["includes"]:::method
+    calls_includes["includes"]:::method
+    RelationshipAnalyzer_includes["includes"]:::method
+    PythonAnalyzer_includes["includes"]:::method
+    JavaScriptAnalyzer_includes["includes"]:::method
+    declarations_includes["includes"]:::method
+    CodeAnalyzer_includes["includes"]:::method
+    ArchitecturalAnalyzer_includes["includes"]:::method
+  end
+
+  subgraph detectCircularDependencies_service["detectCircularDependencies-service Service"]
+    DiagramGenerator_detectCircularDependencies["detectCircularDependencies"]:::method
+    based_detectCircularDependencies["detectCircularDependencies"]:::method
+    for_detectCircularDependencies["detectCircularDependencies"]:::method
+    calls_detectCircularDependencies["detectCircularDependencies"]:::method
+  end
+
+  subgraph set_service["set-service Service"]
+    DiagramGenerator_set["set"]:::method
+    based_set["set"]:::method
+    for_set["set"]:::method
+    calls_set["set"]:::method
+  end
+
+  subgraph get_service["get-service Service"]
+    DiagramGenerator_get["get"]:::method
+    based_get["get"]:::method
+    for_get["get"]:::method
+    calls_get["get"]:::method
+  end
+
+  subgraph calculateComplexity_service["calculateComplexity-service Service"]
+    DiagramGenerator_calculateComplexity["calculateComplexity"]:::method
+    based_calculateComplexity["calculateComplexity"]:::method
+    for_calculateComplexity["calculateComplexity"]:::method
+    calls_calculateComplexity["calculateComplexity"]:::method
   end
 
   subgraph from_service["from-service Service"]
@@ -529,19 +616,6 @@ graph TB
     for_toUpperCase["toUpperCase"]:::method
     calls_toUpperCase["toUpperCase"]:::method
     RelationshipAnalyzer_toUpperCase["toUpperCase"]:::method
-  end
-
-  subgraph includes_service["includes-service Service"]
-    DiagramGenerator_includes["includes"]:::method
-    based_includes["includes"]:::method
-    for_includes["includes"]:::method
-    calls_includes["includes"]:::method
-    RelationshipAnalyzer_includes["includes"]:::method
-    PythonAnalyzer_includes["includes"]:::method
-    JavaScriptAnalyzer_includes["includes"]:::method
-    declarations_includes["includes"]:::method
-    CodeAnalyzer_includes["includes"]:::method
-    ArchitecturalAnalyzer_includes["includes"]:::method
   end
 
   subgraph groupRelationshipsBySource_service["groupRelationshipsBySource-service Service"]
@@ -680,13 +754,26 @@ graph TB
     calls_isFrameworkDependency["isFrameworkDependency"]:::method
   end
 
-  subgraph toLowerCase_service["toLowerCase-service Service"]
-    DiagramGenerator_toLowerCase["toLowerCase"]:::method
-    based_toLowerCase["toLowerCase"]:::method
-    for_toLowerCase["toLowerCase"]:::method
-    calls_toLowerCase["toLowerCase"]:::method
-    RelationshipAnalyzer_toLowerCase["toLowerCase"]:::method
-    ArchitecturalAnalyzer_toLowerCase["toLowerCase"]:::method
+  subgraph calculateComponentSize_service["calculateComponentSize-service Service"]
+    DiagramGenerator_calculateComponentSize["calculateComponentSize"]:::method
+    based_calculateComponentSize["calculateComponentSize"]:::method
+    for_calculateComponentSize["calculateComponentSize"]:::method
+    calls_calculateComponentSize["calculateComponentSize"]:::method
+  end
+
+  subgraph countDependencies_service["countDependencies-service Service"]
+    DiagramGenerator_countDependencies["countDependencies"]:::method
+    based_countDependencies["countDependencies"]:::method
+    for_countDependencies["countDependencies"]:::method
+    calls_countDependencies["countDependencies"]:::method
+  end
+
+  subgraph min_service["min-service Service"]
+    DiagramGenerator_min["min"]:::method
+    based_min["min"]:::method
+    for_min["min"]:::method
+    calls_min["min"]:::method
+    RelationshipAnalyzer_min["min"]:::method
   end
 
   subgraph findTypeScriptFiles_service["findTypeScriptFiles-service Service"]
@@ -860,10 +947,6 @@ graph TB
     PythonAnalyzer_match["match"]:::method
   end
 
-  subgraph min_service["min-service Service"]
-    RelationshipAnalyzer_min["min"]:::method
-  end
-
   subgraph findFiles_service["findFiles-service Service"]
     PythonAnalyzer_findFiles["findFiles"]:::method
   end
@@ -992,56 +1075,6 @@ graph TB
     ArchitecturalAnalyzer_round["round"]:::method
   end
 
-  subgraph now_service["now-service Service"]
-    UserService_now["now"]:::method
-    __init___now["now"]:::method
-    create_user_now["now"]:::method
-    get_user_now["now"]:::method
-    list_users_now["now"]:::method
-    export_users_now["now"]:::method
-    validate_email_now["now"]:::method
-  end
-
-  subgraph isoformat_service["isoformat-service Service"]
-    UserService_isoformat["isoformat"]:::method
-    __init___isoformat["isoformat"]:::method
-    create_user_isoformat["isoformat"]:::method
-    get_user_isoformat["isoformat"]:::method
-    list_users_isoformat["isoformat"]:::method
-    export_users_isoformat["isoformat"]:::method
-    validate_email_isoformat["isoformat"]:::method
-  end
-
-  subgraph append_service["append-service Service"]
-    UserService_append["append"]:::method
-    __init___append["append"]:::method
-    create_user_append["append"]:::method
-    get_user_append["append"]:::method
-    list_users_append["append"]:::method
-    export_users_append["append"]:::method
-    validate_email_append["append"]:::method
-  end
-
-  subgraph copy_service["copy-service Service"]
-    UserService_copy["copy"]:::method
-    __init___copy["copy"]:::method
-    create_user_copy["copy"]:::method
-    get_user_copy["copy"]:::method
-    list_users_copy["copy"]:::method
-    export_users_copy["copy"]:::method
-    validate_email_copy["copy"]:::method
-  end
-
-  subgraph dumps_service["dumps-service Service"]
-    UserService_dumps["dumps"]:::method
-    __init___dumps["dumps"]:::method
-    create_user_dumps["dumps"]:::method
-    get_user_dumps["dumps"]:::method
-    list_users_dumps["dumps"]:::method
-    export_users_dumps["dumps"]:::method
-    validate_email_dumps["dumps"]:::method
-  end
-
   main -->|getInput| getInput_service
   main -->|split| split_service
   main -->|map| map_service
@@ -1146,6 +1179,8 @@ graph TB
   DiagramGenerator -->|sanitizeName| sanitizeName_service
   DiagramGenerator -->|getDisplayName| getDisplayName_service
   DiagramGenerator -->|getDisplayComponentName| getDisplayComponentName_service
+  DiagramGenerator -->|getComponentMetrics| getComponentMetrics_service
+  DiagramGenerator -->|enhanceComponentName| enhanceComponentName_service
   DiagramGenerator -->|map| map_service
   DiagramGenerator -->|addInternalRelationships| addInternalRelationships_service
   DiagramGenerator -->|addExternalDependencies| addExternalDependencies_service
@@ -1163,11 +1198,20 @@ graph TB
   DiagramGenerator -->|generateDiagramMetadata| generateDiagramMetadata_service
   DiagramGenerator -->|generateLegend| generateLegend_service
   DiagramGenerator -->|calculateDiagramStats| calculateDiagramStats_service
+  DiagramGenerator -->|generateArchitecturalInsights| generateArchitecturalInsights_service
   DiagramGenerator -->|join| join_service
   DiagramGenerator -->|toLocaleDateString| toLocaleDateString_service
+  DiagramGenerator -->|analyzeComponentTypes| analyzeComponentTypes_service
+  DiagramGenerator -->|analyzeDependencies| analyzeDependencies_service
+  DiagramGenerator -->|analyzeComplexity| analyzeComplexity_service
+  DiagramGenerator -->|toLowerCase| toLowerCase_service
+  DiagramGenerator -->|includes| includes_service
+  DiagramGenerator -->|detectCircularDependencies| detectCircularDependencies_service
+  DiagramGenerator -->|set| set_service
+  DiagramGenerator -->|get| get_service
+  DiagramGenerator -->|calculateComplexity| calculateComplexity_service
   DiagramGenerator -->|from| from_service
   DiagramGenerator -->|toUpperCase| toUpperCase_service
-  DiagramGenerator -->|includes| includes_service
   DiagramGenerator -->|groupRelationshipsBySource| groupRelationshipsBySource_service
   DiagramGenerator -->|groupRelationshipsByType| groupRelationshipsByType_service
   DiagramGenerator -->|getDataFlowClass| getDataFlowClass_service
@@ -1188,7 +1232,9 @@ graph TB
   DiagramGenerator -->|getDependencyTypeLabel| getDependencyTypeLabel_service
   DiagramGenerator -->|find| find_service
   DiagramGenerator -->|isFrameworkDependency| isFrameworkDependency_service
-  DiagramGenerator -->|toLowerCase| toLowerCase_service
+  DiagramGenerator -->|calculateComponentSize| calculateComponentSize_service
+  DiagramGenerator -->|countDependencies| countDependencies_service
+  DiagramGenerator -->|min| min_service
   based -->|generateArchitectureDiagram| generateArchitectureDiagram_service
   based -->|generateDependencyDiagram| generateDependencyDiagram_service
   based -->|generateModuleDiagram| generateModuleDiagram_service
@@ -1211,6 +1257,8 @@ graph TB
   based -->|sanitizeName| sanitizeName_service
   based -->|getDisplayName| getDisplayName_service
   based -->|getDisplayComponentName| getDisplayComponentName_service
+  based -->|getComponentMetrics| getComponentMetrics_service
+  based -->|enhanceComponentName| enhanceComponentName_service
   based -->|map| map_service
   based -->|addInternalRelationships| addInternalRelationships_service
   based -->|addExternalDependencies| addExternalDependencies_service
@@ -1228,11 +1276,20 @@ graph TB
   based -->|generateDiagramMetadata| generateDiagramMetadata_service
   based -->|generateLegend| generateLegend_service
   based -->|calculateDiagramStats| calculateDiagramStats_service
+  based -->|generateArchitecturalInsights| generateArchitecturalInsights_service
   based -->|join| join_service
   based -->|toLocaleDateString| toLocaleDateString_service
+  based -->|analyzeComponentTypes| analyzeComponentTypes_service
+  based -->|analyzeDependencies| analyzeDependencies_service
+  based -->|analyzeComplexity| analyzeComplexity_service
+  based -->|toLowerCase| toLowerCase_service
+  based -->|includes| includes_service
+  based -->|detectCircularDependencies| detectCircularDependencies_service
+  based -->|set| set_service
+  based -->|get| get_service
+  based -->|calculateComplexity| calculateComplexity_service
   based -->|from| from_service
   based -->|toUpperCase| toUpperCase_service
-  based -->|includes| includes_service
   based -->|groupRelationshipsBySource| groupRelationshipsBySource_service
   based -->|groupRelationshipsByType| groupRelationshipsByType_service
   based -->|getDataFlowClass| getDataFlowClass_service
@@ -1253,7 +1310,9 @@ graph TB
   based -->|getDependencyTypeLabel| getDependencyTypeLabel_service
   based -->|find| find_service
   based -->|isFrameworkDependency| isFrameworkDependency_service
-  based -->|toLowerCase| toLowerCase_service
+  based -->|calculateComponentSize| calculateComponentSize_service
+  based -->|countDependencies| countDependencies_service
+  based -->|min| min_service
   for -->|generateArchitectureDiagram| generateArchitectureDiagram_service
   for -->|generateDependencyDiagram| generateDependencyDiagram_service
   for -->|generateModuleDiagram| generateModuleDiagram_service
@@ -1276,6 +1335,8 @@ graph TB
   for -->|sanitizeName| sanitizeName_service
   for -->|getDisplayName| getDisplayName_service
   for -->|getDisplayComponentName| getDisplayComponentName_service
+  for -->|getComponentMetrics| getComponentMetrics_service
+  for -->|enhanceComponentName| enhanceComponentName_service
   for -->|map| map_service
   for -->|addInternalRelationships| addInternalRelationships_service
   for -->|addExternalDependencies| addExternalDependencies_service
@@ -1293,11 +1354,20 @@ graph TB
   for -->|generateDiagramMetadata| generateDiagramMetadata_service
   for -->|generateLegend| generateLegend_service
   for -->|calculateDiagramStats| calculateDiagramStats_service
+  for -->|generateArchitecturalInsights| generateArchitecturalInsights_service
   for -->|join| join_service
   for -->|toLocaleDateString| toLocaleDateString_service
+  for -->|analyzeComponentTypes| analyzeComponentTypes_service
+  for -->|analyzeDependencies| analyzeDependencies_service
+  for -->|analyzeComplexity| analyzeComplexity_service
+  for -->|toLowerCase| toLowerCase_service
+  for -->|includes| includes_service
+  for -->|detectCircularDependencies| detectCircularDependencies_service
+  for -->|set| set_service
+  for -->|get| get_service
+  for -->|calculateComplexity| calculateComplexity_service
   for -->|from| from_service
   for -->|toUpperCase| toUpperCase_service
-  for -->|includes| includes_service
   for -->|groupRelationshipsBySource| groupRelationshipsBySource_service
   for -->|groupRelationshipsByType| groupRelationshipsByType_service
   for -->|getDataFlowClass| getDataFlowClass_service
@@ -1318,7 +1388,9 @@ graph TB
   for -->|getDependencyTypeLabel| getDependencyTypeLabel_service
   for -->|find| find_service
   for -->|isFrameworkDependency| isFrameworkDependency_service
-  for -->|toLowerCase| toLowerCase_service
+  for -->|calculateComponentSize| calculateComponentSize_service
+  for -->|countDependencies| countDependencies_service
+  for -->|min| min_service
   calls -->|generateArchitectureDiagram| generateArchitectureDiagram_service
   calls -->|generateDependencyDiagram| generateDependencyDiagram_service
   calls -->|generateModuleDiagram| generateModuleDiagram_service
@@ -1341,6 +1413,8 @@ graph TB
   calls -->|sanitizeName| sanitizeName_service
   calls -->|getDisplayName| getDisplayName_service
   calls -->|getDisplayComponentName| getDisplayComponentName_service
+  calls -->|getComponentMetrics| getComponentMetrics_service
+  calls -->|enhanceComponentName| enhanceComponentName_service
   calls -->|map| map_service
   calls -->|addInternalRelationships| addInternalRelationships_service
   calls -->|addExternalDependencies| addExternalDependencies_service
@@ -1358,11 +1432,20 @@ graph TB
   calls -->|generateDiagramMetadata| generateDiagramMetadata_service
   calls -->|generateLegend| generateLegend_service
   calls -->|calculateDiagramStats| calculateDiagramStats_service
+  calls -->|generateArchitecturalInsights| generateArchitecturalInsights_service
   calls -->|join| join_service
   calls -->|toLocaleDateString| toLocaleDateString_service
+  calls -->|analyzeComponentTypes| analyzeComponentTypes_service
+  calls -->|analyzeDependencies| analyzeDependencies_service
+  calls -->|analyzeComplexity| analyzeComplexity_service
+  calls -->|toLowerCase| toLowerCase_service
+  calls -->|includes| includes_service
+  calls -->|detectCircularDependencies| detectCircularDependencies_service
+  calls -->|set| set_service
+  calls -->|get| get_service
+  calls -->|calculateComplexity| calculateComplexity_service
   calls -->|from| from_service
   calls -->|toUpperCase| toUpperCase_service
-  calls -->|includes| includes_service
   calls -->|groupRelationshipsBySource| groupRelationshipsBySource_service
   calls -->|groupRelationshipsByType| groupRelationshipsByType_service
   calls -->|getDataFlowClass| getDataFlowClass_service
@@ -1383,7 +1466,9 @@ graph TB
   calls -->|getDependencyTypeLabel| getDependencyTypeLabel_service
   calls -->|find| find_service
   calls -->|isFrameworkDependency| isFrameworkDependency_service
-  calls -->|toLowerCase| toLowerCase_service
+  calls -->|calculateComponentSize| calculateComponentSize_service
+  calls -->|countDependencies| countDependencies_service
+  calls -->|min| min_service
   TypeScriptAnalyzer -->|findTypeScriptFiles| findTypeScriptFiles_service
   TypeScriptAnalyzer -->|readFile| readFile_service
   TypeScriptAnalyzer -->|analyzeFile| analyzeFile_service
@@ -1554,50 +1639,41 @@ graph TB
   ArchitecturalAnalyzer -->|exec| exec_service
   ArchitecturalAnalyzer -->|replace| replace_service
   ArchitecturalAnalyzer -->|round| round_service
-  UserService -->|now| now_service
-  UserService -->|isoformat| isoformat_service
-  UserService -->|append| append_service
-  UserService -->|copy| copy_service
-  UserService -->|dumps| dumps_service
-  UserService -->|split| split_service
-  __init__ -->|now| now_service
-  __init__ -->|isoformat| isoformat_service
-  __init__ -->|append| append_service
-  __init__ -->|copy| copy_service
-  __init__ -->|dumps| dumps_service
-  __init__ -->|split| split_service
-  create_user -->|now| now_service
-  create_user -->|isoformat| isoformat_service
-  create_user -->|append| append_service
-  create_user -->|copy| copy_service
-  create_user -->|dumps| dumps_service
-  create_user -->|split| split_service
-  get_user -->|now| now_service
-  get_user -->|isoformat| isoformat_service
-  get_user -->|append| append_service
-  get_user -->|copy| copy_service
-  get_user -->|dumps| dumps_service
-  get_user -->|split| split_service
-  list_users -->|now| now_service
-  list_users -->|isoformat| isoformat_service
-  list_users -->|append| append_service
-  list_users -->|copy| copy_service
-  list_users -->|dumps| dumps_service
-  list_users -->|split| split_service
-  export_users -->|now| now_service
-  export_users -->|isoformat| isoformat_service
-  export_users -->|append| append_service
-  export_users -->|copy| copy_service
-  export_users -->|dumps| dumps_service
-  export_users -->|split| split_service
-  validate_email -->|now| now_service
-  validate_email -->|isoformat| isoformat_service
-  validate_email -->|append| append_service
-  validate_email -->|copy| copy_service
-  validate_email -->|dumps| dumps_service
-  validate_email -->|split| split_service
 
 ```
+
+## 🎨 Legend
+
+| Component Type | Color | Description |
+|---|---|---|
+| 🔍 **Analyzer** | Green | Code analysis components |
+| 🎨 **Generator** | Orange | Diagram generation components |
+| ⚙️ **Manager** | Purple | Resource management components |
+| 🔧 **Service** | Teal | Business logic and services |
+| 📦 **NPM** | Blue | Node.js packages |
+| 🏗️ **Framework** | Light Green | Framework dependencies |
+| 🌐 **External** | Red | External libraries |
+
+## 📊 Visual Indicators
+
+| Symbol | Meaning | Description |
+|---|---|---|
+| 📦 | Large Component | Component with >100 lines of code |
+| 📄 | Medium Component | Component with 50-100 lines of code |
+| 📝 | Small Component | Component with <50 lines of code |
+| ⚡ | High Complexity | Complex component (complexity ≥4) |
+| 🔥 | Medium Complexity | Moderate complexity (complexity ≥3) |
+| 🔗 | High Dependencies | Component with >5 dependencies |
+
+## 🔗 Relationship Types
+
+- **imports**: Module imports and dependencies
+- **calls**: Method/function calls
+- **generates**: Component generates output
+- **uses**: Component utilizes another component
+- **API**: API calls and communication
+- **data**: Data flow between components
+
 
 ---
 *Generated by [Diagrammer GitHub Action](https://github.com/samjhill/diagrammer)*

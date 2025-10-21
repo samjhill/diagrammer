@@ -2,97 +2,97 @@
 
 This diagram was automatically generated from your codebase.
 
+## 📊 Architecture Overview
+
+- **Components**: 16 analyzed
+- **Languages**: javascript
+- **Architectural Patterns**: None detected
+- **External Dependencies**: 12 packages
+- **Generated**: 10/21/2025
+
+## 🧠 Architectural Insights
+
+- 🔍 **High Analysis Complexity**: Multiple analyzers detected - consider consolidating analysis logic
+- 🌐 **High External Dependencies**: Consider reducing external dependencies for better maintainability
+- 🔄 **Circular Dependencies**: Found circular dependencies - consider refactoring
+- ⚡ **Complex Components**: 1 components with high complexity - consider refactoring
+
+
+
+
+
 ```mermaid
 graph TD
   classDef component fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-  classDef external fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-  classDef internal fill:#e8f5e8,stroke:#388e3c,stroke-width:2px
-  classDef dependency fill:#fce4ec,stroke:#c2185b,stroke-width:2px
-  classDef group fill:#f3e5f5,stroke:#7b1fa2,stroke-width:3px
+  classDef analyzer fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px
+  classDef generator fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+  classDef manager fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+  classDef service fill:#e0f2f1,stroke:#00695c,stroke-width:2px
+  classDef external fill:#ffebee,stroke:#c62828,stroke-width:2px
+  classDef framework fill:#f1f8e9,stroke:#558b2f,stroke-width:2px
+  classDef npm fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px
+  classDef group fill:#fafafa,stroke:#424242,stroke-width:3px
 
-  subgraph src["src"]
-    main["main"]
-    loadConfig["loadConfig"]
-    languages["languages"]
+  subgraph src_analyzers["src/analyzers"]
+    TypeScriptAnalyzer["📦 TypeScriptAnalyzer 🔥"]
+    RelationshipAnalyzer["📦 RelationshipAnalyzer 🔥"]
+    PythonAnalyzer["📦 PythonAnalyzer 🔥"]
+    JavaScriptAnalyzer["📦 JavaScriptAnalyzer 🔥"]
+    CodeAnalyzer["📦 CodeAnalyzer 🔥"]
+    ArchitecturalAnalyzer["📦 ArchitecturalAnal... ⚡"]
   end
 
-  subgraph src_utils["src/utils"]
-    GitManager["GitManager"]
+  subgraph src["src"]
+    loadConfig["📄 loadConfig"]
   end
 
   subgraph src_generators["src/generators"]
-    DiagramGenerator["DiagramGenerator"]
-    based["based"]
-    for["for"]
-    calls["calls"]
+    DiagramGenerator["📦 DiagramGenerator 🔥"]
   end
 
-  subgraph src_analyzers["src/analyzers"]
-    TypeScriptAnalyzer["TypeScriptAnalyzer"]
-    visit["visit"]
-    RelationshipAnalyzer["RelationshipAnalyzer"]
-    PythonAnalyzer["PythonAnalyzer"]
-    JavaScriptAnalyzer["JavaScriptAnalyzer"]
-    declarations["declarations"]
-    CodeAnalyzer["CodeAnalyzer"]
-    ArchitecturalAnalyzer["ArchitecturalAnalyzer"]
-  end
-
-  subgraph tests_sample_project_src_services["tests/sample-project/src/services"]
-    UserService["UserService"]
-    __init__["__init__"]
-    create_user["create_user"]
-    get_user["get_user"]
-    list_users["list_users"]
-    export_users["export_users"]
-    validate_email["validate_email"]
-  end
-
-  _actions_core["@actions/core"]
-  _actions_core:::external
-  core["core"]
-  core:::dependency
-  _actions_core -->|depends| core
-  _actions_github["@actions/github"]
-  _actions_github:::external
-  github["github"]
-  github:::dependency
-  _actions_github -->|depends| github
-  fs_extra["fs-extra"]
-  fs_extra:::external
-  fs["fs"]
-  fs:::dependency
-  fs_extra -->|depends| fs
-  typescript["typescript"]
-  typescript:::external
-  ts["ts"]
-  ts:::dependency
-  typescript -->|depends| ts
-  main:::component
   loadConfig:::component
-  languages:::component
-  GitManager:::component
-  DiagramGenerator:::component
-  based:::component
-  for:::component
-  calls:::component
-  TypeScriptAnalyzer:::component
-  visit:::component
-  RelationshipAnalyzer:::component
-  PythonAnalyzer:::component
-  JavaScriptAnalyzer:::component
-  declarations:::component
-  CodeAnalyzer:::component
-  ArchitecturalAnalyzer:::component
-  UserService:::component
-  __init__:::component
-  create_user:::component
-  get_user:::component
-  list_users:::component
-  export_users:::component
-  validate_email:::component
+  DiagramGenerator:::generator
+  TypeScriptAnalyzer:::analyzer
+  RelationshipAnalyzer:::analyzer
+  PythonAnalyzer:::analyzer
+  JavaScriptAnalyzer:::analyzer
+  CodeAnalyzer:::analyzer
+  ArchitecturalAnalyzer:::analyzer
 
 ```
+
+## 🎨 Legend
+
+| Component Type | Color | Description |
+|---|---|---|
+| 🔍 **Analyzer** | Green | Code analysis components |
+| 🎨 **Generator** | Orange | Diagram generation components |
+| ⚙️ **Manager** | Purple | Resource management components |
+| 🔧 **Service** | Teal | Business logic and services |
+| 📦 **NPM** | Blue | Node.js packages |
+| 🏗️ **Framework** | Light Green | Framework dependencies |
+| 🌐 **External** | Red | External libraries |
+
+## 📊 Visual Indicators
+
+| Symbol | Meaning | Description |
+|---|---|---|
+| 📦 | Large Component | Component with >100 lines of code |
+| 📄 | Medium Component | Component with 50-100 lines of code |
+| 📝 | Small Component | Component with <50 lines of code |
+| ⚡ | High Complexity | Complex component (complexity ≥4) |
+| 🔥 | Medium Complexity | Moderate complexity (complexity ≥3) |
+| 🔗 | High Dependencies | Component with >5 dependencies |
+
+## 🔗 Relationship Types
+
+- **imports**: Module imports and dependencies
+- **calls**: Method/function calls
+- **generates**: Component generates output
+- **uses**: Component utilizes another component
+- **API**: API calls and communication
+- **data**: Data flow between components
+
 
 ---
 *Generated by [Diagrammer GitHub Action](https://github.com/samjhill/diagrammer)*
