@@ -4,11 +4,20 @@ This diagram was automatically generated from your codebase.
 
 ## 📊 Architecture Overview
 
-- **Components**: 23 analyzed
-- **Languages**: javascript, python
-- **Architectural Patterns**: MICROSERVICES
+- **Components**: 16 analyzed
+- **Languages**: javascript
+- **Architectural Patterns**: None detected
 - **External Dependencies**: 12 packages
 - **Generated**: 10/21/2025
+
+## 🧠 Architectural Insights
+
+- 🔍 **High Analysis Complexity**: Multiple analyzers detected - consider consolidating analysis logic
+- 🌐 **High External Dependencies**: Consider reducing external dependencies for better maintainability
+- 🔄 **Circular Dependencies**: Found circular dependencies - consider refactoring
+- ⚡ **Complex Components**: 1 components with high complexity - consider refactoring
+
+
 
 
 
@@ -24,38 +33,23 @@ graph TD
   classDef npm fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px
   classDef group fill:#fafafa,stroke:#424242,stroke-width:3px
 
-  subgraph tests_sample_project_src_services["src/services"]
-    UserService["UserService"]
-    create_user["create_user"]
-    get_user["get_user"]
-    list_users["list_users"]
-    export_users["export_users"]
-    validate_email["validate_email"]
-  end
-
   subgraph src_analyzers["src/analyzers"]
-    TypeScriptAnalyzer["TypeScriptAnalyzer"]
-    RelationshipAnalyzer["RelationshipAnalyzer"]
-    PythonAnalyzer["PythonAnalyzer"]
-    JavaScriptAnalyzer["JavaScriptAnalyzer"]
-    CodeAnalyzer["CodeAnalyzer"]
-    ArchitecturalAnalyzer["ArchitecturalAnal..."]
+    TypeScriptAnalyzer["📦 TypeScriptAnalyzer 🔥"]
+    RelationshipAnalyzer["📦 RelationshipAnalyzer 🔥"]
+    PythonAnalyzer["📦 PythonAnalyzer 🔥"]
+    JavaScriptAnalyzer["📦 JavaScriptAnalyzer 🔥"]
+    CodeAnalyzer["📦 CodeAnalyzer 🔥"]
+    ArchitecturalAnalyzer["📦 ArchitecturalAnal... ⚡"]
   end
 
   subgraph src["src"]
-    loadConfig["loadConfig"]
+    loadConfig["📄 loadConfig"]
   end
 
   subgraph src_generators["src/generators"]
-    DiagramGenerator["DiagramGenerator"]
+    DiagramGenerator["📦 DiagramGenerator 🔥"]
   end
 
-  UserService:::service
-  create_user:::component
-  get_user:::component
-  list_users:::component
-  export_users:::component
-  validate_email:::component
   loadConfig:::component
   DiagramGenerator:::generator
   TypeScriptAnalyzer:::analyzer
@@ -78,6 +72,17 @@ graph TD
 | 📦 **NPM** | Blue | Node.js packages |
 | 🏗️ **Framework** | Light Green | Framework dependencies |
 | 🌐 **External** | Red | External libraries |
+
+## 📊 Visual Indicators
+
+| Symbol | Meaning | Description |
+|---|---|---|
+| 📦 | Large Component | Component with >100 lines of code |
+| 📄 | Medium Component | Component with 50-100 lines of code |
+| 📝 | Small Component | Component with <50 lines of code |
+| ⚡ | High Complexity | Complex component (complexity ≥4) |
+| 🔥 | Medium Complexity | Moderate complexity (complexity ≥3) |
+| 🔗 | High Dependencies | Component with >5 dependencies |
 
 ## 🔗 Relationship Types
 

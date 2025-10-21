@@ -29,13 +29,6 @@ graph TB
     JavaScriptAnalyzer_split["split"]:::method
     declarations_split["split"]:::method
     ArchitecturalAnalyzer_split["split"]:::method
-    UserService_split["split"]:::method
-    __init___split["split"]:::method
-    create_user_split["split"]:::method
-    get_user_split["split"]:::method
-    list_users_split["split"]:::method
-    export_users_split["split"]:::method
-    validate_email_split["split"]:::method
   end
 
   subgraph map_service["map-service Service"]
@@ -1082,56 +1075,6 @@ graph TB
     ArchitecturalAnalyzer_round["round"]:::method
   end
 
-  subgraph now_service["now-service Service"]
-    UserService_now["now"]:::method
-    __init___now["now"]:::method
-    create_user_now["now"]:::method
-    get_user_now["now"]:::method
-    list_users_now["now"]:::method
-    export_users_now["now"]:::method
-    validate_email_now["now"]:::method
-  end
-
-  subgraph isoformat_service["isoformat-service Service"]
-    UserService_isoformat["isoformat"]:::method
-    __init___isoformat["isoformat"]:::method
-    create_user_isoformat["isoformat"]:::method
-    get_user_isoformat["isoformat"]:::method
-    list_users_isoformat["isoformat"]:::method
-    export_users_isoformat["isoformat"]:::method
-    validate_email_isoformat["isoformat"]:::method
-  end
-
-  subgraph append_service["append-service Service"]
-    UserService_append["append"]:::method
-    __init___append["append"]:::method
-    create_user_append["append"]:::method
-    get_user_append["append"]:::method
-    list_users_append["append"]:::method
-    export_users_append["append"]:::method
-    validate_email_append["append"]:::method
-  end
-
-  subgraph copy_service["copy-service Service"]
-    UserService_copy["copy"]:::method
-    __init___copy["copy"]:::method
-    create_user_copy["copy"]:::method
-    get_user_copy["copy"]:::method
-    list_users_copy["copy"]:::method
-    export_users_copy["copy"]:::method
-    validate_email_copy["copy"]:::method
-  end
-
-  subgraph dumps_service["dumps-service Service"]
-    UserService_dumps["dumps"]:::method
-    __init___dumps["dumps"]:::method
-    create_user_dumps["dumps"]:::method
-    get_user_dumps["dumps"]:::method
-    list_users_dumps["dumps"]:::method
-    export_users_dumps["dumps"]:::method
-    validate_email_dumps["dumps"]:::method
-  end
-
   main -->|getInput| getInput_service
   main -->|split| split_service
   main -->|map| map_service
@@ -1696,48 +1639,6 @@ graph TB
   ArchitecturalAnalyzer -->|exec| exec_service
   ArchitecturalAnalyzer -->|replace| replace_service
   ArchitecturalAnalyzer -->|round| round_service
-  UserService -->|now| now_service
-  UserService -->|isoformat| isoformat_service
-  UserService -->|append| append_service
-  UserService -->|copy| copy_service
-  UserService -->|dumps| dumps_service
-  UserService -->|split| split_service
-  __init__ -->|now| now_service
-  __init__ -->|isoformat| isoformat_service
-  __init__ -->|append| append_service
-  __init__ -->|copy| copy_service
-  __init__ -->|dumps| dumps_service
-  __init__ -->|split| split_service
-  create_user -->|now| now_service
-  create_user -->|isoformat| isoformat_service
-  create_user -->|append| append_service
-  create_user -->|copy| copy_service
-  create_user -->|dumps| dumps_service
-  create_user -->|split| split_service
-  get_user -->|now| now_service
-  get_user -->|isoformat| isoformat_service
-  get_user -->|append| append_service
-  get_user -->|copy| copy_service
-  get_user -->|dumps| dumps_service
-  get_user -->|split| split_service
-  list_users -->|now| now_service
-  list_users -->|isoformat| isoformat_service
-  list_users -->|append| append_service
-  list_users -->|copy| copy_service
-  list_users -->|dumps| dumps_service
-  list_users -->|split| split_service
-  export_users -->|now| now_service
-  export_users -->|isoformat| isoformat_service
-  export_users -->|append| append_service
-  export_users -->|copy| copy_service
-  export_users -->|dumps| dumps_service
-  export_users -->|split| split_service
-  validate_email -->|now| now_service
-  validate_email -->|isoformat| isoformat_service
-  validate_email -->|append| append_service
-  validate_email -->|copy| copy_service
-  validate_email -->|dumps| dumps_service
-  validate_email -->|split| split_service
 
 ```
 
@@ -1752,6 +1653,17 @@ graph TB
 | 📦 **NPM** | Blue | Node.js packages |
 | 🏗️ **Framework** | Light Green | Framework dependencies |
 | 🌐 **External** | Red | External libraries |
+
+## 📊 Visual Indicators
+
+| Symbol | Meaning | Description |
+|---|---|---|
+| 📦 | Large Component | Component with >100 lines of code |
+| 📄 | Medium Component | Component with 50-100 lines of code |
+| 📝 | Small Component | Component with <50 lines of code |
+| ⚡ | High Complexity | Complex component (complexity ≥4) |
+| 🔥 | Medium Complexity | Moderate complexity (complexity ≥3) |
+| 🔗 | High Dependencies | Component with >5 dependencies |
 
 ## 🔗 Relationship Types
 
