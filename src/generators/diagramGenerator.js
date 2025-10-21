@@ -94,7 +94,6 @@ class DiagramGenerator {
           const displayComponentName = this.getDisplayComponentName(component.name);
           const componentMetrics = this.getComponentMetrics(component, analysis);
           const enhancedName = this.enhanceComponentName(displayComponentName, componentMetrics);
-          const tooltip = this.generateComponentTooltip(component, componentMetrics);
           mermaid += `    ${nodeId}["${enhancedName}"]\n`;
         });
         
@@ -324,19 +323,15 @@ ${insights.map(insight => `- ${insight}`).join('\n')}
   }
 
   generateComponentTooltip(component, metrics) {
-    const tooltip = [];
-    tooltip.push(`Size: ${metrics.size} lines`);
-    tooltip.push(`Complexity: ${metrics.complexity}/10`);
-    tooltip.push(`Dependencies: ${metrics.dependencies}`);
-    tooltip.push(`Importance: ${metrics.importance}/10`);
+    const tooltip = [
+      `Size: ${metrics.size} lines`,
+      `Complexity: ${metrics.complexity}/10`,
+      `Dependencies: ${metrics.dependencies}`,
+      `Importance: ${metrics.importance}/10`
+    ];
     
-    if (component.path) {
-      tooltip.push(`Path: ${component.path}`);
-    }
-    
-    if (component.language) {
-      tooltip.push(`Language: ${component.language}`);
-    }
+    if (component.path) tooltip.push(`Path: ${component.path}`);
+    if (component.language) tooltip.push(`Language: ${component.language}`);
     
     return tooltip.join(' | ');
   }
@@ -966,8 +961,6 @@ ${insights.map(insight => `- ${insight}`).join('\n')}
   addInternalRelationships(mermaid, components, analysis, edgeSet) {
     // Add relationships between internal components based on analysis
     if (analysis.relationships && analysis.relationships.length > 0) {
-      const componentNames = new Set(components.map(c => c.name));
-      
       analysis.relationships.forEach(rel => {
         // Try to match relationships by component name or path
         const fromComponent = components.find(c => c.name === rel.from || c.path === rel.fromPath);
@@ -1079,28 +1072,17 @@ ${insights.map(insight => `- ${insight}`).join('\n')}
 
   getRelationshipStyle(relationshipType) {
     const styles = {
-      'import': '-->',
-      'call': '==>',
-      'extends': '-->',
-      'implements': '-->',
-      'api-call': '==>',
-      'data-flow': '-->',
-      'event': '-->',
-      'service': '==>'
+      'import': '-->', 'extends': '-->', 'implements': '-->', 'data-flow': '-->', 'event': '-->',
+      'call': '==>', 'api-call': '==>', 'service': '==>'
     };
     return styles[relationshipType] || '-->';
   }
 
   getRelationshipColor(relationshipType) {
     const colors = {
-      'import': '#666',
-      'call': '#ff9800',
-      'extends': '#2196f3',
-      'implements': '#4caf50',
-      'api-call': '#ff5722',
-      'data-flow': '#4caf50',
-      'event': '#9c27b0',
-      'service': '#ff9800'
+      'import': '#666', 'call': '#ff9800', 'service': '#ff9800',
+      'extends': '#2196f3', 'implements': '#4caf50', 'data-flow': '#4caf50',
+      'api-call': '#ff5722', 'event': '#9c27b0'
     };
     return colors[relationshipType] || '#666';
   }

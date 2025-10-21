@@ -2,22 +2,31 @@
 
 A GitHub Actions integration that automatically generates, maintains, and updates software architecture diagrams from your code repositories. Inspired by the [Mindcraft project's architecture documentation](https://github.com/samjhill/mindcraft/blob/develop/ARCHITECTURE.md).
 
-## Features
+## ✨ Features
 
-- 🚀 **Zero Configuration**: Works out of the box with sensible defaults
-- 🔄 **Automatic Updates**: Diagrams update automatically on code changes
-- 📊 **10 Diagram Types**: Architecture, layered, API flow, data flow, event flow, and more
-- 🎨 **Rich Visualizations**: Color-coded components with labeled relationships
-- 🧠 **Architectural Intelligence**: Framework detection, layer classification, pattern recognition
-- 🔗 **Enhanced Relationships**: API calls, event flows, data flows, service communication
-- 🎯 **Smart Filtering**: Automatically filters out test files, dependency layers, and internal details
-- 📏 **Size Limits**: Configurable limits to prevent overly complex diagrams (max 30 nodes, 50 dependencies)
-- 🎨 **Semantic Visualization**: 8 component types with distinct colors and purposes (Analyzer, Generator, Manager, Service)
-- 🔗 **Enhanced Relationships**: Smart relationship detection with labeled connections (imports, calls, generates, uses)
-- 📊 **Rich Metadata**: Comprehensive statistics, legends, and architectural insights
-- ⚙️ **Configurable**: Customize analysis and output via `.diagrammer.yml`
-- 🌐 **Multi-language**: Supports JavaScript, TypeScript, and Python
-- 🎯 **Sophisticated Analysis**: Matches enterprise-grade architecture documentation quality
+### 🎨 **Rich Visualizations**
+- **10 Diagram Types**: Architecture, layered, API flow, data flow, event flow, and more
+- **Semantic Component Classification**: 8 distinct component types with purpose-specific colors
+- **Smart Relationship Detection**: Automatic inference of component interactions and dependencies
+- **Visual Indicators**: Emoji-based indicators for size, complexity, and dependencies (📦📄📝⚡🔥🔗)
+
+### 🧠 **Architectural Intelligence**
+- **Framework Detection**: Automatic detection of React, Vue, Angular, Express, Django, Flask, etc.
+- **Layer Classification**: Frontend, backend, data, infrastructure layer identification
+- **Pattern Recognition**: MVC, microservices, event-driven, layered architecture patterns
+- **Enhanced Relationships**: API calls, event flows, data flows, service communication
+
+### 🎯 **Smart Analysis**
+- **Multi-language Support**: JavaScript, TypeScript, and Python
+- **Smart Filtering**: Automatically filters out test files, dependency layers, and internal details
+- **Size Limits**: Configurable limits to prevent overly complex diagrams (max 30 nodes, 50 dependencies)
+- **Rich Metadata**: Comprehensive statistics, legends, and architectural insights
+
+### ⚙️ **Configuration & Automation**
+- **Zero Configuration**: Works out of the box with sensible defaults
+- **Automatic Updates**: Diagrams update automatically on code changes
+- **Configurable**: Customize analysis and output via `.diagrammer.yml`
+- **Auto-commit**: Automatically commits generated diagrams to your repository
 
 ## 🆕 What's New in v1.3.0
 
@@ -34,7 +43,7 @@ A GitHub Actions integration that automatically generates, maintains, and update
 - **Enhanced Layout**: Better grouping and semantic organization
 - **Interactive Documentation**: Detailed legends and architectural context
 
-## Quick Start
+## 🚀 Quick Start
 
 ### 1. Required Permissions Setup
 
@@ -63,6 +72,10 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   generate-diagrams:
     runs-on: ubuntu-latest
@@ -72,43 +85,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        
-    - name: Generate Architecture Diagrams
-      uses: samjhill/diagrammer@v1.3.0  # Latest version with auto-commit fixes
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        output_path: 'docs/architecture'
-        languages: 'javascript,typescript,python'
-        auto_commit: 'true'  # Automatically commit generated diagrams
-```
-
-### 3. Required Permissions Configuration
-
-**⚠️ Important**: The diagrammer action requires specific permissions to commit generated diagrams back to your repository. Add these permissions to your workflow:
-
-```yaml
-name: Generate Architecture Diagrams
-
-on:
-  push:
-    branches: [ main, develop ]
-  pull_request:
-    branches: [ main ]
-
-jobs:
-  generate-diagrams:
-    runs-on: ubuntu-latest
-    
-    # Required permissions for auto-commit functionality
-    permissions:
-      contents: write      # Required to push generated diagrams
-      pull-requests: write # Required for PR-based workflows
-    
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        fetch-depth: 0
         
     - name: Generate Architecture Diagrams
       uses: samjhill/diagrammer@v1.3.0
@@ -119,279 +96,178 @@ jobs:
         auto_commit: 'true'
 ```
 
-**Without these permissions, you'll see errors like:**
-```
-remote: Write access to repository not granted.
-fatal: unable to access 'https://github.com/username/repository/': The requested URL returned error: 403
-```
+### 3. Auto-Commit Configuration
 
-### 4. Optional Configuration
+The `auto_commit` input controls whether generated diagrams are automatically committed to your repository:
 
-Create `.diagrammer.yml` in your repository root:
+- `auto_commit: 'true'` (default): Automatically commits generated diagrams
+- `auto_commit: 'false'`: Only generates diagrams without committing
+
+**Required Permissions for Auto-Commit:**
+- `contents: write` - Allows the action to push commits
+- `pull-requests: write` - Required for PR-based workflows
+
+## 📊 Generated Diagrams
+
+The action generates 10 different types of architecture diagrams:
+
+1. **Architecture Overview** - Main system architecture with component relationships
+2. **Dependency Graph** - External and internal dependencies
+3. **Module Structure** - Code organization and module hierarchy
+4. **Layered Architecture** - Architectural layers and their interactions
+5. **MVC Pattern** - Model-View-Controller pattern visualization
+6. **Microservices Pattern** - Microservice architecture and communication
+7. **API Flow** - API endpoints and data flow
+8. **Data Flow** - Data movement and transformations
+9. **Event Flow** - Event-driven architecture patterns
+10. **Service Communication** - Inter-service communication patterns
+
+## ⚙️ Configuration
+
+Create a `.diagrammer.yml` file in your repository root to customize the analysis:
 
 ```yaml
-diagram:
-  theme: "default"
-  direction: "TB"
-
 analysis:
-  includeTests: false
-  maxDepth: 5
+  includeTests: false        # Exclude test files from analysis
+  maxDepth: 3               # Maximum directory depth to analyze
+  languages:                # Supported languages
+    - javascript
+    - typescript
+    - python
 
-output:
-  path: "docs/architecture"
-  autoCommit: true
+diagram:
+  maxNodesPerDiagram: 30    # Maximum components per diagram
+  maxDependenciesPerDiagram: 50  # Maximum dependencies per diagram
+  excludeInternalMethods: true   # Exclude internal implementation details
 ```
 
-### 3. That's It!
+## 🎨 Visual Features
 
-The action will:
-- Analyze your codebase on every push/PR
-- Generate architecture diagrams
-- Commit them to your repository
-- Update automatically when code changes
+### Component Types & Colors
+- **🔍 Analyzer** (Green) - Code analysis components
+- **🎨 Generator** (Orange) - Diagram generation components  
+- **⚙️ Manager** (Purple) - Resource management components
+- **🔧 Service** (Teal) - Business logic and services
+- **📦 NPM** (Blue) - Node.js packages
+- **🌐 Framework** (Green) - Framework dependencies
+- **🔗 External** (Red) - External services and APIs
 
-## Generated Diagrams
+### Visual Indicators
+- **📦** Large components (>100 lines)
+- **📄** Medium components (50-100 lines)
+- **📝** Small components (<50 lines)
+- **⚡** High complexity components
+- **🔥** Medium complexity components
+- **🔗** High dependency components
 
-Diagrammer generates **10 sophisticated diagram types** with architectural intelligence:
+### Relationship Types
+- **imports** - Module imports and dependencies
+- **calls** - Function/method calls
+- **generates** - Component generates output
+- **uses** - Component utilizes another component
+- **API** - API calls and communication
+- **data** - Data flow between components
 
-### 🏗️ Architecture Overview
-High-level structure with components grouped by directory and architectural roles.
-
-### 📚 Layered Architecture  
-Components organized by architectural layers (frontend, backend, data, infrastructure).
-
-### 🔗 API Flow
-API relationship analysis showing endpoints, HTTP methods, and service communication.
-
-### 📊 Data Flow
-Data flow between components including state, props, and database operations.
-
-### ⚡ Event Flow
-Event emission and subscription relationships with event-driven architecture patterns.
-
-### 🤝 Service Communication
-Service-to-service method calls and inter-service dependencies.
-
-### 📦 Dependency Graph
-Enhanced dependency visualization with labeled arrows and external/internal classification.
-
-### 🗂️ Module Structure
-Module organization with language tags and export relationships.
-
-### 🎯 MVC Pattern
-Model-View-Controller pattern recognition and component classification.
-
-### 🏢 Microservices Pattern
-Microservices architecture detection and service boundary visualization.
-
-## Version Options
-
-You can specify different versions of the action:
-
-| Version | Description | Stability | Build Time |
-|---------|-------------|-----------|------------|
-| `@v1` | Latest v1.x.x version (recommended) | Stable | ~4-5 min |
-| `@v1.0` | Latest v1.0.x version | Very stable | ~30 sec |
-| `@v1.0.4` | Specific version | Most stable | ~30 sec |
-| `@main` | Latest from main branch | Unstable | ~4-5 min |
-
-**Recommended**: 
-- Use `@v1` for production (automatic updates)
-- Use `@v1.0.4` for testing (faster builds)
-
-## Configuration Options
-
-| Option | Description | Default |
-|--------|-------------|---------|
-| `output_path` | Where to store generated diagrams | `docs/architecture` |
-| `config_file` | Path to configuration file | `.diagrammer.yml` |
-| `languages` | Comma-separated languages to analyze | `javascript,typescript` |
-
-## Example Output
-
-Generated diagrams are stored as Markdown files with embedded Mermaid diagrams that render natively in GitHub. Here's an example of what you'll get:
-
-### Architecture Overview
-
-```mermaid
-graph TD
-  classDef component fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-  classDef external fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-  classDef internal fill:#e8f5e8,stroke:#388e3c,stroke-width:2px
-  classDef group fill:#f3e5f5,stroke:#7b1fa2,stroke-width:3px
-
-  subgraph src["src"]
-    App["App"]:::component
-    Components["Components"]:::component
-    Services["Services"]:::component
-  end
-  
-  subgraph lib["lib"]
-    Utils["Utils"]:::component
-    Helpers["Helpers"]:::component
-  end
-  
-  subgraph external["External Dependencies"]
-    React["React"]:::external
-    Express["Express"]:::external
-  end
-  
-  App -->|imports| Components
-  Components -->|uses| Services
-  Services -->|depends| Utils
-  App -->|imports| React
-  Services -->|imports| Express
-```
-
-### Layered Architecture
-
-```mermaid
-graph TB
-  classDef frontend fill:#e3f2fd,stroke:#1976d2,stroke-width:3px
-  classDef backend fill:#e8f5e8,stroke:#388e3c,stroke-width:3px
-  classDef data fill:#fff3e0,stroke:#f57c00,stroke-width:3px
-  
-  subgraph frontend["Frontend Layer"]
-    UI["UI Components"]:::frontend
-    Hooks["React Hooks"]:::frontend
-  end
-  
-  subgraph backend["Backend Layer"]
-    API["API Controllers"]:::backend
-    Services["Business Services"]:::backend
-  end
-  
-  subgraph data["Data Layer"]
-    Models["Data Models"]:::data
-    Database["Database"]:::data
-  end
-  
-  UI -->|calls| API
-  API -->|uses| Services
-  Services -->|persists| Models
-  Models -->|queries| Database
-```
-
-## Development
-
-### Running Tests
-
-```bash
-# Install dependencies
-npm install
-
-# Run the test suite
-npm test
-
-# Clean test outputs
-npm run clean
-```
-
-### Testing with Docker
-
-```bash
-# Build the Docker image
-docker build -t diagrammer .
-
-# Test with sample project
-docker run --rm --entrypoint="" \
-  -v "$(pwd):/workspace" -w /workspace \
-  diagrammer node tests/test.js
-```
-
-## Troubleshooting
-
-### Permission Issues
-
-**Problem**: Getting 403 errors when trying to commit diagrams
-```
-remote: Write access to repository not granted.
-fatal: unable to access 'https://github.com/username/repository/': The requested URL returned error: 403
-```
-
-**Solution**: Add the required permissions to your workflow:
-```yaml
-permissions:
-  contents: write      # Required to push generated diagrams
-  pull-requests: write # Required for PR-based workflows
-```
-
-**Common Permission Errors:**
-
-1. **"Write access to repository not granted"**
-   - **Cause**: Missing `contents: write` permission
-   - **Fix**: Add `permissions: contents: write` to your workflow
-
-2. **"The requested URL returned error: 403"**
-   - **Cause**: Insufficient permissions for the GITHUB_TOKEN
-   - **Fix**: Ensure both `contents: write` and `pull-requests: write` are set
-
-3. **"Not in a git repository, skipping commit"**
-   - **Cause**: Git repository not properly initialized in the action
-   - **Fix**: Use `actions/checkout@v4` with `fetch-depth: 0`
+## 🔧 Troubleshooting
 
 ### Auto-Commit Issues
 
-If you see `"Not in a git repository, skipping commit"`:
+**Problem**: Diagrams are generated but not committed to the repository.
 
-1. **Use the latest version**: Ensure you're using `samjhill/diagrammer@v1.2.4` or later
-2. **Check permissions**: Add `permissions: contents: write` to your workflow
-3. **Verify checkout**: Use `actions/checkout@v4` with `fetch-depth: 0`
-4. **Disable auto-commit**: Set `auto_commit: 'false'` and handle commits manually
-
-### Diagram Display Issues
-
-**Problem**: Diagrams are too complex and GitHub refuses to display them
-
-**Solution**: The action now includes smart filtering by default:
-- Automatically excludes test files, dependency layers, and internal methods
-- Limits diagrams to 30 nodes and 50 dependencies maximum
-- Prioritizes main architecture components
+**Solutions**:
+1. **Use Latest Version**: Ensure you're using `samjhill/diagrammer@v1.3.0` or later
+2. **Check Permissions**: Verify `contents: write` permission is set
+3. **Verify Checkout**: Ensure `fetch-depth: 0` is set in checkout step
+4. **Disable Auto-Commit**: Set `auto_commit: 'false'` and commit manually
 
 ### Manual Commit Alternative
 
-If auto-commit continues to fail, you can handle commits manually:
+If auto-commit isn't working, you can commit the generated diagrams manually:
 
 ```yaml
 - name: Generate Architecture Diagrams
   uses: samjhill/diagrammer@v1.3.0
   with:
     auto_commit: 'false'
-    # ... other inputs
-
-- name: Commit and push diagrams
+    
+- name: Commit Generated Diagrams
   run: |
-    git config --local user.email "github-actions[bot]@users.noreply.github.com"
-    git config --local user.name "github-actions[bot]"
+    git config user.name "github-actions[bot]"
+    git config user.email "github-actions[bot]@users.noreply.github.com"
     git add docs/architecture/
-    if git diff --staged --quiet; then
-      echo "No changes to commit"
-    else
-      git commit -m "Update architecture diagrams [skip ci]"
-      git push
-    fi
+    git commit -m "docs: update architecture diagrams [skip ci]" || exit 0
+    git push
 ```
 
-## Contributing
+### Common Permission Errors
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+**Error**: `Resource not accessible by integration`
+- **Solution**: Add `contents: write` permission to your workflow
 
-## License
+**Error**: `Permission denied`
+- **Solution**: Ensure `GITHUB_TOKEN` is properly configured
 
-MIT License - see [LICENSE](LICENSE) for details.
+**Error**: `Not in a git repository`
+- **Solution**: Add `fetch-depth: 0` to the checkout step
 
-## Roadmap
+## 📈 Examples
 
-- [ ] Python, Java, Go language support
-- [ ] AI-powered component classification
-- [ ] Custom diagram templates
-- [ ] Interactive web exports
-- [ ] Enterprise features
+### Architecture Overview
+```mermaid
+graph TD
+  classDef analyzer fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px
+  classDef generator fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+  
+  subgraph src["src"]
+    CodeAnalyzer["📦 CodeAnalyzer 🔥"]
+    DiagramGenerator["📦 DiagramGenerator 🔥"]
+  end
+  
+  CodeAnalyzer:::analyzer
+  DiagramGenerator:::generator
+  CodeAnalyzer -->|generates| DiagramGenerator
+```
 
-## Support
+### Layered Architecture
+```mermaid
+graph TD
+  classDef frontend fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+  classDef backend fill:#e8f5e8,stroke:#388e3c,stroke-width:2px
+  classDef data fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+  
+  subgraph frontend["Frontend Layer"]
+    ReactApp["📦 ReactApp 🔥"]
+  end
+  
+  subgraph backend["Backend Layer"]
+    ApiService["📦 ApiService 🔥"]
+  end
+  
+  subgraph data["Data Layer"]
+    Database["📦 Database 🔥"]
+  end
+  
+  ReactApp:::frontend
+  ApiService:::backend
+  Database:::data
+  ReactApp -->|API| ApiService
+  ApiService -->|queries| Database
+```
 
-- 📖 [Documentation](https://github.com/samjhill/diagrammer/wiki)
-- 🐛 [Report Issues](https://github.com/samjhill/diagrammer/issues)
-- 💬 [Discussions](https://github.com/samjhill/diagrammer/discussions)
-# Trigger enhanced diagram generation
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Inspired by the [Mindcraft project's architecture documentation](https://github.com/samjhill/mindcraft/blob/develop/ARCHITECTURE.md)
+- Built with [Mermaid](https://mermaid-js.github.io/) for diagram generation
+- Powered by GitHub Actions for seamless integration
+
+---
+
+*Generated by [Diagrammer GitHub Action](https://github.com/samjhill/diagrammer)*
