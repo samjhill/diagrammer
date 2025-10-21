@@ -4,7 +4,7 @@ This diagram was automatically generated from your codebase.
 
 ## 📊 Architecture Overview
 
-- **Components**: 16 analyzed
+- **Components**: 18 analyzed
 - **Languages**: javascript
 - **Architectural Patterns**: None detected
 - **External Dependencies**: 12 packages

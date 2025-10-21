@@ -24,6 +24,10 @@ graph TB
     DiagramGenerator:::component
     based["based"]
     based:::component
+    const["const"]
+    const:::component
+    let["let"]
+    let:::component
     for["for"]
     for:::component
     calls["calls"]

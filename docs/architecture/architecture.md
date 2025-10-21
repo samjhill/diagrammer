@@ -4,7 +4,7 @@ This diagram was automatically generated from your codebase.
 
 ## 📊 Architecture Overview
 
-- **Components**: 16 analyzed
+- **Components**: 18 analyzed
 - **Languages**: javascript
 - **Architectural Patterns**: None detected
 - **External Dependencies**: 12 packages
@@ -29,6 +29,9 @@ graph TD
   classDef manager fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
   classDef service fill:#e0f2f1,stroke:#00695c,stroke-width:2px
   classDef external fill:#ffebee,stroke:#c62828,stroke-width:2px
+  classDef large fill:#e3f2fd,stroke:#1976d2,stroke-width:3px,font-size:14px
+  classDef medium fill:#e3f2fd,stroke:#1976d2,stroke-width:2px,font-size:12px
+  classDef small fill:#e3f2fd,stroke:#1976d2,stroke-width:1px,font-size:10px
   classDef framework fill:#f1f8e9,stroke:#558b2f,stroke-width:2px
   classDef npm fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px
   classDef group fill:#fafafa,stroke:#424242,stroke-width:3px
@@ -50,14 +53,14 @@ graph TD
     DiagramGenerator["📦 DiagramGenerator 🔥"]
   end
 
-  loadConfig:::component
-  DiagramGenerator:::generator
-  TypeScriptAnalyzer:::analyzer
-  RelationshipAnalyzer:::analyzer
-  PythonAnalyzer:::analyzer
-  JavaScriptAnalyzer:::analyzer
-  CodeAnalyzer:::analyzer
-  ArchitecturalAnalyzer:::analyzer
+  loadConfig:::component medium
+  DiagramGenerator:::generator large
+  TypeScriptAnalyzer:::analyzer large
+  RelationshipAnalyzer:::analyzer large
+  PythonAnalyzer:::analyzer large
+  JavaScriptAnalyzer:::analyzer large
+  CodeAnalyzer:::analyzer large
+  ArchitecturalAnalyzer:::analyzer large
 
 ```
 

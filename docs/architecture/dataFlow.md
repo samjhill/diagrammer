@@ -26,6 +26,12 @@ graph TD
   based["based"]:::component
   data_store["data-store"]:::data
   based -->|array| data_store
+  const["const"]:::component
+  data_store["data-store"]:::data
+  const -->|array| data_store
+  let["let"]:::component
+  data_store["data-store"]:::data
+  let -->|array| data_store
   for["for"]:::component
   data_store["data-store"]:::data
   for -->|array| data_store
