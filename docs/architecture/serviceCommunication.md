@@ -224,6 +224,12 @@ graph TB
 
   subgraph log_service["log-service Service"]
     GitManager_log["log"]:::method
+    DiagramGenerator_log["log"]:::method
+    based_log["log"]:::method
+    const_log["log"]:::method
+    let_log["log"]:::method
+    for_log["log"]:::method
+    calls_log["log"]:::method
   end
 
   subgraph isGitRepository_service["isGitRepository-service Service"]
@@ -1400,6 +1406,7 @@ graph TB
   DiagramGenerator -->|split| split_service
   DiagramGenerator -->|test| test_service
   DiagramGenerator -->|substring| substring_service
+  DiagramGenerator -->|log| log_service
   DiagramGenerator -->|getRelationshipLabel| getRelationshipLabel_service
   DiagramGenerator -->|getRelationshipStyle| getRelationshipStyle_service
   DiagramGenerator -->|addArchitecturalRelationships| addArchitecturalRelationships_service
@@ -1480,6 +1487,7 @@ graph TB
   based -->|split| split_service
   based -->|test| test_service
   based -->|substring| substring_service
+  based -->|log| log_service
   based -->|getRelationshipLabel| getRelationshipLabel_service
   based -->|getRelationshipStyle| getRelationshipStyle_service
   based -->|addArchitecturalRelationships| addArchitecturalRelationships_service
@@ -1560,6 +1568,7 @@ graph TB
   const -->|split| split_service
   const -->|test| test_service
   const -->|substring| substring_service
+  const -->|log| log_service
   const -->|getRelationshipLabel| getRelationshipLabel_service
   const -->|getRelationshipStyle| getRelationshipStyle_service
   const -->|addArchitecturalRelationships| addArchitecturalRelationships_service
@@ -1640,6 +1649,7 @@ graph TB
   let -->|split| split_service
   let -->|test| test_service
   let -->|substring| substring_service
+  let -->|log| log_service
   let -->|getRelationshipLabel| getRelationshipLabel_service
   let -->|getRelationshipStyle| getRelationshipStyle_service
   let -->|addArchitecturalRelationships| addArchitecturalRelationships_service
@@ -1720,6 +1730,7 @@ graph TB
   for -->|split| split_service
   for -->|test| test_service
   for -->|substring| substring_service
+  for -->|log| log_service
   for -->|getRelationshipLabel| getRelationshipLabel_service
   for -->|getRelationshipStyle| getRelationshipStyle_service
   for -->|addArchitecturalRelationships| addArchitecturalRelationships_service
@@ -1800,6 +1811,7 @@ graph TB
   calls -->|split| split_service
   calls -->|test| test_service
   calls -->|substring| substring_service
+  calls -->|log| log_service
   calls -->|getRelationshipLabel| getRelationshipLabel_service
   calls -->|getRelationshipStyle| getRelationshipStyle_service
   calls -->|addArchitecturalRelationships| addArchitecturalRelationships_service
