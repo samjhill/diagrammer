@@ -36,10 +36,10 @@ graph LR
   fs_extra:::external
   path["path"]
   path:::external
-  typescript["typescript"]
-  typescript:::external
   fs["fs"]
   fs:::external
+  typescript["typescript"]
+  typescript:::external
   _actions_core -->|imports| core
   _actions_github -->|imports| github
   fs_extra -->|imports| fs

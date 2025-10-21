@@ -53,10 +53,10 @@ graph TB
     main_trim["trim"]:::method
     loadConfig_trim["trim"]:::method
     languages_trim["trim"]:::method
+    GitManager_trim["trim"]:::method
     PythonAnalyzer_trim["trim"]:::method
     JavaScriptAnalyzer_trim["trim"]:::method
     declarations_trim["trim"]:::method
-    GitManager_trim["trim"]:::method
   end
 
   subgraph getOctokit_service["getOctokit-service Service"]
@@ -81,8 +81,8 @@ graph TB
     main_cwd["cwd"]:::method
     loadConfig_cwd["cwd"]:::method
     languages_cwd["cwd"]:::method
-    PythonAnalyzer_cwd["cwd"]:::method
     GitManager_cwd["cwd"]:::method
+    PythonAnalyzer_cwd["cwd"]:::method
   end
 
   subgraph analyzeCodebase_service["analyzeCodebase-service Service"]
@@ -220,6 +220,40 @@ graph TB
     main_parse["parse"]:::method
     loadConfig_parse["parse"]:::method
     languages_parse["parse"]:::method
+  end
+
+  subgraph log_service["log-service Service"]
+    GitManager_log["log"]:::method
+    DiagramGenerator_log["log"]:::method
+    based_log["log"]:::method
+    const_log["log"]:::method
+    let_log["log"]:::method
+    for_log["log"]:::method
+    calls_log["log"]:::method
+  end
+
+  subgraph isGitRepository_service["isGitRepository-service Service"]
+    GitManager_isGitRepository["isGitRepository"]:::method
+  end
+
+  subgraph chdir_service["chdir-service Service"]
+    GitManager_chdir["chdir"]:::method
+  end
+
+  subgraph hasChanges_service["hasChanges-service Service"]
+    GitManager_hasChanges["hasChanges"]:::method
+  end
+
+  subgraph configureGitUser_service["configureGitUser-service Service"]
+    GitManager_configureGitUser["configureGitUser"]:::method
+  end
+
+  subgraph existsSync_service["existsSync-service Service"]
+    GitManager_existsSync["existsSync"]:::method
+  end
+
+  subgraph readdirSync_service["readdirSync-service Service"]
+    GitManager_readdirSync["readdirSync"]:::method
   end
 
   subgraph generateArchitectureDiagram_service["generateArchitectureDiagram-service Service"]
@@ -885,16 +919,6 @@ graph TB
     calls_getDependencyTypeLabel["getDependencyTypeLabel"]:::method
   end
 
-  subgraph log_service["log-service Service"]
-    DiagramGenerator_log["log"]:::method
-    based_log["log"]:::method
-    const_log["log"]:::method
-    let_log["log"]:::method
-    for_log["log"]:::method
-    calls_log["log"]:::method
-    GitManager_log["log"]:::method
-  end
-
   subgraph isFrameworkDependency_service["isFrameworkDependency-service Service"]
     DiagramGenerator_isFrameworkDependency["isFrameworkDependency"]:::method
     based_isFrameworkDependency["isFrameworkDependency"]:::method
@@ -1231,30 +1255,6 @@ graph TB
     ArchitecturalAnalyzer_round["round"]:::method
   end
 
-  subgraph isGitRepository_service["isGitRepository-service Service"]
-    GitManager_isGitRepository["isGitRepository"]:::method
-  end
-
-  subgraph chdir_service["chdir-service Service"]
-    GitManager_chdir["chdir"]:::method
-  end
-
-  subgraph hasChanges_service["hasChanges-service Service"]
-    GitManager_hasChanges["hasChanges"]:::method
-  end
-
-  subgraph configureGitUser_service["configureGitUser-service Service"]
-    GitManager_configureGitUser["configureGitUser"]:::method
-  end
-
-  subgraph existsSync_service["existsSync-service Service"]
-    GitManager_existsSync["existsSync"]:::method
-  end
-
-  subgraph readdirSync_service["readdirSync-service Service"]
-    GitManager_readdirSync["readdirSync"]:::method
-  end
-
   main -->|getInput| getInput_service
   main -->|split| split_service
   main -->|map| map_service
@@ -1327,6 +1327,16 @@ graph TB
   languages -->|pathExists| pathExists_service
   languages -->|readFile| readFile_service
   languages -->|parse| parse_service
+  GitManager -->|log| log_service
+  GitManager -->|isGitRepository| isGitRepository_service
+  GitManager -->|cwd| cwd_service
+  GitManager -->|trim| trim_service
+  GitManager -->|chdir| chdir_service
+  GitManager -->|hasChanges| hasChanges_service
+  GitManager -->|configureGitUser| configureGitUser_service
+  GitManager -->|error| error_service
+  GitManager -->|existsSync| existsSync_service
+  GitManager -->|readdirSync| readdirSync_service
   DiagramGenerator -->|generateArchitectureDiagram| generateArchitectureDiagram_service
   DiagramGenerator -->|generateDependencyDiagram| generateDependencyDiagram_service
   DiagramGenerator -->|generateModuleDiagram| generateModuleDiagram_service
@@ -1983,16 +1993,6 @@ graph TB
   ArchitecturalAnalyzer -->|exec| exec_service
   ArchitecturalAnalyzer -->|replace| replace_service
   ArchitecturalAnalyzer -->|round| round_service
-  GitManager -->|log| log_service
-  GitManager -->|isGitRepository| isGitRepository_service
-  GitManager -->|cwd| cwd_service
-  GitManager -->|trim| trim_service
-  GitManager -->|chdir| chdir_service
-  GitManager -->|hasChanges| hasChanges_service
-  GitManager -->|configureGitUser| configureGitUser_service
-  GitManager -->|error| error_service
-  GitManager -->|existsSync| existsSync_service
-  GitManager -->|readdirSync| readdirSync_service
 
 ```
 

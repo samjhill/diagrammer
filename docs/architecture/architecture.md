@@ -65,6 +65,12 @@ graph TD
   JavaScriptAnalyzer:::analyzer large
   CodeAnalyzer:::analyzer large
   ArchitecturalAnalyzer:::analyzer large
+  TypeScriptAnalyzer -->|generates| DiagramGenerator
+  RelationshipAnalyzer -->|generates| DiagramGenerator
+  PythonAnalyzer -->|generates| DiagramGenerator
+  JavaScriptAnalyzer -->|generates| DiagramGenerator
+  CodeAnalyzer -->|generates| DiagramGenerator
+  ArchitecturalAnalyzer -->|generates| DiagramGenerator
 
 ```
 

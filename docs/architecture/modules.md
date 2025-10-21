@@ -44,6 +44,10 @@ graph TB
     main["main"]
   end
 
+  subgraph src_utils["src/utils"]
+    GitManager["GitManager"]
+  end
+
   subgraph src_generators["src/generators"]
     DiagramGenerator["DiagramGenerator"]
   end
@@ -55,10 +59,6 @@ graph TB
     JavaScriptAnalyzer["JavaScriptAnalyzer"]
     CodeAnalyzer["CodeAnalyzer"]
     ArchitecturalAnalyzer["ArchitecturalAnalyzer"]
-  end
-
-  subgraph src_utils["src/utils"]
-    GitManager["GitManager"]
   end
 
 
