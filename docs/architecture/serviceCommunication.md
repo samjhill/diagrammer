@@ -458,6 +458,15 @@ graph TB
     calls_enhanceComponentName["enhanceComponentName"]:::method
   end
 
+  subgraph generateComponentTooltip_service["generateComponentTooltip-service Service"]
+    DiagramGenerator_generateComponentTooltip["generateComponentTooltip"]:::method
+    based_generateComponentTooltip["generateComponentTooltip"]:::method
+    const_generateComponentTooltip["generateComponentTooltip"]:::method
+    let_generateComponentTooltip["generateComponentTooltip"]:::method
+    for_generateComponentTooltip["generateComponentTooltip"]:::method
+    calls_generateComponentTooltip["generateComponentTooltip"]:::method
+  end
+
   subgraph addInternalRelationships_service["addInternalRelationships-service Service"]
     DiagramGenerator_addInternalRelationships["addInternalRelationships"]:::method
     based_addInternalRelationships["addInternalRelationships"]:::method
@@ -1337,6 +1346,7 @@ graph TB
   DiagramGenerator -->|getDisplayComponentName| getDisplayComponentName_service
   DiagramGenerator -->|getComponentMetrics| getComponentMetrics_service
   DiagramGenerator -->|enhanceComponentName| enhanceComponentName_service
+  DiagramGenerator -->|generateComponentTooltip| generateComponentTooltip_service
   DiagramGenerator -->|map| map_service
   DiagramGenerator -->|addInternalRelationships| addInternalRelationships_service
   DiagramGenerator -->|addExternalDependencies| addExternalDependencies_service
@@ -1415,6 +1425,7 @@ graph TB
   based -->|getDisplayComponentName| getDisplayComponentName_service
   based -->|getComponentMetrics| getComponentMetrics_service
   based -->|enhanceComponentName| enhanceComponentName_service
+  based -->|generateComponentTooltip| generateComponentTooltip_service
   based -->|map| map_service
   based -->|addInternalRelationships| addInternalRelationships_service
   based -->|addExternalDependencies| addExternalDependencies_service
@@ -1493,6 +1504,7 @@ graph TB
   const -->|getDisplayComponentName| getDisplayComponentName_service
   const -->|getComponentMetrics| getComponentMetrics_service
   const -->|enhanceComponentName| enhanceComponentName_service
+  const -->|generateComponentTooltip| generateComponentTooltip_service
   const -->|map| map_service
   const -->|addInternalRelationships| addInternalRelationships_service
   const -->|addExternalDependencies| addExternalDependencies_service
@@ -1571,6 +1583,7 @@ graph TB
   let -->|getDisplayComponentName| getDisplayComponentName_service
   let -->|getComponentMetrics| getComponentMetrics_service
   let -->|enhanceComponentName| enhanceComponentName_service
+  let -->|generateComponentTooltip| generateComponentTooltip_service
   let -->|map| map_service
   let -->|addInternalRelationships| addInternalRelationships_service
   let -->|addExternalDependencies| addExternalDependencies_service
@@ -1649,6 +1662,7 @@ graph TB
   for -->|getDisplayComponentName| getDisplayComponentName_service
   for -->|getComponentMetrics| getComponentMetrics_service
   for -->|enhanceComponentName| enhanceComponentName_service
+  for -->|generateComponentTooltip| generateComponentTooltip_service
   for -->|map| map_service
   for -->|addInternalRelationships| addInternalRelationships_service
   for -->|addExternalDependencies| addExternalDependencies_service
@@ -1727,6 +1741,7 @@ graph TB
   calls -->|getDisplayComponentName| getDisplayComponentName_service
   calls -->|getComponentMetrics| getComponentMetrics_service
   calls -->|enhanceComponentName| enhanceComponentName_service
+  calls -->|generateComponentTooltip| generateComponentTooltip_service
   calls -->|map| map_service
   calls -->|addInternalRelationships| addInternalRelationships_service
   calls -->|addExternalDependencies| addExternalDependencies_service
