@@ -12,9 +12,27 @@ A GitHub Actions integration that automatically generates, maintains, and update
 - 🔗 **Enhanced Relationships**: API calls, event flows, data flows, service communication
 - 🎯 **Smart Filtering**: Automatically filters out test files, dependency layers, and internal details
 - 📏 **Size Limits**: Configurable limits to prevent overly complex diagrams (max 30 nodes, 50 dependencies)
+- 🎨 **Semantic Visualization**: 8 component types with distinct colors and purposes (Analyzer, Generator, Manager, Service)
+- 🔗 **Enhanced Relationships**: Smart relationship detection with labeled connections (imports, calls, generates, uses)
+- 📊 **Rich Metadata**: Comprehensive statistics, legends, and architectural insights
 - ⚙️ **Configurable**: Customize analysis and output via `.diagrammer.yml`
 - 🌐 **Multi-language**: Supports JavaScript, TypeScript, and Python
 - 🎯 **Sophisticated Analysis**: Matches enterprise-grade architecture documentation quality
+
+## 🆕 What's New in v1.3.0
+
+**Major Visualization Enhancements:**
+- 🎨 **Semantic Component Classification**: 8 distinct component types with purpose-specific colors
+- 🔗 **Smart Relationship Detection**: Automatic inference of component interactions and dependencies
+- 📊 **Rich Metadata & Statistics**: Component counts, language analysis, and architectural insights
+- 🎯 **Professional Legends**: Comprehensive explanations of colors, symbols, and relationship types
+- 🏗️ **Architectural Intelligence**: Automatic pattern recognition and component categorization
+
+**Visual Improvements:**
+- **Component Types**: Analyzer (🟢), Generator (🟠), Manager (🟣), Service (🔵), NPM (🔵), Framework (🟢), External (🔴)
+- **Relationship Labels**: imports, calls, generates, uses, API, data flow
+- **Enhanced Layout**: Better grouping and semantic organization
+- **Interactive Documentation**: Detailed legends and architectural context
 
 ## Quick Start
 
@@ -56,7 +74,7 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         
     - name: Generate Architecture Diagrams
-      uses: samjhill/diagrammer@v1.2.4  # Latest version with auto-commit fixes
+      uses: samjhill/diagrammer@v1.3.0  # Latest version with auto-commit fixes
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         output_path: 'docs/architecture'
@@ -93,7 +111,7 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         
     - name: Generate Architecture Diagrams
-      uses: samjhill/diagrammer@v1.2.4
+      uses: samjhill/diagrammer@v1.3.0
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         output_path: 'docs/architecture'
@@ -337,7 +355,7 @@ If auto-commit continues to fail, you can handle commits manually:
 
 ```yaml
 - name: Generate Architecture Diagrams
-  uses: samjhill/diagrammer@v1.2.4
+  uses: samjhill/diagrammer@v1.3.0
   with:
     auto_commit: 'false'
     # ... other inputs
