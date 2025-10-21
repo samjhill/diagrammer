@@ -97,7 +97,7 @@ class DiagramGenerator {
     const nodeNames = new Set(filteredComponents.map(c => c.name));
     
     // Add internal component relationships first
-    this.addInternalRelationships(mermaid, filteredComponents, analysis, edgeSet, nodeNames);
+    this.addInternalRelationships(mermaid, filteredComponents, analysis, edgeSet);
     
     // Add external dependencies with better categorization
     this.addExternalDependencies(mermaid, filteredDependencies, edgeSet, nodeNames);
@@ -809,7 +809,7 @@ ${legend}
     return name;
   }
 
-  addInternalRelationships(mermaid, components, analysis, edgeSet, nodeNames) {
+  addInternalRelationships(mermaid, components, analysis, edgeSet) {
     // Add relationships between internal components based on analysis
     if (analysis.relationships && analysis.relationships.length > 0) {
       const componentNames = new Set(components.map(c => c.name));
@@ -867,8 +867,6 @@ ${legend}
 
   addArchitecturalRelationships(mermaid, components, edgeSet) {
     // Add logical relationships based on component types and names
-    const componentMap = new Map(components.map(c => [c.name, c]));
-    
     components.forEach(component => {
       const componentId = this.sanitizeName(component.name);
       
