@@ -1148,35 +1148,22 @@ ${insights.map(insight => `- ${insight}`).join('\n')}
     // Determine semantic class based on component name and type
     const name = component.name.toLowerCase();
     
-    // Get size-based class
-    const metrics = this.getComponentMetrics(component, { components: [] });
-    let sizeClass = '';
-    if (metrics.size > 100) {
-      sizeClass = 'large';
-    } else if (metrics.size > 50) {
-      sizeClass = 'medium';
-    } else {
-      sizeClass = 'small';
-    }
-    
-    // Get semantic class
-    let semanticClass = 'component';
+    // Get semantic class (prioritize semantic over size for now)
     if (name.includes('analyzer')) {
-      semanticClass = 'analyzer';
+      return 'analyzer';
     } else if (name.includes('generator')) {
-      semanticClass = 'generator';
+      return 'generator';
     } else if (name.includes('manager')) {
-      semanticClass = 'manager';
+      return 'manager';
     } else if (name.includes('service')) {
-      semanticClass = 'service';
+      return 'service';
     } else if (name.includes('controller') || name.includes('handler')) {
-      semanticClass = 'service';
+      return 'service';
     } else if (name.includes('model') || name.includes('entity')) {
-      semanticClass = 'service';
+      return 'service';
+    } else {
+      return 'component';
     }
-    
-    // Combine semantic and size classes
-    return `${semanticClass} ${sizeClass}`;
   }
 
   getDependencyClass(dependency) {
