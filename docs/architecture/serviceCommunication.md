@@ -212,6 +212,10 @@ graph TB
 
   subgraph log_service["log-service Service"]
     GitManager_log["log"]:::method
+    DiagramGenerator_log["log"]:::method
+    based_log["log"]:::method
+    for_log["log"]:::method
+    calls_log["log"]:::method
   end
 
   subgraph isGitRepository_service["isGitRepository-service Service"]
@@ -1201,6 +1205,7 @@ graph TB
   DiagramGenerator -->|generateArchitecturalInsights| generateArchitecturalInsights_service
   DiagramGenerator -->|join| join_service
   DiagramGenerator -->|toLocaleDateString| toLocaleDateString_service
+  DiagramGenerator -->|log| log_service
   DiagramGenerator -->|analyzeComponentTypes| analyzeComponentTypes_service
   DiagramGenerator -->|analyzeDependencies| analyzeDependencies_service
   DiagramGenerator -->|analyzeComplexity| analyzeComplexity_service
@@ -1279,6 +1284,7 @@ graph TB
   based -->|generateArchitecturalInsights| generateArchitecturalInsights_service
   based -->|join| join_service
   based -->|toLocaleDateString| toLocaleDateString_service
+  based -->|log| log_service
   based -->|analyzeComponentTypes| analyzeComponentTypes_service
   based -->|analyzeDependencies| analyzeDependencies_service
   based -->|analyzeComplexity| analyzeComplexity_service
@@ -1357,6 +1363,7 @@ graph TB
   for -->|generateArchitecturalInsights| generateArchitecturalInsights_service
   for -->|join| join_service
   for -->|toLocaleDateString| toLocaleDateString_service
+  for -->|log| log_service
   for -->|analyzeComponentTypes| analyzeComponentTypes_service
   for -->|analyzeDependencies| analyzeDependencies_service
   for -->|analyzeComplexity| analyzeComplexity_service
@@ -1435,6 +1442,7 @@ graph TB
   calls -->|generateArchitecturalInsights| generateArchitecturalInsights_service
   calls -->|join| join_service
   calls -->|toLocaleDateString| toLocaleDateString_service
+  calls -->|log| log_service
   calls -->|analyzeComponentTypes| analyzeComponentTypes_service
   calls -->|analyzeDependencies| analyzeDependencies_service
   calls -->|analyzeComplexity| analyzeComplexity_service
