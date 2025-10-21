@@ -28,20 +28,20 @@ A GitHub Actions integration that automatically generates, maintains, and update
 - **Configurable**: Customize analysis and output via `.diagrammer.yml`
 - **Auto-commit**: Automatically commits generated diagrams to your repository
 
-## 🆕 What's New in v1.3.0
+## 🆕 What's New in v1.4.0
 
-**Major Visualization Enhancements:**
-- 🎨 **Semantic Component Classification**: 8 distinct component types with purpose-specific colors
-- 🔗 **Smart Relationship Detection**: Automatic inference of component interactions and dependencies
-- 📊 **Rich Metadata & Statistics**: Component counts, language analysis, and architectural insights
-- 🎯 **Professional Legends**: Comprehensive explanations of colors, symbols, and relationship types
-- 🏗️ **Architectural Intelligence**: Automatic pattern recognition and component categorization
+**Code Quality & Documentation Overhaul:**
+- 🧹 **Comprehensive Code Cleanup**: Optimized methods, removed unused code, zero linting errors
+- 📚 **Professional Documentation**: Complete README restructure with enhanced examples and troubleshooting
+- 🎨 **Visual Improvements**: Fixed Mermaid parse errors, enhanced component styling and relationships
+- 🔧 **Bug Fixes**: Resolved GitHub rendering issues and improved Git operations
+- ✅ **Quality Assurance**: All tests passing, functionality preserved, enterprise-ready
 
-**Visual Improvements:**
-- **Component Types**: Analyzer (🟢), Generator (🟠), Manager (🟣), Service (🔵), NPM (🔵), Framework (🟢), External (🔴)
-- **Relationship Labels**: imports, calls, generates, uses, API, data flow
-- **Enhanced Layout**: Better grouping and semantic organization
-- **Interactive Documentation**: Detailed legends and architectural context
+**Enhanced Features:**
+- **Professional Documentation**: Comprehensive setup guides, troubleshooting, and examples
+- **Clean Codebase**: Optimized performance, better maintainability, zero technical debt
+- **Reliable Rendering**: Fixed diagram display issues on GitHub with proper Mermaid syntax
+- **Enhanced User Experience**: Improved onboarding, better error handling, comprehensive guides
 
 ## 🚀 Quick Start
 
@@ -88,7 +88,7 @@ jobs:
         fetch-depth: 0
         
     - name: Generate Architecture Diagrams
-      uses: samjhill/diagrammer@v1.3.0
+      uses: samjhill/diagrammer@v1.4.0
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         output_path: 'docs/architecture'
