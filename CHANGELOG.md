@@ -2,6 +2,85 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.0] - 2025-01-21
+
+### 🧹 Major Release: Code Cleanup & Documentation Overhaul
+
+This release focuses on code quality improvements, comprehensive documentation updates, and bug fixes while maintaining all existing functionality.
+
+### ✨ New Features
+
+#### 📚 Documentation Overhaul
+- **Complete README Restructure**: Professional, comprehensive documentation with clear organization
+- **Enhanced Quick Start Guide**: Step-by-step setup with better examples and troubleshooting
+- **Comprehensive Feature Documentation**: Detailed descriptions of all 10 diagram types and visual features
+- **Professional Examples**: Clean Mermaid diagram examples with proper syntax
+- **Troubleshooting Section**: Comprehensive guide for common issues and solutions
+
+#### 🎨 Visual Improvements
+- **Mermaid Parse Fix**: Resolved multiple CSS class syntax issues for proper GitHub rendering
+- **Enhanced Component Styling**: Improved semantic component classification and visual hierarchy
+- **Better Relationship Visualization**: Cleaner arrow styles and relationship labeling
+
+### 🔧 Code Quality Improvements
+
+#### 🧹 Code Cleanup
+- **Optimized Methods**: Streamlined component tooltip generation and relationship handling
+- **Consolidated Mappings**: Combined relationship style and color mappings for better maintainability
+- **Removed Unused Code**: Eliminated unused variables and imports
+- **Linting Clean**: Resolved all ESLint errors (0 errors, 0 warnings)
+
+#### 🏗️ Architecture Improvements
+- **Better Code Organization**: Improved method structure and readability
+- **Enhanced Maintainability**: Cleaner, more maintainable codebase
+- **Performance Optimization**: Streamlined diagram generation process
+
+### 🐛 Bug Fixes
+
+#### 🔧 Critical Fixes
+- **Mermaid Parse Error**: Fixed multiple CSS class syntax that prevented diagrams from rendering on GitHub
+- **Relationship Rendering**: Resolved issues with relationship display in generated diagrams
+- **Git Operations**: Improved Git configuration and safe directory handling
+
+#### 🧪 Testing & Validation
+- **All Tests Passing**: 10/10 diagram types generated successfully
+- **Functionality Preserved**: All existing features maintained and validated
+- **Quality Assurance**: Comprehensive testing of all improvements
+
+### 📊 Technical Details
+
+#### 🎯 Performance
+- **Zero Linting Errors**: Clean ESLint output across entire codebase
+- **Maintained Performance**: No degradation in diagram generation speed or quality
+- **Optimized Dependencies**: Clean dependency management and configuration
+
+#### 📈 Quality Metrics
+- **Code Coverage**: All existing functionality preserved and tested
+- **Documentation Coverage**: Comprehensive documentation for all features
+- **User Experience**: Improved setup process and troubleshooting guidance
+
+### 🚀 Migration Guide
+
+#### For Existing Users
+- **No Breaking Changes**: All existing configurations and workflows continue to work
+- **Enhanced Documentation**: Refer to updated README for improved setup guidance
+- **Better Troubleshooting**: Use new troubleshooting section for any issues
+
+#### For New Users
+- **Improved Onboarding**: Follow the enhanced quick start guide for easier setup
+- **Better Examples**: Use the comprehensive examples in the documentation
+- **Professional Results**: Generate enterprise-grade architecture diagrams
+
+### 🔄 What's Next
+
+This release establishes a solid foundation for future enhancements:
+- **Enhanced Visualizations**: Continued improvements to diagram aesthetics and functionality
+- **Additional Languages**: Support for more programming languages
+- **Advanced Patterns**: More sophisticated architectural pattern detection
+- **Integration Improvements**: Better GitHub Actions integration and workflow optimization
+
+---
+
 ## [1.3.0] - 2025-01-21
 
 ### 🎨 Major Release: Enhanced Visualization & Semantic Intelligence
