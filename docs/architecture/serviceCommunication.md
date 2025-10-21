@@ -22,8 +22,6 @@ graph TB
     languages_split["split"]:::method
     DiagramGenerator_split["split"]:::method
     based_split["split"]:::method
-    const_split["split"]:::method
-    let_split["split"]:::method
     for_split["split"]:::method
     calls_split["split"]:::method
     RelationshipAnalyzer_split["split"]:::method
@@ -31,13 +29,6 @@ graph TB
     JavaScriptAnalyzer_split["split"]:::method
     declarations_split["split"]:::method
     ArchitecturalAnalyzer_split["split"]:::method
-    UserService_split["split"]:::method
-    __init___split["split"]:::method
-    create_user_split["split"]:::method
-    get_user_split["split"]:::method
-    list_users_split["split"]:::method
-    export_users_split["split"]:::method
-    validate_email_split["split"]:::method
   end
 
   subgraph map_service["map-service Service"]
@@ -46,8 +37,6 @@ graph TB
     languages_map["map"]:::method
     DiagramGenerator_map["map"]:::method
     based_map["map"]:::method
-    const_map["map"]:::method
-    let_map["map"]:::method
     for_map["map"]:::method
     calls_map["map"]:::method
     PythonAnalyzer_map["map"]:::method
@@ -104,8 +93,6 @@ graph TB
     languages_keys["keys"]:::method
     DiagramGenerator_keys["keys"]:::method
     based_keys["keys"]:::method
-    const_keys["keys"]:::method
-    let_keys["keys"]:::method
     for_keys["keys"]:::method
     calls_keys["keys"]:::method
   end
@@ -128,8 +115,6 @@ graph TB
     languages_entries["entries"]:::method
     DiagramGenerator_entries["entries"]:::method
     based_entries["entries"]:::method
-    const_entries["entries"]:::method
-    let_entries["entries"]:::method
     for_entries["entries"]:::method
     calls_entries["entries"]:::method
     RelationshipAnalyzer_entries["entries"]:::method
@@ -142,8 +127,6 @@ graph TB
     languages_join["join"]:::method
     DiagramGenerator_join["join"]:::method
     based_join["join"]:::method
-    const_join["join"]:::method
-    let_join["join"]:::method
     for_join["join"]:::method
     calls_join["join"]:::method
   end
@@ -172,8 +155,6 @@ graph TB
     languages_push["push"]:::method
     DiagramGenerator_push["push"]:::method
     based_push["push"]:::method
-    const_push["push"]:::method
-    let_push["push"]:::method
     for_push["push"]:::method
     calls_push["push"]:::method
     TypeScriptAnalyzer_push["push"]:::method
@@ -260,8 +241,6 @@ graph TB
   subgraph generateArchitectureDiagram_service["generateArchitectureDiagram-service Service"]
     DiagramGenerator_generateArchitectureDiagram["generateArchitectureDiagram"]:::method
     based_generateArchitectureDiagram["generateArchitectureDiagram"]:::method
-    const_generateArchitectureDiagram["generateArchitectureDiagram"]:::method
-    let_generateArchitectureDiagram["generateArchitectureDiagram"]:::method
     for_generateArchitectureDiagram["generateArchitectureDiagram"]:::method
     calls_generateArchitectureDiagram["generateArchitectureDiagram"]:::method
   end
@@ -269,8 +248,6 @@ graph TB
   subgraph generateDependencyDiagram_service["generateDependencyDiagram-service Service"]
     DiagramGenerator_generateDependencyDiagram["generateDependencyDiagram"]:::method
     based_generateDependencyDiagram["generateDependencyDiagram"]:::method
-    const_generateDependencyDiagram["generateDependencyDiagram"]:::method
-    let_generateDependencyDiagram["generateDependencyDiagram"]:::method
     for_generateDependencyDiagram["generateDependencyDiagram"]:::method
     calls_generateDependencyDiagram["generateDependencyDiagram"]:::method
   end
@@ -278,8 +255,6 @@ graph TB
   subgraph generateModuleDiagram_service["generateModuleDiagram-service Service"]
     DiagramGenerator_generateModuleDiagram["generateModuleDiagram"]:::method
     based_generateModuleDiagram["generateModuleDiagram"]:::method
-    const_generateModuleDiagram["generateModuleDiagram"]:::method
-    let_generateModuleDiagram["generateModuleDiagram"]:::method
     for_generateModuleDiagram["generateModuleDiagram"]:::method
     calls_generateModuleDiagram["generateModuleDiagram"]:::method
   end
@@ -287,8 +262,6 @@ graph TB
   subgraph generateLayeredArchitectureDiagram_service["generateLayeredArchitectureDiagram-service Service"]
     DiagramGenerator_generateLayeredArchitectureDiagram["generateLayeredArchitectureDiagram"]:::method
     based_generateLayeredArchitectureDiagram["generateLayeredArchitectureDiagram"]:::method
-    const_generateLayeredArchitectureDiagram["generateLayeredArchitectureDiagram"]:::method
-    let_generateLayeredArchitectureDiagram["generateLayeredArchitectureDiagram"]:::method
     for_generateLayeredArchitectureDiagram["generateLayeredArchitectureDiagram"]:::method
     calls_generateLayeredArchitectureDiagram["generateLayeredArchitectureDiagram"]:::method
   end
@@ -296,8 +269,6 @@ graph TB
   subgraph generateMVCDiagram_service["generateMVCDiagram-service Service"]
     DiagramGenerator_generateMVCDiagram["generateMVCDiagram"]:::method
     based_generateMVCDiagram["generateMVCDiagram"]:::method
-    const_generateMVCDiagram["generateMVCDiagram"]:::method
-    let_generateMVCDiagram["generateMVCDiagram"]:::method
     for_generateMVCDiagram["generateMVCDiagram"]:::method
     calls_generateMVCDiagram["generateMVCDiagram"]:::method
   end
@@ -305,8 +276,6 @@ graph TB
   subgraph generateMicroservicesDiagram_service["generateMicroservicesDiagram-service Service"]
     DiagramGenerator_generateMicroservicesDiagram["generateMicroservicesDiagram"]:::method
     based_generateMicroservicesDiagram["generateMicroservicesDiagram"]:::method
-    const_generateMicroservicesDiagram["generateMicroservicesDiagram"]:::method
-    let_generateMicroservicesDiagram["generateMicroservicesDiagram"]:::method
     for_generateMicroservicesDiagram["generateMicroservicesDiagram"]:::method
     calls_generateMicroservicesDiagram["generateMicroservicesDiagram"]:::method
   end
@@ -314,8 +283,6 @@ graph TB
   subgraph generateApiFlowDiagram_service["generateApiFlowDiagram-service Service"]
     DiagramGenerator_generateApiFlowDiagram["generateApiFlowDiagram"]:::method
     based_generateApiFlowDiagram["generateApiFlowDiagram"]:::method
-    const_generateApiFlowDiagram["generateApiFlowDiagram"]:::method
-    let_generateApiFlowDiagram["generateApiFlowDiagram"]:::method
     for_generateApiFlowDiagram["generateApiFlowDiagram"]:::method
     calls_generateApiFlowDiagram["generateApiFlowDiagram"]:::method
   end
@@ -323,8 +290,6 @@ graph TB
   subgraph generateDataFlowDiagram_service["generateDataFlowDiagram-service Service"]
     DiagramGenerator_generateDataFlowDiagram["generateDataFlowDiagram"]:::method
     based_generateDataFlowDiagram["generateDataFlowDiagram"]:::method
-    const_generateDataFlowDiagram["generateDataFlowDiagram"]:::method
-    let_generateDataFlowDiagram["generateDataFlowDiagram"]:::method
     for_generateDataFlowDiagram["generateDataFlowDiagram"]:::method
     calls_generateDataFlowDiagram["generateDataFlowDiagram"]:::method
   end
@@ -332,8 +297,6 @@ graph TB
   subgraph generateEventFlowDiagram_service["generateEventFlowDiagram-service Service"]
     DiagramGenerator_generateEventFlowDiagram["generateEventFlowDiagram"]:::method
     based_generateEventFlowDiagram["generateEventFlowDiagram"]:::method
-    const_generateEventFlowDiagram["generateEventFlowDiagram"]:::method
-    let_generateEventFlowDiagram["generateEventFlowDiagram"]:::method
     for_generateEventFlowDiagram["generateEventFlowDiagram"]:::method
     calls_generateEventFlowDiagram["generateEventFlowDiagram"]:::method
   end
@@ -341,8 +304,6 @@ graph TB
   subgraph generateServiceCommunicationDiagram_service["generateServiceCommunicationDiagram-service Service"]
     DiagramGenerator_generateServiceCommunicationDiagram["generateServiceCommunicationDiagram"]:::method
     based_generateServiceCommunicationDiagram["generateServiceCommunicationDiagram"]:::method
-    const_generateServiceCommunicationDiagram["generateServiceCommunicationDiagram"]:::method
-    let_generateServiceCommunicationDiagram["generateServiceCommunicationDiagram"]:::method
     for_generateServiceCommunicationDiagram["generateServiceCommunicationDiagram"]:::method
     calls_generateServiceCommunicationDiagram["generateServiceCommunicationDiagram"]:::method
   end
@@ -350,8 +311,6 @@ graph TB
   subgraph uniqueByName_service["uniqueByName-service Service"]
     DiagramGenerator_uniqueByName["uniqueByName"]:::method
     based_uniqueByName["uniqueByName"]:::method
-    const_uniqueByName["uniqueByName"]:::method
-    let_uniqueByName["uniqueByName"]:::method
     for_uniqueByName["uniqueByName"]:::method
     calls_uniqueByName["uniqueByName"]:::method
   end
@@ -359,8 +318,6 @@ graph TB
   subgraph filterComponentsForDiagram_service["filterComponentsForDiagram-service Service"]
     DiagramGenerator_filterComponentsForDiagram["filterComponentsForDiagram"]:::method
     based_filterComponentsForDiagram["filterComponentsForDiagram"]:::method
-    const_filterComponentsForDiagram["filterComponentsForDiagram"]:::method
-    let_filterComponentsForDiagram["filterComponentsForDiagram"]:::method
     for_filterComponentsForDiagram["filterComponentsForDiagram"]:::method
     calls_filterComponentsForDiagram["filterComponentsForDiagram"]:::method
   end
@@ -368,8 +325,6 @@ graph TB
   subgraph filterDependenciesForDiagram_service["filterDependenciesForDiagram-service Service"]
     DiagramGenerator_filterDependenciesForDiagram["filterDependenciesForDiagram"]:::method
     based_filterDependenciesForDiagram["filterDependenciesForDiagram"]:::method
-    const_filterDependenciesForDiagram["filterDependenciesForDiagram"]:::method
-    let_filterDependenciesForDiagram["filterDependenciesForDiagram"]:::method
     for_filterDependenciesForDiagram["filterDependenciesForDiagram"]:::method
     calls_filterDependenciesForDiagram["filterDependenciesForDiagram"]:::method
   end
@@ -377,8 +332,6 @@ graph TB
   subgraph groupComponentsByDirectory_service["groupComponentsByDirectory-service Service"]
     DiagramGenerator_groupComponentsByDirectory["groupComponentsByDirectory"]:::method
     based_groupComponentsByDirectory["groupComponentsByDirectory"]:::method
-    const_groupComponentsByDirectory["groupComponentsByDirectory"]:::method
-    let_groupComponentsByDirectory["groupComponentsByDirectory"]:::method
     for_groupComponentsByDirectory["groupComponentsByDirectory"]:::method
     calls_groupComponentsByDirectory["groupComponentsByDirectory"]:::method
   end
@@ -386,8 +339,6 @@ graph TB
   subgraph sort_service["sort-service Service"]
     DiagramGenerator_sort["sort"]:::method
     based_sort["sort"]:::method
-    const_sort["sort"]:::method
-    let_sort["sort"]:::method
     for_sort["sort"]:::method
     calls_sort["sort"]:::method
   end
@@ -395,8 +346,6 @@ graph TB
   subgraph slice_service["slice-service Service"]
     DiagramGenerator_slice["slice"]:::method
     based_slice["slice"]:::method
-    const_slice["slice"]:::method
-    let_slice["slice"]:::method
     for_slice["slice"]:::method
     calls_slice["slice"]:::method
     TypeScriptAnalyzer_slice["slice"]:::method
@@ -406,8 +355,6 @@ graph TB
   subgraph forEach_service["forEach-service Service"]
     DiagramGenerator_forEach["forEach"]:::method
     based_forEach["forEach"]:::method
-    const_forEach["forEach"]:::method
-    let_forEach["forEach"]:::method
     for_forEach["forEach"]:::method
     calls_forEach["forEach"]:::method
     TypeScriptAnalyzer_forEach["forEach"]:::method
@@ -423,8 +370,6 @@ graph TB
   subgraph sanitizeName_service["sanitizeName-service Service"]
     DiagramGenerator_sanitizeName["sanitizeName"]:::method
     based_sanitizeName["sanitizeName"]:::method
-    const_sanitizeName["sanitizeName"]:::method
-    let_sanitizeName["sanitizeName"]:::method
     for_sanitizeName["sanitizeName"]:::method
     calls_sanitizeName["sanitizeName"]:::method
   end
@@ -432,8 +377,6 @@ graph TB
   subgraph getDisplayName_service["getDisplayName-service Service"]
     DiagramGenerator_getDisplayName["getDisplayName"]:::method
     based_getDisplayName["getDisplayName"]:::method
-    const_getDisplayName["getDisplayName"]:::method
-    let_getDisplayName["getDisplayName"]:::method
     for_getDisplayName["getDisplayName"]:::method
     calls_getDisplayName["getDisplayName"]:::method
   end
@@ -441,8 +384,6 @@ graph TB
   subgraph getDisplayComponentName_service["getDisplayComponentName-service Service"]
     DiagramGenerator_getDisplayComponentName["getDisplayComponentName"]:::method
     based_getDisplayComponentName["getDisplayComponentName"]:::method
-    const_getDisplayComponentName["getDisplayComponentName"]:::method
-    let_getDisplayComponentName["getDisplayComponentName"]:::method
     for_getDisplayComponentName["getDisplayComponentName"]:::method
     calls_getDisplayComponentName["getDisplayComponentName"]:::method
   end
@@ -450,8 +391,6 @@ graph TB
   subgraph getComponentMetrics_service["getComponentMetrics-service Service"]
     DiagramGenerator_getComponentMetrics["getComponentMetrics"]:::method
     based_getComponentMetrics["getComponentMetrics"]:::method
-    const_getComponentMetrics["getComponentMetrics"]:::method
-    let_getComponentMetrics["getComponentMetrics"]:::method
     for_getComponentMetrics["getComponentMetrics"]:::method
     calls_getComponentMetrics["getComponentMetrics"]:::method
   end
@@ -459,8 +398,6 @@ graph TB
   subgraph enhanceComponentName_service["enhanceComponentName-service Service"]
     DiagramGenerator_enhanceComponentName["enhanceComponentName"]:::method
     based_enhanceComponentName["enhanceComponentName"]:::method
-    const_enhanceComponentName["enhanceComponentName"]:::method
-    let_enhanceComponentName["enhanceComponentName"]:::method
     for_enhanceComponentName["enhanceComponentName"]:::method
     calls_enhanceComponentName["enhanceComponentName"]:::method
   end
@@ -468,8 +405,6 @@ graph TB
   subgraph generateComponentTooltip_service["generateComponentTooltip-service Service"]
     DiagramGenerator_generateComponentTooltip["generateComponentTooltip"]:::method
     based_generateComponentTooltip["generateComponentTooltip"]:::method
-    const_generateComponentTooltip["generateComponentTooltip"]:::method
-    let_generateComponentTooltip["generateComponentTooltip"]:::method
     for_generateComponentTooltip["generateComponentTooltip"]:::method
     calls_generateComponentTooltip["generateComponentTooltip"]:::method
   end
@@ -477,8 +412,6 @@ graph TB
   subgraph getComponentClass_service["getComponentClass-service Service"]
     DiagramGenerator_getComponentClass["getComponentClass"]:::method
     based_getComponentClass["getComponentClass"]:::method
-    const_getComponentClass["getComponentClass"]:::method
-    let_getComponentClass["getComponentClass"]:::method
     for_getComponentClass["getComponentClass"]:::method
     calls_getComponentClass["getComponentClass"]:::method
   end
@@ -486,8 +419,6 @@ graph TB
   subgraph addInternalRelationships_service["addInternalRelationships-service Service"]
     DiagramGenerator_addInternalRelationships["addInternalRelationships"]:::method
     based_addInternalRelationships["addInternalRelationships"]:::method
-    const_addInternalRelationships["addInternalRelationships"]:::method
-    let_addInternalRelationships["addInternalRelationships"]:::method
     for_addInternalRelationships["addInternalRelationships"]:::method
     calls_addInternalRelationships["addInternalRelationships"]:::method
   end
@@ -495,8 +426,6 @@ graph TB
   subgraph addExternalDependencies_service["addExternalDependencies-service Service"]
     DiagramGenerator_addExternalDependencies["addExternalDependencies"]:::method
     based_addExternalDependencies["addExternalDependencies"]:::method
-    const_addExternalDependencies["addExternalDependencies"]:::method
-    let_addExternalDependencies["addExternalDependencies"]:::method
     for_addExternalDependencies["addExternalDependencies"]:::method
     calls_addExternalDependencies["addExternalDependencies"]:::method
   end
@@ -504,8 +433,6 @@ graph TB
   subgraph wrapInMarkdown_service["wrapInMarkdown-service Service"]
     DiagramGenerator_wrapInMarkdown["wrapInMarkdown"]:::method
     based_wrapInMarkdown["wrapInMarkdown"]:::method
-    const_wrapInMarkdown["wrapInMarkdown"]:::method
-    let_wrapInMarkdown["wrapInMarkdown"]:::method
     for_wrapInMarkdown["wrapInMarkdown"]:::method
     calls_wrapInMarkdown["wrapInMarkdown"]:::method
   end
@@ -513,8 +440,6 @@ graph TB
   subgraph filter_service["filter-service Service"]
     DiagramGenerator_filter["filter"]:::method
     based_filter["filter"]:::method
-    const_filter["filter"]:::method
-    let_filter["filter"]:::method
     for_filter["filter"]:::method
     calls_filter["filter"]:::method
     RelationshipAnalyzer_filter["filter"]:::method
@@ -524,8 +449,6 @@ graph TB
   subgraph isExternalDependency_service["isExternalDependency-service Service"]
     DiagramGenerator_isExternalDependency["isExternalDependency"]:::method
     based_isExternalDependency["isExternalDependency"]:::method
-    const_isExternalDependency["isExternalDependency"]:::method
-    let_isExternalDependency["isExternalDependency"]:::method
     for_isExternalDependency["isExternalDependency"]:::method
     calls_isExternalDependency["isExternalDependency"]:::method
   end
@@ -533,8 +456,6 @@ graph TB
   subgraph has_service["has-service Service"]
     DiagramGenerator_has["has"]:::method
     based_has["has"]:::method
-    const_has["has"]:::method
-    let_has["has"]:::method
     for_has["has"]:::method
     calls_has["has"]:::method
     RelationshipAnalyzer_has["has"]:::method
@@ -544,8 +465,6 @@ graph TB
   subgraph add_service["add-service Service"]
     DiagramGenerator_add["add"]:::method
     based_add["add"]:::method
-    const_add["add"]:::method
-    let_add["add"]:::method
     for_add["add"]:::method
     calls_add["add"]:::method
     RelationshipAnalyzer_add["add"]:::method
@@ -555,8 +474,6 @@ graph TB
   subgraph dirname_service["dirname-service Service"]
     DiagramGenerator_dirname["dirname"]:::method
     based_dirname["dirname"]:::method
-    const_dirname["dirname"]:::method
-    let_dirname["dirname"]:::method
     for_dirname["dirname"]:::method
     calls_dirname["dirname"]:::method
   end
@@ -564,8 +481,6 @@ graph TB
   subgraph replace_service["replace-service Service"]
     DiagramGenerator_replace["replace"]:::method
     based_replace["replace"]:::method
-    const_replace["replace"]:::method
-    let_replace["replace"]:::method
     for_replace["replace"]:::method
     calls_replace["replace"]:::method
     ArchitecturalAnalyzer_replace["replace"]:::method
@@ -574,8 +489,6 @@ graph TB
   subgraph some_service["some-service Service"]
     DiagramGenerator_some["some"]:::method
     based_some["some"]:::method
-    const_some["some"]:::method
-    let_some["some"]:::method
     for_some["some"]:::method
     calls_some["some"]:::method
     TypeScriptAnalyzer_some["some"]:::method
@@ -586,8 +499,6 @@ graph TB
   subgraph startsWith_service["startsWith-service Service"]
     DiagramGenerator_startsWith["startsWith"]:::method
     based_startsWith["startsWith"]:::method
-    const_startsWith["startsWith"]:::method
-    let_startsWith["startsWith"]:::method
     for_startsWith["startsWith"]:::method
     calls_startsWith["startsWith"]:::method
     PythonAnalyzer_startsWith["startsWith"]:::method
@@ -596,8 +507,6 @@ graph TB
   subgraph generateDiagramMetadata_service["generateDiagramMetadata-service Service"]
     DiagramGenerator_generateDiagramMetadata["generateDiagramMetadata"]:::method
     based_generateDiagramMetadata["generateDiagramMetadata"]:::method
-    const_generateDiagramMetadata["generateDiagramMetadata"]:::method
-    let_generateDiagramMetadata["generateDiagramMetadata"]:::method
     for_generateDiagramMetadata["generateDiagramMetadata"]:::method
     calls_generateDiagramMetadata["generateDiagramMetadata"]:::method
   end
@@ -605,8 +514,6 @@ graph TB
   subgraph generateLegend_service["generateLegend-service Service"]
     DiagramGenerator_generateLegend["generateLegend"]:::method
     based_generateLegend["generateLegend"]:::method
-    const_generateLegend["generateLegend"]:::method
-    let_generateLegend["generateLegend"]:::method
     for_generateLegend["generateLegend"]:::method
     calls_generateLegend["generateLegend"]:::method
   end
@@ -614,8 +521,6 @@ graph TB
   subgraph calculateDiagramStats_service["calculateDiagramStats-service Service"]
     DiagramGenerator_calculateDiagramStats["calculateDiagramStats"]:::method
     based_calculateDiagramStats["calculateDiagramStats"]:::method
-    const_calculateDiagramStats["calculateDiagramStats"]:::method
-    let_calculateDiagramStats["calculateDiagramStats"]:::method
     for_calculateDiagramStats["calculateDiagramStats"]:::method
     calls_calculateDiagramStats["calculateDiagramStats"]:::method
   end
@@ -623,8 +528,6 @@ graph TB
   subgraph generateArchitecturalInsights_service["generateArchitecturalInsights-service Service"]
     DiagramGenerator_generateArchitecturalInsights["generateArchitecturalInsights"]:::method
     based_generateArchitecturalInsights["generateArchitecturalInsights"]:::method
-    const_generateArchitecturalInsights["generateArchitecturalInsights"]:::method
-    let_generateArchitecturalInsights["generateArchitecturalInsights"]:::method
     for_generateArchitecturalInsights["generateArchitecturalInsights"]:::method
     calls_generateArchitecturalInsights["generateArchitecturalInsights"]:::method
   end
@@ -632,8 +535,6 @@ graph TB
   subgraph toLocaleDateString_service["toLocaleDateString-service Service"]
     DiagramGenerator_toLocaleDateString["toLocaleDateString"]:::method
     based_toLocaleDateString["toLocaleDateString"]:::method
-    const_toLocaleDateString["toLocaleDateString"]:::method
-    let_toLocaleDateString["toLocaleDateString"]:::method
     for_toLocaleDateString["toLocaleDateString"]:::method
     calls_toLocaleDateString["toLocaleDateString"]:::method
   end
@@ -641,8 +542,6 @@ graph TB
   subgraph analyzeComponentTypes_service["analyzeComponentTypes-service Service"]
     DiagramGenerator_analyzeComponentTypes["analyzeComponentTypes"]:::method
     based_analyzeComponentTypes["analyzeComponentTypes"]:::method
-    const_analyzeComponentTypes["analyzeComponentTypes"]:::method
-    let_analyzeComponentTypes["analyzeComponentTypes"]:::method
     for_analyzeComponentTypes["analyzeComponentTypes"]:::method
     calls_analyzeComponentTypes["analyzeComponentTypes"]:::method
   end
@@ -650,8 +549,6 @@ graph TB
   subgraph analyzeDependencies_service["analyzeDependencies-service Service"]
     DiagramGenerator_analyzeDependencies["analyzeDependencies"]:::method
     based_analyzeDependencies["analyzeDependencies"]:::method
-    const_analyzeDependencies["analyzeDependencies"]:::method
-    let_analyzeDependencies["analyzeDependencies"]:::method
     for_analyzeDependencies["analyzeDependencies"]:::method
     calls_analyzeDependencies["analyzeDependencies"]:::method
   end
@@ -659,8 +556,6 @@ graph TB
   subgraph analyzeComplexity_service["analyzeComplexity-service Service"]
     DiagramGenerator_analyzeComplexity["analyzeComplexity"]:::method
     based_analyzeComplexity["analyzeComplexity"]:::method
-    const_analyzeComplexity["analyzeComplexity"]:::method
-    let_analyzeComplexity["analyzeComplexity"]:::method
     for_analyzeComplexity["analyzeComplexity"]:::method
     calls_analyzeComplexity["analyzeComplexity"]:::method
   end
@@ -668,8 +563,6 @@ graph TB
   subgraph toLowerCase_service["toLowerCase-service Service"]
     DiagramGenerator_toLowerCase["toLowerCase"]:::method
     based_toLowerCase["toLowerCase"]:::method
-    const_toLowerCase["toLowerCase"]:::method
-    let_toLowerCase["toLowerCase"]:::method
     for_toLowerCase["toLowerCase"]:::method
     calls_toLowerCase["toLowerCase"]:::method
     RelationshipAnalyzer_toLowerCase["toLowerCase"]:::method
@@ -679,8 +572,6 @@ graph TB
   subgraph includes_service["includes-service Service"]
     DiagramGenerator_includes["includes"]:::method
     based_includes["includes"]:::method
-    const_includes["includes"]:::method
-    let_includes["includes"]:::method
     for_includes["includes"]:::method
     calls_includes["includes"]:::method
     RelationshipAnalyzer_includes["includes"]:::method
@@ -694,8 +585,6 @@ graph TB
   subgraph detectCircularDependencies_service["detectCircularDependencies-service Service"]
     DiagramGenerator_detectCircularDependencies["detectCircularDependencies"]:::method
     based_detectCircularDependencies["detectCircularDependencies"]:::method
-    const_detectCircularDependencies["detectCircularDependencies"]:::method
-    let_detectCircularDependencies["detectCircularDependencies"]:::method
     for_detectCircularDependencies["detectCircularDependencies"]:::method
     calls_detectCircularDependencies["detectCircularDependencies"]:::method
   end
@@ -703,8 +592,6 @@ graph TB
   subgraph set_service["set-service Service"]
     DiagramGenerator_set["set"]:::method
     based_set["set"]:::method
-    const_set["set"]:::method
-    let_set["set"]:::method
     for_set["set"]:::method
     calls_set["set"]:::method
   end
@@ -712,8 +599,6 @@ graph TB
   subgraph get_service["get-service Service"]
     DiagramGenerator_get["get"]:::method
     based_get["get"]:::method
-    const_get["get"]:::method
-    let_get["get"]:::method
     for_get["get"]:::method
     calls_get["get"]:::method
   end
@@ -721,8 +606,6 @@ graph TB
   subgraph calculateComplexity_service["calculateComplexity-service Service"]
     DiagramGenerator_calculateComplexity["calculateComplexity"]:::method
     based_calculateComplexity["calculateComplexity"]:::method
-    const_calculateComplexity["calculateComplexity"]:::method
-    let_calculateComplexity["calculateComplexity"]:::method
     for_calculateComplexity["calculateComplexity"]:::method
     calls_calculateComplexity["calculateComplexity"]:::method
   end
@@ -730,8 +613,6 @@ graph TB
   subgraph from_service["from-service Service"]
     DiagramGenerator_from["from"]:::method
     based_from["from"]:::method
-    const_from["from"]:::method
-    let_from["from"]:::method
     for_from["from"]:::method
     calls_from["from"]:::method
   end
@@ -739,8 +620,6 @@ graph TB
   subgraph toUpperCase_service["toUpperCase-service Service"]
     DiagramGenerator_toUpperCase["toUpperCase"]:::method
     based_toUpperCase["toUpperCase"]:::method
-    const_toUpperCase["toUpperCase"]:::method
-    let_toUpperCase["toUpperCase"]:::method
     for_toUpperCase["toUpperCase"]:::method
     calls_toUpperCase["toUpperCase"]:::method
     RelationshipAnalyzer_toUpperCase["toUpperCase"]:::method
@@ -749,8 +628,6 @@ graph TB
   subgraph groupRelationshipsBySource_service["groupRelationshipsBySource-service Service"]
     DiagramGenerator_groupRelationshipsBySource["groupRelationshipsBySource"]:::method
     based_groupRelationshipsBySource["groupRelationshipsBySource"]:::method
-    const_groupRelationshipsBySource["groupRelationshipsBySource"]:::method
-    let_groupRelationshipsBySource["groupRelationshipsBySource"]:::method
     for_groupRelationshipsBySource["groupRelationshipsBySource"]:::method
     calls_groupRelationshipsBySource["groupRelationshipsBySource"]:::method
   end
@@ -758,8 +635,6 @@ graph TB
   subgraph groupRelationshipsByType_service["groupRelationshipsByType-service Service"]
     DiagramGenerator_groupRelationshipsByType["groupRelationshipsByType"]:::method
     based_groupRelationshipsByType["groupRelationshipsByType"]:::method
-    const_groupRelationshipsByType["groupRelationshipsByType"]:::method
-    let_groupRelationshipsByType["groupRelationshipsByType"]:::method
     for_groupRelationshipsByType["groupRelationshipsByType"]:::method
     calls_groupRelationshipsByType["groupRelationshipsByType"]:::method
   end
@@ -767,8 +642,6 @@ graph TB
   subgraph getDataFlowClass_service["getDataFlowClass-service Service"]
     DiagramGenerator_getDataFlowClass["getDataFlowClass"]:::method
     based_getDataFlowClass["getDataFlowClass"]:::method
-    const_getDataFlowClass["getDataFlowClass"]:::method
-    let_getDataFlowClass["getDataFlowClass"]:::method
     for_getDataFlowClass["getDataFlowClass"]:::method
     calls_getDataFlowClass["getDataFlowClass"]:::method
   end
@@ -776,8 +649,6 @@ graph TB
   subgraph groupRelationshipsByEvent_service["groupRelationshipsByEvent-service Service"]
     DiagramGenerator_groupRelationshipsByEvent["groupRelationshipsByEvent"]:::method
     based_groupRelationshipsByEvent["groupRelationshipsByEvent"]:::method
-    const_groupRelationshipsByEvent["groupRelationshipsByEvent"]:::method
-    let_groupRelationshipsByEvent["groupRelationshipsByEvent"]:::method
     for_groupRelationshipsByEvent["groupRelationshipsByEvent"]:::method
     calls_groupRelationshipsByEvent["groupRelationshipsByEvent"]:::method
   end
@@ -785,8 +656,6 @@ graph TB
   subgraph groupRelationshipsByService_service["groupRelationshipsByService-service Service"]
     DiagramGenerator_groupRelationshipsByService["groupRelationshipsByService"]:::method
     based_groupRelationshipsByService["groupRelationshipsByService"]:::method
-    const_groupRelationshipsByService["groupRelationshipsByService"]:::method
-    let_groupRelationshipsByService["groupRelationshipsByService"]:::method
     for_groupRelationshipsByService["groupRelationshipsByService"]:::method
     calls_groupRelationshipsByService["groupRelationshipsByService"]:::method
   end
@@ -794,8 +663,6 @@ graph TB
   subgraph isTestFile_service["isTestFile-service Service"]
     DiagramGenerator_isTestFile["isTestFile"]:::method
     based_isTestFile["isTestFile"]:::method
-    const_isTestFile["isTestFile"]:::method
-    let_isTestFile["isTestFile"]:::method
     for_isTestFile["isTestFile"]:::method
     calls_isTestFile["isTestFile"]:::method
   end
@@ -803,8 +670,6 @@ graph TB
   subgraph isDependencyLayer_service["isDependencyLayer-service Service"]
     DiagramGenerator_isDependencyLayer["isDependencyLayer"]:::method
     based_isDependencyLayer["isDependencyLayer"]:::method
-    const_isDependencyLayer["isDependencyLayer"]:::method
-    let_isDependencyLayer["isDependencyLayer"]:::method
     for_isDependencyLayer["isDependencyLayer"]:::method
     calls_isDependencyLayer["isDependencyLayer"]:::method
   end
@@ -812,8 +677,6 @@ graph TB
   subgraph isInternalImplementation_service["isInternalImplementation-service Service"]
     DiagramGenerator_isInternalImplementation["isInternalImplementation"]:::method
     based_isInternalImplementation["isInternalImplementation"]:::method
-    const_isInternalImplementation["isInternalImplementation"]:::method
-    let_isInternalImplementation["isInternalImplementation"]:::method
     for_isInternalImplementation["isInternalImplementation"]:::method
     calls_isInternalImplementation["isInternalImplementation"]:::method
   end
@@ -821,8 +684,6 @@ graph TB
   subgraph isUtilityFile_service["isUtilityFile-service Service"]
     DiagramGenerator_isUtilityFile["isUtilityFile"]:::method
     based_isUtilityFile["isUtilityFile"]:::method
-    const_isUtilityFile["isUtilityFile"]:::method
-    let_isUtilityFile["isUtilityFile"]:::method
     for_isUtilityFile["isUtilityFile"]:::method
     calls_isUtilityFile["isUtilityFile"]:::method
   end
@@ -830,8 +691,6 @@ graph TB
   subgraph getComponentImportance_service["getComponentImportance-service Service"]
     DiagramGenerator_getComponentImportance["getComponentImportance"]:::method
     based_getComponentImportance["getComponentImportance"]:::method
-    const_getComponentImportance["getComponentImportance"]:::method
-    let_getComponentImportance["getComponentImportance"]:::method
     for_getComponentImportance["getComponentImportance"]:::method
     calls_getComponentImportance["getComponentImportance"]:::method
   end
@@ -839,8 +698,6 @@ graph TB
   subgraph test_service["test-service Service"]
     DiagramGenerator_test["test"]:::method
     based_test["test"]:::method
-    const_test["test"]:::method
-    let_test["test"]:::method
     for_test["test"]:::method
     calls_test["test"]:::method
     ArchitecturalAnalyzer_test["test"]:::method
@@ -849,8 +706,6 @@ graph TB
   subgraph substring_service["substring-service Service"]
     DiagramGenerator_substring["substring"]:::method
     based_substring["substring"]:::method
-    const_substring["substring"]:::method
-    let_substring["substring"]:::method
     for_substring["substring"]:::method
     calls_substring["substring"]:::method
     JavaScriptAnalyzer_substring["substring"]:::method
@@ -860,8 +715,6 @@ graph TB
   subgraph find_service["find-service Service"]
     DiagramGenerator_find["find"]:::method
     based_find["find"]:::method
-    const_find["find"]:::method
-    let_find["find"]:::method
     for_find["find"]:::method
     calls_find["find"]:::method
   end
@@ -869,8 +722,6 @@ graph TB
   subgraph getRelationshipLabel_service["getRelationshipLabel-service Service"]
     DiagramGenerator_getRelationshipLabel["getRelationshipLabel"]:::method
     based_getRelationshipLabel["getRelationshipLabel"]:::method
-    const_getRelationshipLabel["getRelationshipLabel"]:::method
-    let_getRelationshipLabel["getRelationshipLabel"]:::method
     for_getRelationshipLabel["getRelationshipLabel"]:::method
     calls_getRelationshipLabel["getRelationshipLabel"]:::method
   end
@@ -878,8 +729,6 @@ graph TB
   subgraph getRelationshipStyle_service["getRelationshipStyle-service Service"]
     DiagramGenerator_getRelationshipStyle["getRelationshipStyle"]:::method
     based_getRelationshipStyle["getRelationshipStyle"]:::method
-    const_getRelationshipStyle["getRelationshipStyle"]:::method
-    let_getRelationshipStyle["getRelationshipStyle"]:::method
     for_getRelationshipStyle["getRelationshipStyle"]:::method
     calls_getRelationshipStyle["getRelationshipStyle"]:::method
   end
@@ -887,8 +736,6 @@ graph TB
   subgraph addArchitecturalRelationships_service["addArchitecturalRelationships-service Service"]
     DiagramGenerator_addArchitecturalRelationships["addArchitecturalRelationships"]:::method
     based_addArchitecturalRelationships["addArchitecturalRelationships"]:::method
-    const_addArchitecturalRelationships["addArchitecturalRelationships"]:::method
-    let_addArchitecturalRelationships["addArchitecturalRelationships"]:::method
     for_addArchitecturalRelationships["addArchitecturalRelationships"]:::method
     calls_addArchitecturalRelationships["addArchitecturalRelationships"]:::method
   end
@@ -896,8 +743,6 @@ graph TB
   subgraph groupDependenciesByType_service["groupDependenciesByType-service Service"]
     DiagramGenerator_groupDependenciesByType["groupDependenciesByType"]:::method
     based_groupDependenciesByType["groupDependenciesByType"]:::method
-    const_groupDependenciesByType["groupDependenciesByType"]:::method
-    let_groupDependenciesByType["groupDependenciesByType"]:::method
     for_groupDependenciesByType["groupDependenciesByType"]:::method
     calls_groupDependenciesByType["groupDependenciesByType"]:::method
   end
@@ -905,8 +750,6 @@ graph TB
   subgraph getDependencyClass_service["getDependencyClass-service Service"]
     DiagramGenerator_getDependencyClass["getDependencyClass"]:::method
     based_getDependencyClass["getDependencyClass"]:::method
-    const_getDependencyClass["getDependencyClass"]:::method
-    let_getDependencyClass["getDependencyClass"]:::method
     for_getDependencyClass["getDependencyClass"]:::method
     calls_getDependencyClass["getDependencyClass"]:::method
   end
@@ -914,8 +757,6 @@ graph TB
   subgraph getDependencyTypeLabel_service["getDependencyTypeLabel-service Service"]
     DiagramGenerator_getDependencyTypeLabel["getDependencyTypeLabel"]:::method
     based_getDependencyTypeLabel["getDependencyTypeLabel"]:::method
-    const_getDependencyTypeLabel["getDependencyTypeLabel"]:::method
-    let_getDependencyTypeLabel["getDependencyTypeLabel"]:::method
     for_getDependencyTypeLabel["getDependencyTypeLabel"]:::method
     calls_getDependencyTypeLabel["getDependencyTypeLabel"]:::method
   end
@@ -923,8 +764,6 @@ graph TB
   subgraph isFrameworkDependency_service["isFrameworkDependency-service Service"]
     DiagramGenerator_isFrameworkDependency["isFrameworkDependency"]:::method
     based_isFrameworkDependency["isFrameworkDependency"]:::method
-    const_isFrameworkDependency["isFrameworkDependency"]:::method
-    let_isFrameworkDependency["isFrameworkDependency"]:::method
     for_isFrameworkDependency["isFrameworkDependency"]:::method
     calls_isFrameworkDependency["isFrameworkDependency"]:::method
   end
@@ -932,8 +771,6 @@ graph TB
   subgraph calculateComponentSize_service["calculateComponentSize-service Service"]
     DiagramGenerator_calculateComponentSize["calculateComponentSize"]:::method
     based_calculateComponentSize["calculateComponentSize"]:::method
-    const_calculateComponentSize["calculateComponentSize"]:::method
-    let_calculateComponentSize["calculateComponentSize"]:::method
     for_calculateComponentSize["calculateComponentSize"]:::method
     calls_calculateComponentSize["calculateComponentSize"]:::method
   end
@@ -941,8 +778,6 @@ graph TB
   subgraph countDependencies_service["countDependencies-service Service"]
     DiagramGenerator_countDependencies["countDependencies"]:::method
     based_countDependencies["countDependencies"]:::method
-    const_countDependencies["countDependencies"]:::method
-    let_countDependencies["countDependencies"]:::method
     for_countDependencies["countDependencies"]:::method
     calls_countDependencies["countDependencies"]:::method
   end
@@ -950,8 +785,6 @@ graph TB
   subgraph min_service["min-service Service"]
     DiagramGenerator_min["min"]:::method
     based_min["min"]:::method
-    const_min["min"]:::method
-    let_min["min"]:::method
     for_min["min"]:::method
     calls_min["min"]:::method
     RelationshipAnalyzer_min["min"]:::method
@@ -1256,56 +1089,6 @@ graph TB
     ArchitecturalAnalyzer_round["round"]:::method
   end
 
-  subgraph now_service["now-service Service"]
-    UserService_now["now"]:::method
-    __init___now["now"]:::method
-    create_user_now["now"]:::method
-    get_user_now["now"]:::method
-    list_users_now["now"]:::method
-    export_users_now["now"]:::method
-    validate_email_now["now"]:::method
-  end
-
-  subgraph isoformat_service["isoformat-service Service"]
-    UserService_isoformat["isoformat"]:::method
-    __init___isoformat["isoformat"]:::method
-    create_user_isoformat["isoformat"]:::method
-    get_user_isoformat["isoformat"]:::method
-    list_users_isoformat["isoformat"]:::method
-    export_users_isoformat["isoformat"]:::method
-    validate_email_isoformat["isoformat"]:::method
-  end
-
-  subgraph append_service["append-service Service"]
-    UserService_append["append"]:::method
-    __init___append["append"]:::method
-    create_user_append["append"]:::method
-    get_user_append["append"]:::method
-    list_users_append["append"]:::method
-    export_users_append["append"]:::method
-    validate_email_append["append"]:::method
-  end
-
-  subgraph copy_service["copy-service Service"]
-    UserService_copy["copy"]:::method
-    __init___copy["copy"]:::method
-    create_user_copy["copy"]:::method
-    get_user_copy["copy"]:::method
-    list_users_copy["copy"]:::method
-    export_users_copy["copy"]:::method
-    validate_email_copy["copy"]:::method
-  end
-
-  subgraph dumps_service["dumps-service Service"]
-    UserService_dumps["dumps"]:::method
-    __init___dumps["dumps"]:::method
-    create_user_dumps["dumps"]:::method
-    get_user_dumps["dumps"]:::method
-    list_users_dumps["dumps"]:::method
-    export_users_dumps["dumps"]:::method
-    validate_email_dumps["dumps"]:::method
-  end
-
   main -->|getInput| getInput_service
   main -->|split| split_service
   main -->|map| map_service
@@ -1548,166 +1331,6 @@ graph TB
   based -->|calculateComponentSize| calculateComponentSize_service
   based -->|countDependencies| countDependencies_service
   based -->|min| min_service
-  const -->|generateArchitectureDiagram| generateArchitectureDiagram_service
-  const -->|generateDependencyDiagram| generateDependencyDiagram_service
-  const -->|generateModuleDiagram| generateModuleDiagram_service
-  const -->|keys| keys_service
-  const -->|generateLayeredArchitectureDiagram| generateLayeredArchitectureDiagram_service
-  const -->|generateMVCDiagram| generateMVCDiagram_service
-  const -->|generateMicroservicesDiagram| generateMicroservicesDiagram_service
-  const -->|generateApiFlowDiagram| generateApiFlowDiagram_service
-  const -->|generateDataFlowDiagram| generateDataFlowDiagram_service
-  const -->|generateEventFlowDiagram| generateEventFlowDiagram_service
-  const -->|generateServiceCommunicationDiagram| generateServiceCommunicationDiagram_service
-  const -->|uniqueByName| uniqueByName_service
-  const -->|filterComponentsForDiagram| filterComponentsForDiagram_service
-  const -->|filterDependenciesForDiagram| filterDependenciesForDiagram_service
-  const -->|groupComponentsByDirectory| groupComponentsByDirectory_service
-  const -->|entries| entries_service
-  const -->|sort| sort_service
-  const -->|slice| slice_service
-  const -->|forEach| forEach_service
-  const -->|sanitizeName| sanitizeName_service
-  const -->|getDisplayName| getDisplayName_service
-  const -->|getDisplayComponentName| getDisplayComponentName_service
-  const -->|getComponentMetrics| getComponentMetrics_service
-  const -->|enhanceComponentName| enhanceComponentName_service
-  const -->|generateComponentTooltip| generateComponentTooltip_service
-  const -->|map| map_service
-  const -->|getComponentClass| getComponentClass_service
-  const -->|addInternalRelationships| addInternalRelationships_service
-  const -->|addExternalDependencies| addExternalDependencies_service
-  const -->|wrapInMarkdown| wrapInMarkdown_service
-  const -->|filter| filter_service
-  const -->|isExternalDependency| isExternalDependency_service
-  const -->|has| has_service
-  const -->|add| add_service
-  const -->|dirname| dirname_service
-  const -->|push| push_service
-  const -->|replace| replace_service
-  const -->|some| some_service
-  const -->|startsWith| startsWith_service
-  const -->|generateDiagramMetadata| generateDiagramMetadata_service
-  const -->|generateLegend| generateLegend_service
-  const -->|calculateDiagramStats| calculateDiagramStats_service
-  const -->|generateArchitecturalInsights| generateArchitecturalInsights_service
-  const -->|join| join_service
-  const -->|toLocaleDateString| toLocaleDateString_service
-  const -->|analyzeComponentTypes| analyzeComponentTypes_service
-  const -->|analyzeDependencies| analyzeDependencies_service
-  const -->|analyzeComplexity| analyzeComplexity_service
-  const -->|toLowerCase| toLowerCase_service
-  const -->|includes| includes_service
-  const -->|detectCircularDependencies| detectCircularDependencies_service
-  const -->|set| set_service
-  const -->|get| get_service
-  const -->|calculateComplexity| calculateComplexity_service
-  const -->|from| from_service
-  const -->|toUpperCase| toUpperCase_service
-  const -->|groupRelationshipsBySource| groupRelationshipsBySource_service
-  const -->|groupRelationshipsByType| groupRelationshipsByType_service
-  const -->|getDataFlowClass| getDataFlowClass_service
-  const -->|groupRelationshipsByEvent| groupRelationshipsByEvent_service
-  const -->|groupRelationshipsByService| groupRelationshipsByService_service
-  const -->|isTestFile| isTestFile_service
-  const -->|isDependencyLayer| isDependencyLayer_service
-  const -->|isInternalImplementation| isInternalImplementation_service
-  const -->|isUtilityFile| isUtilityFile_service
-  const -->|getComponentImportance| getComponentImportance_service
-  const -->|split| split_service
-  const -->|test| test_service
-  const -->|substring| substring_service
-  const -->|find| find_service
-  const -->|getRelationshipLabel| getRelationshipLabel_service
-  const -->|getRelationshipStyle| getRelationshipStyle_service
-  const -->|addArchitecturalRelationships| addArchitecturalRelationships_service
-  const -->|groupDependenciesByType| groupDependenciesByType_service
-  const -->|getDependencyClass| getDependencyClass_service
-  const -->|getDependencyTypeLabel| getDependencyTypeLabel_service
-  const -->|isFrameworkDependency| isFrameworkDependency_service
-  const -->|calculateComponentSize| calculateComponentSize_service
-  const -->|countDependencies| countDependencies_service
-  const -->|min| min_service
-  let -->|generateArchitectureDiagram| generateArchitectureDiagram_service
-  let -->|generateDependencyDiagram| generateDependencyDiagram_service
-  let -->|generateModuleDiagram| generateModuleDiagram_service
-  let -->|keys| keys_service
-  let -->|generateLayeredArchitectureDiagram| generateLayeredArchitectureDiagram_service
-  let -->|generateMVCDiagram| generateMVCDiagram_service
-  let -->|generateMicroservicesDiagram| generateMicroservicesDiagram_service
-  let -->|generateApiFlowDiagram| generateApiFlowDiagram_service
-  let -->|generateDataFlowDiagram| generateDataFlowDiagram_service
-  let -->|generateEventFlowDiagram| generateEventFlowDiagram_service
-  let -->|generateServiceCommunicationDiagram| generateServiceCommunicationDiagram_service
-  let -->|uniqueByName| uniqueByName_service
-  let -->|filterComponentsForDiagram| filterComponentsForDiagram_service
-  let -->|filterDependenciesForDiagram| filterDependenciesForDiagram_service
-  let -->|groupComponentsByDirectory| groupComponentsByDirectory_service
-  let -->|entries| entries_service
-  let -->|sort| sort_service
-  let -->|slice| slice_service
-  let -->|forEach| forEach_service
-  let -->|sanitizeName| sanitizeName_service
-  let -->|getDisplayName| getDisplayName_service
-  let -->|getDisplayComponentName| getDisplayComponentName_service
-  let -->|getComponentMetrics| getComponentMetrics_service
-  let -->|enhanceComponentName| enhanceComponentName_service
-  let -->|generateComponentTooltip| generateComponentTooltip_service
-  let -->|map| map_service
-  let -->|getComponentClass| getComponentClass_service
-  let -->|addInternalRelationships| addInternalRelationships_service
-  let -->|addExternalDependencies| addExternalDependencies_service
-  let -->|wrapInMarkdown| wrapInMarkdown_service
-  let -->|filter| filter_service
-  let -->|isExternalDependency| isExternalDependency_service
-  let -->|has| has_service
-  let -->|add| add_service
-  let -->|dirname| dirname_service
-  let -->|push| push_service
-  let -->|replace| replace_service
-  let -->|some| some_service
-  let -->|startsWith| startsWith_service
-  let -->|generateDiagramMetadata| generateDiagramMetadata_service
-  let -->|generateLegend| generateLegend_service
-  let -->|calculateDiagramStats| calculateDiagramStats_service
-  let -->|generateArchitecturalInsights| generateArchitecturalInsights_service
-  let -->|join| join_service
-  let -->|toLocaleDateString| toLocaleDateString_service
-  let -->|analyzeComponentTypes| analyzeComponentTypes_service
-  let -->|analyzeDependencies| analyzeDependencies_service
-  let -->|analyzeComplexity| analyzeComplexity_service
-  let -->|toLowerCase| toLowerCase_service
-  let -->|includes| includes_service
-  let -->|detectCircularDependencies| detectCircularDependencies_service
-  let -->|set| set_service
-  let -->|get| get_service
-  let -->|calculateComplexity| calculateComplexity_service
-  let -->|from| from_service
-  let -->|toUpperCase| toUpperCase_service
-  let -->|groupRelationshipsBySource| groupRelationshipsBySource_service
-  let -->|groupRelationshipsByType| groupRelationshipsByType_service
-  let -->|getDataFlowClass| getDataFlowClass_service
-  let -->|groupRelationshipsByEvent| groupRelationshipsByEvent_service
-  let -->|groupRelationshipsByService| groupRelationshipsByService_service
-  let -->|isTestFile| isTestFile_service
-  let -->|isDependencyLayer| isDependencyLayer_service
-  let -->|isInternalImplementation| isInternalImplementation_service
-  let -->|isUtilityFile| isUtilityFile_service
-  let -->|getComponentImportance| getComponentImportance_service
-  let -->|split| split_service
-  let -->|test| test_service
-  let -->|substring| substring_service
-  let -->|find| find_service
-  let -->|getRelationshipLabel| getRelationshipLabel_service
-  let -->|getRelationshipStyle| getRelationshipStyle_service
-  let -->|addArchitecturalRelationships| addArchitecturalRelationships_service
-  let -->|groupDependenciesByType| groupDependenciesByType_service
-  let -->|getDependencyClass| getDependencyClass_service
-  let -->|getDependencyTypeLabel| getDependencyTypeLabel_service
-  let -->|isFrameworkDependency| isFrameworkDependency_service
-  let -->|calculateComponentSize| calculateComponentSize_service
-  let -->|countDependencies| countDependencies_service
-  let -->|min| min_service
   for -->|generateArchitectureDiagram| generateArchitectureDiagram_service
   for -->|generateDependencyDiagram| generateDependencyDiagram_service
   for -->|generateModuleDiagram| generateModuleDiagram_service
@@ -2038,48 +1661,6 @@ graph TB
   ArchitecturalAnalyzer -->|exec| exec_service
   ArchitecturalAnalyzer -->|replace| replace_service
   ArchitecturalAnalyzer -->|round| round_service
-  UserService -->|now| now_service
-  UserService -->|isoformat| isoformat_service
-  UserService -->|append| append_service
-  UserService -->|copy| copy_service
-  UserService -->|dumps| dumps_service
-  UserService -->|split| split_service
-  __init__ -->|now| now_service
-  __init__ -->|isoformat| isoformat_service
-  __init__ -->|append| append_service
-  __init__ -->|copy| copy_service
-  __init__ -->|dumps| dumps_service
-  __init__ -->|split| split_service
-  create_user -->|now| now_service
-  create_user -->|isoformat| isoformat_service
-  create_user -->|append| append_service
-  create_user -->|copy| copy_service
-  create_user -->|dumps| dumps_service
-  create_user -->|split| split_service
-  get_user -->|now| now_service
-  get_user -->|isoformat| isoformat_service
-  get_user -->|append| append_service
-  get_user -->|copy| copy_service
-  get_user -->|dumps| dumps_service
-  get_user -->|split| split_service
-  list_users -->|now| now_service
-  list_users -->|isoformat| isoformat_service
-  list_users -->|append| append_service
-  list_users -->|copy| copy_service
-  list_users -->|dumps| dumps_service
-  list_users -->|split| split_service
-  export_users -->|now| now_service
-  export_users -->|isoformat| isoformat_service
-  export_users -->|append| append_service
-  export_users -->|copy| copy_service
-  export_users -->|dumps| dumps_service
-  export_users -->|split| split_service
-  validate_email -->|now| now_service
-  validate_email -->|isoformat| isoformat_service
-  validate_email -->|append| append_service
-  validate_email -->|copy| copy_service
-  validate_email -->|dumps| dumps_service
-  validate_email -->|split| split_service
 
 ```
 
@@ -2094,6 +1675,17 @@ graph TB
 | 📦 **NPM** | Blue | Node.js packages |
 | 🏗️ **Framework** | Light Green | Framework dependencies |
 | 🌐 **External** | Red | External libraries |
+
+## 📊 Visual Indicators
+
+| Symbol | Meaning | Description |
+|---|---|---|
+| 📦 | Large Component | Component with >100 lines of code |
+| 📄 | Medium Component | Component with 50-100 lines of code |
+| 📝 | Small Component | Component with <50 lines of code |
+| ⚡ | High Complexity | Complex component (complexity ≥4) |
+| 🔥 | Medium Complexity | Moderate complexity (complexity ≥3) |
+| 🔗 | High Dependencies | Component with >5 dependencies |
 
 ## 🔗 Relationship Types
 
