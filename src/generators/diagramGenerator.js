@@ -85,7 +85,9 @@ class DiagramGenerator {
         limitedComponents.forEach(component => {
           const nodeId = this.sanitizeName(component.name);
           const displayComponentName = this.getDisplayComponentName(component.name);
-          mermaid += `    ${nodeId}["${displayComponentName}"]\n`;
+          const componentMetrics = this.getComponentMetrics(component, analysis);
+          const enhancedName = this.enhanceComponentName(displayComponentName, componentMetrics);
+          mermaid += `    ${nodeId}["${enhancedName}"]\n`;
         });
         
         mermaid += '  end\n\n';
@@ -253,6 +255,7 @@ ${legend}
     if (!analysis) return '';
     
     const stats = this.calculateDiagramStats(analysis);
+    const insights = this.generateArchitecturalInsights(analysis);
     
     return `## 📊 Architecture Overview
 
@@ -262,7 +265,121 @@ ${legend}
 - **External Dependencies**: ${stats.externalDeps} packages
 - **Generated**: ${new Date().toLocaleDateString()}
 
+${insights}
+
 `;
+  }
+
+  generateArchitecturalInsights(analysis) {
+    const insights = [];
+    
+    // Analyze component distribution
+    const componentTypes = this.analyzeComponentTypes(analysis.components);
+    if (componentTypes.analyzers > 3) {
+      insights.push('🔍 **High Analysis Complexity**: Multiple analyzers detected - consider consolidating analysis logic');
+    }
+    
+    if (componentTypes.generators > 1) {
+      insights.push('🎨 **Multiple Generators**: Consider using a single generator with multiple strategies');
+    }
+    
+    // Analyze dependencies
+    const depAnalysis = this.analyzeDependencies(analysis.dependencies);
+    if (depAnalysis.externalRatio > 0.7) {
+      insights.push('🌐 **High External Dependencies**: Consider reducing external dependencies for better maintainability');
+    }
+    
+    if (depAnalysis.circularDeps > 0) {
+      insights.push('🔄 **Circular Dependencies**: Found circular dependencies - consider refactoring');
+    }
+    
+    // Analyze architecture patterns
+    if (analysis.patterns && Object.keys(analysis.patterns).length === 0) {
+      insights.push('🏗️ **No Clear Patterns**: Consider implementing architectural patterns (MVC, layered, etc.)');
+    }
+    
+    // Analyze component complexity
+    const complexityAnalysis = this.analyzeComplexity(analysis.components);
+    if (complexityAnalysis.highComplexity > 0) {
+      insights.push(`⚡ **Complex Components**: ${complexityAnalysis.highComplexity} components with high complexity - consider refactoring`);
+    }
+    
+    if (insights.length === 0) {
+      insights.push('✅ **Well-Structured Architecture**: Good component organization and clear separation of concerns');
+    }
+    
+    return `## 🧠 Architectural Insights
+
+${insights.map(insight => `- ${insight}`).join('\n')}
+
+`;
+  }
+
+  analyzeComponentTypes(components) {
+    const types = {
+      analyzers: 0,
+      generators: 0,
+      managers: 0,
+      services: 0,
+      others: 0
+    };
+    
+    components.forEach(comp => {
+      const name = comp.name.toLowerCase();
+      if (name.includes('analyzer')) types.analyzers++;
+      else if (name.includes('generator')) types.generators++;
+      else if (name.includes('manager')) types.managers++;
+      else if (name.includes('service')) types.services++;
+      else types.others++;
+    });
+    
+    return types;
+  }
+
+  analyzeDependencies(dependencies) {
+    if (!dependencies) return { externalRatio: 0, circularDeps: 0 };
+    
+    const external = dependencies.filter(dep => this.isExternalDependency(dep.from)).length;
+    const total = dependencies.length;
+    const externalRatio = total > 0 ? external / total : 0;
+    
+    // Simple circular dependency detection
+    const circularDeps = this.detectCircularDependencies(dependencies);
+    
+    return { externalRatio, circularDeps };
+  }
+
+  detectCircularDependencies(dependencies) {
+    // Simple circular dependency detection
+    const graph = new Map();
+    dependencies.forEach(dep => {
+      if (!graph.has(dep.from)) graph.set(dep.from, []);
+      graph.get(dep.from).push(dep.name);
+    });
+    
+    let circularCount = 0;
+    for (const [node, neighbors] of graph) {
+      if (neighbors.includes(node)) {
+        circularCount++;
+      }
+    }
+    
+    return circularCount;
+  }
+
+  analyzeComplexity(components) {
+    let highComplexity = 0;
+    let totalComplexity = 0;
+    
+    components.forEach(comp => {
+      const complexity = this.calculateComplexity(comp);
+      totalComplexity += complexity;
+      if (complexity >= 4) {
+        highComplexity++;
+      }
+    });
+    
+    return { highComplexity, totalComplexity };
   }
 
   generateLegend() {
@@ -277,6 +394,17 @@ ${legend}
 | 📦 **NPM** | Blue | Node.js packages |
 | 🏗️ **Framework** | Light Green | Framework dependencies |
 | 🌐 **External** | Red | External libraries |
+
+## 📊 Visual Indicators
+
+| Symbol | Meaning | Description |
+|---|---|---|
+| 📦 | Large Component | Component with >100 lines of code |
+| 📄 | Medium Component | Component with 50-100 lines of code |
+| 📝 | Small Component | Component with <50 lines of code |
+| ⚡ | High Complexity | Complex component (complexity ≥4) |
+| 🔥 | Medium Complexity | Moderate complexity (complexity ≥3) |
+| 🔗 | High Dependencies | Component with >5 dependencies |
 
 ## 🔗 Relationship Types
 
@@ -988,6 +1116,86 @@ ${legend}
     } else {
       return 'external';
     }
+  }
+
+  getComponentMetrics(component, analysis) {
+    // Calculate component metrics for enhanced visualization
+    const metrics = {
+      size: this.calculateComponentSize(component),
+      complexity: this.calculateComplexity(component),
+      dependencies: this.countDependencies(component, analysis),
+      importance: this.getComponentImportance(component)
+    };
+    
+    return metrics;
+  }
+
+  calculateComponentSize(component) {
+    // Estimate component size based on available data
+    if (component.linesOfCode) {
+      return component.linesOfCode;
+    }
+    
+    // Fallback: estimate based on name length and type
+    const baseSize = component.name.length * 10;
+    if (component.name.includes('Analyzer') || component.name.includes('Generator')) {
+      return baseSize + 50; // Larger components
+    }
+    return baseSize;
+  }
+
+  calculateComplexity(component) {
+    // Calculate complexity score based on component characteristics
+    let complexity = 1;
+    
+    if (component.name.includes('Analyzer') || component.name.includes('Generator')) {
+      complexity += 2;
+    }
+    if (component.name.includes('Manager') || component.name.includes('Service')) {
+      complexity += 1;
+    }
+    if (component.name.length > 20) {
+      complexity += 1;
+    }
+    
+    return Math.min(complexity, 5); // Cap at 5
+  }
+
+  countDependencies(component, analysis) {
+    // Count how many components depend on this one
+    if (!analysis.dependencies) return 0;
+    
+    return analysis.dependencies.filter(dep => 
+      dep.name === component.name || dep.from === component.name
+    ).length;
+  }
+
+  enhanceComponentName(name, metrics) {
+    // Enhance component name with visual indicators
+    let enhanced = name;
+    
+    // Add size indicator
+    if (metrics.size > 100) {
+      enhanced = `📦 ${enhanced}`;
+    } else if (metrics.size > 50) {
+      enhanced = `📄 ${enhanced}`;
+    } else {
+      enhanced = `📝 ${enhanced}`;
+    }
+    
+    // Add complexity indicator
+    if (metrics.complexity >= 4) {
+      enhanced = `${enhanced} ⚡`;
+    } else if (metrics.complexity >= 3) {
+      enhanced = `${enhanced} 🔥`;
+    }
+    
+    // Add dependency indicator
+    if (metrics.dependencies > 5) {
+      enhanced = `${enhanced} 🔗`;
+    }
+    
+    return enhanced;
   }
 }
 
