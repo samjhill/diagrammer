@@ -10,6 +10,14 @@ diagram:
   maxNodesPerDiagram: 30     # Maximum nodes per diagram
   maxDependenciesPerDiagram: 50  # Maximum dependencies per diagram
   excludeInternalMethods: true   # Exclude internal implementation methods
+  
+  # Focus diagram settings
+  focusDiagrams:
+    enabled: true              # Enable focus diagrams
+    maxNodesPerFocus: 15       # Maximum nodes per focus diagram
+    maxDependenciesPerFocus: 25 # Maximum dependencies per focus diagram
+    includeLayerFocus: true    # Generate per-layer focus diagrams
+    includeModuleFocus: true   # Generate per-module focus diagrams
 
 # Code analysis settings
 analysis:
