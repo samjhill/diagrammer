@@ -76,6 +76,7 @@ class DiagramExporter {
 
       // Wait for Mermaid to render
       await page.waitForFunction(() => {
+        // eslint-disable-next-line no-undef
         return document.querySelector('.mermaid svg') !== null;
       }, { timeout: 10000 });
 
