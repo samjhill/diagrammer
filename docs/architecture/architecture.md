@@ -4,7 +4,7 @@ This diagram was automatically generated from your codebase.
 
 ## 📊 Architecture Overview
 
-- **Components**: 17 analyzed
+- **Components**: 18 analyzed
 - **Languages**: javascript
 - **Architectural Patterns**: None detected
 - **External Dependencies**: 12 packages
@@ -105,6 +105,61 @@ graph TB
 - **uses**: Component utilizes another component
 - **API**: API calls and communication
 - **data**: Data flow between components
+
+
+## Summary Tables
+
+### Component Summary
+
+| Component | Type | Language | Path | Dependencies |
+|-----------|------|----------|------|-------------|
+| main | Component | javascript | N/A | 0 |
+| languages | Component | javascript | N/A | 0 |
+| loadConfig | Component | javascript | N/A | 0 |
+| ArchitecturalAnalyzer | Component | javascript | N/A | 0 |
+| based | Component | javascript | N/A | 0 |
+| calls | Component | javascript | N/A | 0 |
+| CodeAnalyzer | Component | javascript | N/A | 0 |
+| declarations | Component | javascript | N/A | 0 |
+| DiagramGenerator | Component | javascript | N/A | 0 |
+| for | Component | javascript | N/A | 0 |
+| GitManager | Component | javascript | N/A | 0 |
+| JavaScriptAnalyzer | Component | javascript | N/A | 0 |
+| percentage | Component | javascript | N/A | 0 |
+| PythonAnalyzer | Component | javascript | N/A | 0 |
+| RelationshipAnalyzer | Component | javascript | N/A | 0 |
+| rev | Component | javascript | N/A | 0 |
+| TypeScriptAnalyzer | Component | javascript | N/A | 0 |
+| visit | Component | javascript | N/A | 0 |
+
+### Dependency Summary
+
+| From | To | Type | Relationship |
+|------|---|------|-------------|
+| @actions/core | core | depends | dependency |
+| @actions/github | github | depends | dependency |
+| fs | fs | depends | dependency |
+| fs-extra | fs | depends | dependency |
+| fs-extra | fs | depends | dependency |
+| fs-extra | fs | depends | dependency |
+| fs-extra | fs | depends | dependency |
+| fs-extra | fs | depends | dependency |
+| path | path | depends | dependency |
+| path | path | depends | dependency |
+| path | path | depends | dependency |
+| typescript | ts | depends | dependency |
+
+### Architectural Patterns
+
+| Pattern | Count | Components |
+|---------|-------|------------|
+
+### Language Distribution
+
+| Language | Components | Percentage |
+|----------|------------|------------|
+| javascript | 18 | 100.0% |
+
 
 
 ---

@@ -30,6 +30,8 @@ graph TB
     calls:::component
     rev["rev"]
     rev:::component
+    percentage["percentage"]
+    percentage:::component
     TypeScriptAnalyzer["TypeScriptAnalyzer"]
     TypeScriptAnalyzer:::component
     visit["visit"]
@@ -93,6 +95,8 @@ graph TB
 - **uses**: Component utilizes another component
 - **API**: API calls and communication
 - **data**: Data flow between components
+
+
 
 
 ---

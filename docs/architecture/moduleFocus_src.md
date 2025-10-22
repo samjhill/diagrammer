@@ -1,11 +1,35 @@
-# API Flow
+# Module Focus: src
 
 This diagram was automatically generated from your codebase.
+
+## 📊 Architecture Overview
+
+- **Components**: 3 analyzed
+- **Languages**: javascript
+- **Architectural Patterns**: None detected
+- **External Dependencies**: 0 packages
+- **Generated**: 10/22/2025
+
+## 🧠 Architectural Insights
+
+- ✅ **Well-Structured Architecture**: Good component organization and clear separation of concerns
+
+
 
 
 
 ```mermaid
-No API relationships detected.
+graph TB
+  classDef component fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+  classDef external fill:#ffebee,stroke:#c62828,stroke-width:2px
+  classDef internal fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px
+  main["main"]
+  main:::component
+  languages["languages"]
+  languages:::component
+  loadConfig["loadConfig"]
+  loadConfig:::component
+
 ```
 
 ## 🎨 Legend
@@ -40,6 +64,22 @@ No API relationships detected.
 - **API**: API calls and communication
 - **data**: Data flow between components
 
+
+## Summary Tables
+
+### Component Summary
+
+| Component | Type | Language | Path | Dependencies |
+|-----------|------|----------|------|-------------|
+| main | Component | javascript | N/A | 0 |
+| languages | Component | javascript | N/A | 0 |
+| loadConfig | Component | javascript | N/A | 0 |
+
+### Language Distribution
+
+| Language | Components | Percentage |
+|----------|------------|------------|
+| javascript | 3 | 100.0% |
 
 
 

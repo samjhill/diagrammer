@@ -1,20 +1,18 @@
-# Module Structure
+# Layer Focus: unknown
 
 This diagram was automatically generated from your codebase.
 
 ## 📊 Architecture Overview
 
-- **Components**: 18 analyzed
+- **Components**: 15 analyzed
 - **Languages**: javascript
 - **Architectural Patterns**: None detected
-- **External Dependencies**: 12 packages
+- **External Dependencies**: 0 packages
 - **Generated**: 10/22/2025
 
 ## 🧠 Architectural Insights
 
 - 🔍 **High Analysis Complexity**: Multiple analyzers detected - consider consolidating analysis logic
-- 🌐 **High External Dependencies**: Consider reducing external dependencies for better maintainability
-- 🔄 **Circular Dependencies**: Found circular dependencies - consider refactoring
 - ⚡ **Complex Components**: 1 components with high complexity - consider refactoring
 
 
@@ -23,44 +21,39 @@ This diagram was automatically generated from your codebase.
 
 ```mermaid
 graph TB
-  classDef module fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-  classDef export fill:#e8f5e8,stroke:#388e3c,stroke-width:2px
-  classDef group fill:#f3e5f5,stroke:#7b1fa2,stroke-width:3px
-
-  subgraph _["."]
-    testEnvironment["testEnvironment"]
-    testMatch["testMatch"]
-    collectCoverageFrom["collectCoverageFrom"]
-    __src_index_js_____Exclude_main_entry_point____["'!src/index.js' // Exclude main entry point
-  ]"]
-    coverageDirectory["coverageDirectory"]
-    coverageReporters["coverageReporters"]
-    _lcov_["'lcov'"]
-    _html__["'html']"]
-    verbose["verbose"]
-  end
-
-  subgraph src["src"]
-    main["main"]
-  end
-
-  subgraph src_utils["src/utils"]
-    GitManager["GitManager"]
-  end
-
-  subgraph src_generators["src/generators"]
-    DiagramGenerator["DiagramGenerator"]
-  end
-
-  subgraph src_analyzers["src/analyzers"]
-    TypeScriptAnalyzer["TypeScriptAnalyzer"]
-    RelationshipAnalyzer["RelationshipAnalyzer"]
-    PythonAnalyzer["PythonAnalyzer"]
-    JavaScriptAnalyzer["JavaScriptAnalyzer"]
-    CodeAnalyzer["CodeAnalyzer"]
-    ArchitecturalAnalyzer["ArchitecturalAnalyzer"]
-  end
-
+  classDef component fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+  classDef external fill:#ffebee,stroke:#c62828,stroke-width:2px
+  classDef internal fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px
+  main["main"]
+  main:::component
+  languages["languages"]
+  languages:::component
+  loadConfig["loadConfig"]
+  loadConfig:::component
+  ArchitecturalAnalyzer["ArchitecturalAnal..."]
+  ArchitecturalAnalyzer:::component
+  based["based"]
+  based:::component
+  calls["calls"]
+  calls:::component
+  CodeAnalyzer["CodeAnalyzer"]
+  CodeAnalyzer:::component
+  declarations["declarations"]
+  declarations:::component
+  DiagramGenerator["DiagramGenerator"]
+  DiagramGenerator:::component
+  for["for"]
+  for:::component
+  JavaScriptAnalyzer["JavaScriptAnalyzer"]
+  JavaScriptAnalyzer:::component
+  percentage["percentage"]
+  percentage:::component
+  PythonAnalyzer["PythonAnalyzer"]
+  PythonAnalyzer:::component
+  RelationshipAnalyzer["RelationshipAnalyzer"]
+  RelationshipAnalyzer:::component
+  rev["rev"]
+  rev:::component
 
 ```
 
@@ -113,42 +106,17 @@ graph TB
 | declarations | Component | javascript | N/A | 0 |
 | DiagramGenerator | Component | javascript | N/A | 0 |
 | for | Component | javascript | N/A | 0 |
-| GitManager | Component | javascript | N/A | 0 |
 | JavaScriptAnalyzer | Component | javascript | N/A | 0 |
 | percentage | Component | javascript | N/A | 0 |
 | PythonAnalyzer | Component | javascript | N/A | 0 |
 | RelationshipAnalyzer | Component | javascript | N/A | 0 |
 | rev | Component | javascript | N/A | 0 |
-| TypeScriptAnalyzer | Component | javascript | N/A | 0 |
-| visit | Component | javascript | N/A | 0 |
-
-### Dependency Summary
-
-| From | To | Type | Relationship |
-|------|---|------|-------------|
-| @actions/core | core | depends | dependency |
-| @actions/github | github | depends | dependency |
-| fs | fs | depends | dependency |
-| fs-extra | fs | depends | dependency |
-| fs-extra | fs | depends | dependency |
-| fs-extra | fs | depends | dependency |
-| fs-extra | fs | depends | dependency |
-| fs-extra | fs | depends | dependency |
-| path | path | depends | dependency |
-| path | path | depends | dependency |
-| path | path | depends | dependency |
-| typescript | ts | depends | dependency |
-
-### Architectural Patterns
-
-| Pattern | Count | Components |
-|---------|-------|------------|
 
 ### Language Distribution
 
 | Language | Components | Percentage |
 |----------|------------|------------|
-| javascript | 18 | 100.0% |
+| javascript | 15 | 100.0% |
 
 
 

@@ -25,6 +25,7 @@ graph TB
     for_split["split"]:::method
     calls_split["split"]:::method
     rev_split["split"]:::method
+    percentage_split["split"]:::method
     RelationshipAnalyzer_split["split"]:::method
     PythonAnalyzer_split["split"]:::method
     JavaScriptAnalyzer_split["split"]:::method
@@ -41,6 +42,7 @@ graph TB
     for_map["map"]:::method
     calls_map["map"]:::method
     rev_map["map"]:::method
+    percentage_map["map"]:::method
     PythonAnalyzer_map["map"]:::method
     JavaScriptAnalyzer_map["map"]:::method
     declarations_map["map"]:::method
@@ -98,6 +100,7 @@ graph TB
     for_keys["keys"]:::method
     calls_keys["keys"]:::method
     rev_keys["keys"]:::method
+    percentage_keys["keys"]:::method
   end
 
   subgraph generateDiagrams_service["generateDiagrams-service Service"]
@@ -121,6 +124,7 @@ graph TB
     for_entries["entries"]:::method
     calls_entries["entries"]:::method
     rev_entries["entries"]:::method
+    percentage_entries["entries"]:::method
     RelationshipAnalyzer_entries["entries"]:::method
     ArchitecturalAnalyzer_entries["entries"]:::method
   end
@@ -134,6 +138,7 @@ graph TB
     for_join["join"]:::method
     calls_join["join"]:::method
     rev_join["join"]:::method
+    percentage_join["join"]:::method
   end
 
   subgraph resolve_service["resolve-service Service"]
@@ -163,6 +168,7 @@ graph TB
     for_push["push"]:::method
     calls_push["push"]:::method
     rev_push["push"]:::method
+    percentage_push["push"]:::method
     TypeScriptAnalyzer_push["push"]:::method
     visit_push["push"]:::method
     RelationshipAnalyzer_push["push"]:::method
@@ -250,6 +256,7 @@ graph TB
     for_generateArchitectureDiagram["generateArchitectureDiagram"]:::method
     calls_generateArchitectureDiagram["generateArchitectureDiagram"]:::method
     rev_generateArchitectureDiagram["generateArchitectureDiagram"]:::method
+    percentage_generateArchitectureDiagram["generateArchitectureDiagram"]:::method
   end
 
   subgraph generateDependencyDiagram_service["generateDependencyDiagram-service Service"]
@@ -258,6 +265,7 @@ graph TB
     for_generateDependencyDiagram["generateDependencyDiagram"]:::method
     calls_generateDependencyDiagram["generateDependencyDiagram"]:::method
     rev_generateDependencyDiagram["generateDependencyDiagram"]:::method
+    percentage_generateDependencyDiagram["generateDependencyDiagram"]:::method
   end
 
   subgraph generateModuleDiagram_service["generateModuleDiagram-service Service"]
@@ -266,6 +274,7 @@ graph TB
     for_generateModuleDiagram["generateModuleDiagram"]:::method
     calls_generateModuleDiagram["generateModuleDiagram"]:::method
     rev_generateModuleDiagram["generateModuleDiagram"]:::method
+    percentage_generateModuleDiagram["generateModuleDiagram"]:::method
   end
 
   subgraph generateLayeredArchitectureDiagram_service["generateLayeredArchitectureDiagram-service Service"]
@@ -274,6 +283,7 @@ graph TB
     for_generateLayeredArchitectureDiagram["generateLayeredArchitectureDiagram"]:::method
     calls_generateLayeredArchitectureDiagram["generateLayeredArchitectureDiagram"]:::method
     rev_generateLayeredArchitectureDiagram["generateLayeredArchitectureDiagram"]:::method
+    percentage_generateLayeredArchitectureDiagram["generateLayeredArchitectureDiagram"]:::method
   end
 
   subgraph generateMVCDiagram_service["generateMVCDiagram-service Service"]
@@ -282,6 +292,7 @@ graph TB
     for_generateMVCDiagram["generateMVCDiagram"]:::method
     calls_generateMVCDiagram["generateMVCDiagram"]:::method
     rev_generateMVCDiagram["generateMVCDiagram"]:::method
+    percentage_generateMVCDiagram["generateMVCDiagram"]:::method
   end
 
   subgraph generateMicroservicesDiagram_service["generateMicroservicesDiagram-service Service"]
@@ -290,6 +301,7 @@ graph TB
     for_generateMicroservicesDiagram["generateMicroservicesDiagram"]:::method
     calls_generateMicroservicesDiagram["generateMicroservicesDiagram"]:::method
     rev_generateMicroservicesDiagram["generateMicroservicesDiagram"]:::method
+    percentage_generateMicroservicesDiagram["generateMicroservicesDiagram"]:::method
   end
 
   subgraph generateApiFlowDiagram_service["generateApiFlowDiagram-service Service"]
@@ -298,6 +310,7 @@ graph TB
     for_generateApiFlowDiagram["generateApiFlowDiagram"]:::method
     calls_generateApiFlowDiagram["generateApiFlowDiagram"]:::method
     rev_generateApiFlowDiagram["generateApiFlowDiagram"]:::method
+    percentage_generateApiFlowDiagram["generateApiFlowDiagram"]:::method
   end
 
   subgraph generateDataFlowDiagram_service["generateDataFlowDiagram-service Service"]
@@ -306,6 +319,7 @@ graph TB
     for_generateDataFlowDiagram["generateDataFlowDiagram"]:::method
     calls_generateDataFlowDiagram["generateDataFlowDiagram"]:::method
     rev_generateDataFlowDiagram["generateDataFlowDiagram"]:::method
+    percentage_generateDataFlowDiagram["generateDataFlowDiagram"]:::method
   end
 
   subgraph generateEventFlowDiagram_service["generateEventFlowDiagram-service Service"]
@@ -314,6 +328,7 @@ graph TB
     for_generateEventFlowDiagram["generateEventFlowDiagram"]:::method
     calls_generateEventFlowDiagram["generateEventFlowDiagram"]:::method
     rev_generateEventFlowDiagram["generateEventFlowDiagram"]:::method
+    percentage_generateEventFlowDiagram["generateEventFlowDiagram"]:::method
   end
 
   subgraph generateServiceCommunicationDiagram_service["generateServiceCommunicationDiagram-service Service"]
@@ -322,6 +337,7 @@ graph TB
     for_generateServiceCommunicationDiagram["generateServiceCommunicationDiagram"]:::method
     calls_generateServiceCommunicationDiagram["generateServiceCommunicationDiagram"]:::method
     rev_generateServiceCommunicationDiagram["generateServiceCommunicationDiagram"]:::method
+    percentage_generateServiceCommunicationDiagram["generateServiceCommunicationDiagram"]:::method
   end
 
   subgraph detectCircularDependencyPairs_service["detectCircularDependencyPairs-service Service"]
@@ -330,6 +346,7 @@ graph TB
     for_detectCircularDependencyPairs["detectCircularDependencyPairs"]:::method
     calls_detectCircularDependencyPairs["detectCircularDependencyPairs"]:::method
     rev_detectCircularDependencyPairs["detectCircularDependencyPairs"]:::method
+    percentage_detectCircularDependencyPairs["detectCircularDependencyPairs"]:::method
   end
 
   subgraph generateCircularDependenciesDiagram_service["generateCircularDependenciesDiagram-service Service"]
@@ -338,6 +355,25 @@ graph TB
     for_generateCircularDependenciesDiagram["generateCircularDependenciesDiagram"]:::method
     calls_generateCircularDependenciesDiagram["generateCircularDependenciesDiagram"]:::method
     rev_generateCircularDependenciesDiagram["generateCircularDependenciesDiagram"]:::method
+    percentage_generateCircularDependenciesDiagram["generateCircularDependenciesDiagram"]:::method
+  end
+
+  subgraph generateFocusDiagrams_service["generateFocusDiagrams-service Service"]
+    DiagramGenerator_generateFocusDiagrams["generateFocusDiagrams"]:::method
+    based_generateFocusDiagrams["generateFocusDiagrams"]:::method
+    for_generateFocusDiagrams["generateFocusDiagrams"]:::method
+    calls_generateFocusDiagrams["generateFocusDiagrams"]:::method
+    rev_generateFocusDiagrams["generateFocusDiagrams"]:::method
+    percentage_generateFocusDiagrams["generateFocusDiagrams"]:::method
+  end
+
+  subgraph assign_service["assign-service Service"]
+    DiagramGenerator_assign["assign"]:::method
+    based_assign["assign"]:::method
+    for_assign["assign"]:::method
+    calls_assign["assign"]:::method
+    rev_assign["assign"]:::method
+    percentage_assign["assign"]:::method
   end
 
   subgraph uniqueByName_service["uniqueByName-service Service"]
@@ -346,6 +382,7 @@ graph TB
     for_uniqueByName["uniqueByName"]:::method
     calls_uniqueByName["uniqueByName"]:::method
     rev_uniqueByName["uniqueByName"]:::method
+    percentage_uniqueByName["uniqueByName"]:::method
   end
 
   subgraph filterComponentsForDiagram_service["filterComponentsForDiagram-service Service"]
@@ -354,6 +391,7 @@ graph TB
     for_filterComponentsForDiagram["filterComponentsForDiagram"]:::method
     calls_filterComponentsForDiagram["filterComponentsForDiagram"]:::method
     rev_filterComponentsForDiagram["filterComponentsForDiagram"]:::method
+    percentage_filterComponentsForDiagram["filterComponentsForDiagram"]:::method
   end
 
   subgraph filterDependenciesForDiagram_service["filterDependenciesForDiagram-service Service"]
@@ -362,6 +400,7 @@ graph TB
     for_filterDependenciesForDiagram["filterDependenciesForDiagram"]:::method
     calls_filterDependenciesForDiagram["filterDependenciesForDiagram"]:::method
     rev_filterDependenciesForDiagram["filterDependenciesForDiagram"]:::method
+    percentage_filterDependenciesForDiagram["filterDependenciesForDiagram"]:::method
   end
 
   subgraph groupComponentsByDirectory_service["groupComponentsByDirectory-service Service"]
@@ -370,6 +409,7 @@ graph TB
     for_groupComponentsByDirectory["groupComponentsByDirectory"]:::method
     calls_groupComponentsByDirectory["groupComponentsByDirectory"]:::method
     rev_groupComponentsByDirectory["groupComponentsByDirectory"]:::method
+    percentage_groupComponentsByDirectory["groupComponentsByDirectory"]:::method
   end
 
   subgraph sort_service["sort-service Service"]
@@ -378,6 +418,7 @@ graph TB
     for_sort["sort"]:::method
     calls_sort["sort"]:::method
     rev_sort["sort"]:::method
+    percentage_sort["sort"]:::method
   end
 
   subgraph slice_service["slice-service Service"]
@@ -386,6 +427,7 @@ graph TB
     for_slice["slice"]:::method
     calls_slice["slice"]:::method
     rev_slice["slice"]:::method
+    percentage_slice["slice"]:::method
     TypeScriptAnalyzer_slice["slice"]:::method
     visit_slice["slice"]:::method
   end
@@ -396,6 +438,7 @@ graph TB
     for_forEach["forEach"]:::method
     calls_forEach["forEach"]:::method
     rev_forEach["forEach"]:::method
+    percentage_forEach["forEach"]:::method
     TypeScriptAnalyzer_forEach["forEach"]:::method
     visit_forEach["forEach"]:::method
     RelationshipAnalyzer_forEach["forEach"]:::method
@@ -412,6 +455,7 @@ graph TB
     for_sanitizeName["sanitizeName"]:::method
     calls_sanitizeName["sanitizeName"]:::method
     rev_sanitizeName["sanitizeName"]:::method
+    percentage_sanitizeName["sanitizeName"]:::method
   end
 
   subgraph getDisplayName_service["getDisplayName-service Service"]
@@ -420,6 +464,7 @@ graph TB
     for_getDisplayName["getDisplayName"]:::method
     calls_getDisplayName["getDisplayName"]:::method
     rev_getDisplayName["getDisplayName"]:::method
+    percentage_getDisplayName["getDisplayName"]:::method
   end
 
   subgraph getComponentImportance_service["getComponentImportance-service Service"]
@@ -428,6 +473,7 @@ graph TB
     for_getComponentImportance["getComponentImportance"]:::method
     calls_getComponentImportance["getComponentImportance"]:::method
     rev_getComponentImportance["getComponentImportance"]:::method
+    percentage_getComponentImportance["getComponentImportance"]:::method
   end
 
   subgraph localeCompare_service["localeCompare-service Service"]
@@ -436,6 +482,7 @@ graph TB
     for_localeCompare["localeCompare"]:::method
     calls_localeCompare["localeCompare"]:::method
     rev_localeCompare["localeCompare"]:::method
+    percentage_localeCompare["localeCompare"]:::method
   end
 
   subgraph getDisplayComponentName_service["getDisplayComponentName-service Service"]
@@ -444,6 +491,7 @@ graph TB
     for_getDisplayComponentName["getDisplayComponentName"]:::method
     calls_getDisplayComponentName["getDisplayComponentName"]:::method
     rev_getDisplayComponentName["getDisplayComponentName"]:::method
+    percentage_getDisplayComponentName["getDisplayComponentName"]:::method
   end
 
   subgraph getComponentMetrics_service["getComponentMetrics-service Service"]
@@ -452,6 +500,7 @@ graph TB
     for_getComponentMetrics["getComponentMetrics"]:::method
     calls_getComponentMetrics["getComponentMetrics"]:::method
     rev_getComponentMetrics["getComponentMetrics"]:::method
+    percentage_getComponentMetrics["getComponentMetrics"]:::method
   end
 
   subgraph enhanceComponentName_service["enhanceComponentName-service Service"]
@@ -460,6 +509,7 @@ graph TB
     for_enhanceComponentName["enhanceComponentName"]:::method
     calls_enhanceComponentName["enhanceComponentName"]:::method
     rev_enhanceComponentName["enhanceComponentName"]:::method
+    percentage_enhanceComponentName["enhanceComponentName"]:::method
   end
 
   subgraph getComponentClass_service["getComponentClass-service Service"]
@@ -468,6 +518,7 @@ graph TB
     for_getComponentClass["getComponentClass"]:::method
     calls_getComponentClass["getComponentClass"]:::method
     rev_getComponentClass["getComponentClass"]:::method
+    percentage_getComponentClass["getComponentClass"]:::method
   end
 
   subgraph addInternalRelationships_service["addInternalRelationships-service Service"]
@@ -476,6 +527,7 @@ graph TB
     for_addInternalRelationships["addInternalRelationships"]:::method
     calls_addInternalRelationships["addInternalRelationships"]:::method
     rev_addInternalRelationships["addInternalRelationships"]:::method
+    percentage_addInternalRelationships["addInternalRelationships"]:::method
   end
 
   subgraph addExternalDependencies_service["addExternalDependencies-service Service"]
@@ -484,6 +536,7 @@ graph TB
     for_addExternalDependencies["addExternalDependencies"]:::method
     calls_addExternalDependencies["addExternalDependencies"]:::method
     rev_addExternalDependencies["addExternalDependencies"]:::method
+    percentage_addExternalDependencies["addExternalDependencies"]:::method
   end
 
   subgraph wrapInMarkdown_service["wrapInMarkdown-service Service"]
@@ -492,6 +545,7 @@ graph TB
     for_wrapInMarkdown["wrapInMarkdown"]:::method
     calls_wrapInMarkdown["wrapInMarkdown"]:::method
     rev_wrapInMarkdown["wrapInMarkdown"]:::method
+    percentage_wrapInMarkdown["wrapInMarkdown"]:::method
   end
 
   subgraph filter_service["filter-service Service"]
@@ -500,6 +554,7 @@ graph TB
     for_filter["filter"]:::method
     calls_filter["filter"]:::method
     rev_filter["filter"]:::method
+    percentage_filter["filter"]:::method
     RelationshipAnalyzer_filter["filter"]:::method
     CodeAnalyzer_filter["filter"]:::method
   end
@@ -510,6 +565,7 @@ graph TB
     for_isExternalDependency["isExternalDependency"]:::method
     calls_isExternalDependency["isExternalDependency"]:::method
     rev_isExternalDependency["isExternalDependency"]:::method
+    percentage_isExternalDependency["isExternalDependency"]:::method
   end
 
   subgraph has_service["has-service Service"]
@@ -518,6 +574,7 @@ graph TB
     for_has["has"]:::method
     calls_has["has"]:::method
     rev_has["has"]:::method
+    percentage_has["has"]:::method
     RelationshipAnalyzer_has["has"]:::method
     CodeAnalyzer_has["has"]:::method
   end
@@ -528,6 +585,7 @@ graph TB
     for_add["add"]:::method
     calls_add["add"]:::method
     rev_add["add"]:::method
+    percentage_add["add"]:::method
     RelationshipAnalyzer_add["add"]:::method
     CodeAnalyzer_add["add"]:::method
   end
@@ -538,6 +596,7 @@ graph TB
     for_dirname["dirname"]:::method
     calls_dirname["dirname"]:::method
     rev_dirname["dirname"]:::method
+    percentage_dirname["dirname"]:::method
   end
 
   subgraph replace_service["replace-service Service"]
@@ -546,6 +605,7 @@ graph TB
     for_replace["replace"]:::method
     calls_replace["replace"]:::method
     rev_replace["replace"]:::method
+    percentage_replace["replace"]:::method
     ArchitecturalAnalyzer_replace["replace"]:::method
   end
 
@@ -555,6 +615,7 @@ graph TB
     for_some["some"]:::method
     calls_some["some"]:::method
     rev_some["some"]:::method
+    percentage_some["some"]:::method
     TypeScriptAnalyzer_some["some"]:::method
     visit_some["some"]:::method
     ArchitecturalAnalyzer_some["some"]:::method
@@ -566,6 +627,7 @@ graph TB
     for_startsWith["startsWith"]:::method
     calls_startsWith["startsWith"]:::method
     rev_startsWith["startsWith"]:::method
+    percentage_startsWith["startsWith"]:::method
     PythonAnalyzer_startsWith["startsWith"]:::method
   end
 
@@ -575,6 +637,7 @@ graph TB
     for_generateDiagramMetadata["generateDiagramMetadata"]:::method
     calls_generateDiagramMetadata["generateDiagramMetadata"]:::method
     rev_generateDiagramMetadata["generateDiagramMetadata"]:::method
+    percentage_generateDiagramMetadata["generateDiagramMetadata"]:::method
   end
 
   subgraph generateLegend_service["generateLegend-service Service"]
@@ -583,6 +646,16 @@ graph TB
     for_generateLegend["generateLegend"]:::method
     calls_generateLegend["generateLegend"]:::method
     rev_generateLegend["generateLegend"]:::method
+    percentage_generateLegend["generateLegend"]:::method
+  end
+
+  subgraph generateSummaryTables_service["generateSummaryTables-service Service"]
+    DiagramGenerator_generateSummaryTables["generateSummaryTables"]:::method
+    based_generateSummaryTables["generateSummaryTables"]:::method
+    for_generateSummaryTables["generateSummaryTables"]:::method
+    calls_generateSummaryTables["generateSummaryTables"]:::method
+    rev_generateSummaryTables["generateSummaryTables"]:::method
+    percentage_generateSummaryTables["generateSummaryTables"]:::method
   end
 
   subgraph calculateDiagramStats_service["calculateDiagramStats-service Service"]
@@ -591,6 +664,7 @@ graph TB
     for_calculateDiagramStats["calculateDiagramStats"]:::method
     calls_calculateDiagramStats["calculateDiagramStats"]:::method
     rev_calculateDiagramStats["calculateDiagramStats"]:::method
+    percentage_calculateDiagramStats["calculateDiagramStats"]:::method
   end
 
   subgraph generateArchitecturalInsights_service["generateArchitecturalInsights-service Service"]
@@ -599,6 +673,7 @@ graph TB
     for_generateArchitecturalInsights["generateArchitecturalInsights"]:::method
     calls_generateArchitecturalInsights["generateArchitecturalInsights"]:::method
     rev_generateArchitecturalInsights["generateArchitecturalInsights"]:::method
+    percentage_generateArchitecturalInsights["generateArchitecturalInsights"]:::method
   end
 
   subgraph toLocaleDateString_service["toLocaleDateString-service Service"]
@@ -607,6 +682,7 @@ graph TB
     for_toLocaleDateString["toLocaleDateString"]:::method
     calls_toLocaleDateString["toLocaleDateString"]:::method
     rev_toLocaleDateString["toLocaleDateString"]:::method
+    percentage_toLocaleDateString["toLocaleDateString"]:::method
   end
 
   subgraph analyzeComponentTypes_service["analyzeComponentTypes-service Service"]
@@ -615,6 +691,7 @@ graph TB
     for_analyzeComponentTypes["analyzeComponentTypes"]:::method
     calls_analyzeComponentTypes["analyzeComponentTypes"]:::method
     rev_analyzeComponentTypes["analyzeComponentTypes"]:::method
+    percentage_analyzeComponentTypes["analyzeComponentTypes"]:::method
   end
 
   subgraph analyzeDependencies_service["analyzeDependencies-service Service"]
@@ -623,6 +700,7 @@ graph TB
     for_analyzeDependencies["analyzeDependencies"]:::method
     calls_analyzeDependencies["analyzeDependencies"]:::method
     rev_analyzeDependencies["analyzeDependencies"]:::method
+    percentage_analyzeDependencies["analyzeDependencies"]:::method
   end
 
   subgraph analyzeComplexity_service["analyzeComplexity-service Service"]
@@ -631,6 +709,7 @@ graph TB
     for_analyzeComplexity["analyzeComplexity"]:::method
     calls_analyzeComplexity["analyzeComplexity"]:::method
     rev_analyzeComplexity["analyzeComplexity"]:::method
+    percentage_analyzeComplexity["analyzeComplexity"]:::method
   end
 
   subgraph toLowerCase_service["toLowerCase-service Service"]
@@ -639,6 +718,7 @@ graph TB
     for_toLowerCase["toLowerCase"]:::method
     calls_toLowerCase["toLowerCase"]:::method
     rev_toLowerCase["toLowerCase"]:::method
+    percentage_toLowerCase["toLowerCase"]:::method
     RelationshipAnalyzer_toLowerCase["toLowerCase"]:::method
     ArchitecturalAnalyzer_toLowerCase["toLowerCase"]:::method
   end
@@ -649,6 +729,7 @@ graph TB
     for_includes["includes"]:::method
     calls_includes["includes"]:::method
     rev_includes["includes"]:::method
+    percentage_includes["includes"]:::method
     RelationshipAnalyzer_includes["includes"]:::method
     PythonAnalyzer_includes["includes"]:::method
     JavaScriptAnalyzer_includes["includes"]:::method
@@ -663,6 +744,7 @@ graph TB
     for_detectCircularDependencies["detectCircularDependencies"]:::method
     calls_detectCircularDependencies["detectCircularDependencies"]:::method
     rev_detectCircularDependencies["detectCircularDependencies"]:::method
+    percentage_detectCircularDependencies["detectCircularDependencies"]:::method
   end
 
   subgraph set_service["set-service Service"]
@@ -671,6 +753,7 @@ graph TB
     for_set["set"]:::method
     calls_set["set"]:::method
     rev_set["set"]:::method
+    percentage_set["set"]:::method
   end
 
   subgraph get_service["get-service Service"]
@@ -679,6 +762,7 @@ graph TB
     for_get["get"]:::method
     calls_get["get"]:::method
     rev_get["get"]:::method
+    percentage_get["get"]:::method
   end
 
   subgraph calculateComplexity_service["calculateComplexity-service Service"]
@@ -687,6 +771,7 @@ graph TB
     for_calculateComplexity["calculateComplexity"]:::method
     calls_calculateComplexity["calculateComplexity"]:::method
     rev_calculateComplexity["calculateComplexity"]:::method
+    percentage_calculateComplexity["calculateComplexity"]:::method
   end
 
   subgraph from_service["from-service Service"]
@@ -695,6 +780,7 @@ graph TB
     for_from["from"]:::method
     calls_from["from"]:::method
     rev_from["from"]:::method
+    percentage_from["from"]:::method
   end
 
   subgraph toUpperCase_service["toUpperCase-service Service"]
@@ -703,6 +789,7 @@ graph TB
     for_toUpperCase["toUpperCase"]:::method
     calls_toUpperCase["toUpperCase"]:::method
     rev_toUpperCase["toUpperCase"]:::method
+    percentage_toUpperCase["toUpperCase"]:::method
     RelationshipAnalyzer_toUpperCase["toUpperCase"]:::method
   end
 
@@ -712,6 +799,7 @@ graph TB
     for_groupRelationshipsBySource["groupRelationshipsBySource"]:::method
     calls_groupRelationshipsBySource["groupRelationshipsBySource"]:::method
     rev_groupRelationshipsBySource["groupRelationshipsBySource"]:::method
+    percentage_groupRelationshipsBySource["groupRelationshipsBySource"]:::method
   end
 
   subgraph groupRelationshipsByType_service["groupRelationshipsByType-service Service"]
@@ -720,6 +808,7 @@ graph TB
     for_groupRelationshipsByType["groupRelationshipsByType"]:::method
     calls_groupRelationshipsByType["groupRelationshipsByType"]:::method
     rev_groupRelationshipsByType["groupRelationshipsByType"]:::method
+    percentage_groupRelationshipsByType["groupRelationshipsByType"]:::method
   end
 
   subgraph getDataFlowClass_service["getDataFlowClass-service Service"]
@@ -728,6 +817,7 @@ graph TB
     for_getDataFlowClass["getDataFlowClass"]:::method
     calls_getDataFlowClass["getDataFlowClass"]:::method
     rev_getDataFlowClass["getDataFlowClass"]:::method
+    percentage_getDataFlowClass["getDataFlowClass"]:::method
   end
 
   subgraph groupRelationshipsByEvent_service["groupRelationshipsByEvent-service Service"]
@@ -736,6 +826,7 @@ graph TB
     for_groupRelationshipsByEvent["groupRelationshipsByEvent"]:::method
     calls_groupRelationshipsByEvent["groupRelationshipsByEvent"]:::method
     rev_groupRelationshipsByEvent["groupRelationshipsByEvent"]:::method
+    percentage_groupRelationshipsByEvent["groupRelationshipsByEvent"]:::method
   end
 
   subgraph groupRelationshipsByService_service["groupRelationshipsByService-service Service"]
@@ -744,6 +835,7 @@ graph TB
     for_groupRelationshipsByService["groupRelationshipsByService"]:::method
     calls_groupRelationshipsByService["groupRelationshipsByService"]:::method
     rev_groupRelationshipsByService["groupRelationshipsByService"]:::method
+    percentage_groupRelationshipsByService["groupRelationshipsByService"]:::method
   end
 
   subgraph isTestFile_service["isTestFile-service Service"]
@@ -752,6 +844,7 @@ graph TB
     for_isTestFile["isTestFile"]:::method
     calls_isTestFile["isTestFile"]:::method
     rev_isTestFile["isTestFile"]:::method
+    percentage_isTestFile["isTestFile"]:::method
   end
 
   subgraph isDependencyLayer_service["isDependencyLayer-service Service"]
@@ -760,6 +853,7 @@ graph TB
     for_isDependencyLayer["isDependencyLayer"]:::method
     calls_isDependencyLayer["isDependencyLayer"]:::method
     rev_isDependencyLayer["isDependencyLayer"]:::method
+    percentage_isDependencyLayer["isDependencyLayer"]:::method
   end
 
   subgraph isInternalImplementation_service["isInternalImplementation-service Service"]
@@ -768,6 +862,7 @@ graph TB
     for_isInternalImplementation["isInternalImplementation"]:::method
     calls_isInternalImplementation["isInternalImplementation"]:::method
     rev_isInternalImplementation["isInternalImplementation"]:::method
+    percentage_isInternalImplementation["isInternalImplementation"]:::method
   end
 
   subgraph isUtilityFile_service["isUtilityFile-service Service"]
@@ -776,6 +871,7 @@ graph TB
     for_isUtilityFile["isUtilityFile"]:::method
     calls_isUtilityFile["isUtilityFile"]:::method
     rev_isUtilityFile["isUtilityFile"]:::method
+    percentage_isUtilityFile["isUtilityFile"]:::method
   end
 
   subgraph test_service["test-service Service"]
@@ -784,6 +880,7 @@ graph TB
     for_test["test"]:::method
     calls_test["test"]:::method
     rev_test["test"]:::method
+    percentage_test["test"]:::method
     ArchitecturalAnalyzer_test["test"]:::method
   end
 
@@ -793,6 +890,7 @@ graph TB
     for_substring["substring"]:::method
     calls_substring["substring"]:::method
     rev_substring["substring"]:::method
+    percentage_substring["substring"]:::method
     JavaScriptAnalyzer_substring["substring"]:::method
     declarations_substring["substring"]:::method
   end
@@ -803,6 +901,7 @@ graph TB
     for_find["find"]:::method
     calls_find["find"]:::method
     rev_find["find"]:::method
+    percentage_find["find"]:::method
   end
 
   subgraph getRelationshipLabel_service["getRelationshipLabel-service Service"]
@@ -811,6 +910,7 @@ graph TB
     for_getRelationshipLabel["getRelationshipLabel"]:::method
     calls_getRelationshipLabel["getRelationshipLabel"]:::method
     rev_getRelationshipLabel["getRelationshipLabel"]:::method
+    percentage_getRelationshipLabel["getRelationshipLabel"]:::method
   end
 
   subgraph getRelationshipStyle_service["getRelationshipStyle-service Service"]
@@ -819,6 +919,7 @@ graph TB
     for_getRelationshipStyle["getRelationshipStyle"]:::method
     calls_getRelationshipStyle["getRelationshipStyle"]:::method
     rev_getRelationshipStyle["getRelationshipStyle"]:::method
+    percentage_getRelationshipStyle["getRelationshipStyle"]:::method
   end
 
   subgraph addArchitecturalRelationships_service["addArchitecturalRelationships-service Service"]
@@ -827,6 +928,7 @@ graph TB
     for_addArchitecturalRelationships["addArchitecturalRelationships"]:::method
     calls_addArchitecturalRelationships["addArchitecturalRelationships"]:::method
     rev_addArchitecturalRelationships["addArchitecturalRelationships"]:::method
+    percentage_addArchitecturalRelationships["addArchitecturalRelationships"]:::method
   end
 
   subgraph groupDependenciesByType_service["groupDependenciesByType-service Service"]
@@ -835,6 +937,7 @@ graph TB
     for_groupDependenciesByType["groupDependenciesByType"]:::method
     calls_groupDependenciesByType["groupDependenciesByType"]:::method
     rev_groupDependenciesByType["groupDependenciesByType"]:::method
+    percentage_groupDependenciesByType["groupDependenciesByType"]:::method
   end
 
   subgraph getDependencyClass_service["getDependencyClass-service Service"]
@@ -843,6 +946,7 @@ graph TB
     for_getDependencyClass["getDependencyClass"]:::method
     calls_getDependencyClass["getDependencyClass"]:::method
     rev_getDependencyClass["getDependencyClass"]:::method
+    percentage_getDependencyClass["getDependencyClass"]:::method
   end
 
   subgraph getDependencyTypeLabel_service["getDependencyTypeLabel-service Service"]
@@ -851,22 +955,34 @@ graph TB
     for_getDependencyTypeLabel["getDependencyTypeLabel"]:::method
     calls_getDependencyTypeLabel["getDependencyTypeLabel"]:::method
     rev_getDependencyTypeLabel["getDependencyTypeLabel"]:::method
+    percentage_getDependencyTypeLabel["getDependencyTypeLabel"]:::method
   end
 
-  subgraph isFrameworkDependency_service["isFrameworkDependency-service Service"]
-    DiagramGenerator_isFrameworkDependency["isFrameworkDependency"]:::method
-    based_isFrameworkDependency["isFrameworkDependency"]:::method
-    for_isFrameworkDependency["isFrameworkDependency"]:::method
-    calls_isFrameworkDependency["isFrameworkDependency"]:::method
-    rev_isFrameworkDependency["isFrameworkDependency"]:::method
+  subgraph generateLayerFocusDiagram_service["generateLayerFocusDiagram-service Service"]
+    DiagramGenerator_generateLayerFocusDiagram["generateLayerFocusDiagram"]:::method
+    based_generateLayerFocusDiagram["generateLayerFocusDiagram"]:::method
+    for_generateLayerFocusDiagram["generateLayerFocusDiagram"]:::method
+    calls_generateLayerFocusDiagram["generateLayerFocusDiagram"]:::method
+    rev_generateLayerFocusDiagram["generateLayerFocusDiagram"]:::method
+    percentage_generateLayerFocusDiagram["generateLayerFocusDiagram"]:::method
   end
 
-  subgraph calculateComponentSize_service["calculateComponentSize-service Service"]
-    DiagramGenerator_calculateComponentSize["calculateComponentSize"]:::method
-    based_calculateComponentSize["calculateComponentSize"]:::method
-    for_calculateComponentSize["calculateComponentSize"]:::method
-    calls_calculateComponentSize["calculateComponentSize"]:::method
-    rev_calculateComponentSize["calculateComponentSize"]:::method
+  subgraph generateModuleFocusDiagram_service["generateModuleFocusDiagram-service Service"]
+    DiagramGenerator_generateModuleFocusDiagram["generateModuleFocusDiagram"]:::method
+    based_generateModuleFocusDiagram["generateModuleFocusDiagram"]:::method
+    for_generateModuleFocusDiagram["generateModuleFocusDiagram"]:::method
+    calls_generateModuleFocusDiagram["generateModuleFocusDiagram"]:::method
+    rev_generateModuleFocusDiagram["generateModuleFocusDiagram"]:::method
+    percentage_generateModuleFocusDiagram["generateModuleFocusDiagram"]:::method
+  end
+
+  subgraph getComponentType_service["getComponentType-service Service"]
+    DiagramGenerator_getComponentType["getComponentType"]:::method
+    based_getComponentType["getComponentType"]:::method
+    for_getComponentType["getComponentType"]:::method
+    calls_getComponentType["getComponentType"]:::method
+    rev_getComponentType["getComponentType"]:::method
+    percentage_getComponentType["getComponentType"]:::method
   end
 
   subgraph countDependencies_service["countDependencies-service Service"]
@@ -875,6 +991,34 @@ graph TB
     for_countDependencies["countDependencies"]:::method
     calls_countDependencies["countDependencies"]:::method
     rev_countDependencies["countDependencies"]:::method
+    percentage_countDependencies["countDependencies"]:::method
+  end
+
+  subgraph toFixed_service["toFixed-service Service"]
+    DiagramGenerator_toFixed["toFixed"]:::method
+    based_toFixed["toFixed"]:::method
+    for_toFixed["toFixed"]:::method
+    calls_toFixed["toFixed"]:::method
+    rev_toFixed["toFixed"]:::method
+    percentage_toFixed["toFixed"]:::method
+  end
+
+  subgraph isFrameworkDependency_service["isFrameworkDependency-service Service"]
+    DiagramGenerator_isFrameworkDependency["isFrameworkDependency"]:::method
+    based_isFrameworkDependency["isFrameworkDependency"]:::method
+    for_isFrameworkDependency["isFrameworkDependency"]:::method
+    calls_isFrameworkDependency["isFrameworkDependency"]:::method
+    rev_isFrameworkDependency["isFrameworkDependency"]:::method
+    percentage_isFrameworkDependency["isFrameworkDependency"]:::method
+  end
+
+  subgraph calculateComponentSize_service["calculateComponentSize-service Service"]
+    DiagramGenerator_calculateComponentSize["calculateComponentSize"]:::method
+    based_calculateComponentSize["calculateComponentSize"]:::method
+    for_calculateComponentSize["calculateComponentSize"]:::method
+    calls_calculateComponentSize["calculateComponentSize"]:::method
+    rev_calculateComponentSize["calculateComponentSize"]:::method
+    percentage_calculateComponentSize["calculateComponentSize"]:::method
   end
 
   subgraph min_service["min-service Service"]
@@ -883,6 +1027,7 @@ graph TB
     for_min["min"]:::method
     calls_min["min"]:::method
     rev_min["min"]:::method
+    percentage_min["min"]:::method
     RelationshipAnalyzer_min["min"]:::method
   end
 
@@ -1280,6 +1425,8 @@ graph TB
   DiagramGenerator -->|generateServiceCommunicationDiagram| generateServiceCommunicationDiagram_service
   DiagramGenerator -->|detectCircularDependencyPairs| detectCircularDependencyPairs_service
   DiagramGenerator -->|generateCircularDependenciesDiagram| generateCircularDependenciesDiagram_service
+  DiagramGenerator -->|generateFocusDiagrams| generateFocusDiagrams_service
+  DiagramGenerator -->|assign| assign_service
   DiagramGenerator -->|uniqueByName| uniqueByName_service
   DiagramGenerator -->|filterComponentsForDiagram| filterComponentsForDiagram_service
   DiagramGenerator -->|filterDependenciesForDiagram| filterDependenciesForDiagram_service
@@ -1311,6 +1458,7 @@ graph TB
   DiagramGenerator -->|startsWith| startsWith_service
   DiagramGenerator -->|generateDiagramMetadata| generateDiagramMetadata_service
   DiagramGenerator -->|generateLegend| generateLegend_service
+  DiagramGenerator -->|generateSummaryTables| generateSummaryTables_service
   DiagramGenerator -->|calculateDiagramStats| calculateDiagramStats_service
   DiagramGenerator -->|generateArchitecturalInsights| generateArchitecturalInsights_service
   DiagramGenerator -->|join| join_service
@@ -1345,9 +1493,13 @@ graph TB
   DiagramGenerator -->|groupDependenciesByType| groupDependenciesByType_service
   DiagramGenerator -->|getDependencyClass| getDependencyClass_service
   DiagramGenerator -->|getDependencyTypeLabel| getDependencyTypeLabel_service
+  DiagramGenerator -->|generateLayerFocusDiagram| generateLayerFocusDiagram_service
+  DiagramGenerator -->|generateModuleFocusDiagram| generateModuleFocusDiagram_service
+  DiagramGenerator -->|getComponentType| getComponentType_service
+  DiagramGenerator -->|countDependencies| countDependencies_service
+  DiagramGenerator -->|toFixed| toFixed_service
   DiagramGenerator -->|isFrameworkDependency| isFrameworkDependency_service
   DiagramGenerator -->|calculateComponentSize| calculateComponentSize_service
-  DiagramGenerator -->|countDependencies| countDependencies_service
   DiagramGenerator -->|min| min_service
   based -->|generateArchitectureDiagram| generateArchitectureDiagram_service
   based -->|generateDependencyDiagram| generateDependencyDiagram_service
@@ -1362,6 +1514,8 @@ graph TB
   based -->|generateServiceCommunicationDiagram| generateServiceCommunicationDiagram_service
   based -->|detectCircularDependencyPairs| detectCircularDependencyPairs_service
   based -->|generateCircularDependenciesDiagram| generateCircularDependenciesDiagram_service
+  based -->|generateFocusDiagrams| generateFocusDiagrams_service
+  based -->|assign| assign_service
   based -->|uniqueByName| uniqueByName_service
   based -->|filterComponentsForDiagram| filterComponentsForDiagram_service
   based -->|filterDependenciesForDiagram| filterDependenciesForDiagram_service
@@ -1393,6 +1547,7 @@ graph TB
   based -->|startsWith| startsWith_service
   based -->|generateDiagramMetadata| generateDiagramMetadata_service
   based -->|generateLegend| generateLegend_service
+  based -->|generateSummaryTables| generateSummaryTables_service
   based -->|calculateDiagramStats| calculateDiagramStats_service
   based -->|generateArchitecturalInsights| generateArchitecturalInsights_service
   based -->|join| join_service
@@ -1427,9 +1582,13 @@ graph TB
   based -->|groupDependenciesByType| groupDependenciesByType_service
   based -->|getDependencyClass| getDependencyClass_service
   based -->|getDependencyTypeLabel| getDependencyTypeLabel_service
+  based -->|generateLayerFocusDiagram| generateLayerFocusDiagram_service
+  based -->|generateModuleFocusDiagram| generateModuleFocusDiagram_service
+  based -->|getComponentType| getComponentType_service
+  based -->|countDependencies| countDependencies_service
+  based -->|toFixed| toFixed_service
   based -->|isFrameworkDependency| isFrameworkDependency_service
   based -->|calculateComponentSize| calculateComponentSize_service
-  based -->|countDependencies| countDependencies_service
   based -->|min| min_service
   for -->|generateArchitectureDiagram| generateArchitectureDiagram_service
   for -->|generateDependencyDiagram| generateDependencyDiagram_service
@@ -1444,6 +1603,8 @@ graph TB
   for -->|generateServiceCommunicationDiagram| generateServiceCommunicationDiagram_service
   for -->|detectCircularDependencyPairs| detectCircularDependencyPairs_service
   for -->|generateCircularDependenciesDiagram| generateCircularDependenciesDiagram_service
+  for -->|generateFocusDiagrams| generateFocusDiagrams_service
+  for -->|assign| assign_service
   for -->|uniqueByName| uniqueByName_service
   for -->|filterComponentsForDiagram| filterComponentsForDiagram_service
   for -->|filterDependenciesForDiagram| filterDependenciesForDiagram_service
@@ -1475,6 +1636,7 @@ graph TB
   for -->|startsWith| startsWith_service
   for -->|generateDiagramMetadata| generateDiagramMetadata_service
   for -->|generateLegend| generateLegend_service
+  for -->|generateSummaryTables| generateSummaryTables_service
   for -->|calculateDiagramStats| calculateDiagramStats_service
   for -->|generateArchitecturalInsights| generateArchitecturalInsights_service
   for -->|join| join_service
@@ -1509,9 +1671,13 @@ graph TB
   for -->|groupDependenciesByType| groupDependenciesByType_service
   for -->|getDependencyClass| getDependencyClass_service
   for -->|getDependencyTypeLabel| getDependencyTypeLabel_service
+  for -->|generateLayerFocusDiagram| generateLayerFocusDiagram_service
+  for -->|generateModuleFocusDiagram| generateModuleFocusDiagram_service
+  for -->|getComponentType| getComponentType_service
+  for -->|countDependencies| countDependencies_service
+  for -->|toFixed| toFixed_service
   for -->|isFrameworkDependency| isFrameworkDependency_service
   for -->|calculateComponentSize| calculateComponentSize_service
-  for -->|countDependencies| countDependencies_service
   for -->|min| min_service
   calls -->|generateArchitectureDiagram| generateArchitectureDiagram_service
   calls -->|generateDependencyDiagram| generateDependencyDiagram_service
@@ -1526,6 +1692,8 @@ graph TB
   calls -->|generateServiceCommunicationDiagram| generateServiceCommunicationDiagram_service
   calls -->|detectCircularDependencyPairs| detectCircularDependencyPairs_service
   calls -->|generateCircularDependenciesDiagram| generateCircularDependenciesDiagram_service
+  calls -->|generateFocusDiagrams| generateFocusDiagrams_service
+  calls -->|assign| assign_service
   calls -->|uniqueByName| uniqueByName_service
   calls -->|filterComponentsForDiagram| filterComponentsForDiagram_service
   calls -->|filterDependenciesForDiagram| filterDependenciesForDiagram_service
@@ -1557,6 +1725,7 @@ graph TB
   calls -->|startsWith| startsWith_service
   calls -->|generateDiagramMetadata| generateDiagramMetadata_service
   calls -->|generateLegend| generateLegend_service
+  calls -->|generateSummaryTables| generateSummaryTables_service
   calls -->|calculateDiagramStats| calculateDiagramStats_service
   calls -->|generateArchitecturalInsights| generateArchitecturalInsights_service
   calls -->|join| join_service
@@ -1591,9 +1760,13 @@ graph TB
   calls -->|groupDependenciesByType| groupDependenciesByType_service
   calls -->|getDependencyClass| getDependencyClass_service
   calls -->|getDependencyTypeLabel| getDependencyTypeLabel_service
+  calls -->|generateLayerFocusDiagram| generateLayerFocusDiagram_service
+  calls -->|generateModuleFocusDiagram| generateModuleFocusDiagram_service
+  calls -->|getComponentType| getComponentType_service
+  calls -->|countDependencies| countDependencies_service
+  calls -->|toFixed| toFixed_service
   calls -->|isFrameworkDependency| isFrameworkDependency_service
   calls -->|calculateComponentSize| calculateComponentSize_service
-  calls -->|countDependencies| countDependencies_service
   calls -->|min| min_service
   rev -->|generateArchitectureDiagram| generateArchitectureDiagram_service
   rev -->|generateDependencyDiagram| generateDependencyDiagram_service
@@ -1608,6 +1781,8 @@ graph TB
   rev -->|generateServiceCommunicationDiagram| generateServiceCommunicationDiagram_service
   rev -->|detectCircularDependencyPairs| detectCircularDependencyPairs_service
   rev -->|generateCircularDependenciesDiagram| generateCircularDependenciesDiagram_service
+  rev -->|generateFocusDiagrams| generateFocusDiagrams_service
+  rev -->|assign| assign_service
   rev -->|uniqueByName| uniqueByName_service
   rev -->|filterComponentsForDiagram| filterComponentsForDiagram_service
   rev -->|filterDependenciesForDiagram| filterDependenciesForDiagram_service
@@ -1639,6 +1814,7 @@ graph TB
   rev -->|startsWith| startsWith_service
   rev -->|generateDiagramMetadata| generateDiagramMetadata_service
   rev -->|generateLegend| generateLegend_service
+  rev -->|generateSummaryTables| generateSummaryTables_service
   rev -->|calculateDiagramStats| calculateDiagramStats_service
   rev -->|generateArchitecturalInsights| generateArchitecturalInsights_service
   rev -->|join| join_service
@@ -1673,10 +1849,103 @@ graph TB
   rev -->|groupDependenciesByType| groupDependenciesByType_service
   rev -->|getDependencyClass| getDependencyClass_service
   rev -->|getDependencyTypeLabel| getDependencyTypeLabel_service
+  rev -->|generateLayerFocusDiagram| generateLayerFocusDiagram_service
+  rev -->|generateModuleFocusDiagram| generateModuleFocusDiagram_service
+  rev -->|getComponentType| getComponentType_service
+  rev -->|countDependencies| countDependencies_service
+  rev -->|toFixed| toFixed_service
   rev -->|isFrameworkDependency| isFrameworkDependency_service
   rev -->|calculateComponentSize| calculateComponentSize_service
-  rev -->|countDependencies| countDependencies_service
   rev -->|min| min_service
+  percentage -->|generateArchitectureDiagram| generateArchitectureDiagram_service
+  percentage -->|generateDependencyDiagram| generateDependencyDiagram_service
+  percentage -->|generateModuleDiagram| generateModuleDiagram_service
+  percentage -->|keys| keys_service
+  percentage -->|generateLayeredArchitectureDiagram| generateLayeredArchitectureDiagram_service
+  percentage -->|generateMVCDiagram| generateMVCDiagram_service
+  percentage -->|generateMicroservicesDiagram| generateMicroservicesDiagram_service
+  percentage -->|generateApiFlowDiagram| generateApiFlowDiagram_service
+  percentage -->|generateDataFlowDiagram| generateDataFlowDiagram_service
+  percentage -->|generateEventFlowDiagram| generateEventFlowDiagram_service
+  percentage -->|generateServiceCommunicationDiagram| generateServiceCommunicationDiagram_service
+  percentage -->|detectCircularDependencyPairs| detectCircularDependencyPairs_service
+  percentage -->|generateCircularDependenciesDiagram| generateCircularDependenciesDiagram_service
+  percentage -->|generateFocusDiagrams| generateFocusDiagrams_service
+  percentage -->|assign| assign_service
+  percentage -->|uniqueByName| uniqueByName_service
+  percentage -->|filterComponentsForDiagram| filterComponentsForDiagram_service
+  percentage -->|filterDependenciesForDiagram| filterDependenciesForDiagram_service
+  percentage -->|groupComponentsByDirectory| groupComponentsByDirectory_service
+  percentage -->|entries| entries_service
+  percentage -->|sort| sort_service
+  percentage -->|slice| slice_service
+  percentage -->|forEach| forEach_service
+  percentage -->|sanitizeName| sanitizeName_service
+  percentage -->|getDisplayName| getDisplayName_service
+  percentage -->|getComponentImportance| getComponentImportance_service
+  percentage -->|localeCompare| localeCompare_service
+  percentage -->|getDisplayComponentName| getDisplayComponentName_service
+  percentage -->|getComponentMetrics| getComponentMetrics_service
+  percentage -->|enhanceComponentName| enhanceComponentName_service
+  percentage -->|map| map_service
+  percentage -->|getComponentClass| getComponentClass_service
+  percentage -->|addInternalRelationships| addInternalRelationships_service
+  percentage -->|addExternalDependencies| addExternalDependencies_service
+  percentage -->|wrapInMarkdown| wrapInMarkdown_service
+  percentage -->|filter| filter_service
+  percentage -->|isExternalDependency| isExternalDependency_service
+  percentage -->|has| has_service
+  percentage -->|add| add_service
+  percentage -->|dirname| dirname_service
+  percentage -->|push| push_service
+  percentage -->|replace| replace_service
+  percentage -->|some| some_service
+  percentage -->|startsWith| startsWith_service
+  percentage -->|generateDiagramMetadata| generateDiagramMetadata_service
+  percentage -->|generateLegend| generateLegend_service
+  percentage -->|generateSummaryTables| generateSummaryTables_service
+  percentage -->|calculateDiagramStats| calculateDiagramStats_service
+  percentage -->|generateArchitecturalInsights| generateArchitecturalInsights_service
+  percentage -->|join| join_service
+  percentage -->|toLocaleDateString| toLocaleDateString_service
+  percentage -->|analyzeComponentTypes| analyzeComponentTypes_service
+  percentage -->|analyzeDependencies| analyzeDependencies_service
+  percentage -->|analyzeComplexity| analyzeComplexity_service
+  percentage -->|toLowerCase| toLowerCase_service
+  percentage -->|includes| includes_service
+  percentage -->|detectCircularDependencies| detectCircularDependencies_service
+  percentage -->|set| set_service
+  percentage -->|get| get_service
+  percentage -->|calculateComplexity| calculateComplexity_service
+  percentage -->|from| from_service
+  percentage -->|toUpperCase| toUpperCase_service
+  percentage -->|groupRelationshipsBySource| groupRelationshipsBySource_service
+  percentage -->|groupRelationshipsByType| groupRelationshipsByType_service
+  percentage -->|getDataFlowClass| getDataFlowClass_service
+  percentage -->|groupRelationshipsByEvent| groupRelationshipsByEvent_service
+  percentage -->|groupRelationshipsByService| groupRelationshipsByService_service
+  percentage -->|isTestFile| isTestFile_service
+  percentage -->|isDependencyLayer| isDependencyLayer_service
+  percentage -->|isInternalImplementation| isInternalImplementation_service
+  percentage -->|isUtilityFile| isUtilityFile_service
+  percentage -->|split| split_service
+  percentage -->|test| test_service
+  percentage -->|substring| substring_service
+  percentage -->|find| find_service
+  percentage -->|getRelationshipLabel| getRelationshipLabel_service
+  percentage -->|getRelationshipStyle| getRelationshipStyle_service
+  percentage -->|addArchitecturalRelationships| addArchitecturalRelationships_service
+  percentage -->|groupDependenciesByType| groupDependenciesByType_service
+  percentage -->|getDependencyClass| getDependencyClass_service
+  percentage -->|getDependencyTypeLabel| getDependencyTypeLabel_service
+  percentage -->|generateLayerFocusDiagram| generateLayerFocusDiagram_service
+  percentage -->|generateModuleFocusDiagram| generateModuleFocusDiagram_service
+  percentage -->|getComponentType| getComponentType_service
+  percentage -->|countDependencies| countDependencies_service
+  percentage -->|toFixed| toFixed_service
+  percentage -->|isFrameworkDependency| isFrameworkDependency_service
+  percentage -->|calculateComponentSize| calculateComponentSize_service
+  percentage -->|min| min_service
   TypeScriptAnalyzer -->|findTypeScriptFiles| findTypeScriptFiles_service
   TypeScriptAnalyzer -->|readFile| readFile_service
   TypeScriptAnalyzer -->|analyzeFile| analyzeFile_service
@@ -1881,6 +2150,8 @@ graph TB
 - **uses**: Component utilizes another component
 - **API**: API calls and communication
 - **data**: Data flow between components
+
+
 
 
 ---

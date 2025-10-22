@@ -35,6 +35,9 @@ graph TD
   rev["rev"]:::component
   data_store["data-store"]:::data
   rev -->|array| data_store
+  percentage["percentage"]:::component
+  data_store["data-store"]:::data
+  percentage -->|array| data_store
   RelationshipAnalyzer["RelationshipAnalyzer"]:::component
   data_store["data-store"]:::data
   RelationshipAnalyzer -->|array| data_store
@@ -84,6 +87,8 @@ graph TD
 - **uses**: Component utilizes another component
 - **API**: API calls and communication
 - **data**: Data flow between components
+
+
 
 
 ---

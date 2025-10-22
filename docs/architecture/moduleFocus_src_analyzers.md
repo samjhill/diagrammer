@@ -1,20 +1,18 @@
-# Dependency Graph
+# Module Focus: src/analyzers
 
 This diagram was automatically generated from your codebase.
 
 ## 📊 Architecture Overview
 
-- **Components**: 18 analyzed
+- **Components**: 8 analyzed
 - **Languages**: javascript
 - **Architectural Patterns**: None detected
-- **External Dependencies**: 12 packages
+- **External Dependencies**: 0 packages
 - **Generated**: 10/22/2025
 
 ## 🧠 Architectural Insights
 
 - 🔍 **High Analysis Complexity**: Multiple analyzers detected - consider consolidating analysis logic
-- 🌐 **High External Dependencies**: Consider reducing external dependencies for better maintainability
-- 🔄 **Circular Dependencies**: Found circular dependencies - consider refactoring
 - ⚡ **Complex Components**: 1 components with high complexity - consider refactoring
 
 
@@ -22,28 +20,26 @@ This diagram was automatically generated from your codebase.
 
 
 ```mermaid
-graph LR
-  classDef internal fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px
+graph TB
+  classDef component fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
   classDef external fill:#ffebee,stroke:#c62828,stroke-width:2px
-  classDef npm fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-  classDef local fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-
-  _actions_core["@actions/core"]
-  _actions_core:::external
-  _actions_github["@actions/github"]
-  _actions_github:::external
-  fs_extra["fs-extra"]
-  fs_extra:::external
-  path["path"]
-  path:::external
-  fs["fs"]
-  fs:::external
-  typescript["typescript"]
-  typescript:::external
-  _actions_core -->|imports| core
-  _actions_github -->|imports| github
-  fs_extra -->|imports| fs
-  typescript -->|imports| ts
+  classDef internal fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px
+  ArchitecturalAnalyzer["ArchitecturalAnal..."]
+  ArchitecturalAnalyzer:::component
+  CodeAnalyzer["CodeAnalyzer"]
+  CodeAnalyzer:::component
+  declarations["declarations"]
+  declarations:::component
+  JavaScriptAnalyzer["JavaScriptAnalyzer"]
+  JavaScriptAnalyzer:::component
+  PythonAnalyzer["PythonAnalyzer"]
+  PythonAnalyzer:::component
+  RelationshipAnalyzer["RelationshipAnalyzer"]
+  RelationshipAnalyzer:::component
+  TypeScriptAnalyzer["TypeScriptAnalyzer"]
+  TypeScriptAnalyzer:::component
+  visit["visit"]
+  visit:::component
 
 ```
 
@@ -86,52 +82,20 @@ graph LR
 
 | Component | Type | Language | Path | Dependencies |
 |-----------|------|----------|------|-------------|
-| main | Component | javascript | N/A | 0 |
-| languages | Component | javascript | N/A | 0 |
-| loadConfig | Component | javascript | N/A | 0 |
 | ArchitecturalAnalyzer | Component | javascript | N/A | 0 |
-| based | Component | javascript | N/A | 0 |
-| calls | Component | javascript | N/A | 0 |
 | CodeAnalyzer | Component | javascript | N/A | 0 |
 | declarations | Component | javascript | N/A | 0 |
-| DiagramGenerator | Component | javascript | N/A | 0 |
-| for | Component | javascript | N/A | 0 |
-| GitManager | Component | javascript | N/A | 0 |
 | JavaScriptAnalyzer | Component | javascript | N/A | 0 |
-| percentage | Component | javascript | N/A | 0 |
 | PythonAnalyzer | Component | javascript | N/A | 0 |
 | RelationshipAnalyzer | Component | javascript | N/A | 0 |
-| rev | Component | javascript | N/A | 0 |
 | TypeScriptAnalyzer | Component | javascript | N/A | 0 |
 | visit | Component | javascript | N/A | 0 |
-
-### Dependency Summary
-
-| From | To | Type | Relationship |
-|------|---|------|-------------|
-| @actions/core | core | depends | dependency |
-| @actions/github | github | depends | dependency |
-| fs | fs | depends | dependency |
-| fs-extra | fs | depends | dependency |
-| fs-extra | fs | depends | dependency |
-| fs-extra | fs | depends | dependency |
-| fs-extra | fs | depends | dependency |
-| fs-extra | fs | depends | dependency |
-| path | path | depends | dependency |
-| path | path | depends | dependency |
-| path | path | depends | dependency |
-| typescript | ts | depends | dependency |
-
-### Architectural Patterns
-
-| Pattern | Count | Components |
-|---------|-------|------------|
 
 ### Language Distribution
 
 | Language | Components | Percentage |
 |----------|------------|------------|
-| javascript | 18 | 100.0% |
+| javascript | 8 | 100.0% |
 
 
 
