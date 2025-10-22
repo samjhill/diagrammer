@@ -4,9 +4,9 @@ This diagram was automatically generated from your codebase.
 
 ## 📊 Architecture Overview
 
-- **Components**: 20 analyzed
-- **Languages**: javascript
-- **Architectural Patterns**: None detected
+- **Components**: 27 analyzed
+- **Languages**: javascript, python
+- **Architectural Patterns**: MICROSERVICES
 - **External Dependencies**: 15 packages
 - **Generated**: 10/22/2025
 
@@ -65,6 +65,10 @@ graph TB
     ArchitecturalAnalyzer["ArchitecturalAnalyzer"]
   end
 
+  subgraph tests_sample_project_src_services["tests/sample-project/src/services"]
+    UserService["UserService"]
+  end
+
 
 ```
 
@@ -108,6 +112,13 @@ graph TB
 | Component | Type | Language | Path | Dependencies |
 |-----------|------|----------|------|-------------|
 | main | Component | javascript | N/A | 0 |
+| __init__ | Function | python | N/A | 0 |
+| create_user | Function | python | N/A | 0 |
+| export_users | Function | python | N/A | 0 |
+| get_user | Function | python | N/A | 0 |
+| list_users | Function | python | N/A | 0 |
+| UserService | Class | python | N/A | 0 |
+| validate_email | Function | python | N/A | 0 |
 | generateArchitectureReadme | Component | javascript | N/A | 0 |
 | languages | Component | javascript | N/A | 0 |
 | loadConfig | Component | javascript | N/A | 0 |
@@ -120,13 +131,6 @@ graph TB
 | DiagramGenerator | Component | javascript | N/A | 0 |
 | for | Component | javascript | N/A | 0 |
 | GitManager | Component | javascript | N/A | 0 |
-| JavaScriptAnalyzer | Component | javascript | N/A | 0 |
-| percentage | Component | javascript | N/A | 0 |
-| PythonAnalyzer | Component | javascript | N/A | 0 |
-| RelationshipAnalyzer | Component | javascript | N/A | 0 |
-| rev | Component | javascript | N/A | 0 |
-| TypeScriptAnalyzer | Component | javascript | N/A | 0 |
-| visit | Component | javascript | N/A | 0 |
 
 ### Dependency Summary
 
@@ -152,12 +156,14 @@ graph TB
 
 | Pattern | Count | Components |
 |---------|-------|------------|
+| microservices | 7 | [object Object], [object Object], [object Object]... |
 
 ### Language Distribution
 
 | Language | Components | Percentage |
 |----------|------------|------------|
-| javascript | 20 | 100.0% |
+| javascript | 20 | 74.1% |
+| python | 7 | 25.9% |
 
 
 

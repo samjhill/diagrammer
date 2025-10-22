@@ -1,9 +1,27 @@
-# Api Flow
+# Module Focus_tests_sample_project_src_services
 
 This interactive diagram contains clickable nodes that link to source code files.
 
 ```mermaid
-No API relationships detected.
+graph TB
+  classDef component fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+  classDef external fill:#ffebee,stroke:#c62828,stroke-width:2px
+  classDef internal fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px
+  __init__["<a href='https://github.com/samjhill/diagrammer/blob/main/tests/sample-project/src/services/UserService.py' target='_blank'>__init__</a>"]
+  __init__:::component
+  create_user["<a href='https://github.com/samjhill/diagrammer/blob/main/tests/sample-project/src/services/UserService.py' target='_blank'>create_user</a>"]
+  create_user:::component
+  export_users["<a href='https://github.com/samjhill/diagrammer/blob/main/tests/sample-project/src/services/UserService.py' target='_blank'>export_users</a>"]
+  export_users:::component
+  get_user["<a href='https://github.com/samjhill/diagrammer/blob/main/tests/sample-project/src/services/UserService.py' target='_blank'>get_user</a>"]
+  get_user:::component
+  list_users["<a href='https://github.com/samjhill/diagrammer/blob/main/tests/sample-project/src/services/UserService.py' target='_blank'>list_users</a>"]
+  list_users:::component
+  UserService["<a href='https://github.com/samjhill/diagrammer/blob/main/tests/sample-project/src/services/UserService.py' target='_blank'>UserService</a>"]
+  UserService:::component
+  validate_email["<a href='https://github.com/samjhill/diagrammer/blob/main/tests/sample-project/src/services/UserService.py' target='_blank'>validate_email</a>"]
+  validate_email:::component
+
 ```
 
 ## 📁 Source Code Links

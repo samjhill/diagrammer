@@ -13,6 +13,7 @@ This directory contains automatically generated architecture diagrams for the pr
 - [Dependencies](diagrams/overview/dependencies.md)
 - [Modules](diagrams/overview/modules.md)
 - [Layered Architecture](diagrams/overview/layeredArchitecture.md)
+- [Microservices Pattern](diagrams/overview/microservicesPattern.md)
 - [Api Flow](diagrams/overview/apiFlow.md)
 - [Data Flow](diagrams/overview/dataFlow.md)
 - [Event Flow](diagrams/overview/eventFlow.md)
@@ -21,6 +22,7 @@ This directory contains automatically generated architecture diagrams for the pr
 - [Dependencies_interactive.html](diagrams/overview/dependencies_interactive.html.md)
 - [Modules_interactive.html](diagrams/overview/modules_interactive.html.md)
 - [Layered Architecture_interactive.html](diagrams/overview/layeredArchitecture_interactive.html.md)
+- [Microservices Pattern_interactive.html](diagrams/overview/microservicesPattern_interactive.html.md)
 - [Api Flow_interactive.html](diagrams/overview/apiFlow_interactive.html.md)
 - [Data Flow_interactive.html](diagrams/overview/dataFlow_interactive.html.md)
 - [Event Flow_interactive.html](diagrams/overview/eventFlow_interactive.html.md)
@@ -31,14 +33,18 @@ This directory contains automatically generated architecture diagrams for the pr
 
 - [Layer Focus_unknown](diagrams/focus/layerFocus_unknown.md)
 - [Layer Focus_infrastructure](diagrams/focus/layerFocus_infrastructure.md)
+- [Layer Focus_backend](diagrams/focus/layerFocus_backend.md)
 - [Module Focus_src](diagrams/focus/moduleFocus_src.md)
 - [Module Focus_src_generators](diagrams/focus/moduleFocus_src_generators.md)
 - [Module Focus_src_analyzers](diagrams/focus/moduleFocus_src_analyzers.md)
+- [Module Focus_tests_sample_project_src_services](diagrams/focus/moduleFocus_tests_sample_project_src_services.md)
 - [Layer Focus_unknown_interactive.html](diagrams/focus/layerFocus_unknown_interactive.html.md)
 - [Layer Focus_infrastructure_interactive.html](diagrams/focus/layerFocus_infrastructure_interactive.html.md)
+- [Layer Focus_backend_interactive.html](diagrams/focus/layerFocus_backend_interactive.html.md)
 - [Module Focus_src_interactive.html](diagrams/focus/moduleFocus_src_interactive.html.md)
 - [Module Focus_src_generators_interactive.html](diagrams/focus/moduleFocus_src_generators_interactive.html.md)
 - [Module Focus_src_analyzers_interactive.html](diagrams/focus/moduleFocus_src_analyzers_interactive.html.md)
+- [Module Focus_tests_sample_project_src_services_interactive.html](diagrams/focus/moduleFocus_tests_sample_project_src_services_interactive.html.md)
 
 ### 📤 Export Files
 *PNG and SVG versions for presentations and documentation*
@@ -48,10 +54,10 @@ This directory contains automatically generated architecture diagrams for the pr
 
 ## 📊 Analysis Summary
 
-- **Components**: 20 analyzed
-- **Dependencies**: 15 relationships
-- **Languages**: javascript
-- **Architectural Patterns**: 0 detected
+- **Components**: 27 analyzed
+- **Dependencies**: 19 relationships
+- **Languages**: javascript, python
+- **Architectural Patterns**: 1 detected
 
 ## 🚀 Usage
 

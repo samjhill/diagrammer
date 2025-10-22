@@ -1,8 +1,6 @@
 # Service Communication
 
-This diagram was automatically generated from your codebase.
-
-
+This interactive diagram contains clickable nodes that link to source code files.
 
 ```mermaid
 graph TB
@@ -13,14 +11,12 @@ graph TB
   subgraph getInput_service["getInput-service Service"]
     main_getInput["getInput"]:::method
     loadConfig_getInput["getInput"]:::method
-    generateArchitectureReadme_getInput["getInput"]:::method
     languages_getInput["getInput"]:::method
   end
 
   subgraph split_service["split-service Service"]
     main_split["split"]:::method
     loadConfig_split["split"]:::method
-    generateArchitectureReadme_split["split"]:::method
     languages_split["split"]:::method
     DiagramGenerator_split["split"]:::method
     based_split["split"]:::method
@@ -33,19 +29,11 @@ graph TB
     JavaScriptAnalyzer_split["split"]:::method
     declarations_split["split"]:::method
     ArchitecturalAnalyzer_split["split"]:::method
-    UserService_split["split"]:::method
-    __init___split["split"]:::method
-    create_user_split["split"]:::method
-    get_user_split["split"]:::method
-    list_users_split["split"]:::method
-    export_users_split["split"]:::method
-    validate_email_split["split"]:::method
   end
 
   subgraph map_service["map-service Service"]
     main_map["map"]:::method
     loadConfig_map["map"]:::method
-    generateArchitectureReadme_map["map"]:::method
     languages_map["map"]:::method
     DiagramGenerator_map["map"]:::method
     based_map["map"]:::method
@@ -62,7 +50,6 @@ graph TB
   subgraph trim_service["trim-service Service"]
     main_trim["trim"]:::method
     loadConfig_trim["trim"]:::method
-    generateArchitectureReadme_trim["trim"]:::method
     languages_trim["trim"]:::method
     GitManager_trim["trim"]:::method
     PythonAnalyzer_trim["trim"]:::method
@@ -73,28 +60,24 @@ graph TB
   subgraph getOctokit_service["getOctokit-service Service"]
     main_getOctokit["getOctokit"]:::method
     loadConfig_getOctokit["getOctokit"]:::method
-    generateArchitectureReadme_getOctokit["getOctokit"]:::method
     languages_getOctokit["getOctokit"]:::method
   end
 
   subgraph warning_service["warning-service Service"]
     main_warning["warning"]:::method
     loadConfig_warning["warning"]:::method
-    generateArchitectureReadme_warning["warning"]:::method
     languages_warning["warning"]:::method
   end
 
   subgraph info_service["info-service Service"]
     main_info["info"]:::method
     loadConfig_info["info"]:::method
-    generateArchitectureReadme_info["info"]:::method
     languages_info["info"]:::method
   end
 
   subgraph cwd_service["cwd-service Service"]
     main_cwd["cwd"]:::method
     loadConfig_cwd["cwd"]:::method
-    generateArchitectureReadme_cwd["cwd"]:::method
     languages_cwd["cwd"]:::method
     GitManager_cwd["cwd"]:::method
     PythonAnalyzer_cwd["cwd"]:::method
@@ -103,14 +86,12 @@ graph TB
   subgraph analyzeCodebase_service["analyzeCodebase-service Service"]
     main_analyzeCodebase["analyzeCodebase"]:::method
     loadConfig_analyzeCodebase["analyzeCodebase"]:::method
-    generateArchitectureReadme_analyzeCodebase["analyzeCodebase"]:::method
     languages_analyzeCodebase["analyzeCodebase"]:::method
   end
 
   subgraph keys_service["keys-service Service"]
     main_keys["keys"]:::method
     loadConfig_keys["keys"]:::method
-    generateArchitectureReadme_keys["keys"]:::method
     languages_keys["keys"]:::method
     DiagramGenerator_keys["keys"]:::method
     based_keys["keys"]:::method
@@ -123,29 +104,18 @@ graph TB
   subgraph generateDiagrams_service["generateDiagrams-service Service"]
     main_generateDiagrams["generateDiagrams"]:::method
     loadConfig_generateDiagrams["generateDiagrams"]:::method
-    generateArchitectureReadme_generateDiagrams["generateDiagrams"]:::method
     languages_generateDiagrams["generateDiagrams"]:::method
   end
 
   subgraph ensureDir_service["ensureDir-service Service"]
     main_ensureDir["ensureDir"]:::method
     loadConfig_ensureDir["ensureDir"]:::method
-    generateArchitectureReadme_ensureDir["ensureDir"]:::method
     languages_ensureDir["ensureDir"]:::method
-    DiagramExporter_ensureDir["ensureDir"]:::method
-  end
-
-  subgraph getOrganizedFileStructure_service["getOrganizedFileStructure-service Service"]
-    main_getOrganizedFileStructure["getOrganizedFileStructure"]:::method
-    loadConfig_getOrganizedFileStructure["getOrganizedFileStructure"]:::method
-    generateArchitectureReadme_getOrganizedFileStructure["getOrganizedFileStructure"]:::method
-    languages_getOrganizedFileStructure["getOrganizedFileStructure"]:::method
   end
 
   subgraph entries_service["entries-service Service"]
     main_entries["entries"]:::method
     loadConfig_entries["entries"]:::method
-    generateArchitectureReadme_entries["entries"]:::method
     languages_entries["entries"]:::method
     DiagramGenerator_entries["entries"]:::method
     based_entries["entries"]:::method
@@ -153,7 +123,6 @@ graph TB
     calls_entries["entries"]:::method
     rev_entries["entries"]:::method
     percentage_entries["entries"]:::method
-    DiagramExporter_entries["entries"]:::method
     RelationshipAnalyzer_entries["entries"]:::method
     ArchitecturalAnalyzer_entries["entries"]:::method
   end
@@ -161,7 +130,6 @@ graph TB
   subgraph join_service["join-service Service"]
     main_join["join"]:::method
     loadConfig_join["join"]:::method
-    generateArchitectureReadme_join["join"]:::method
     languages_join["join"]:::method
     DiagramGenerator_join["join"]:::method
     based_join["join"]:::method
@@ -169,35 +137,29 @@ graph TB
     calls_join["join"]:::method
     rev_join["join"]:::method
     percentage_join["join"]:::method
-    DiagramExporter_join["join"]:::method
   end
 
   subgraph resolve_service["resolve-service Service"]
     main_resolve["resolve"]:::method
     loadConfig_resolve["resolve"]:::method
-    generateArchitectureReadme_resolve["resolve"]:::method
     languages_resolve["resolve"]:::method
   end
 
   subgraph writeFile_service["writeFile-service Service"]
     main_writeFile["writeFile"]:::method
     loadConfig_writeFile["writeFile"]:::method
-    generateArchitectureReadme_writeFile["writeFile"]:::method
     languages_writeFile["writeFile"]:::method
-    DiagramExporter_writeFile["writeFile"]:::method
   end
 
   subgraph chmod_service["chmod-service Service"]
     main_chmod["chmod"]:::method
     loadConfig_chmod["chmod"]:::method
-    generateArchitectureReadme_chmod["chmod"]:::method
     languages_chmod["chmod"]:::method
   end
 
   subgraph push_service["push-service Service"]
     main_push["push"]:::method
     loadConfig_push["push"]:::method
-    generateArchitectureReadme_push["push"]:::method
     languages_push["push"]:::method
     DiagramGenerator_push["push"]:::method
     based_push["push"]:::method
@@ -205,7 +167,6 @@ graph TB
     calls_push["push"]:::method
     rev_push["push"]:::method
     percentage_push["push"]:::method
-    DiagramExporter_push["push"]:::method
     TypeScriptAnalyzer_push["push"]:::method
     visit_push["push"]:::method
     RelationshipAnalyzer_push["push"]:::method
@@ -216,82 +177,34 @@ graph TB
     ArchitecturalAnalyzer_push["push"]:::method
   end
 
-  subgraph readdir_service["readdir-service Service"]
-    main_readdir["readdir"]:::method
-    loadConfig_readdir["readdir"]:::method
-    generateArchitectureReadme_readdir["readdir"]:::method
-    languages_readdir["readdir"]:::method
-  end
-
-  subgraph startsWith_service["startsWith-service Service"]
-    main_startsWith["startsWith"]:::method
-    loadConfig_startsWith["startsWith"]:::method
-    generateArchitectureReadme_startsWith["startsWith"]:::method
-    languages_startsWith["startsWith"]:::method
-    DiagramGenerator_startsWith["startsWith"]:::method
-    based_startsWith["startsWith"]:::method
-    for_startsWith["startsWith"]:::method
-    calls_startsWith["startsWith"]:::method
-    rev_startsWith["startsWith"]:::method
-    percentage_startsWith["startsWith"]:::method
-    PythonAnalyzer_startsWith["startsWith"]:::method
-  end
-
-  subgraph stat_service["stat-service Service"]
-    main_stat["stat"]:::method
-    loadConfig_stat["stat"]:::method
-    generateArchitectureReadme_stat["stat"]:::method
-    languages_stat["stat"]:::method
-  end
-
-  subgraph isFile_service["isFile-service Service"]
-    main_isFile["isFile"]:::method
-    loadConfig_isFile["isFile"]:::method
-    generateArchitectureReadme_isFile["isFile"]:::method
-    languages_isFile["isFile"]:::method
-  end
-
-  subgraph remove_service["remove-service Service"]
-    main_remove["remove"]:::method
-    loadConfig_remove["remove"]:::method
-    generateArchitectureReadme_remove["remove"]:::method
-    languages_remove["remove"]:::method
-  end
-
   subgraph commitChanges_service["commitChanges-service Service"]
     main_commitChanges["commitChanges"]:::method
     loadConfig_commitChanges["commitChanges"]:::method
-    generateArchitectureReadme_commitChanges["commitChanges"]:::method
     languages_commitChanges["commitChanges"]:::method
   end
 
   subgraph setFailed_service["setFailed-service Service"]
     main_setFailed["setFailed"]:::method
     loadConfig_setFailed["setFailed"]:::method
-    generateArchitectureReadme_setFailed["setFailed"]:::method
     languages_setFailed["setFailed"]:::method
   end
 
   subgraph error_service["error-service Service"]
     main_error["error"]:::method
     loadConfig_error["error"]:::method
-    generateArchitectureReadme_error["error"]:::method
     languages_error["error"]:::method
     GitManager_error["error"]:::method
-    DiagramExporter_error["error"]:::method
   end
 
   subgraph pathExists_service["pathExists-service Service"]
     main_pathExists["pathExists"]:::method
     loadConfig_pathExists["pathExists"]:::method
-    generateArchitectureReadme_pathExists["pathExists"]:::method
     languages_pathExists["pathExists"]:::method
   end
 
   subgraph readFile_service["readFile-service Service"]
     main_readFile["readFile"]:::method
     loadConfig_readFile["readFile"]:::method
-    generateArchitectureReadme_readFile["readFile"]:::method
     languages_readFile["readFile"]:::method
     TypeScriptAnalyzer_readFile["readFile"]:::method
     visit_readFile["readFile"]:::method
@@ -304,110 +217,11 @@ graph TB
   subgraph parse_service["parse-service Service"]
     main_parse["parse"]:::method
     loadConfig_parse["parse"]:::method
-    generateArchitectureReadme_parse["parse"]:::method
     languages_parse["parse"]:::method
-  end
-
-  subgraph toISOString_service["toISOString-service Service"]
-    main_toISOString["toISOString"]:::method
-    loadConfig_toISOString["toISOString"]:::method
-    generateArchitectureReadme_toISOString["toISOString"]:::method
-    languages_toISOString["toISOString"]:::method
-    DiagramExporter_toISOString["toISOString"]:::method
-  end
-
-  subgraph slice_service["slice-service Service"]
-    main_slice["slice"]:::method
-    loadConfig_slice["slice"]:::method
-    generateArchitectureReadme_slice["slice"]:::method
-    languages_slice["slice"]:::method
-    DiagramGenerator_slice["slice"]:::method
-    based_slice["slice"]:::method
-    for_slice["slice"]:::method
-    calls_slice["slice"]:::method
-    rev_slice["slice"]:::method
-    percentage_slice["slice"]:::method
-    DiagramExporter_slice["slice"]:::method
-    TypeScriptAnalyzer_slice["slice"]:::method
-    visit_slice["slice"]:::method
-  end
-
-  subgraph forEach_service["forEach-service Service"]
-    main_forEach["forEach"]:::method
-    loadConfig_forEach["forEach"]:::method
-    generateArchitectureReadme_forEach["forEach"]:::method
-    languages_forEach["forEach"]:::method
-    DiagramGenerator_forEach["forEach"]:::method
-    based_forEach["forEach"]:::method
-    for_forEach["forEach"]:::method
-    calls_forEach["forEach"]:::method
-    rev_forEach["forEach"]:::method
-    percentage_forEach["forEach"]:::method
-    DiagramExporter_forEach["forEach"]:::method
-    TypeScriptAnalyzer_forEach["forEach"]:::method
-    visit_forEach["forEach"]:::method
-    RelationshipAnalyzer_forEach["forEach"]:::method
-    PythonAnalyzer_forEach["forEach"]:::method
-    JavaScriptAnalyzer_forEach["forEach"]:::method
-    declarations_forEach["forEach"]:::method
-    CodeAnalyzer_forEach["forEach"]:::method
-    ArchitecturalAnalyzer_forEach["forEach"]:::method
-  end
-
-  subgraph replace_service["replace-service Service"]
-    main_replace["replace"]:::method
-    loadConfig_replace["replace"]:::method
-    generateArchitectureReadme_replace["replace"]:::method
-    languages_replace["replace"]:::method
-    DiagramGenerator_replace["replace"]:::method
-    based_replace["replace"]:::method
-    for_replace["replace"]:::method
-    calls_replace["replace"]:::method
-    rev_replace["replace"]:::method
-    percentage_replace["replace"]:::method
-    DiagramExporter_replace["replace"]:::method
-    ArchitecturalAnalyzer_replace["replace"]:::method
-  end
-
-  subgraph toUpperCase_service["toUpperCase-service Service"]
-    main_toUpperCase["toUpperCase"]:::method
-    loadConfig_toUpperCase["toUpperCase"]:::method
-    generateArchitectureReadme_toUpperCase["toUpperCase"]:::method
-    languages_toUpperCase["toUpperCase"]:::method
-    DiagramGenerator_toUpperCase["toUpperCase"]:::method
-    based_toUpperCase["toUpperCase"]:::method
-    for_toUpperCase["toUpperCase"]:::method
-    calls_toUpperCase["toUpperCase"]:::method
-    rev_toUpperCase["toUpperCase"]:::method
-    percentage_toUpperCase["toUpperCase"]:::method
-    DiagramExporter_toUpperCase["toUpperCase"]:::method
-    RelationshipAnalyzer_toUpperCase["toUpperCase"]:::method
-  end
-
-  subgraph filter_service["filter-service Service"]
-    main_filter["filter"]:::method
-    loadConfig_filter["filter"]:::method
-    generateArchitectureReadme_filter["filter"]:::method
-    languages_filter["filter"]:::method
-    DiagramGenerator_filter["filter"]:::method
-    based_filter["filter"]:::method
-    for_filter["filter"]:::method
-    calls_filter["filter"]:::method
-    rev_filter["filter"]:::method
-    percentage_filter["filter"]:::method
-    RelationshipAnalyzer_filter["filter"]:::method
-    CodeAnalyzer_filter["filter"]:::method
   end
 
   subgraph log_service["log-service Service"]
     GitManager_log["log"]:::method
-    DiagramGenerator_log["log"]:::method
-    based_log["log"]:::method
-    for_log["log"]:::method
-    calls_log["log"]:::method
-    rev_log["log"]:::method
-    percentage_log["log"]:::method
-    DiagramExporter_log["log"]:::method
   end
 
   subgraph isGitRepository_service["isGitRepository-service Service"]
@@ -569,25 +383,6 @@ graph TB
     percentage_generateInteractiveDiagrams["generateInteractiveDiagrams"]:::method
   end
 
-  subgraph exportAllFormats_service["exportAllFormats-service Service"]
-    DiagramGenerator_exportAllFormats["exportAllFormats"]:::method
-    based_exportAllFormats["exportAllFormats"]:::method
-    for_exportAllFormats["exportAllFormats"]:::method
-    calls_exportAllFormats["exportAllFormats"]:::method
-    rev_exportAllFormats["exportAllFormats"]:::method
-    percentage_exportAllFormats["exportAllFormats"]:::method
-  end
-
-  subgraph endsWith_service["endsWith-service Service"]
-    DiagramGenerator_endsWith["endsWith"]:::method
-    based_endsWith["endsWith"]:::method
-    for_endsWith["endsWith"]:::method
-    calls_endsWith["endsWith"]:::method
-    rev_endsWith["endsWith"]:::method
-    percentage_endsWith["endsWith"]:::method
-    DiagramExporter_endsWith["endsWith"]:::method
-  end
-
   subgraph uniqueByName_service["uniqueByName-service Service"]
     DiagramGenerator_uniqueByName["uniqueByName"]:::method
     based_uniqueByName["uniqueByName"]:::method
@@ -631,6 +426,34 @@ graph TB
     calls_sort["sort"]:::method
     rev_sort["sort"]:::method
     percentage_sort["sort"]:::method
+  end
+
+  subgraph slice_service["slice-service Service"]
+    DiagramGenerator_slice["slice"]:::method
+    based_slice["slice"]:::method
+    for_slice["slice"]:::method
+    calls_slice["slice"]:::method
+    rev_slice["slice"]:::method
+    percentage_slice["slice"]:::method
+    TypeScriptAnalyzer_slice["slice"]:::method
+    visit_slice["slice"]:::method
+  end
+
+  subgraph forEach_service["forEach-service Service"]
+    DiagramGenerator_forEach["forEach"]:::method
+    based_forEach["forEach"]:::method
+    for_forEach["forEach"]:::method
+    calls_forEach["forEach"]:::method
+    rev_forEach["forEach"]:::method
+    percentage_forEach["forEach"]:::method
+    TypeScriptAnalyzer_forEach["forEach"]:::method
+    visit_forEach["forEach"]:::method
+    RelationshipAnalyzer_forEach["forEach"]:::method
+    PythonAnalyzer_forEach["forEach"]:::method
+    JavaScriptAnalyzer_forEach["forEach"]:::method
+    declarations_forEach["forEach"]:::method
+    CodeAnalyzer_forEach["forEach"]:::method
+    ArchitecturalAnalyzer_forEach["forEach"]:::method
   end
 
   subgraph sanitizeName_service["sanitizeName-service Service"]
@@ -732,6 +555,17 @@ graph TB
     percentage_wrapInMarkdown["wrapInMarkdown"]:::method
   end
 
+  subgraph filter_service["filter-service Service"]
+    DiagramGenerator_filter["filter"]:::method
+    based_filter["filter"]:::method
+    for_filter["filter"]:::method
+    calls_filter["filter"]:::method
+    rev_filter["filter"]:::method
+    percentage_filter["filter"]:::method
+    RelationshipAnalyzer_filter["filter"]:::method
+    CodeAnalyzer_filter["filter"]:::method
+  end
+
   subgraph isExternalDependency_service["isExternalDependency-service Service"]
     DiagramGenerator_isExternalDependency["isExternalDependency"]:::method
     based_isExternalDependency["isExternalDependency"]:::method
@@ -772,6 +606,16 @@ graph TB
     percentage_dirname["dirname"]:::method
   end
 
+  subgraph replace_service["replace-service Service"]
+    DiagramGenerator_replace["replace"]:::method
+    based_replace["replace"]:::method
+    for_replace["replace"]:::method
+    calls_replace["replace"]:::method
+    rev_replace["replace"]:::method
+    percentage_replace["replace"]:::method
+    ArchitecturalAnalyzer_replace["replace"]:::method
+  end
+
   subgraph some_service["some-service Service"]
     DiagramGenerator_some["some"]:::method
     based_some["some"]:::method
@@ -782,6 +626,16 @@ graph TB
     TypeScriptAnalyzer_some["some"]:::method
     visit_some["some"]:::method
     ArchitecturalAnalyzer_some["some"]:::method
+  end
+
+  subgraph startsWith_service["startsWith-service Service"]
+    DiagramGenerator_startsWith["startsWith"]:::method
+    based_startsWith["startsWith"]:::method
+    for_startsWith["startsWith"]:::method
+    calls_startsWith["startsWith"]:::method
+    rev_startsWith["startsWith"]:::method
+    percentage_startsWith["startsWith"]:::method
+    PythonAnalyzer_startsWith["startsWith"]:::method
   end
 
   subgraph generateDiagramMetadata_service["generateDiagramMetadata-service Service"]
@@ -934,6 +788,16 @@ graph TB
     calls_from["from"]:::method
     rev_from["from"]:::method
     percentage_from["from"]:::method
+  end
+
+  subgraph toUpperCase_service["toUpperCase-service Service"]
+    DiagramGenerator_toUpperCase["toUpperCase"]:::method
+    based_toUpperCase["toUpperCase"]:::method
+    for_toUpperCase["toUpperCase"]:::method
+    calls_toUpperCase["toUpperCase"]:::method
+    rev_toUpperCase["toUpperCase"]:::method
+    percentage_toUpperCase["toUpperCase"]:::method
+    RelationshipAnalyzer_toUpperCase["toUpperCase"]:::method
   end
 
   subgraph groupRelationshipsBySource_service["groupRelationshipsBySource-service Service"]
@@ -1146,6 +1010,15 @@ graph TB
     percentage_toFixed["toFixed"]:::method
   end
 
+  subgraph endsWith_service["endsWith-service Service"]
+    DiagramGenerator_endsWith["endsWith"]:::method
+    based_endsWith["endsWith"]:::method
+    for_endsWith["endsWith"]:::method
+    calls_endsWith["endsWith"]:::method
+    rev_endsWith["endsWith"]:::method
+    percentage_endsWith["endsWith"]:::method
+  end
+
   subgraph convertToInteractiveHTML_service["convertToInteractiveHTML-service Service"]
     DiagramGenerator_convertToInteractiveHTML["convertToInteractiveHTML"]:::method
     based_convertToInteractiveHTML["convertToInteractiveHTML"]:::method
@@ -1162,7 +1035,6 @@ graph TB
     calls_match["match"]:::method
     rev_match["match"]:::method
     percentage_match["match"]:::method
-    DiagramExporter_match["match"]:::method
     RelationshipAnalyzer_match["match"]:::method
     PythonAnalyzer_match["match"]:::method
   end
@@ -1238,78 +1110,6 @@ graph TB
     rev_min["min"]:::method
     percentage_min["min"]:::method
     RelationshipAnalyzer_min["min"]:::method
-  end
-
-  subgraph launch_service["launch-service Service"]
-    DiagramExporter_launch["launch"]:::method
-  end
-
-  subgraph exportDiagram_service["exportDiagram-service Service"]
-    DiagramExporter_exportDiagram["exportDiagram"]:::method
-  end
-
-  subgraph close_service["close-service Service"]
-    DiagramExporter_close["close"]:::method
-  end
-
-  subgraph newPage_service["newPage-service Service"]
-    DiagramExporter_newPage["newPage"]:::method
-  end
-
-  subgraph setViewport_service["setViewport-service Service"]
-    DiagramExporter_setViewport["setViewport"]:::method
-  end
-
-  subgraph createExportHTML_service["createExportHTML-service Service"]
-    DiagramExporter_createExportHTML["createExportHTML"]:::method
-  end
-
-  subgraph setContent_service["setContent-service Service"]
-    DiagramExporter_setContent["setContent"]:::method
-  end
-
-  subgraph waitForFunction_service["waitForFunction-service Service"]
-    DiagramExporter_waitForFunction["waitForFunction"]:::method
-  end
-
-  subgraph querySelector_service["querySelector-service Service"]
-    DiagramExporter_querySelector["querySelector"]:::method
-  end
-
-  subgraph exportPNG_service["exportPNG-service Service"]
-    DiagramExporter_exportPNG["exportPNG"]:::method
-  end
-
-  subgraph exportSVG_service["exportSVG-service Service"]
-    DiagramExporter_exportSVG["exportSVG"]:::method
-  end
-
-  subgraph initialize_service["initialize-service Service"]
-    DiagramExporter_initialize["initialize"]:::method
-  end
-
-  subgraph boundingBox_service["boundingBox-service Service"]
-    DiagramExporter_boundingBox["boundingBox"]:::method
-  end
-
-  subgraph max_service["max-service Service"]
-    DiagramExporter_max["max"]:::method
-  end
-
-  subgraph screenshot_service["screenshot-service Service"]
-    DiagramExporter_screenshot["screenshot"]:::method
-  end
-
-  subgraph evaluate_service["evaluate-service Service"]
-    DiagramExporter_evaluate["evaluate"]:::method
-  end
-
-  subgraph exportDiagrams_service["exportDiagrams-service Service"]
-    DiagramExporter_exportDiagrams["exportDiagrams"]:::method
-  end
-
-  subgraph extname_service["extname-service Service"]
-    DiagramExporter_extname["extname"]:::method
   end
 
   subgraph findTypeScriptFiles_service["findTypeScriptFiles-service Service"]
@@ -1606,56 +1406,6 @@ graph TB
     ArchitecturalAnalyzer_round["round"]:::method
   end
 
-  subgraph now_service["now-service Service"]
-    UserService_now["now"]:::method
-    __init___now["now"]:::method
-    create_user_now["now"]:::method
-    get_user_now["now"]:::method
-    list_users_now["now"]:::method
-    export_users_now["now"]:::method
-    validate_email_now["now"]:::method
-  end
-
-  subgraph isoformat_service["isoformat-service Service"]
-    UserService_isoformat["isoformat"]:::method
-    __init___isoformat["isoformat"]:::method
-    create_user_isoformat["isoformat"]:::method
-    get_user_isoformat["isoformat"]:::method
-    list_users_isoformat["isoformat"]:::method
-    export_users_isoformat["isoformat"]:::method
-    validate_email_isoformat["isoformat"]:::method
-  end
-
-  subgraph append_service["append-service Service"]
-    UserService_append["append"]:::method
-    __init___append["append"]:::method
-    create_user_append["append"]:::method
-    get_user_append["append"]:::method
-    list_users_append["append"]:::method
-    export_users_append["append"]:::method
-    validate_email_append["append"]:::method
-  end
-
-  subgraph copy_service["copy-service Service"]
-    UserService_copy["copy"]:::method
-    __init___copy["copy"]:::method
-    create_user_copy["copy"]:::method
-    get_user_copy["copy"]:::method
-    list_users_copy["copy"]:::method
-    export_users_copy["copy"]:::method
-    validate_email_copy["copy"]:::method
-  end
-
-  subgraph dumps_service["dumps-service Service"]
-    UserService_dumps["dumps"]:::method
-    __init___dumps["dumps"]:::method
-    create_user_dumps["dumps"]:::method
-    get_user_dumps["dumps"]:::method
-    list_users_dumps["dumps"]:::method
-    export_users_dumps["dumps"]:::method
-    validate_email_dumps["dumps"]:::method
-  end
-
   main -->|getInput| getInput_service
   main -->|split| split_service
   main -->|map| map_service
@@ -1668,30 +1418,18 @@ graph TB
   main -->|keys| keys_service
   main -->|generateDiagrams| generateDiagrams_service
   main -->|ensureDir| ensureDir_service
-  main -->|getOrganizedFileStructure| getOrganizedFileStructure_service
   main -->|entries| entries_service
   main -->|join| join_service
   main -->|resolve| resolve_service
   main -->|writeFile| writeFile_service
   main -->|chmod| chmod_service
   main -->|push| push_service
-  main -->|readdir| readdir_service
-  main -->|startsWith| startsWith_service
-  main -->|stat| stat_service
-  main -->|isFile| isFile_service
-  main -->|remove| remove_service
   main -->|commitChanges| commitChanges_service
   main -->|setFailed| setFailed_service
   main -->|error| error_service
   main -->|pathExists| pathExists_service
   main -->|readFile| readFile_service
   main -->|parse| parse_service
-  main -->|toISOString| toISOString_service
-  main -->|slice| slice_service
-  main -->|forEach| forEach_service
-  main -->|replace| replace_service
-  main -->|toUpperCase| toUpperCase_service
-  main -->|filter| filter_service
   loadConfig -->|getInput| getInput_service
   loadConfig -->|split| split_service
   loadConfig -->|map| map_service
@@ -1704,66 +1442,18 @@ graph TB
   loadConfig -->|keys| keys_service
   loadConfig -->|generateDiagrams| generateDiagrams_service
   loadConfig -->|ensureDir| ensureDir_service
-  loadConfig -->|getOrganizedFileStructure| getOrganizedFileStructure_service
   loadConfig -->|entries| entries_service
   loadConfig -->|join| join_service
   loadConfig -->|resolve| resolve_service
   loadConfig -->|writeFile| writeFile_service
   loadConfig -->|chmod| chmod_service
   loadConfig -->|push| push_service
-  loadConfig -->|readdir| readdir_service
-  loadConfig -->|startsWith| startsWith_service
-  loadConfig -->|stat| stat_service
-  loadConfig -->|isFile| isFile_service
-  loadConfig -->|remove| remove_service
   loadConfig -->|commitChanges| commitChanges_service
   loadConfig -->|setFailed| setFailed_service
   loadConfig -->|error| error_service
   loadConfig -->|pathExists| pathExists_service
   loadConfig -->|readFile| readFile_service
   loadConfig -->|parse| parse_service
-  loadConfig -->|toISOString| toISOString_service
-  loadConfig -->|slice| slice_service
-  loadConfig -->|forEach| forEach_service
-  loadConfig -->|replace| replace_service
-  loadConfig -->|toUpperCase| toUpperCase_service
-  loadConfig -->|filter| filter_service
-  generateArchitectureReadme -->|getInput| getInput_service
-  generateArchitectureReadme -->|split| split_service
-  generateArchitectureReadme -->|map| map_service
-  generateArchitectureReadme -->|trim| trim_service
-  generateArchitectureReadme -->|getOctokit| getOctokit_service
-  generateArchitectureReadme -->|warning| warning_service
-  generateArchitectureReadme -->|info| info_service
-  generateArchitectureReadme -->|cwd| cwd_service
-  generateArchitectureReadme -->|analyzeCodebase| analyzeCodebase_service
-  generateArchitectureReadme -->|keys| keys_service
-  generateArchitectureReadme -->|generateDiagrams| generateDiagrams_service
-  generateArchitectureReadme -->|ensureDir| ensureDir_service
-  generateArchitectureReadme -->|getOrganizedFileStructure| getOrganizedFileStructure_service
-  generateArchitectureReadme -->|entries| entries_service
-  generateArchitectureReadme -->|join| join_service
-  generateArchitectureReadme -->|resolve| resolve_service
-  generateArchitectureReadme -->|writeFile| writeFile_service
-  generateArchitectureReadme -->|chmod| chmod_service
-  generateArchitectureReadme -->|push| push_service
-  generateArchitectureReadme -->|readdir| readdir_service
-  generateArchitectureReadme -->|startsWith| startsWith_service
-  generateArchitectureReadme -->|stat| stat_service
-  generateArchitectureReadme -->|isFile| isFile_service
-  generateArchitectureReadme -->|remove| remove_service
-  generateArchitectureReadme -->|commitChanges| commitChanges_service
-  generateArchitectureReadme -->|setFailed| setFailed_service
-  generateArchitectureReadme -->|error| error_service
-  generateArchitectureReadme -->|pathExists| pathExists_service
-  generateArchitectureReadme -->|readFile| readFile_service
-  generateArchitectureReadme -->|parse| parse_service
-  generateArchitectureReadme -->|toISOString| toISOString_service
-  generateArchitectureReadme -->|slice| slice_service
-  generateArchitectureReadme -->|forEach| forEach_service
-  generateArchitectureReadme -->|replace| replace_service
-  generateArchitectureReadme -->|toUpperCase| toUpperCase_service
-  generateArchitectureReadme -->|filter| filter_service
   languages -->|getInput| getInput_service
   languages -->|split| split_service
   languages -->|map| map_service
@@ -1776,30 +1466,18 @@ graph TB
   languages -->|keys| keys_service
   languages -->|generateDiagrams| generateDiagrams_service
   languages -->|ensureDir| ensureDir_service
-  languages -->|getOrganizedFileStructure| getOrganizedFileStructure_service
   languages -->|entries| entries_service
   languages -->|join| join_service
   languages -->|resolve| resolve_service
   languages -->|writeFile| writeFile_service
   languages -->|chmod| chmod_service
   languages -->|push| push_service
-  languages -->|readdir| readdir_service
-  languages -->|startsWith| startsWith_service
-  languages -->|stat| stat_service
-  languages -->|isFile| isFile_service
-  languages -->|remove| remove_service
   languages -->|commitChanges| commitChanges_service
   languages -->|setFailed| setFailed_service
   languages -->|error| error_service
   languages -->|pathExists| pathExists_service
   languages -->|readFile| readFile_service
   languages -->|parse| parse_service
-  languages -->|toISOString| toISOString_service
-  languages -->|slice| slice_service
-  languages -->|forEach| forEach_service
-  languages -->|replace| replace_service
-  languages -->|toUpperCase| toUpperCase_service
-  languages -->|filter| filter_service
   GitManager -->|log| log_service
   GitManager -->|isGitRepository| isGitRepository_service
   GitManager -->|cwd| cwd_service
@@ -1826,20 +1504,14 @@ graph TB
   DiagramGenerator -->|generateFocusDiagrams| generateFocusDiagrams_service
   DiagramGenerator -->|assign| assign_service
   DiagramGenerator -->|generateInteractiveDiagrams| generateInteractiveDiagrams_service
-  DiagramGenerator -->|exportAllFormats| exportAllFormats_service
-  DiagramGenerator -->|log| log_service
-  DiagramGenerator -->|entries| entries_service
-  DiagramGenerator -->|forEach| forEach_service
-  DiagramGenerator -->|endsWith| endsWith_service
-  DiagramGenerator -->|push| push_service
-  DiagramGenerator -->|replace| replace_service
-  DiagramGenerator -->|startsWith| startsWith_service
   DiagramGenerator -->|uniqueByName| uniqueByName_service
   DiagramGenerator -->|filterComponentsForDiagram| filterComponentsForDiagram_service
   DiagramGenerator -->|filterDependenciesForDiagram| filterDependenciesForDiagram_service
   DiagramGenerator -->|groupComponentsByDirectory| groupComponentsByDirectory_service
+  DiagramGenerator -->|entries| entries_service
   DiagramGenerator -->|sort| sort_service
   DiagramGenerator -->|slice| slice_service
+  DiagramGenerator -->|forEach| forEach_service
   DiagramGenerator -->|sanitizeName| sanitizeName_service
   DiagramGenerator -->|getDisplayName| getDisplayName_service
   DiagramGenerator -->|getComponentImportance| getComponentImportance_service
@@ -1857,7 +1529,10 @@ graph TB
   DiagramGenerator -->|has| has_service
   DiagramGenerator -->|add| add_service
   DiagramGenerator -->|dirname| dirname_service
+  DiagramGenerator -->|push| push_service
+  DiagramGenerator -->|replace| replace_service
   DiagramGenerator -->|some| some_service
+  DiagramGenerator -->|startsWith| startsWith_service
   DiagramGenerator -->|generateDiagramMetadata| generateDiagramMetadata_service
   DiagramGenerator -->|generateLegend| generateLegend_service
   DiagramGenerator -->|generateSummaryTables| generateSummaryTables_service
@@ -1900,6 +1575,7 @@ graph TB
   DiagramGenerator -->|getComponentType| getComponentType_service
   DiagramGenerator -->|countDependencies| countDependencies_service
   DiagramGenerator -->|toFixed| toFixed_service
+  DiagramGenerator -->|endsWith| endsWith_service
   DiagramGenerator -->|convertToInteractiveHTML| convertToInteractiveHTML_service
   DiagramGenerator -->|match| match_service
   DiagramGenerator -->|createComponentLinks| createComponentLinks_service
@@ -1926,20 +1602,14 @@ graph TB
   based -->|generateFocusDiagrams| generateFocusDiagrams_service
   based -->|assign| assign_service
   based -->|generateInteractiveDiagrams| generateInteractiveDiagrams_service
-  based -->|exportAllFormats| exportAllFormats_service
-  based -->|log| log_service
-  based -->|entries| entries_service
-  based -->|forEach| forEach_service
-  based -->|endsWith| endsWith_service
-  based -->|push| push_service
-  based -->|replace| replace_service
-  based -->|startsWith| startsWith_service
   based -->|uniqueByName| uniqueByName_service
   based -->|filterComponentsForDiagram| filterComponentsForDiagram_service
   based -->|filterDependenciesForDiagram| filterDependenciesForDiagram_service
   based -->|groupComponentsByDirectory| groupComponentsByDirectory_service
+  based -->|entries| entries_service
   based -->|sort| sort_service
   based -->|slice| slice_service
+  based -->|forEach| forEach_service
   based -->|sanitizeName| sanitizeName_service
   based -->|getDisplayName| getDisplayName_service
   based -->|getComponentImportance| getComponentImportance_service
@@ -1957,7 +1627,10 @@ graph TB
   based -->|has| has_service
   based -->|add| add_service
   based -->|dirname| dirname_service
+  based -->|push| push_service
+  based -->|replace| replace_service
   based -->|some| some_service
+  based -->|startsWith| startsWith_service
   based -->|generateDiagramMetadata| generateDiagramMetadata_service
   based -->|generateLegend| generateLegend_service
   based -->|generateSummaryTables| generateSummaryTables_service
@@ -2000,6 +1673,7 @@ graph TB
   based -->|getComponentType| getComponentType_service
   based -->|countDependencies| countDependencies_service
   based -->|toFixed| toFixed_service
+  based -->|endsWith| endsWith_service
   based -->|convertToInteractiveHTML| convertToInteractiveHTML_service
   based -->|match| match_service
   based -->|createComponentLinks| createComponentLinks_service
@@ -2026,20 +1700,14 @@ graph TB
   for -->|generateFocusDiagrams| generateFocusDiagrams_service
   for -->|assign| assign_service
   for -->|generateInteractiveDiagrams| generateInteractiveDiagrams_service
-  for -->|exportAllFormats| exportAllFormats_service
-  for -->|log| log_service
-  for -->|entries| entries_service
-  for -->|forEach| forEach_service
-  for -->|endsWith| endsWith_service
-  for -->|push| push_service
-  for -->|replace| replace_service
-  for -->|startsWith| startsWith_service
   for -->|uniqueByName| uniqueByName_service
   for -->|filterComponentsForDiagram| filterComponentsForDiagram_service
   for -->|filterDependenciesForDiagram| filterDependenciesForDiagram_service
   for -->|groupComponentsByDirectory| groupComponentsByDirectory_service
+  for -->|entries| entries_service
   for -->|sort| sort_service
   for -->|slice| slice_service
+  for -->|forEach| forEach_service
   for -->|sanitizeName| sanitizeName_service
   for -->|getDisplayName| getDisplayName_service
   for -->|getComponentImportance| getComponentImportance_service
@@ -2057,7 +1725,10 @@ graph TB
   for -->|has| has_service
   for -->|add| add_service
   for -->|dirname| dirname_service
+  for -->|push| push_service
+  for -->|replace| replace_service
   for -->|some| some_service
+  for -->|startsWith| startsWith_service
   for -->|generateDiagramMetadata| generateDiagramMetadata_service
   for -->|generateLegend| generateLegend_service
   for -->|generateSummaryTables| generateSummaryTables_service
@@ -2100,6 +1771,7 @@ graph TB
   for -->|getComponentType| getComponentType_service
   for -->|countDependencies| countDependencies_service
   for -->|toFixed| toFixed_service
+  for -->|endsWith| endsWith_service
   for -->|convertToInteractiveHTML| convertToInteractiveHTML_service
   for -->|match| match_service
   for -->|createComponentLinks| createComponentLinks_service
@@ -2126,20 +1798,14 @@ graph TB
   calls -->|generateFocusDiagrams| generateFocusDiagrams_service
   calls -->|assign| assign_service
   calls -->|generateInteractiveDiagrams| generateInteractiveDiagrams_service
-  calls -->|exportAllFormats| exportAllFormats_service
-  calls -->|log| log_service
-  calls -->|entries| entries_service
-  calls -->|forEach| forEach_service
-  calls -->|endsWith| endsWith_service
-  calls -->|push| push_service
-  calls -->|replace| replace_service
-  calls -->|startsWith| startsWith_service
   calls -->|uniqueByName| uniqueByName_service
   calls -->|filterComponentsForDiagram| filterComponentsForDiagram_service
   calls -->|filterDependenciesForDiagram| filterDependenciesForDiagram_service
   calls -->|groupComponentsByDirectory| groupComponentsByDirectory_service
+  calls -->|entries| entries_service
   calls -->|sort| sort_service
   calls -->|slice| slice_service
+  calls -->|forEach| forEach_service
   calls -->|sanitizeName| sanitizeName_service
   calls -->|getDisplayName| getDisplayName_service
   calls -->|getComponentImportance| getComponentImportance_service
@@ -2157,7 +1823,10 @@ graph TB
   calls -->|has| has_service
   calls -->|add| add_service
   calls -->|dirname| dirname_service
+  calls -->|push| push_service
+  calls -->|replace| replace_service
   calls -->|some| some_service
+  calls -->|startsWith| startsWith_service
   calls -->|generateDiagramMetadata| generateDiagramMetadata_service
   calls -->|generateLegend| generateLegend_service
   calls -->|generateSummaryTables| generateSummaryTables_service
@@ -2200,6 +1869,7 @@ graph TB
   calls -->|getComponentType| getComponentType_service
   calls -->|countDependencies| countDependencies_service
   calls -->|toFixed| toFixed_service
+  calls -->|endsWith| endsWith_service
   calls -->|convertToInteractiveHTML| convertToInteractiveHTML_service
   calls -->|match| match_service
   calls -->|createComponentLinks| createComponentLinks_service
@@ -2226,20 +1896,14 @@ graph TB
   rev -->|generateFocusDiagrams| generateFocusDiagrams_service
   rev -->|assign| assign_service
   rev -->|generateInteractiveDiagrams| generateInteractiveDiagrams_service
-  rev -->|exportAllFormats| exportAllFormats_service
-  rev -->|log| log_service
-  rev -->|entries| entries_service
-  rev -->|forEach| forEach_service
-  rev -->|endsWith| endsWith_service
-  rev -->|push| push_service
-  rev -->|replace| replace_service
-  rev -->|startsWith| startsWith_service
   rev -->|uniqueByName| uniqueByName_service
   rev -->|filterComponentsForDiagram| filterComponentsForDiagram_service
   rev -->|filterDependenciesForDiagram| filterDependenciesForDiagram_service
   rev -->|groupComponentsByDirectory| groupComponentsByDirectory_service
+  rev -->|entries| entries_service
   rev -->|sort| sort_service
   rev -->|slice| slice_service
+  rev -->|forEach| forEach_service
   rev -->|sanitizeName| sanitizeName_service
   rev -->|getDisplayName| getDisplayName_service
   rev -->|getComponentImportance| getComponentImportance_service
@@ -2257,7 +1921,10 @@ graph TB
   rev -->|has| has_service
   rev -->|add| add_service
   rev -->|dirname| dirname_service
+  rev -->|push| push_service
+  rev -->|replace| replace_service
   rev -->|some| some_service
+  rev -->|startsWith| startsWith_service
   rev -->|generateDiagramMetadata| generateDiagramMetadata_service
   rev -->|generateLegend| generateLegend_service
   rev -->|generateSummaryTables| generateSummaryTables_service
@@ -2300,6 +1967,7 @@ graph TB
   rev -->|getComponentType| getComponentType_service
   rev -->|countDependencies| countDependencies_service
   rev -->|toFixed| toFixed_service
+  rev -->|endsWith| endsWith_service
   rev -->|convertToInteractiveHTML| convertToInteractiveHTML_service
   rev -->|match| match_service
   rev -->|createComponentLinks| createComponentLinks_service
@@ -2326,20 +1994,14 @@ graph TB
   percentage -->|generateFocusDiagrams| generateFocusDiagrams_service
   percentage -->|assign| assign_service
   percentage -->|generateInteractiveDiagrams| generateInteractiveDiagrams_service
-  percentage -->|exportAllFormats| exportAllFormats_service
-  percentage -->|log| log_service
-  percentage -->|entries| entries_service
-  percentage -->|forEach| forEach_service
-  percentage -->|endsWith| endsWith_service
-  percentage -->|push| push_service
-  percentage -->|replace| replace_service
-  percentage -->|startsWith| startsWith_service
   percentage -->|uniqueByName| uniqueByName_service
   percentage -->|filterComponentsForDiagram| filterComponentsForDiagram_service
   percentage -->|filterDependenciesForDiagram| filterDependenciesForDiagram_service
   percentage -->|groupComponentsByDirectory| groupComponentsByDirectory_service
+  percentage -->|entries| entries_service
   percentage -->|sort| sort_service
   percentage -->|slice| slice_service
+  percentage -->|forEach| forEach_service
   percentage -->|sanitizeName| sanitizeName_service
   percentage -->|getDisplayName| getDisplayName_service
   percentage -->|getComponentImportance| getComponentImportance_service
@@ -2357,7 +2019,10 @@ graph TB
   percentage -->|has| has_service
   percentage -->|add| add_service
   percentage -->|dirname| dirname_service
+  percentage -->|push| push_service
+  percentage -->|replace| replace_service
   percentage -->|some| some_service
+  percentage -->|startsWith| startsWith_service
   percentage -->|generateDiagramMetadata| generateDiagramMetadata_service
   percentage -->|generateLegend| generateLegend_service
   percentage -->|generateSummaryTables| generateSummaryTables_service
@@ -2400,6 +2065,7 @@ graph TB
   percentage -->|getComponentType| getComponentType_service
   percentage -->|countDependencies| countDependencies_service
   percentage -->|toFixed| toFixed_service
+  percentage -->|endsWith| endsWith_service
   percentage -->|convertToInteractiveHTML| convertToInteractiveHTML_service
   percentage -->|match| match_service
   percentage -->|createComponentLinks| createComponentLinks_service
@@ -2410,38 +2076,6 @@ graph TB
   percentage -->|isFrameworkDependency| isFrameworkDependency_service
   percentage -->|calculateComponentSize| calculateComponentSize_service
   percentage -->|min| min_service
-  DiagramExporter -->|join| join_service
-  DiagramExporter -->|ensureDir| ensureDir_service
-  DiagramExporter -->|launch| launch_service
-  DiagramExporter -->|entries| entries_service
-  DiagramExporter -->|endsWith| endsWith_service
-  DiagramExporter -->|match| match_service
-  DiagramExporter -->|replace| replace_service
-  DiagramExporter -->|exportDiagram| exportDiagram_service
-  DiagramExporter -->|push| push_service
-  DiagramExporter -->|close| close_service
-  DiagramExporter -->|newPage| newPage_service
-  DiagramExporter -->|setViewport| setViewport_service
-  DiagramExporter -->|createExportHTML| createExportHTML_service
-  DiagramExporter -->|setContent| setContent_service
-  DiagramExporter -->|waitForFunction| waitForFunction_service
-  DiagramExporter -->|querySelector| querySelector_service
-  DiagramExporter -->|toISOString| toISOString_service
-  DiagramExporter -->|slice| slice_service
-  DiagramExporter -->|exportPNG| exportPNG_service
-  DiagramExporter -->|exportSVG| exportSVG_service
-  DiagramExporter -->|log| log_service
-  DiagramExporter -->|toUpperCase| toUpperCase_service
-  DiagramExporter -->|error| error_service
-  DiagramExporter -->|initialize| initialize_service
-  DiagramExporter -->|boundingBox| boundingBox_service
-  DiagramExporter -->|max| max_service
-  DiagramExporter -->|screenshot| screenshot_service
-  DiagramExporter -->|evaluate| evaluate_service
-  DiagramExporter -->|writeFile| writeFile_service
-  DiagramExporter -->|exportDiagrams| exportDiagrams_service
-  DiagramExporter -->|forEach| forEach_service
-  DiagramExporter -->|extname| extname_service
   TypeScriptAnalyzer -->|findTypeScriptFiles| findTypeScriptFiles_service
   TypeScriptAnalyzer -->|readFile| readFile_service
   TypeScriptAnalyzer -->|analyzeFile| analyzeFile_service
@@ -2612,85 +2246,33 @@ graph TB
   ArchitecturalAnalyzer -->|exec| exec_service
   ArchitecturalAnalyzer -->|replace| replace_service
   ArchitecturalAnalyzer -->|round| round_service
-  UserService -->|now| now_service
-  UserService -->|isoformat| isoformat_service
-  UserService -->|append| append_service
-  UserService -->|copy| copy_service
-  UserService -->|dumps| dumps_service
-  UserService -->|split| split_service
-  __init__ -->|now| now_service
-  __init__ -->|isoformat| isoformat_service
-  __init__ -->|append| append_service
-  __init__ -->|copy| copy_service
-  __init__ -->|dumps| dumps_service
-  __init__ -->|split| split_service
-  create_user -->|now| now_service
-  create_user -->|isoformat| isoformat_service
-  create_user -->|append| append_service
-  create_user -->|copy| copy_service
-  create_user -->|dumps| dumps_service
-  create_user -->|split| split_service
-  get_user -->|now| now_service
-  get_user -->|isoformat| isoformat_service
-  get_user -->|append| append_service
-  get_user -->|copy| copy_service
-  get_user -->|dumps| dumps_service
-  get_user -->|split| split_service
-  list_users -->|now| now_service
-  list_users -->|isoformat| isoformat_service
-  list_users -->|append| append_service
-  list_users -->|copy| copy_service
-  list_users -->|dumps| dumps_service
-  list_users -->|split| split_service
-  export_users -->|now| now_service
-  export_users -->|isoformat| isoformat_service
-  export_users -->|append| append_service
-  export_users -->|copy| copy_service
-  export_users -->|dumps| dumps_service
-  export_users -->|split| split_service
-  validate_email -->|now| now_service
-  validate_email -->|isoformat| isoformat_service
-  validate_email -->|append| append_service
-  validate_email -->|copy| copy_service
-  validate_email -->|dumps| dumps_service
-  validate_email -->|split| split_service
 
 ```
 
-## 🎨 Legend
+## 📁 Source Code Links
 
-| Component Type | Color | Description |
-|---|---|---|
-| 🔍 **Analyzer** | Green | Code analysis components |
-| 🎨 **Generator** | Orange | Diagram generation components |
-| ⚙️ **Manager** | Purple | Resource management components |
-| 🔧 **Service** | Teal | Business logic and services |
-| 📦 **NPM** | Blue | Node.js packages |
-| 🏗️ **Framework** | Light Green | Framework dependencies |
-| 🌐 **External** | Red | External libraries |
-
-## 📊 Visual Indicators
-
-| Symbol | Meaning | Description |
-|---|---|---|
-| 📦 | Large Component | Component with >100 lines of code |
-| 📄 | Medium Component | Component with 50-100 lines of code |
-| 📝 | Small Component | Component with <50 lines of code |
-| ⚡ | High Complexity | Complex component (complexity ≥4) |
-| 🔥 | Medium Complexity | Moderate complexity (complexity ≥3) |
-| 🔗 | High Dependencies | Component with >5 dependencies |
-
-## 🔗 Relationship Types
-
-- **imports**: Module imports and dependencies
-- **calls**: Method/function calls
-- **generates**: Component generates output
-- **uses**: Component utilizes another component
-- **API**: API calls and communication
-- **data**: Data flow between components
-
-
+| Component | Type | Language | File Path | Source Link |
+|-----------|------|----------|-----------|-------------|
+| ArchitecturalAnalyzer | Component | javascript | src/analyzers/architecturalAnalyzer.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/analyzers/architecturalAnalyzer.js) |
+| based | Component | javascript | src/generators/diagramGenerator.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/generators/diagramGenerator.js) |
+| calls | Component | javascript | src/generators/diagramGenerator.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/generators/diagramGenerator.js) |
+| CodeAnalyzer | Component | javascript | src/analyzers/codeAnalyzer.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/analyzers/codeAnalyzer.js) |
+| declarations | Component | javascript | src/analyzers/javascriptAnalyzer.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/analyzers/javascriptAnalyzer.js) |
+| DiagramGenerator | Component | javascript | src/generators/diagramGenerator.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/generators/diagramGenerator.js) |
+| for | Component | javascript | src/generators/diagramGenerator.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/generators/diagramGenerator.js) |
+| GitManager | Component | javascript | src/utils/gitManager.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/utils/gitManager.js) |
+| JavaScriptAnalyzer | Component | javascript | src/analyzers/javascriptAnalyzer.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/analyzers/javascriptAnalyzer.js) |
+| languages | Component | javascript | src/index.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/index.js) |
+| loadConfig | Component | javascript | src/index.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/index.js) |
+| main | Component | javascript | src/index.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/index.js) |
+| percentage | Component | javascript | src/generators/diagramGenerator.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/generators/diagramGenerator.js) |
+| PythonAnalyzer | Component | javascript | src/analyzers/pythonAnalyzer.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/analyzers/pythonAnalyzer.js) |
+| RelationshipAnalyzer | Component | javascript | src/analyzers/relationshipAnalyzer.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/analyzers/relationshipAnalyzer.js) |
+| rev | Component | javascript | src/generators/diagramGenerator.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/generators/diagramGenerator.js) |
+| TypeScriptAnalyzer | Component | javascript | src/analyzers/typescriptAnalyzer.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/analyzers/typescriptAnalyzer.js) |
+| visit | Component | javascript | src/analyzers/typescriptAnalyzer.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/analyzers/typescriptAnalyzer.js) |
 
 
 ---
 *Generated by [Diagrammer GitHub Action](https://github.com/samjhill/diagrammer)*
+*Click on diagram nodes to view source code*

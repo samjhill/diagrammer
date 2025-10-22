@@ -1,9 +1,27 @@
-# Api Flow
+# Microservices Pattern
 
 This interactive diagram contains clickable nodes that link to source code files.
 
 ```mermaid
-No API relationships detected.
+graph TB
+  classDef service fill:#e8f5e8,stroke:#388e3c,stroke-width:2px
+  classDef api fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+  classDef gateway fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+  classDef component fill:#f5f5f5,stroke:#666,stroke-width:1px
+
+  UserService["<a href='https://github.com/samjhill/diagrammer/blob/main/tests/sample-project/src/services/UserService.py' target='_blank'>UserService</a>"]:::service
+  __init__["<a href='https://github.com/samjhill/diagrammer/blob/main/tests/sample-project/src/services/UserService.py' target='_blank'>__init__</a>"]:::service
+  create_user["<a href='https://github.com/samjhill/diagrammer/blob/main/tests/sample-project/src/services/UserService.py' target='_blank'>create_user</a>"]:::service
+  get_user["<a href='https://github.com/samjhill/diagrammer/blob/main/tests/sample-project/src/services/UserService.py' target='_blank'>get_user</a>"]:::service
+  list_users["<a href='https://github.com/samjhill/diagrammer/blob/main/tests/sample-project/src/services/UserService.py' target='_blank'>list_users</a>"]:::service
+  export_users["<a href='https://github.com/samjhill/diagrammer/blob/main/tests/sample-project/src/services/UserService.py' target='_blank'>export_users</a>"]:::service
+  validate_email["<a href='https://github.com/samjhill/diagrammer/blob/main/tests/sample-project/src/services/UserService.py' target='_blank'>validate_email</a>"]:::service
+
+  %% Microservice relationships
+  gateway -->|Routes to| service
+  api -->|Calls| service
+  service -->|Communicates with| service
+
 ```
 
 ## 📁 Source Code Links
