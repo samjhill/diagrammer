@@ -1,21 +1,28 @@
-# Event Flow
+# Microservices Pattern
 
 This diagram was automatically generated from your codebase.
 
 
 
 ```mermaid
-graph LR
-  classDef emitter fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-  classDef listener fill:#e8f5e8,stroke:#388e3c,stroke-width:2px
-  classDef event fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-  classDef system fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+graph TB
+  classDef service fill:#e8f5e8,stroke:#388e3c,stroke-width:2px
+  classDef api fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+  classDef gateway fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+  classDef component fill:#f5f5f5,stroke:#666,stroke-width:1px
 
-  RelationshipAnalyzer["RelationshipAnalyzer"]:::emitter
-  user_interaction["user-interaction"]:::event
-  RelationshipAnalyzer -->|emits| user_interaction
-  RelationshipAnalyzer["RelationshipAnalyzer"]:::listener
-  user_interaction -->|triggers| RelationshipAnalyzer
+  UserService["UserService"]:::service
+  __init__["__init__"]:::service
+  create_user["create_user"]:::service
+  get_user["get_user"]:::service
+  list_users["list_users"]:::service
+  export_users["export_users"]:::service
+  validate_email["validate_email"]:::service
+
+  %% Microservice relationships
+  gateway -->|Routes to| service
+  api -->|Calls| service
+  service -->|Communicates with| service
 
 ```
 
