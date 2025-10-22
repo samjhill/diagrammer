@@ -19,6 +19,12 @@ diagram:
     includeLayerFocus: true    # Generate per-layer focus diagrams
     includeModuleFocus: true   # Generate per-module focus diagrams
 
+  # Interactive diagram settings
+  interactive:
+    enabled: true              # Enable interactive HTML diagrams
+    includeClickableNodes: true # Make nodes clickable with source code links
+    includeComponentList: true  # Include component list panel
+
 # Code analysis settings
 analysis:
   includeTests: false        # Include test files in analysis (disabled for cleaner diagrams)
@@ -49,6 +55,12 @@ filters:
     - "**/*.jsx"
     - "**/*.tsx"
     - "**/*.py"
+
+# GitHub integration for clickable links
+github:
+  repository: "samjhill/diagrammer"  # GitHub repository (owner/repo)
+  ref: "main"                       # Branch or tag name
+  server: "https://github.com"      # GitHub server URL
 
 # Custom styling
 styling:
