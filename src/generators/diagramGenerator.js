@@ -1166,7 +1166,6 @@ ${insights.map(insight => `- ${insight}`).join('\n')}
       if (edgeSet.has(edgeKey) || dep.from === dep.name) return;
       edgeSet.add(edgeKey);
       
-      const isExternal = this.isExternalDependency(dep.from);
       const depType = this.getDependencyTypeLabel(dep.type);
       mermaid += `  ${fromId} -->|${depType}| ${toId}\n`;
     });
@@ -1217,7 +1216,6 @@ ${insights.map(insight => `- ${insight}`).join('\n')}
       if (edgeSet.has(edgeKey) || dep.from === dep.name) return;
       edgeSet.add(edgeKey);
       
-      const isExternal = this.isExternalDependency(dep.from);
       const depType = this.getDependencyTypeLabel(dep.type);
       mermaid += `  ${fromId} -->|${depType}| ${toId}\n`;
     });
