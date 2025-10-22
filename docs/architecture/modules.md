@@ -4,11 +4,20 @@ This diagram was automatically generated from your codebase.
 
 ## 📊 Architecture Overview
 
-- **Components**: 23 analyzed
-- **Languages**: javascript, python
-- **Architectural Patterns**: MICROSERVICES
+- **Components**: 17 analyzed
+- **Languages**: javascript
+- **Architectural Patterns**: None detected
 - **External Dependencies**: 12 packages
-- **Generated**: 10/21/2025
+- **Generated**: 10/22/2025
+
+## 🧠 Architectural Insights
+
+- 🔍 **High Analysis Complexity**: Multiple analyzers detected - consider consolidating analysis logic
+- 🌐 **High External Dependencies**: Consider reducing external dependencies for better maintainability
+- 🔄 **Circular Dependencies**: Found circular dependencies - consider refactoring
+- ⚡ **Complex Components**: 1 components with high complexity - consider refactoring
+
+
 
 
 
@@ -52,10 +61,6 @@ graph TB
     ArchitecturalAnalyzer["ArchitecturalAnalyzer"]
   end
 
-  subgraph tests_sample_project_src_services["tests/sample-project/src/services"]
-    UserService["UserService"]
-  end
-
 
 ```
 
@@ -70,6 +75,17 @@ graph TB
 | 📦 **NPM** | Blue | Node.js packages |
 | 🏗️ **Framework** | Light Green | Framework dependencies |
 | 🌐 **External** | Red | External libraries |
+
+## 📊 Visual Indicators
+
+| Symbol | Meaning | Description |
+|---|---|---|
+| 📦 | Large Component | Component with >100 lines of code |
+| 📄 | Medium Component | Component with 50-100 lines of code |
+| 📝 | Small Component | Component with <50 lines of code |
+| ⚡ | High Complexity | Complex component (complexity ≥4) |
+| 🔥 | Medium Complexity | Moderate complexity (complexity ≥3) |
+| 🔗 | High Dependencies | Component with >5 dependencies |
 
 ## 🔗 Relationship Types
 

@@ -32,6 +32,9 @@ graph TD
   calls["calls"]:::component
   data_store["data-store"]:::data
   calls -->|array| data_store
+  rev["rev"]:::component
+  data_store["data-store"]:::data
+  rev -->|array| data_store
   RelationshipAnalyzer["RelationshipAnalyzer"]:::component
   data_store["data-store"]:::data
   RelationshipAnalyzer -->|array| data_store
@@ -61,6 +64,17 @@ graph TD
 | 📦 **NPM** | Blue | Node.js packages |
 | 🏗️ **Framework** | Light Green | Framework dependencies |
 | 🌐 **External** | Red | External libraries |
+
+## 📊 Visual Indicators
+
+| Symbol | Meaning | Description |
+|---|---|---|
+| 📦 | Large Component | Component with >100 lines of code |
+| 📄 | Medium Component | Component with 50-100 lines of code |
+| 📝 | Small Component | Component with <50 lines of code |
+| ⚡ | High Complexity | Complex component (complexity ≥4) |
+| 🔥 | Medium Complexity | Moderate complexity (complexity ≥3) |
+| 🔗 | High Dependencies | Component with >5 dependencies |
 
 ## 🔗 Relationship Types
 
