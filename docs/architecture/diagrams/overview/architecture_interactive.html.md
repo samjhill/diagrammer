@@ -21,15 +21,6 @@ graph TB
   classDef data fill:#4caf50,stroke:#1b5e20,stroke-width:2px
   classDef api fill:#2196f3,stroke:#0d47a1,stroke-width:2px
 
-  subgraph tests_sample_project_src_services["src/services"]
-    create_user["<a href='https://github.com/samjhill/diagrammer/blob/main/tests/sample-project/src/services/UserService.py' target='_blank'>📦 create_user</a>"]
-    export_users["<a href='https://github.com/samjhill/diagrammer/blob/main/tests/sample-project/src/services/UserService.py' target='_blank'>📦 export_users</a>"]
-    get_user["<a href='https://github.com/samjhill/diagrammer/blob/main/tests/sample-project/src/services/UserService.py' target='_blank'>📄 get_user</a>"]
-    list_users["<a href='https://github.com/samjhill/diagrammer/blob/main/tests/sample-project/src/services/UserService.py' target='_blank'>📄 list_users</a>"]
-    UserService["<a href='https://github.com/samjhill/diagrammer/blob/main/tests/sample-project/src/services/UserService.py' target='_blank'>📦 UserService</a>"]
-    validate_email["<a href='https://github.com/samjhill/diagrammer/blob/main/tests/sample-project/src/services/UserService.py' target='_blank'>📦 validate_email</a>"]
-  end
-
   subgraph src_analyzers["src/analyzers"]
     ArchitecturalAnalyzer["<a href='https://github.com/samjhill/diagrammer/blob/main/src/analyzers/architecturalAnalyzer.js' target='_blank'>📦 ArchitecturalAnal... ⚡</a>"]
     CodeAnalyzer["<a href='https://github.com/samjhill/diagrammer/blob/main/src/analyzers/codeAnalyzer.js' target='_blank'>📦 CodeAnalyzer 🔥</a>"]
@@ -52,12 +43,6 @@ graph TB
     DiagramExporter["<a href='https://github.com/samjhill/diagrammer/blob/main/src/exporters/diagramExporter.js' target='_blank'>📦 DiagramExporter</a>"]
   end
 
-  UserService:::service
-  create_user:::component
-  get_user:::component
-  list_users:::component
-  export_users:::component
-  validate_email:::component
   loadConfig:::component
   generateArchitectureReadme:::component
   DiagramGenerator:::generator
@@ -81,23 +66,18 @@ graph TB
 
 | Component | Type | Language | File Path | Source Link |
 |-----------|------|----------|-----------|-------------|
-| __init__ | Function | python | tests/sample-project/src/services/UserService.py | [View Source](https://github.com/samjhill/diagrammer/blob/main/tests/sample-project/src/services/UserService.py) |
 | ArchitecturalAnalyzer | Component | javascript | src/analyzers/architecturalAnalyzer.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/analyzers/architecturalAnalyzer.js) |
 | based | Component | javascript | src/generators/diagramGenerator.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/generators/diagramGenerator.js) |
 | calls | Component | javascript | src/generators/diagramGenerator.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/generators/diagramGenerator.js) |
 | CodeAnalyzer | Component | javascript | src/analyzers/codeAnalyzer.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/analyzers/codeAnalyzer.js) |
-| create_user | Function | python | tests/sample-project/src/services/UserService.py | [View Source](https://github.com/samjhill/diagrammer/blob/main/tests/sample-project/src/services/UserService.py) |
 | declarations | Component | javascript | src/analyzers/javascriptAnalyzer.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/analyzers/javascriptAnalyzer.js) |
 | DiagramExporter | Component | javascript | src/exporters/diagramExporter.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/exporters/diagramExporter.js) |
 | DiagramGenerator | Component | javascript | src/generators/diagramGenerator.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/generators/diagramGenerator.js) |
-| export_users | Function | python | tests/sample-project/src/services/UserService.py | [View Source](https://github.com/samjhill/diagrammer/blob/main/tests/sample-project/src/services/UserService.py) |
 | for | Component | javascript | src/generators/diagramGenerator.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/generators/diagramGenerator.js) |
 | generateArchitectureReadme | Component | javascript | src/index.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/index.js) |
-| get_user | Function | python | tests/sample-project/src/services/UserService.py | [View Source](https://github.com/samjhill/diagrammer/blob/main/tests/sample-project/src/services/UserService.py) |
 | GitManager | Component | javascript | src/utils/gitManager.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/utils/gitManager.js) |
 | JavaScriptAnalyzer | Component | javascript | src/analyzers/javascriptAnalyzer.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/analyzers/javascriptAnalyzer.js) |
 | languages | Component | javascript | src/index.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/index.js) |
-| list_users | Function | python | tests/sample-project/src/services/UserService.py | [View Source](https://github.com/samjhill/diagrammer/blob/main/tests/sample-project/src/services/UserService.py) |
 | loadConfig | Component | javascript | src/index.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/index.js) |
 | main | Component | javascript | src/index.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/index.js) |
 | percentage | Component | javascript | src/generators/diagramGenerator.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/generators/diagramGenerator.js) |
@@ -105,8 +85,6 @@ graph TB
 | RelationshipAnalyzer | Component | javascript | src/analyzers/relationshipAnalyzer.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/analyzers/relationshipAnalyzer.js) |
 | rev | Component | javascript | src/generators/diagramGenerator.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/generators/diagramGenerator.js) |
 | TypeScriptAnalyzer | Component | javascript | src/analyzers/typescriptAnalyzer.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/analyzers/typescriptAnalyzer.js) |
-| UserService | Class | python | tests/sample-project/src/services/UserService.py | [View Source](https://github.com/samjhill/diagrammer/blob/main/tests/sample-project/src/services/UserService.py) |
-| validate_email | Function | python | tests/sample-project/src/services/UserService.py | [View Source](https://github.com/samjhill/diagrammer/blob/main/tests/sample-project/src/services/UserService.py) |
 | visit | Component | javascript | src/analyzers/typescriptAnalyzer.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/analyzers/typescriptAnalyzer.js) |
 
 
