@@ -40,6 +40,10 @@ class DiagramGenerator {
       diagrams.dataFlow = this.generateDataFlowDiagram(analysis);
       diagrams.eventFlow = this.generateEventFlowDiagram(analysis);
       diagrams.serviceCommunication = this.generateServiceCommunicationDiagram(analysis);
+      const cycles = this.detectCircularDependencyPairs(analysis.dependencies || []);
+      if (cycles.length > 0) {
+        diagrams.circularDependencies = this.generateCircularDependenciesDiagram(analysis, cycles);
+      }
     }
 
     return diagrams;
@@ -53,7 +57,8 @@ class DiagramGenerator {
     const filteredComponents = this.filterComponentsForDiagram(uniqueComponents);
     const filteredDependencies = this.filterDependenciesForDiagram(dependencies, filteredComponents);
     
-    let mermaid = 'graph TD\n';
+    const direction = this.config?.diagram?.direction || 'TD';
+    let mermaid = `graph ${direction}\n`;
     
     // Add enhanced styling with semantic colors and shapes
     mermaid += '  classDef component fill:#e3f2fd,stroke:#1976d2,stroke-width:2px\n';
@@ -88,7 +93,10 @@ class DiagramGenerator {
         mermaid += `  subgraph ${subgraphName}["${displayName}"]\n`;
         
         // Limit components per directory to keep diagrams clean
-        const limitedComponents = dirComponents.slice(0, 10);
+        const limitedComponents = dirComponents
+          .slice()
+          .sort((a, b) => this.getComponentImportance(b) - this.getComponentImportance(a) || a.name.localeCompare(b.name))
+          .slice(0, 10);
         limitedComponents.forEach(component => {
           const nodeId = this.sanitizeName(component.name);
           const displayComponentName = this.getDisplayComponentName(component.name);
@@ -103,6 +111,7 @@ class DiagramGenerator {
 
     // Add enhanced relationships with better visualization
     const edgeSet = new Set();
+    const edgeCounts = new Map(); // bundle duplicate edges
     const nodeNames = new Set(filteredComponents.map(c => c.name));
     
     // Add internal component relationships first
@@ -113,10 +122,10 @@ class DiagramGenerator {
       mermaid += `  ${nodeId}:::${componentClass}\n`;
     });
 
-    mermaid = this.addInternalRelationships(mermaid, filteredComponents, analysis, edgeSet);
+    mermaid = this.addInternalRelationships(mermaid, filteredComponents, analysis, edgeSet, edgeCounts);
     
     // Add external dependencies with better categorization
-    mermaid = this.addExternalDependencies(mermaid, filteredDependencies, edgeSet, nodeNames);
+    mermaid = this.addExternalDependencies(mermaid, filteredDependencies, edgeSet, nodeNames, edgeCounts);
 
     return this.wrapInMarkdown('Architecture Overview', mermaid, analysis);
   }
@@ -958,7 +967,7 @@ ${insights.map(insight => `- ${insight}`).join('\n')}
     return name;
   }
 
-  addInternalRelationships(mermaid, components, analysis, edgeSet) {
+  addInternalRelationships(mermaid, components, analysis, edgeSet, edgeCounts) {
     // Add relationships between internal components based on analysis
     if (analysis.relationships && analysis.relationships.length > 0) {
       analysis.relationships.forEach(rel => {
@@ -968,6 +977,7 @@ ${insights.map(insight => `- ${insight}`).join('\n')}
         
         if (fromComponent && toComponent) {
           const edgeKey = `${fromComponent.name}-->${toComponent.name}`;
+          edgeCounts.set(edgeKey, (edgeCounts.get(edgeKey) || 0) + 1);
           if (edgeSet.has(edgeKey)) return;
           edgeSet.add(edgeKey);
           
@@ -976,7 +986,9 @@ ${insights.map(insight => `- ${insight}`).join('\n')}
           const relationshipType = this.getRelationshipLabel(rel);
           const relationshipStyle = this.getRelationshipStyle(rel.type);
           
-          mermaid += `  ${fromId} ${relationshipStyle}|${relationshipType}| ${toId}\n`;
+          const count = edgeCounts.get(edgeKey);
+          const label = count && count > 1 ? `${relationshipType} (${count})` : relationshipType;
+          mermaid += `  ${fromId} ${relationshipStyle}|${label}| ${toId}\n`;
         }
       });
     }
@@ -986,7 +998,7 @@ ${insights.map(insight => `- ${insight}`).join('\n')}
     return mermaid;
   }
 
-  addExternalDependencies(mermaid, dependencies, edgeSet, nodeNames) {
+  addExternalDependencies(mermaid, dependencies, edgeSet, nodeNames, edgeCounts) {
     // Group external dependencies by type
     const externalDeps = dependencies.filter(dep => this.isExternalDependency(dep.from));
     const groupedDeps = this.groupDependenciesByType(externalDeps);
@@ -997,6 +1009,7 @@ ${insights.map(insight => `- ${insight}`).join('\n')}
         if (dep.from === dep.name) return;
         
         const edgeKey = `${dep.from}-->${dep.name}`;
+        edgeCounts.set(edgeKey, (edgeCounts.get(edgeKey) || 0) + 1);
         if (edgeSet.has(edgeKey)) return;
         edgeSet.add(edgeKey);
         
@@ -1013,10 +1026,56 @@ ${insights.map(insight => `- ${insight}`).join('\n')}
         const toId = this.sanitizeName(dep.name);
         const depType = this.getDependencyTypeLabel(type);
         
-        mermaid += `  ${fromId} -->|${depType}| ${toId}\n`;
+        const count = edgeCounts.get(edgeKey);
+        const label = count && count > 1 ? `${depType} (${count})` : depType;
+        mermaid += `  ${fromId} -->|${label}| ${toId}\n`;
       });
     });
     return mermaid;
+  }
+
+  // Detect exact pairs that participate in cycles for a focused diagram
+  detectCircularDependencyPairs(dependencies) {
+    const adj = new Map();
+    const nodes = new Set();
+    dependencies.forEach(({ from, name }) => {
+      if (!from || !name) return;
+      nodes.add(from); nodes.add(name);
+      if (!adj.has(from)) adj.set(from, new Set());
+      adj.get(from).add(name);
+    });
+    const pairs = new Set();
+    nodes.forEach(a => {
+      const neigh = adj.get(a) || new Set();
+      neigh.forEach(b => {
+        const rev = (adj.get(b) || new Set()).has(a);
+        if (rev && a !== b) {
+          const key = [a, b].sort().join('::');
+          pairs.add(key);
+        }
+      });
+    });
+    return Array.from(pairs).map(k => { const [a, b] = k.split('::'); return { a, b }; });
+  }
+
+  generateCircularDependenciesDiagram(analysis, pairs) {
+    const direction = this.config?.diagram?.direction || 'TD';
+    let mermaid = `graph ${direction}\n`;
+    mermaid += '  classDef component fill:#fff3e0,stroke:#e65100,stroke-width:2px\n';
+    const names = new Set();
+    pairs.forEach(({ a, b }) => { names.add(a); names.add(b); });
+    Array.from(names).sort().forEach(n => {
+      const id = this.sanitizeName(n);
+      mermaid += `  ${id}["${this.getDisplayComponentName(n)}"]\n`;
+      mermaid += `  ${id}:::component\n`;
+    });
+    pairs.forEach(({ a, b }) => {
+      const aId = this.sanitizeName(a);
+      const bId = this.sanitizeName(b);
+      mermaid += `  ${aId} ==>|cycle| ${bId}\n`;
+      mermaid += `  ${bId} ==>|cycle| ${aId}\n`;
+    });
+    return this.wrapInMarkdown('Circular Dependencies', mermaid, analysis);
   }
 
   addArchitecturalRelationships(mermaid, components, edgeSet) {
