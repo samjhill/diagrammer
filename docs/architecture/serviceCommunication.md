@@ -33,6 +33,13 @@ graph TB
     JavaScriptAnalyzer_split["split"]:::method
     declarations_split["split"]:::method
     ArchitecturalAnalyzer_split["split"]:::method
+    UserService_split["split"]:::method
+    __init___split["split"]:::method
+    create_user_split["split"]:::method
+    get_user_split["split"]:::method
+    list_users_split["split"]:::method
+    export_users_split["split"]:::method
+    validate_email_split["split"]:::method
   end
 
   subgraph map_service["map-service Service"]
@@ -207,6 +214,48 @@ graph TB
     declarations_push["push"]:::method
     CodeAnalyzer_push["push"]:::method
     ArchitecturalAnalyzer_push["push"]:::method
+  end
+
+  subgraph readdir_service["readdir-service Service"]
+    main_readdir["readdir"]:::method
+    loadConfig_readdir["readdir"]:::method
+    generateArchitectureReadme_readdir["readdir"]:::method
+    languages_readdir["readdir"]:::method
+  end
+
+  subgraph startsWith_service["startsWith-service Service"]
+    main_startsWith["startsWith"]:::method
+    loadConfig_startsWith["startsWith"]:::method
+    generateArchitectureReadme_startsWith["startsWith"]:::method
+    languages_startsWith["startsWith"]:::method
+    DiagramGenerator_startsWith["startsWith"]:::method
+    based_startsWith["startsWith"]:::method
+    for_startsWith["startsWith"]:::method
+    calls_startsWith["startsWith"]:::method
+    rev_startsWith["startsWith"]:::method
+    percentage_startsWith["startsWith"]:::method
+    PythonAnalyzer_startsWith["startsWith"]:::method
+  end
+
+  subgraph stat_service["stat-service Service"]
+    main_stat["stat"]:::method
+    loadConfig_stat["stat"]:::method
+    generateArchitectureReadme_stat["stat"]:::method
+    languages_stat["stat"]:::method
+  end
+
+  subgraph isFile_service["isFile-service Service"]
+    main_isFile["isFile"]:::method
+    loadConfig_isFile["isFile"]:::method
+    generateArchitectureReadme_isFile["isFile"]:::method
+    languages_isFile["isFile"]:::method
+  end
+
+  subgraph remove_service["remove-service Service"]
+    main_remove["remove"]:::method
+    loadConfig_remove["remove"]:::method
+    generateArchitectureReadme_remove["remove"]:::method
+    languages_remove["remove"]:::method
   end
 
   subgraph commitChanges_service["commitChanges-service Service"]
@@ -537,16 +586,6 @@ graph TB
     rev_endsWith["endsWith"]:::method
     percentage_endsWith["endsWith"]:::method
     DiagramExporter_endsWith["endsWith"]:::method
-  end
-
-  subgraph startsWith_service["startsWith-service Service"]
-    DiagramGenerator_startsWith["startsWith"]:::method
-    based_startsWith["startsWith"]:::method
-    for_startsWith["startsWith"]:::method
-    calls_startsWith["startsWith"]:::method
-    rev_startsWith["startsWith"]:::method
-    percentage_startsWith["startsWith"]:::method
-    PythonAnalyzer_startsWith["startsWith"]:::method
   end
 
   subgraph uniqueByName_service["uniqueByName-service Service"]
@@ -1567,6 +1606,56 @@ graph TB
     ArchitecturalAnalyzer_round["round"]:::method
   end
 
+  subgraph now_service["now-service Service"]
+    UserService_now["now"]:::method
+    __init___now["now"]:::method
+    create_user_now["now"]:::method
+    get_user_now["now"]:::method
+    list_users_now["now"]:::method
+    export_users_now["now"]:::method
+    validate_email_now["now"]:::method
+  end
+
+  subgraph isoformat_service["isoformat-service Service"]
+    UserService_isoformat["isoformat"]:::method
+    __init___isoformat["isoformat"]:::method
+    create_user_isoformat["isoformat"]:::method
+    get_user_isoformat["isoformat"]:::method
+    list_users_isoformat["isoformat"]:::method
+    export_users_isoformat["isoformat"]:::method
+    validate_email_isoformat["isoformat"]:::method
+  end
+
+  subgraph append_service["append-service Service"]
+    UserService_append["append"]:::method
+    __init___append["append"]:::method
+    create_user_append["append"]:::method
+    get_user_append["append"]:::method
+    list_users_append["append"]:::method
+    export_users_append["append"]:::method
+    validate_email_append["append"]:::method
+  end
+
+  subgraph copy_service["copy-service Service"]
+    UserService_copy["copy"]:::method
+    __init___copy["copy"]:::method
+    create_user_copy["copy"]:::method
+    get_user_copy["copy"]:::method
+    list_users_copy["copy"]:::method
+    export_users_copy["copy"]:::method
+    validate_email_copy["copy"]:::method
+  end
+
+  subgraph dumps_service["dumps-service Service"]
+    UserService_dumps["dumps"]:::method
+    __init___dumps["dumps"]:::method
+    create_user_dumps["dumps"]:::method
+    get_user_dumps["dumps"]:::method
+    list_users_dumps["dumps"]:::method
+    export_users_dumps["dumps"]:::method
+    validate_email_dumps["dumps"]:::method
+  end
+
   main -->|getInput| getInput_service
   main -->|split| split_service
   main -->|map| map_service
@@ -1586,6 +1675,11 @@ graph TB
   main -->|writeFile| writeFile_service
   main -->|chmod| chmod_service
   main -->|push| push_service
+  main -->|readdir| readdir_service
+  main -->|startsWith| startsWith_service
+  main -->|stat| stat_service
+  main -->|isFile| isFile_service
+  main -->|remove| remove_service
   main -->|commitChanges| commitChanges_service
   main -->|setFailed| setFailed_service
   main -->|error| error_service
@@ -1617,6 +1711,11 @@ graph TB
   loadConfig -->|writeFile| writeFile_service
   loadConfig -->|chmod| chmod_service
   loadConfig -->|push| push_service
+  loadConfig -->|readdir| readdir_service
+  loadConfig -->|startsWith| startsWith_service
+  loadConfig -->|stat| stat_service
+  loadConfig -->|isFile| isFile_service
+  loadConfig -->|remove| remove_service
   loadConfig -->|commitChanges| commitChanges_service
   loadConfig -->|setFailed| setFailed_service
   loadConfig -->|error| error_service
@@ -1648,6 +1747,11 @@ graph TB
   generateArchitectureReadme -->|writeFile| writeFile_service
   generateArchitectureReadme -->|chmod| chmod_service
   generateArchitectureReadme -->|push| push_service
+  generateArchitectureReadme -->|readdir| readdir_service
+  generateArchitectureReadme -->|startsWith| startsWith_service
+  generateArchitectureReadme -->|stat| stat_service
+  generateArchitectureReadme -->|isFile| isFile_service
+  generateArchitectureReadme -->|remove| remove_service
   generateArchitectureReadme -->|commitChanges| commitChanges_service
   generateArchitectureReadme -->|setFailed| setFailed_service
   generateArchitectureReadme -->|error| error_service
@@ -1679,6 +1783,11 @@ graph TB
   languages -->|writeFile| writeFile_service
   languages -->|chmod| chmod_service
   languages -->|push| push_service
+  languages -->|readdir| readdir_service
+  languages -->|startsWith| startsWith_service
+  languages -->|stat| stat_service
+  languages -->|isFile| isFile_service
+  languages -->|remove| remove_service
   languages -->|commitChanges| commitChanges_service
   languages -->|setFailed| setFailed_service
   languages -->|error| error_service
@@ -2503,6 +2612,48 @@ graph TB
   ArchitecturalAnalyzer -->|exec| exec_service
   ArchitecturalAnalyzer -->|replace| replace_service
   ArchitecturalAnalyzer -->|round| round_service
+  UserService -->|now| now_service
+  UserService -->|isoformat| isoformat_service
+  UserService -->|append| append_service
+  UserService -->|copy| copy_service
+  UserService -->|dumps| dumps_service
+  UserService -->|split| split_service
+  __init__ -->|now| now_service
+  __init__ -->|isoformat| isoformat_service
+  __init__ -->|append| append_service
+  __init__ -->|copy| copy_service
+  __init__ -->|dumps| dumps_service
+  __init__ -->|split| split_service
+  create_user -->|now| now_service
+  create_user -->|isoformat| isoformat_service
+  create_user -->|append| append_service
+  create_user -->|copy| copy_service
+  create_user -->|dumps| dumps_service
+  create_user -->|split| split_service
+  get_user -->|now| now_service
+  get_user -->|isoformat| isoformat_service
+  get_user -->|append| append_service
+  get_user -->|copy| copy_service
+  get_user -->|dumps| dumps_service
+  get_user -->|split| split_service
+  list_users -->|now| now_service
+  list_users -->|isoformat| isoformat_service
+  list_users -->|append| append_service
+  list_users -->|copy| copy_service
+  list_users -->|dumps| dumps_service
+  list_users -->|split| split_service
+  export_users -->|now| now_service
+  export_users -->|isoformat| isoformat_service
+  export_users -->|append| append_service
+  export_users -->|copy| copy_service
+  export_users -->|dumps| dumps_service
+  export_users -->|split| split_service
+  validate_email -->|now| now_service
+  validate_email -->|isoformat| isoformat_service
+  validate_email -->|append| append_service
+  validate_email -->|copy| copy_service
+  validate_email -->|dumps| dumps_service
+  validate_email -->|split| split_service
 
 ```
 
@@ -2518,17 +2669,6 @@ graph TB
 | 🏗️ **Framework** | Light Green | Framework dependencies |
 | 🌐 **External** | Red | External libraries |
 
-## 📊 Visual Indicators
-
-| Symbol | Meaning | Description |
-|---|---|---|
-| 📦 | Large Component | Component with >100 lines of code |
-| 📄 | Medium Component | Component with 50-100 lines of code |
-| 📝 | Small Component | Component with <50 lines of code |
-| ⚡ | High Complexity | Complex component (complexity ≥4) |
-| 🔥 | Medium Complexity | Moderate complexity (complexity ≥3) |
-| 🔗 | High Dependencies | Component with >5 dependencies |
-
 ## 🔗 Relationship Types
 
 - **imports**: Module imports and dependencies
@@ -2537,8 +2677,6 @@ graph TB
 - **uses**: Component utilizes another component
 - **API**: API calls and communication
 - **data**: Data flow between components
-
-
 
 
 ---

@@ -207,48 +207,6 @@ graph TB
     ArchitecturalAnalyzer_push["push"]:::method
   end
 
-  subgraph readdir_service["readdir-service Service"]
-    main_readdir["readdir"]:::method
-    loadConfig_readdir["readdir"]:::method
-    generateArchitectureReadme_readdir["readdir"]:::method
-    languages_readdir["readdir"]:::method
-  end
-
-  subgraph startsWith_service["startsWith-service Service"]
-    main_startsWith["startsWith"]:::method
-    loadConfig_startsWith["startsWith"]:::method
-    generateArchitectureReadme_startsWith["startsWith"]:::method
-    languages_startsWith["startsWith"]:::method
-    DiagramGenerator_startsWith["startsWith"]:::method
-    based_startsWith["startsWith"]:::method
-    for_startsWith["startsWith"]:::method
-    calls_startsWith["startsWith"]:::method
-    rev_startsWith["startsWith"]:::method
-    percentage_startsWith["startsWith"]:::method
-    PythonAnalyzer_startsWith["startsWith"]:::method
-  end
-
-  subgraph stat_service["stat-service Service"]
-    main_stat["stat"]:::method
-    loadConfig_stat["stat"]:::method
-    generateArchitectureReadme_stat["stat"]:::method
-    languages_stat["stat"]:::method
-  end
-
-  subgraph isFile_service["isFile-service Service"]
-    main_isFile["isFile"]:::method
-    loadConfig_isFile["isFile"]:::method
-    generateArchitectureReadme_isFile["isFile"]:::method
-    languages_isFile["isFile"]:::method
-  end
-
-  subgraph remove_service["remove-service Service"]
-    main_remove["remove"]:::method
-    loadConfig_remove["remove"]:::method
-    generateArchitectureReadme_remove["remove"]:::method
-    languages_remove["remove"]:::method
-  end
-
   subgraph commitChanges_service["commitChanges-service Service"]
     main_commitChanges["commitChanges"]:::method
     loadConfig_commitChanges["commitChanges"]:::method
@@ -577,6 +535,16 @@ graph TB
     rev_endsWith["endsWith"]:::method
     percentage_endsWith["endsWith"]:::method
     DiagramExporter_endsWith["endsWith"]:::method
+  end
+
+  subgraph startsWith_service["startsWith-service Service"]
+    DiagramGenerator_startsWith["startsWith"]:::method
+    based_startsWith["startsWith"]:::method
+    for_startsWith["startsWith"]:::method
+    calls_startsWith["startsWith"]:::method
+    rev_startsWith["startsWith"]:::method
+    percentage_startsWith["startsWith"]:::method
+    PythonAnalyzer_startsWith["startsWith"]:::method
   end
 
   subgraph uniqueByName_service["uniqueByName-service Service"]
@@ -1616,11 +1584,6 @@ graph TB
   main -->|writeFile| writeFile_service
   main -->|chmod| chmod_service
   main -->|push| push_service
-  main -->|readdir| readdir_service
-  main -->|startsWith| startsWith_service
-  main -->|stat| stat_service
-  main -->|isFile| isFile_service
-  main -->|remove| remove_service
   main -->|commitChanges| commitChanges_service
   main -->|setFailed| setFailed_service
   main -->|error| error_service
@@ -1652,11 +1615,6 @@ graph TB
   loadConfig -->|writeFile| writeFile_service
   loadConfig -->|chmod| chmod_service
   loadConfig -->|push| push_service
-  loadConfig -->|readdir| readdir_service
-  loadConfig -->|startsWith| startsWith_service
-  loadConfig -->|stat| stat_service
-  loadConfig -->|isFile| isFile_service
-  loadConfig -->|remove| remove_service
   loadConfig -->|commitChanges| commitChanges_service
   loadConfig -->|setFailed| setFailed_service
   loadConfig -->|error| error_service
@@ -1688,11 +1646,6 @@ graph TB
   generateArchitectureReadme -->|writeFile| writeFile_service
   generateArchitectureReadme -->|chmod| chmod_service
   generateArchitectureReadme -->|push| push_service
-  generateArchitectureReadme -->|readdir| readdir_service
-  generateArchitectureReadme -->|startsWith| startsWith_service
-  generateArchitectureReadme -->|stat| stat_service
-  generateArchitectureReadme -->|isFile| isFile_service
-  generateArchitectureReadme -->|remove| remove_service
   generateArchitectureReadme -->|commitChanges| commitChanges_service
   generateArchitectureReadme -->|setFailed| setFailed_service
   generateArchitectureReadme -->|error| error_service
@@ -1724,11 +1677,6 @@ graph TB
   languages -->|writeFile| writeFile_service
   languages -->|chmod| chmod_service
   languages -->|push| push_service
-  languages -->|readdir| readdir_service
-  languages -->|startsWith| startsWith_service
-  languages -->|stat| stat_service
-  languages -->|isFile| isFile_service
-  languages -->|remove| remove_service
   languages -->|commitChanges| commitChanges_service
   languages -->|setFailed| setFailed_service
   languages -->|error| error_service
