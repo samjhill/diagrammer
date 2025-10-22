@@ -1,0 +1,1 @@
+# Mock Architecture Diagram
