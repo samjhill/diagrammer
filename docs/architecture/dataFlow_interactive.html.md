@@ -18,6 +18,9 @@ graph TD
   languages["<a href='https://github.com/samjhill/diagrammer/blob/main/src/index.js' target='_blank'>languages</a>"]:::component
   data_store["data-store"]:::data
   languages -->|data| data_store
+  DiagramExporter["<a href='https://github.com/samjhill/diagrammer/blob/main/src/exporters/diagramExporter.js' target='_blank'>DiagramExporter</a>"]:::component
+  data_store["data-store"]:::data
+  DiagramExporter -->|data| data_store
   DiagramGenerator["<a href='https://github.com/samjhill/diagrammer/blob/main/src/generators/diagramGenerator.js' target='_blank'>DiagramGenerator</a>"]:::component
   data_store["data-store"]:::data
   DiagramGenerator -->|array| data_store
@@ -63,6 +66,7 @@ graph TD
 | calls | Component | javascript | src/generators/diagramGenerator.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/generators/diagramGenerator.js) |
 | CodeAnalyzer | Component | javascript | src/analyzers/codeAnalyzer.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/analyzers/codeAnalyzer.js) |
 | declarations | Component | javascript | src/analyzers/javascriptAnalyzer.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/analyzers/javascriptAnalyzer.js) |
+| DiagramExporter | Component | javascript | src/exporters/diagramExporter.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/exporters/diagramExporter.js) |
 | DiagramGenerator | Component | javascript | src/generators/diagramGenerator.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/generators/diagramGenerator.js) |
 | for | Component | javascript | src/generators/diagramGenerator.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/generators/diagramGenerator.js) |
 | GitManager | Component | javascript | src/utils/gitManager.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/utils/gitManager.js) |

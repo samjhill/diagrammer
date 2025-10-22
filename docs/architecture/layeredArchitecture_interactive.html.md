@@ -30,6 +30,8 @@ graph TB
     rev:::component
     percentage["<a href='https://github.com/samjhill/diagrammer/blob/main/src/generators/diagramGenerator.js' target='_blank'>percentage</a>"]
     percentage:::component
+    DiagramExporter["<a href='https://github.com/samjhill/diagrammer/blob/main/src/exporters/diagramExporter.js' target='_blank'>DiagramExporter</a>"]
+    DiagramExporter:::component
     TypeScriptAnalyzer["<a href='https://github.com/samjhill/diagrammer/blob/main/src/analyzers/typescriptAnalyzer.js' target='_blank'>TypeScriptAnalyzer</a>"]
     TypeScriptAnalyzer:::component
     visit["<a href='https://github.com/samjhill/diagrammer/blob/main/src/analyzers/typescriptAnalyzer.js' target='_blank'>visit</a>"]
@@ -71,6 +73,7 @@ graph TB
 | calls | Component | javascript | src/generators/diagramGenerator.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/generators/diagramGenerator.js) |
 | CodeAnalyzer | Component | javascript | src/analyzers/codeAnalyzer.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/analyzers/codeAnalyzer.js) |
 | declarations | Component | javascript | src/analyzers/javascriptAnalyzer.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/analyzers/javascriptAnalyzer.js) |
+| DiagramExporter | Component | javascript | src/exporters/diagramExporter.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/exporters/diagramExporter.js) |
 | DiagramGenerator | Component | javascript | src/generators/diagramGenerator.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/generators/diagramGenerator.js) |
 | for | Component | javascript | src/generators/diagramGenerator.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/generators/diagramGenerator.js) |
 | GitManager | Component | javascript | src/utils/gitManager.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/utils/gitManager.js) |

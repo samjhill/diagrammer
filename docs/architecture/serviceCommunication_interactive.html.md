@@ -111,6 +111,7 @@ graph TB
     main_ensureDir["ensureDir"]:::method
     loadConfig_ensureDir["ensureDir"]:::method
     languages_ensureDir["ensureDir"]:::method
+    DiagramExporter_ensureDir["ensureDir"]:::method
   end
 
   subgraph entries_service["entries-service Service"]
@@ -123,6 +124,7 @@ graph TB
     calls_entries["entries"]:::method
     rev_entries["entries"]:::method
     percentage_entries["entries"]:::method
+    DiagramExporter_entries["entries"]:::method
     RelationshipAnalyzer_entries["entries"]:::method
     ArchitecturalAnalyzer_entries["entries"]:::method
   end
@@ -137,6 +139,7 @@ graph TB
     calls_join["join"]:::method
     rev_join["join"]:::method
     percentage_join["join"]:::method
+    DiagramExporter_join["join"]:::method
   end
 
   subgraph resolve_service["resolve-service Service"]
@@ -149,6 +152,7 @@ graph TB
     main_writeFile["writeFile"]:::method
     loadConfig_writeFile["writeFile"]:::method
     languages_writeFile["writeFile"]:::method
+    DiagramExporter_writeFile["writeFile"]:::method
   end
 
   subgraph chmod_service["chmod-service Service"]
@@ -167,6 +171,7 @@ graph TB
     calls_push["push"]:::method
     rev_push["push"]:::method
     percentage_push["push"]:::method
+    DiagramExporter_push["push"]:::method
     TypeScriptAnalyzer_push["push"]:::method
     visit_push["push"]:::method
     RelationshipAnalyzer_push["push"]:::method
@@ -194,6 +199,7 @@ graph TB
     loadConfig_error["error"]:::method
     languages_error["error"]:::method
     GitManager_error["error"]:::method
+    DiagramExporter_error["error"]:::method
   end
 
   subgraph pathExists_service["pathExists-service Service"]
@@ -222,6 +228,13 @@ graph TB
 
   subgraph log_service["log-service Service"]
     GitManager_log["log"]:::method
+    DiagramGenerator_log["log"]:::method
+    based_log["log"]:::method
+    for_log["log"]:::method
+    calls_log["log"]:::method
+    rev_log["log"]:::method
+    percentage_log["log"]:::method
+    DiagramExporter_log["log"]:::method
   end
 
   subgraph isGitRepository_service["isGitRepository-service Service"]
@@ -383,6 +396,15 @@ graph TB
     percentage_generateInteractiveDiagrams["generateInteractiveDiagrams"]:::method
   end
 
+  subgraph exportAllFormats_service["exportAllFormats-service Service"]
+    DiagramGenerator_exportAllFormats["exportAllFormats"]:::method
+    based_exportAllFormats["exportAllFormats"]:::method
+    for_exportAllFormats["exportAllFormats"]:::method
+    calls_exportAllFormats["exportAllFormats"]:::method
+    rev_exportAllFormats["exportAllFormats"]:::method
+    percentage_exportAllFormats["exportAllFormats"]:::method
+  end
+
   subgraph uniqueByName_service["uniqueByName-service Service"]
     DiagramGenerator_uniqueByName["uniqueByName"]:::method
     based_uniqueByName["uniqueByName"]:::method
@@ -435,6 +457,7 @@ graph TB
     calls_slice["slice"]:::method
     rev_slice["slice"]:::method
     percentage_slice["slice"]:::method
+    DiagramExporter_slice["slice"]:::method
     TypeScriptAnalyzer_slice["slice"]:::method
     visit_slice["slice"]:::method
   end
@@ -446,6 +469,7 @@ graph TB
     calls_forEach["forEach"]:::method
     rev_forEach["forEach"]:::method
     percentage_forEach["forEach"]:::method
+    DiagramExporter_forEach["forEach"]:::method
     TypeScriptAnalyzer_forEach["forEach"]:::method
     visit_forEach["forEach"]:::method
     RelationshipAnalyzer_forEach["forEach"]:::method
@@ -613,6 +637,7 @@ graph TB
     calls_replace["replace"]:::method
     rev_replace["replace"]:::method
     percentage_replace["replace"]:::method
+    DiagramExporter_replace["replace"]:::method
     ArchitecturalAnalyzer_replace["replace"]:::method
   end
 
@@ -797,6 +822,7 @@ graph TB
     calls_toUpperCase["toUpperCase"]:::method
     rev_toUpperCase["toUpperCase"]:::method
     percentage_toUpperCase["toUpperCase"]:::method
+    DiagramExporter_toUpperCase["toUpperCase"]:::method
     RelationshipAnalyzer_toUpperCase["toUpperCase"]:::method
   end
 
@@ -1017,6 +1043,7 @@ graph TB
     calls_endsWith["endsWith"]:::method
     rev_endsWith["endsWith"]:::method
     percentage_endsWith["endsWith"]:::method
+    DiagramExporter_endsWith["endsWith"]:::method
   end
 
   subgraph convertToInteractiveHTML_service["convertToInteractiveHTML-service Service"]
@@ -1035,6 +1062,7 @@ graph TB
     calls_match["match"]:::method
     rev_match["match"]:::method
     percentage_match["match"]:::method
+    DiagramExporter_match["match"]:::method
     RelationshipAnalyzer_match["match"]:::method
     PythonAnalyzer_match["match"]:::method
   end
@@ -1110,6 +1138,82 @@ graph TB
     rev_min["min"]:::method
     percentage_min["min"]:::method
     RelationshipAnalyzer_min["min"]:::method
+  end
+
+  subgraph launch_service["launch-service Service"]
+    DiagramExporter_launch["launch"]:::method
+  end
+
+  subgraph exportDiagram_service["exportDiagram-service Service"]
+    DiagramExporter_exportDiagram["exportDiagram"]:::method
+  end
+
+  subgraph close_service["close-service Service"]
+    DiagramExporter_close["close"]:::method
+  end
+
+  subgraph newPage_service["newPage-service Service"]
+    DiagramExporter_newPage["newPage"]:::method
+  end
+
+  subgraph setViewport_service["setViewport-service Service"]
+    DiagramExporter_setViewport["setViewport"]:::method
+  end
+
+  subgraph createExportHTML_service["createExportHTML-service Service"]
+    DiagramExporter_createExportHTML["createExportHTML"]:::method
+  end
+
+  subgraph setContent_service["setContent-service Service"]
+    DiagramExporter_setContent["setContent"]:::method
+  end
+
+  subgraph waitForFunction_service["waitForFunction-service Service"]
+    DiagramExporter_waitForFunction["waitForFunction"]:::method
+  end
+
+  subgraph querySelector_service["querySelector-service Service"]
+    DiagramExporter_querySelector["querySelector"]:::method
+  end
+
+  subgraph toISOString_service["toISOString-service Service"]
+    DiagramExporter_toISOString["toISOString"]:::method
+  end
+
+  subgraph exportPNG_service["exportPNG-service Service"]
+    DiagramExporter_exportPNG["exportPNG"]:::method
+  end
+
+  subgraph exportSVG_service["exportSVG-service Service"]
+    DiagramExporter_exportSVG["exportSVG"]:::method
+  end
+
+  subgraph initialize_service["initialize-service Service"]
+    DiagramExporter_initialize["initialize"]:::method
+  end
+
+  subgraph boundingBox_service["boundingBox-service Service"]
+    DiagramExporter_boundingBox["boundingBox"]:::method
+  end
+
+  subgraph max_service["max-service Service"]
+    DiagramExporter_max["max"]:::method
+  end
+
+  subgraph screenshot_service["screenshot-service Service"]
+    DiagramExporter_screenshot["screenshot"]:::method
+  end
+
+  subgraph evaluate_service["evaluate-service Service"]
+    DiagramExporter_evaluate["evaluate"]:::method
+  end
+
+  subgraph exportDiagrams_service["exportDiagrams-service Service"]
+    DiagramExporter_exportDiagrams["exportDiagrams"]:::method
+  end
+
+  subgraph extname_service["extname-service Service"]
+    DiagramExporter_extname["extname"]:::method
   end
 
   subgraph findTypeScriptFiles_service["findTypeScriptFiles-service Service"]
@@ -1504,6 +1608,8 @@ graph TB
   DiagramGenerator -->|generateFocusDiagrams| generateFocusDiagrams_service
   DiagramGenerator -->|assign| assign_service
   DiagramGenerator -->|generateInteractiveDiagrams| generateInteractiveDiagrams_service
+  DiagramGenerator -->|exportAllFormats| exportAllFormats_service
+  DiagramGenerator -->|log| log_service
   DiagramGenerator -->|uniqueByName| uniqueByName_service
   DiagramGenerator -->|filterComponentsForDiagram| filterComponentsForDiagram_service
   DiagramGenerator -->|filterDependenciesForDiagram| filterDependenciesForDiagram_service
@@ -1602,6 +1708,8 @@ graph TB
   based -->|generateFocusDiagrams| generateFocusDiagrams_service
   based -->|assign| assign_service
   based -->|generateInteractiveDiagrams| generateInteractiveDiagrams_service
+  based -->|exportAllFormats| exportAllFormats_service
+  based -->|log| log_service
   based -->|uniqueByName| uniqueByName_service
   based -->|filterComponentsForDiagram| filterComponentsForDiagram_service
   based -->|filterDependenciesForDiagram| filterDependenciesForDiagram_service
@@ -1700,6 +1808,8 @@ graph TB
   for -->|generateFocusDiagrams| generateFocusDiagrams_service
   for -->|assign| assign_service
   for -->|generateInteractiveDiagrams| generateInteractiveDiagrams_service
+  for -->|exportAllFormats| exportAllFormats_service
+  for -->|log| log_service
   for -->|uniqueByName| uniqueByName_service
   for -->|filterComponentsForDiagram| filterComponentsForDiagram_service
   for -->|filterDependenciesForDiagram| filterDependenciesForDiagram_service
@@ -1798,6 +1908,8 @@ graph TB
   calls -->|generateFocusDiagrams| generateFocusDiagrams_service
   calls -->|assign| assign_service
   calls -->|generateInteractiveDiagrams| generateInteractiveDiagrams_service
+  calls -->|exportAllFormats| exportAllFormats_service
+  calls -->|log| log_service
   calls -->|uniqueByName| uniqueByName_service
   calls -->|filterComponentsForDiagram| filterComponentsForDiagram_service
   calls -->|filterDependenciesForDiagram| filterDependenciesForDiagram_service
@@ -1896,6 +2008,8 @@ graph TB
   rev -->|generateFocusDiagrams| generateFocusDiagrams_service
   rev -->|assign| assign_service
   rev -->|generateInteractiveDiagrams| generateInteractiveDiagrams_service
+  rev -->|exportAllFormats| exportAllFormats_service
+  rev -->|log| log_service
   rev -->|uniqueByName| uniqueByName_service
   rev -->|filterComponentsForDiagram| filterComponentsForDiagram_service
   rev -->|filterDependenciesForDiagram| filterDependenciesForDiagram_service
@@ -1994,6 +2108,8 @@ graph TB
   percentage -->|generateFocusDiagrams| generateFocusDiagrams_service
   percentage -->|assign| assign_service
   percentage -->|generateInteractiveDiagrams| generateInteractiveDiagrams_service
+  percentage -->|exportAllFormats| exportAllFormats_service
+  percentage -->|log| log_service
   percentage -->|uniqueByName| uniqueByName_service
   percentage -->|filterComponentsForDiagram| filterComponentsForDiagram_service
   percentage -->|filterDependenciesForDiagram| filterDependenciesForDiagram_service
@@ -2076,6 +2192,38 @@ graph TB
   percentage -->|isFrameworkDependency| isFrameworkDependency_service
   percentage -->|calculateComponentSize| calculateComponentSize_service
   percentage -->|min| min_service
+  DiagramExporter -->|join| join_service
+  DiagramExporter -->|ensureDir| ensureDir_service
+  DiagramExporter -->|launch| launch_service
+  DiagramExporter -->|entries| entries_service
+  DiagramExporter -->|endsWith| endsWith_service
+  DiagramExporter -->|match| match_service
+  DiagramExporter -->|replace| replace_service
+  DiagramExporter -->|exportDiagram| exportDiagram_service
+  DiagramExporter -->|push| push_service
+  DiagramExporter -->|close| close_service
+  DiagramExporter -->|newPage| newPage_service
+  DiagramExporter -->|setViewport| setViewport_service
+  DiagramExporter -->|createExportHTML| createExportHTML_service
+  DiagramExporter -->|setContent| setContent_service
+  DiagramExporter -->|waitForFunction| waitForFunction_service
+  DiagramExporter -->|querySelector| querySelector_service
+  DiagramExporter -->|toISOString| toISOString_service
+  DiagramExporter -->|slice| slice_service
+  DiagramExporter -->|exportPNG| exportPNG_service
+  DiagramExporter -->|exportSVG| exportSVG_service
+  DiagramExporter -->|log| log_service
+  DiagramExporter -->|toUpperCase| toUpperCase_service
+  DiagramExporter -->|error| error_service
+  DiagramExporter -->|initialize| initialize_service
+  DiagramExporter -->|boundingBox| boundingBox_service
+  DiagramExporter -->|max| max_service
+  DiagramExporter -->|screenshot| screenshot_service
+  DiagramExporter -->|evaluate| evaluate_service
+  DiagramExporter -->|writeFile| writeFile_service
+  DiagramExporter -->|exportDiagrams| exportDiagrams_service
+  DiagramExporter -->|forEach| forEach_service
+  DiagramExporter -->|extname| extname_service
   TypeScriptAnalyzer -->|findTypeScriptFiles| findTypeScriptFiles_service
   TypeScriptAnalyzer -->|readFile| readFile_service
   TypeScriptAnalyzer -->|analyzeFile| analyzeFile_service
@@ -2258,6 +2406,7 @@ graph TB
 | calls | Component | javascript | src/generators/diagramGenerator.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/generators/diagramGenerator.js) |
 | CodeAnalyzer | Component | javascript | src/analyzers/codeAnalyzer.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/analyzers/codeAnalyzer.js) |
 | declarations | Component | javascript | src/analyzers/javascriptAnalyzer.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/analyzers/javascriptAnalyzer.js) |
+| DiagramExporter | Component | javascript | src/exporters/diagramExporter.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/exporters/diagramExporter.js) |
 | DiagramGenerator | Component | javascript | src/generators/diagramGenerator.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/generators/diagramGenerator.js) |
 | for | Component | javascript | src/generators/diagramGenerator.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/generators/diagramGenerator.js) |
 | GitManager | Component | javascript | src/utils/gitManager.js | [View Source](https://github.com/samjhill/diagrammer/blob/main/src/utils/gitManager.js) |

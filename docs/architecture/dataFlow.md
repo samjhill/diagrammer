@@ -20,6 +20,9 @@ graph TD
   languages["languages"]:::component
   data_store["data-store"]:::data
   languages -->|data| data_store
+  DiagramExporter["DiagramExporter"]:::component
+  data_store["data-store"]:::data
+  DiagramExporter -->|data| data_store
   DiagramGenerator["DiagramGenerator"]:::component
   data_store["data-store"]:::data
   DiagramGenerator -->|array| data_store
@@ -68,6 +71,17 @@ graph TD
 | 🏗️ **Framework** | Light Green | Framework dependencies |
 | 🌐 **External** | Red | External libraries |
 
+## 📊 Visual Indicators
+
+| Symbol | Meaning | Description |
+|---|---|---|
+| 📦 | Large Component | Component with >100 lines of code |
+| 📄 | Medium Component | Component with 50-100 lines of code |
+| 📝 | Small Component | Component with <50 lines of code |
+| ⚡ | High Complexity | Complex component (complexity ≥4) |
+| 🔥 | Medium Complexity | Moderate complexity (complexity ≥3) |
+| 🔗 | High Dependencies | Component with >5 dependencies |
+
 ## 🔗 Relationship Types
 
 - **imports**: Module imports and dependencies
@@ -76,6 +90,8 @@ graph TD
 - **uses**: Component utilizes another component
 - **API**: API calls and communication
 - **data**: Data flow between components
+
+
 
 
 ---

@@ -40,6 +40,8 @@ graph TB
   CodeAnalyzer:::component
   declarations["declarations"]
   declarations:::component
+  DiagramExporter["DiagramExporter"]
+  DiagramExporter:::component
   DiagramGenerator["DiagramGenerator"]
   DiagramGenerator:::component
   for["for"]
@@ -52,8 +54,6 @@ graph TB
   PythonAnalyzer:::component
   RelationshipAnalyzer["RelationshipAnalyzer"]
   RelationshipAnalyzer:::component
-  rev["rev"]
-  rev:::component
 
 ```
 
@@ -104,13 +104,13 @@ graph TB
 | calls | Component | javascript | N/A | 0 |
 | CodeAnalyzer | Component | javascript | N/A | 0 |
 | declarations | Component | javascript | N/A | 0 |
+| DiagramExporter | Component | javascript | N/A | 0 |
 | DiagramGenerator | Component | javascript | N/A | 0 |
 | for | Component | javascript | N/A | 0 |
 | JavaScriptAnalyzer | Component | javascript | N/A | 0 |
 | percentage | Component | javascript | N/A | 0 |
 | PythonAnalyzer | Component | javascript | N/A | 0 |
 | RelationshipAnalyzer | Component | javascript | N/A | 0 |
-| rev | Component | javascript | N/A | 0 |
 
 ### Language Distribution
 

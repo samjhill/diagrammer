@@ -4,11 +4,20 @@ This diagram was automatically generated from your codebase.
 
 ## 📊 Architecture Overview
 
-- **Components**: 25 analyzed
-- **Languages**: javascript, python
-- **Architectural Patterns**: MICROSERVICES
-- **External Dependencies**: 12 packages
+- **Components**: 19 analyzed
+- **Languages**: javascript
+- **Architectural Patterns**: None detected
+- **External Dependencies**: 15 packages
 - **Generated**: 10/22/2025
+
+## 🧠 Architectural Insights
+
+- 🔍 **High Analysis Complexity**: Multiple analyzers detected - consider consolidating analysis logic
+- 🌐 **High External Dependencies**: Consider reducing external dependencies for better maintainability
+- 🔄 **Circular Dependencies**: Found circular dependencies - consider refactoring
+- ⚡ **Complex Components**: 1 components with high complexity - consider refactoring
+
+
 
 
 
@@ -29,16 +38,10 @@ graph LR
   path:::external
   fs["fs"]
   fs:::external
+  puppeteer["puppeteer"]
+  puppeteer:::external
   typescript["typescript"]
   typescript:::external
-  List["List"]
-  List:::internal
-  Optional["Optional"]
-  Optional:::internal
-  json["json"]
-  json:::internal
-  datetime["datetime"]
-  datetime:::internal
   _actions_core -->|imports| core
   _actions_github -->|imports| github
   fs_extra -->|imports| fs
@@ -58,6 +61,17 @@ graph LR
 | 🏗️ **Framework** | Light Green | Framework dependencies |
 | 🌐 **External** | Red | External libraries |
 
+## 📊 Visual Indicators
+
+| Symbol | Meaning | Description |
+|---|---|---|
+| 📦 | Large Component | Component with >100 lines of code |
+| 📄 | Medium Component | Component with 50-100 lines of code |
+| 📝 | Small Component | Component with <50 lines of code |
+| ⚡ | High Complexity | Complex component (complexity ≥4) |
+| 🔥 | Medium Complexity | Moderate complexity (complexity ≥3) |
+| 🔗 | High Dependencies | Component with >5 dependencies |
+
 ## 🔗 Relationship Types
 
 - **imports**: Module imports and dependencies
@@ -66,6 +80,65 @@ graph LR
 - **uses**: Component utilizes another component
 - **API**: API calls and communication
 - **data**: Data flow between components
+
+
+## Summary Tables
+
+### Component Summary
+
+| Component | Type | Language | Path | Dependencies |
+|-----------|------|----------|------|-------------|
+| main | Component | javascript | N/A | 0 |
+| languages | Component | javascript | N/A | 0 |
+| loadConfig | Component | javascript | N/A | 0 |
+| ArchitecturalAnalyzer | Component | javascript | N/A | 0 |
+| based | Component | javascript | N/A | 0 |
+| calls | Component | javascript | N/A | 0 |
+| CodeAnalyzer | Component | javascript | N/A | 0 |
+| declarations | Component | javascript | N/A | 0 |
+| DiagramExporter | Component | javascript | N/A | 0 |
+| DiagramGenerator | Component | javascript | N/A | 0 |
+| for | Component | javascript | N/A | 0 |
+| GitManager | Component | javascript | N/A | 0 |
+| JavaScriptAnalyzer | Component | javascript | N/A | 0 |
+| percentage | Component | javascript | N/A | 0 |
+| PythonAnalyzer | Component | javascript | N/A | 0 |
+| RelationshipAnalyzer | Component | javascript | N/A | 0 |
+| rev | Component | javascript | N/A | 0 |
+| TypeScriptAnalyzer | Component | javascript | N/A | 0 |
+| visit | Component | javascript | N/A | 0 |
+
+### Dependency Summary
+
+| From | To | Type | Relationship |
+|------|---|------|-------------|
+| @actions/core | core | depends | dependency |
+| @actions/github | github | depends | dependency |
+| fs | fs | depends | dependency |
+| fs-extra | fs | depends | dependency |
+| fs-extra | fs | depends | dependency |
+| fs-extra | fs | depends | dependency |
+| fs-extra | fs | depends | dependency |
+| fs-extra | fs | depends | dependency |
+| fs-extra | fs | depends | dependency |
+| path | path | depends | dependency |
+| path | path | depends | dependency |
+| path | path | depends | dependency |
+| path | path | depends | dependency |
+| puppeteer | puppeteer | depends | dependency |
+| typescript | ts | depends | dependency |
+
+### Architectural Patterns
+
+| Pattern | Count | Components |
+|---------|-------|------------|
+
+### Language Distribution
+
+| Language | Components | Percentage |
+|----------|------------|------------|
+| javascript | 19 | 100.0% |
+
 
 
 ---
