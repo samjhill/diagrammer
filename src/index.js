@@ -88,6 +88,19 @@ async function main() {
       }
     }
 
+    // Clean up old files in root directory (keep only README.md)
+    const rootFiles = await fs.readdir(outputPath);
+    for (const file of rootFiles) {
+      if (file !== 'README.md' && file !== 'diagrams' && file !== 'exports' && !file.startsWith('.')) {
+        const filePath = path.join(outputPath, file);
+        const stat = await fs.stat(filePath);
+        if (stat.isFile()) {
+          await fs.remove(filePath);
+          core.info(`Cleaned up old file: ${filePath}`);
+        }
+      }
+    }
+
     // Generate README index
     const readmePath = path.join(outputPath, 'README.md');
     const readmeContent = generateArchitectureReadme(organizedStructure, analysis);
