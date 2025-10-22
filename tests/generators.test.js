@@ -44,7 +44,7 @@ describe('Diagram Generator', () => {
     expect(diagrams.modules).toBeDefined();
     
     // Check that diagrams contain Mermaid syntax
-    expect(diagrams.architecture).toContain('graph TD');
+    expect(diagrams.architecture).toContain('graph TB');
     expect(diagrams.dependencies).toContain('graph LR');
     expect(diagrams.modules).toContain('graph TB');
   });
