@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.1] - 2025-10-22
+
+### Added
+- **PNG/SVG Export Functionality**: Generate high-quality PNG images and scalable SVG graphics
+- **Organized File Structure**: Clean directory organization with logical folder separation
+- **DiagramExporter Class**: Puppeteer-based export system with configurable quality settings
+- **Comprehensive README**: Auto-generated index with navigation links to all diagrams
+- **Export Configuration**: New `.diagrammer.yml` options for export formats and quality
+- **Professional Structure**: Enterprise-ready documentation layout
+
+### Enhanced
+- **File Organization**: 
+  - `diagrams/overview/` - Main architecture diagrams
+  - `diagrams/focus/` - Layer and module focus diagrams  
+  - `exports/png/` - PNG images for presentations
+  - `exports/svg/` - SVG graphics for documentation
+- **Export Quality**: High/medium/low quality settings with device scale factor
+- **Custom Dimensions**: Configurable export size (default 1200x800)
+- **Batch Processing**: Automatic export of all diagram types
+
+### Technical
+- Added Puppeteer dependency for headless Chrome rendering
+- Implemented smart clipping with automatic padding
+- Added error handling with detailed logging
+- Created organized directory structure generation
+- Enhanced README with clickable navigation links
+
 ## [1.4.0] - 2025-01-21
 
 ### 🧹 Major Release: Code Cleanup & Documentation Overhaul
