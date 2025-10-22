@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.2] - 2025-10-22
+
+### Fixed
+- **Duplicate File Prevention**: Fixed issue where diagrams were generated in both root directory and organized subdirectories
+- **Clean Root Directory**: Ensured only README.md exists in the root architecture directory
+- **Workflow Version Update**: Updated test workflow to use latest action version (v1.4.1)
+- **File Organization**: Proper cleanup logic prevents duplicate files in output
+
+### Technical
+- **Cleanup Logic**: Enhanced file organization to remove duplicates after generation
+- **Workflow Reliability**: Fixed GitHub Actions workflow to use correct action version
+- **Directory Structure**: Maintained clean separation between organized and root files
+
 ## [1.4.1] - 2025-10-22
 
 ### Added
