@@ -25,6 +25,17 @@ diagram:
     includeClickableNodes: true # Make nodes clickable with source code links
     includeComponentList: true  # Include component list panel
 
+  # Export settings
+  exports:
+    enabled: true               # Enable PNG/SVG export generation
+    formats:                   # Export formats to generate
+      - "png"                  # PNG images for presentations
+      - "svg"                  # SVG for scalable graphics
+    quality: "high"            # Export quality: low, medium, high
+    size:                      # Export dimensions
+      width: 1200              # Image width in pixels
+      height: 800              # Image height in pixels
+
 # Code analysis settings
 analysis:
   includeTests: false        # Include test files in analysis (disabled for cleaner diagrams)

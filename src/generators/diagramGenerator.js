@@ -1,4 +1,5 @@
 const path = require('path');
+const { DiagramExporter } = require('../exporters/diagramExporter');
 
 class DiagramGenerator {
   constructor(config) {
@@ -61,7 +62,58 @@ class DiagramGenerator {
       Object.assign(diagrams, interactiveDiagrams);
     }
 
+    // Generate export files if enabled
+    if (this.config?.diagram?.exports?.enabled) {
+      const exporter = new DiagramExporter(this.config);
+      const exportResults = await exporter.exportAllFormats(diagrams, this.config?.output?.path || 'docs/architecture');
+      
+      // Log export results
+      console.log(`📊 Export Summary:`);
+      console.log(`  PNG files: ${exportResults.png.length}`);
+      console.log(`  SVG files: ${exportResults.svg.length}`);
+      if (exportResults.errors.length > 0) {
+        console.log(`  Errors: ${exportResults.errors.length}`);
+      }
+    }
+
     return diagrams;
+  }
+
+  getOrganizedFileStructure(diagrams) {
+    const structure = {
+      'diagrams/overview/': [],
+      'diagrams/focus/': [],
+      'diagrams/interactive/': [],
+      'exports/png/': [],
+      'exports/svg/': []
+    };
+
+    Object.entries(diagrams).forEach(([name, content]) => {
+      // Skip export metadata
+      if (name === '_exports') return;
+
+      if (name.endsWith('_interactive.html.md')) {
+        structure['diagrams/interactive/'].push({
+          name: name.replace('_interactive.html.md', '.md'),
+          content: content,
+          originalName: name
+        });
+      } else if (name.startsWith('layerFocus_') || name.startsWith('moduleFocus_')) {
+        structure['diagrams/focus/'].push({
+          name: name + '.md',
+          content: content,
+          originalName: name
+        });
+      } else {
+        structure['diagrams/overview/'].push({
+          name: name + '.md',
+          content: content,
+          originalName: name
+        });
+      }
+    });
+
+    return structure;
   }
 
   generateArchitectureDiagram(analysis) {
