@@ -32,7 +32,7 @@ jobs:
         fetch-depth: 0
         
     - name: Cache Node.js dependencies
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       with:
         path: ~/.npm
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
@@ -40,7 +40,7 @@ jobs:
           ${{ runner.os }}-node-
           
     - name: Cache generated diagrams
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       with:
         path: docs/architecture
         key: ${{ runner.os }}-diagrams-${{ hashFiles('src/**/*.js', 'src/**/*.ts', 'tests/**/*.js', 'tests/**/*.ts') }}
